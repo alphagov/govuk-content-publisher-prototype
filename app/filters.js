@@ -111,6 +111,22 @@ module.exports = function (env) {
   }
 
   /* ------------------------------------------------------------------
+   attachment type filter for use in Nunjucks
+   example: {{ 'file' | attachmentType }}
+   outputs: "File attachment"
+  ------------------------------------------------------------------ */
+  filters.attachmentType = function(type) {
+
+    switch (type) {
+      case 'file': return 'File attachment';
+      case 'external': return 'External link';
+      case 'html': return 'HTML attachment';
+      default: return type;
+    }
+
+  }
+
+  /* ------------------------------------------------------------------
    document status filter for use in Nunjucks
    example: {{ 'submitted_for_review' | documentStatus }}
    outputs: "Submitted for 2i review"
