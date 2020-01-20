@@ -1,0 +1,22 @@
+<details class="app-c-toolbar-dropdown {{- ' ' + params.classes if params.classes }}" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+  <summary class="app-c-toolbar-dropdown__title {{- ' ' + params.title.classes if params.title.classes }}">
+    {{- params.title.html | safe if params.title.html else params.title.text | default('Insert...') -}}
+  </summary>
+  <div class="app-c-toolbar-dropdown__container">
+    <ul class="app-c-toolbar-dropdown__list">
+      {%- for item in params.items %}
+        <li class="app-c-toolbar-dropdown__list-item {{- ' ' + params.item.classes if params.item.classes }}">
+          {%- if item.element == "button" %}
+            <button class="app-c-toolbar-dropdown__button" type="{{ item.type }}" name="{{ item.name }}" value="{{ item.value }}" {%- for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+              {{- item.html | safe if item.html else item.text -}}
+            </button>
+          {% else %}
+            <a class="app-c-toolbar-dropdown__link" href="{{ item.href }}" target="{{ item.target }}" {%- for attribute, value in item.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+              {{- item.html | safe if item.html else item.text -}}
+            </a>
+          {% endif -%}
+        </li>
+      {% endfor -%}
+    </ul>
+  </div>
+</details>

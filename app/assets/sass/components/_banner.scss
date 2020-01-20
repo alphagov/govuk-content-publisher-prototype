@@ -1,0 +1,42 @@
+/* ==========================================================================
+   #BANNER
+   Based on https://github.com/alphagov/government-frontend/blob/master/app/assets/stylesheets/components/_banner.scss
+   ========================================================================== */
+
+.app-c-banner {
+  // @include responsive-bottom-margin;
+  @include govuk-font(19);
+  direction: ltr;
+  background: govuk-colour("blue");
+  color: govuk-colour("white");
+  padding: govuk-spacing(3);
+  clear: both;
+
+  @include govuk-media-query(tablet) {
+    padding: govuk-spacing(4) govuk-spacing(6);
+  }
+}
+
+.app-c-banner--aside {
+  @include govuk-media-query(tablet) {
+    padding: govuk-spacing(6);
+  }
+}
+
+.app-c-banner__text {
+  @include govuk-font(24);
+  color: govuk-colour("white");
+}
+
+.app-c-banner__title {
+  @include govuk-font($size:27, $weight: "bold");
+  margin-bottom: govuk-spacing(2);
+}
+
+.app-c-banner__desc {
+  @include govuk-font($size: 19, $weight: "bold");
+  color: govuk-colour("white");
+  // Ensure the text has a line-length of around 60 characters
+  max-width: 30em;
+  padding-top: govuk-spacing(2);
+}

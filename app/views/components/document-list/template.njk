@@ -1,0 +1,34 @@
+{%- if params.items %}
+<ol class="app-c-document-list {{- ' ' + params.classes if params.classes }}"{% for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  {%- for item in params.items %}
+  <li class="app-c-document-list__item {{- ' ' + item.classes if item.classes }}"{% for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+
+      <a class="app-c-document-list__item-title" href="{{ item.href }}">
+        {{- item.title.html | safe if item.title.html else item.title.text -}}
+      </a>
+      <p class="app-c-document-list__item-description {{- ' ' + item.description.classes if item.description.classes }}">
+        {{- item.description.html | safe if item.description.html else item.description.text -}}
+      </p>
+
+      {% if item.metadata %}
+
+      <ul class="app-c-document-list__item-metadata">
+
+        {%- for attribute, value in item.metadata %}
+          {%- if attribute == 'public_updated_at' %}
+          <li class="app-c-document-list__attribute">
+            <time class="app-c-document-list__metadata" datetime="{{ value }}">
+              {{- value | date('D MMMM YYYY') -}}
+            </time>
+          </li>
+          {% else %}
+          <li class="app-c-document-list__attribute">{{ value }}</li>
+          {% endif -%}
+        {% endfor -%}
+
+      </ul>
+      {% endif -%}
+  </li>
+  {% endfor -%}
+</ol>
+{% endif -%}

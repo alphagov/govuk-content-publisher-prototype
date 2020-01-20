@@ -1,0 +1,34 @@
+/* ==========================================================================
+   #METADATA
+   Based on https://github.com/alphagov/content-publisher/blob/master/app/assets/stylesheets/components/_metadata.scss
+   ========================================================================== */
+
+.app-c-metadata {
+  @include govuk-font(19);
+}
+
+.app-c-metadata__list {
+  margin: 0;
+}
+
+.app-c-metadata__list--inline {
+  .app-c-metadata__title,
+  .app-c-metadata__description {
+    display: inline;
+  }
+}
+
+.app-c-metadata__title {
+  @include govuk-font($size: 19, $weight: bold);
+}
+
+.app-c-metadata__description {
+  margin: 0;
+  margin-bottom: govuk-spacing(3);
+
+  &:last-child {
+    margin: 0;
+  }
+
+  @include govuk-clearfix;
+}

@@ -1,0 +1,56 @@
+// global styles for <a> and <p> tags
+$govuk-global-styles: true;
+
+// We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework.
+$govuk-assets-path: '/govuk/assets/';
+
+// Import GOV.UK Frontend and any extension styles if extensions have been configured
+@import "lib/extensions/extensions";
+
+// Patterns that aren't in Frontend
+@import "patterns/step-by-step-navigation";
+@import "patterns/task-list";
+@import "patterns/related-items";
+
+// Components that aren't in Frontend
+@import "components/banner";
+@import "components/button";
+@import "components/cookie-banner";
+@import "components/contextual-guidance";
+@import "components/copy-to-clipboard";
+@import "components/document-list";
+@import "components/header";
+@import "components/inset-prompt";
+@import "components/loading-spinner";
+@import "components/markdown-editor";
+@import "components/markdown-guidance";
+@import "components/metadata";
+@import "components/notice";
+@import "components/previous-next-navigation";
+@import "components/side-navigation";
+@import "components/sub-navigation";
+@import "components/summary-list";
+@import "components/table";
+@import "components/tabs";
+@import "components/timeline";
+@import "components/toolbar-dropdown";
+@import "components/url-preview";
+
+// Core styles
+@import "core/links";
+@import "core/markdown";
+
+// Object styles
+@import "objects/grid";
+@import "objects/history";
+@import "objects/pane";
+@import "objects/side";
+
+// Utility styles
+@import "utilities/display";
+@import "utilities/overwrites";
+
+// Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+.app-tag--prototype {
+  background-color: govuk-colour('red');
+}

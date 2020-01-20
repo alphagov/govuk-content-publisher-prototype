@@ -1,0 +1,20 @@
+<form action="#" method="post">
+
+  {{ govukTextarea({
+    id: "internal_note",
+    name: "internal_note",
+    label: {
+      text: "Internal note",
+      classes: "govuk-label--s"
+    },
+    rows: 5,
+    attributes: {
+      spellcheck: true
+    }
+  }) }}
+
+  {{ govukButton({
+    text: "Add internal note"
+  }) }}
+
+</form>

@@ -1,0 +1,107 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/components/copy-to-clipboard.js"></script>
+<script type="text/javascript">
+  var $element1 = $('#url-preview');
+  var copyToClipboard = new GOVUK.Modules.CopyToClipboard();
+  copyToClipboard.start($element1);
+</script>
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: links.back
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">
+            Preview ‘{{ data.document.title }}’
+          </h1>
+
+          {{ govukDetails({
+            summaryText: "Share document preview for fact check or approval",
+            html: appCopyToClipboard({
+              id: 'url-preview',
+              input: {
+                id: 'url-preview-input',
+                name: 'url',
+                label: {
+                  text: 'Send this link to someone so they can see a preview of how the document will appear on GOV.UK. No password is needed.'
+                },
+                value: data.document.base_path | absoluteUrl('https://draft.integration.publishing.service.gov.uk'),
+                attributes: {
+                  readonly: 'readonly'
+                }
+              },
+              button: {
+                text: 'Copy link'
+              }
+            })
+          }) }}
+
+        </div>
+      </div>
+
+      {%- set mobileHtml %}
+        <p class="govuk-body">Mobile view</p>
+      {% endset -%}
+
+      {%- set desktopHtml %}
+        <p class="govuk-body">Desktop and tablet view</p>
+      {% endset -%}
+
+      {%- set snippetHtml %}
+        <p class="govuk-body">Search engine snippet view</p>
+      {% endset -%}
+
+      <div class="app-c-preview">
+
+        {{ govukTabs({
+          items: [
+            {
+              label: "Mobile",
+              id: "mobile",
+              panel: {
+                html: mobileHtml
+              }
+            },
+            {
+              label: "Desktop and tablet",
+              id: "desktop-and-mobile",
+              panel: {
+                html: desktopHtml
+              }
+            },
+            {
+              label: "Search engine snippet",
+              id: "search-engine-snippet",
+              panel: {
+                html: snippetHtml
+              }
+            }
+          ],
+          classes: 'app-c-tabs'
+        }) }}
+
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

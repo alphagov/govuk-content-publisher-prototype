@@ -1,0 +1,270 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Summary list component – GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "../"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span>
+        Summary list
+      </h1>
+
+      <p class="govuk-body-l">Use the summary list to summarise information, for example, a user’s responses at the end of a form.</p>
+
+      <p class="govuk-body"><a class="govuk-link" href="https://content-publisher.integration.publishing.service.gov.uk/component-guide/summary_list">GOV.UK component guide</a></p>
+
+      <h2 class="govuk-heading-l">Examples</h2>
+
+      <h3 class="govuk-heading-m">Example 1</h3>
+
+      <p class="govuk-body">Default</p>
+
+      {{ appSummaryList({
+        heading: {
+          text: 'Title, summary and body'
+        },
+        rows: [
+          {
+            key: {
+              text: "Title"
+            },
+            value: {
+              text: "Ethical standards for public service providers"
+            }
+          },
+          {
+            key: {
+              text: "Summary"
+            },
+            value: {
+              text: "Find out more about our reviews on the subject of ethical standards for public service providers, including our 2014 report, 2015 guidance and 2018 follow-up publication."
+            }
+          },
+          {
+            key: {
+              text: "Body"
+            },
+            value: {
+              text: "After the government decided in 2013 to expand the remit of the Committee to include public service providers, the Committee on Standards in Public Life produced our first report on the issue: Ethical Standards for Providers of Public Services in 2014."
+            }
+          }
+        ]
+      }) }}
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-9">Example 2</h3>
+
+      <p class="govuk-body">Without title</p>
+
+      {{ appSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Title"
+            },
+            value: {
+              text: "Ethical standards for public service providers"
+            }
+          },
+          {
+            key: {
+              text: "Summary"
+            },
+            value: {
+              text: "Find out more about our reviews on the subject of ethical standards for public service providers, including our 2014 report, 2015 guidance and 2018 follow-up publication."
+            }
+          },
+          {
+            key: {
+              text: "Body"
+            },
+            value: {
+              text: "After the government decided in 2013 to expand the remit of the Committee to include public service providers, the Committee on Standards in Public Life produced our first report on the issue: Ethical Standards for Providers of Public Services in 2014."
+            }
+          }
+        ]
+      }) }}
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-9">Example 3</h3>
+
+      <p class="govuk-body">Without borders</p>
+
+      {{ appSummaryList({
+        heading: {
+          text: 'Title, summary and body'
+        },
+        classes: 'govuk-summary-list--no-border',
+        rows: [
+          {
+            key: {
+              text: "Title"
+            },
+            value: {
+              text: "Ethical standards for public service providers"
+            }
+          },
+          {
+            key: {
+              text: "Summary"
+            },
+            value: {
+              text: "Find out more about our reviews on the subject of ethical standards for public service providers, including our 2014 report, 2015 guidance and 2018 follow-up publication."
+            }
+          },
+          {
+            key: {
+              text: "Body"
+            },
+            value: {
+              text: "After the government decided in 2013 to expand the remit of the Committee to include public service providers, the Committee on Standards in Public Life produced our first report on the issue: Ethical Standards for Providers of Public Services in 2014."
+            }
+          }
+        ]
+      }) }}
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-9">Example 2</h3>
+
+      <p class="govuk-body">With edit on section</p>
+
+      {{ appSummaryList({
+        heading: {
+          text: 'Title, summary and body'
+        },
+        actions: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "title, summary and body",
+            classes: "app-c-summary-list__edit-section-link"
+          }
+        ],
+        rows: [
+          {
+            key: {
+              text: "Title"
+            },
+            value: {
+              text: "Ethical standards for public service providers"
+            }
+          },
+          {
+            key: {
+              text: "Summary"
+            },
+            value: {
+              text: "Find out more about our reviews on the subject of ethical standards for public service providers, including our 2014 report, 2015 guidance and 2018 follow-up publication."
+            }
+          },
+          {
+            key: {
+              text: "Body"
+            },
+            value: {
+              text: "After the government decided in 2013 to expand the remit of the Committee to include public service providers, the Committee on Standards in Public Life produced our first report on the issue: Ethical Standards for Providers of Public Services in 2014."
+            }
+          }
+        ]
+      }) }}
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-9">Example 2</h3>
+
+      <p class="govuk-body">With edit on individual items</p>
+
+      {{ appSummaryList({
+        heading: {
+          text: 'Title, summary and body'
+        },
+        rows: [
+          {
+            key: {
+              text: "Title"
+            },
+            value: {
+              text: "Ethical standards for public service providers"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "title"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Summary"
+            },
+            value: {
+              text: "Find out more about our reviews on the subject of ethical standards for public service providers, including our 2014 report, 2015 guidance and 2018 follow-up publication."
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "summary"
+                },
+                {
+                  href: "#",
+                  text: "Delete",
+                  visuallyHiddenText: "summary"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Body"
+            },
+            value: {
+              text: "After the government decided in 2013 to expand the remit of the Committee to include public service providers, the Committee on Standards in Public Life produced our first report on the issue: Ethical Standards for Providers of Public Services in 2014."
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "body"
+                },
+                {
+                  href: "#",
+                  text: "Delete",
+                  visuallyHiddenText: "body"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-9">Example 2</h3>
+
+      <p class="govuk-body">With block</p>
+
+      {% call appSummaryList({
+        heading: {
+          text: 'Topics'
+        }
+      }) %}
+
+        <p class="govuk-body">No topics specified for this document.</p>
+
+      {% endcall -%}
+
+    </div>
+</div>
+
+{% endblock %}

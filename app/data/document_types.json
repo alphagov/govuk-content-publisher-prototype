@@ -1,0 +1,186 @@
+[
+  {
+    "id": "news_communications",
+    "title": "News and communications",
+    "description": "To tell users about something government has done or will do. For example, news stories, press releases, speeches, or statements.",
+    "types": [
+      {
+        "id": "news_story",
+        "title": "News story",
+        "description": "News written for GOV.UK which users need, can act on, and cannot get from other sources."
+      },
+      {
+        "id": "press_release",
+        "title": "Press release",
+        "description": "Unedited press releases as sent to the media, and official statements from the organisation."
+      },
+      {
+        "id": "speech",
+        "title": "Speech",
+        "description": "A significant speech by a minister or official."
+      },
+      {
+        "id": "statement_to_parliament",
+        "title": "Statement to Parliament",
+        "description": "A written or oral statement made to Parliament.",
+        "types": [
+          {
+            "id": "oral_statement",
+            "title": "Oral statement to Parliament",
+            "description": "Oral statements made to Parliament by a minister, where there is significant public interest in the entire statement."
+          },
+          {
+            "id": "written_statement",
+            "title": "Written statement to Parliament",
+            "description": "Written statements given to Parliament by a minister, where there is significant public interest in the entire statement."
+          }
+        ]
+      },
+      {
+        "id": "articles_correspondence",
+        "title": "Articles and correspondence",
+        "description": "For examples, something something hint text.",
+        "types": [
+          {
+            "id": "authored_article",
+            "title": "Authored article",
+            "description": "Bylined articles writtenin the name of a minister or official, usually republished from elsewhere."
+          },
+          {
+            "id": "correspondence",
+            "title": "Correspondence",
+            "description": "Ministerial or departmental responses (eg to campaign letters), announcements, or statements;regularly issued circulars or bulletins (eg fire service circulars), official correspondence to professionals (eg “Dear chief planning officer” letters);letters to individuals or organisations that are published to share with a wider audience than their original recipient;online versions of e-bulletins or newsletters. Do not use for: minutes, agendas or other meeting papers. Attach them to relevant “policy detail”, “team” or “our governance” pages instead."
+          }
+        ]
+      },
+      {
+        "id": "decision",
+        "title": "Decision",
+        "description": "Formal decisions by tribunals, regulators or adjudicators (including courts and Secretaries of State)."
+      },
+      {
+        "id": "fatality_notice",
+        "title": "Fatality notice",
+        "description": "Initial fatality notices and subsequent obituaries of forces and MOD personnel."
+      }
+    ]
+  },
+  {
+    "id": "guidance_regulation",
+    "title": "Guidance and regulation",
+    "description": "To help the user do something or understand what they need to do. For example, manuals, or statutory guidance.",
+    "types": [
+      {
+        "id": "guidance",
+        "title": "Guidance",
+        "description": "Guidance help text, includes statuatory guidance and guidance.",
+        "types": [
+          {
+            "id": "guidance",
+            "title": "Guidance",
+            "description": "Non-statutory guidance publications. Includes: manuals, handbooks and other documents that offer advice. Do not use for: statutory guidance (use the “statutory guidance” publication type) or guidance about completing a form (attach to same publication as the form itself)."
+          },
+          {
+            "id": "statutory_guidance",
+            "title": "Statutory guidance",
+            "description": "Guidance which relevant users are legally obliged to follow. (For non-statutory guidance publications, use the “guidance” sub-type)."
+          },
+          {
+            "id": "manuals",
+            "title": "Manuals",
+            "description": "EMPTY"
+          }
+        ]
+      },
+      {
+        "id": "notice",
+        "title": "Notice",
+        "description": "Permit and license applications published temporarily for public awareness."
+      },
+      {
+        "id": "regulation",
+        "title": "Regulation",
+        "description": "Regulations imposed by an independent regulatory authority."
+      },
+      {
+        "id": "form",
+        "title": "Form",
+        "description": "Form documents that need to be completed by the users."
+      },
+      {
+        "id": "map",
+        "title": "Map",
+        "description": "Drawn maps and geographical data."
+      }
+    ]
+  },
+  {
+    "id": "transparency_statistics",
+    "title": "Transparency and statistics",
+    "description": "To provide information that helps users hold government to account. For example, statistics, FOI data, or reports.",
+    "types": [
+      {
+        "id": "official_statistics",
+        "title": "Official statistics",
+        "description": "Statistics governed by the UK Statistics Authority and produced by members of the Government Statistical Service."
+      },
+      {
+        "id": "national_statistics",
+        "title": "National statistics",
+        "description": "Official Statistics that have been produced in accordance with the Code of Practice for Official Statistics, which is indicated using the National Statistics quality mark."
+      },
+      {
+        "id": "independent_report",
+        "title": "Independent report",
+        "description": "Reviews, inquiries and other reports commissioned from or conducted by independent (ie non-governmental) bodies for consideration by the government."
+      },
+      {
+        "id": "foi_release",
+        "title": "FOI release",
+        "description": "Responses to Freedom of Information requests. Ensure the title describes specifically what the request is about."
+      },
+      {
+        "id": "corporate_report",
+        "title": "Corporate report",
+        "description": "Publications about what an organisation does (eg business plans, annual reports, accounts), or any plans that affect the organisation (eg structural reform plans, efficiency reviews). Corporate reports are shown automatically on the organisation’s “What we do” page."
+      },
+      {
+        "id": "transparency",
+        "title": "Transparency",
+        "description": "Information made available about departmental operations with the intent of making government more transparent.Includes organisation charts, staff survey results, departmental spending, salaries, contracts, meetings with ministers, etc. Do not use for: FOI responses."
+      }
+    ]
+  },
+  {
+    "id": "policy_consultation",
+    "title": "Policy or consultation",
+    "description": "To explain the government’s position or request views or evidence on an issue. For example, policy papers, impact assessments, or case studies",
+    "types": [
+      {
+        "id": "policy_paper",
+        "title": "Policy paper",
+        "description": "A policy paper explains the government's position on something. It doesn’t include instructions on how to carry out a task, only the policy itself and how it’ll be implemented."
+      },
+      {
+        "id": "impact_assessment",
+        "title": "Impact assessment",
+        "description": "Cost-benefit analyses and other assessments of the impact of proposed initiatives, or changes to regulations or legislation."
+      },
+      {
+        "id": "consultation",
+        "title": "Consultation",
+        "description": "Consultations (officially “documents requiring collective agreement across government”, including calls for evidence)."
+      }
+    ]
+  },
+  {
+    "id": "corporate_information",
+    "title": "Corporate information",
+    "description": "Information about your organisation"
+  },
+  {
+    "id": "not_sure",
+    "title": "I’m not sure if this should be on GOV.UK",
+    "description": "View this guide to see what should go on GOV.UK and where else you can publish content"
+  }
+]

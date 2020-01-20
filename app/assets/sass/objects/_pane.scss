@@ -1,0 +1,16 @@
+/* ==========================================================================
+   #HISTORY
+   Based on https://github.com/alphagov/content-publisher/blob/master/app/assets/stylesheets/objects/_pane.scss
+   ========================================================================== */
+
+.app-pane {
+  @include govuk-responsive-margin(6, "bottom");
+  @include govuk-clearfix;
+
+  padding: govuk-spacing(3);
+  background: govuk-colour("light-grey");
+
+  .govuk-button {
+    margin-bottom: govuk-spacing(1);
+  }
+}

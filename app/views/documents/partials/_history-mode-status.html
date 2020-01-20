@@ -1,0 +1,25 @@
+{{ govukSelect({
+  id: "mode",
+  name: "filters[mode]",
+  label: {
+    text: "In history mode",
+    classes: "govuk-label--s"
+  },
+  items: [
+    {
+      value: "",
+      text: "",
+      selected: true if data.filters.mode == ""
+    },
+    {
+      value: "include_historical",
+      text: "Yes",
+      selected: true if data.filters.mode == "include_historical"
+    },
+    {
+      value: "exclude_historical",
+      text: "No",
+      selected: true if data.filters.mode == "exclude_historical"
+    }
+  ]
+}) }}

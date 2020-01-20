@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Loading spinner component – GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "../"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span>
+        Loading spinner
+      </h1>
+
+      <p class="govuk-body-l">Displays an animated graphic to indicate loading activity.</p>
+
+      <p class="govuk-body"><a class="govuk-link" href="https://content-publisher.integration.publishing.service.gov.uk/component-guide/loading_spinner">GOV.UK component guide</a></p>
+
+      <h2 class="govuk-heading-l">Examples</h2>
+
+      <h3 class="govuk-heading-m">Example 1</h3>
+
+      <p class="govuk-body">Default</p>
+
+      {{ appLoadingSpinner({}) }}
+
+    </div>
+  </div>
+
+{% endblock %}

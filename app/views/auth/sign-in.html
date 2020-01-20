@@ -1,0 +1,98 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block pageScripts %}
+
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      {%- if error | length %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: [
+            {
+              text: "Enter a valid email",
+              href: "#username"
+            },
+            {
+              text: "Enter a valid password",
+              href: "#password"
+            }
+          ]
+        }) }}
+      {% endif -%}
+
+      </div>
+    </div>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+
+      <h1 class="govuk-heading-l">
+        Sign in to GOV.UK
+      </h1>
+
+      <form action="{{ links.auth }}" accept-charset="UTF-8" method="post">
+
+        {{ govukInput({
+          id: "username",
+          name: "username",
+          label: {
+            text: "Email",
+            classes: "govuk-label--s"
+          },
+          attributes: {
+            autocomplete: "off",
+            spellcheck: false
+          },
+          value: data.username,
+          errorMessage: {
+            text: "Enter a valid email"
+          } if error | length
+        }) }}
+
+        {{ govukInput({
+          id: "password",
+          name: "password",
+          type: "password",
+          label: {
+            text: "Password",
+            classes: "govuk-label--s"
+          },
+          attributes: {
+            autocomplete: "off",
+            spellcheck: false
+          },
+          value: data.password,
+          errorMessage: {
+            text: "Enter a valid password"
+          } if error | length
+        }) }}
+
+        {{ govukButton({
+          text: "Sign in"
+        }) }}
+
+        <p class="govuk-body govuk-!-margin-top-1">
+          <a class="govuk-link" href="{{ links.forgot_password }}">Forgot your password?</a>
+        </p>
+
+      </form>
+
+    </div>
+</div>
+
+{% endblock %}

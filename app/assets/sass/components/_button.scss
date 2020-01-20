@@ -1,0 +1,112 @@
+/* ==========================================================================
+   #BUTTONS
+   Based on https://github.com/alphagov/govuk_publishing_components/blob/master/app/assets/stylesheets/govuk_publishing_components/components/_button.scss
+   ========================================================================== */
+
+$app-secondary-button-colour: #00823b;
+$app-secondary-button-hover-colour: darken($app-secondary-button-colour, 5%);
+$app-secondary-button-background-colour: govuk-colour("white");
+$app-secondary-button-hover-background-colour: govuk-colour("light-grey", $legacy: "grey-4");
+
+$app-quiet-button-colour: govuk-colour("dark-grey", $legacy: "grey-1");
+$app-quiet-button-hover-colour: darken($app-quiet-button-colour, 5%);
+
+// Because govuk-frontend adds a responsive bottom margin by default for each component
+// we reset it to zero so we can set it separately using `app-c-button--bottom-margin`
+// If we decide to use responsive margins consistently across components we can remove this
+.app-c-button {
+  margin-bottom: 0;
+}
+
+// this will be moved and extended into a model for general component spacing
+// once this has been decided upon and other work completed, see:
+// https://trello.com/c/KEkNsxG3/142-3-implement-customisable-spacing-for-components
+.app-c-button--bottom-margin {
+  // @include responsive-bottom-margin;
+}
+
+.app-c-button--inline {
+  display: block;
+  width: 100%;
+  margin-bottom: govuk-spacing(1);
+  vertical-align: top;
+
+  @include govuk-media-query($from: desktop) {
+    display: inline-block;
+    width: auto;
+    vertical-align: baseline;
+    margin-right: govuk-spacing(2);
+  }
+}
+
+.app-c-button__info-text {
+  @include govuk-text-colour;
+  @include govuk-font($size: 16);
+  display: block;
+  max-width: 14em;
+  margin-top: .5em;
+}
+
+.app-c-button--secondary {
+  padding: (govuk-spacing(2) - $govuk-border-width-form-element) govuk-spacing(2); // s1
+  border-color: $app-secondary-button-colour;
+  color: $app-secondary-button-colour;
+  background-color: $app-secondary-button-background-colour;
+  box-shadow: none;
+
+  &:link,
+  &:visited,
+  &:active,
+  &:focus {
+    color: $app-secondary-button-colour;
+    background-color: $app-secondary-button-background-colour;
+    text-decoration: none;
+  }
+
+  &:link:focus {
+    color: $app-secondary-button-colour;
+  }
+
+  &:hover {
+    border-color: $app-secondary-button-hover-colour;
+    color: $app-secondary-button-hover-colour;
+    background-color: $app-secondary-button-hover-background-colour;
+    text-decoration: none;
+  }
+
+  &:before {
+    content: none;
+  }
+}
+
+.app-c-button--secondary-quiet {
+  padding: (govuk-spacing(2) - $govuk-border-width-form-element) govuk-spacing(2); // s1
+  border-color: $app-quiet-button-colour;
+  color: $app-quiet-button-colour;
+  background-color: $app-secondary-button-background-colour;
+  box-shadow: none;
+
+  &:link,
+  &:visited,
+  &:active,
+  &:focus {
+    color: $app-quiet-button-colour;
+    background-color: $app-secondary-button-background-colour;
+    text-decoration: none;
+  }
+
+  &:link:focus {
+    color: $app-quiet-button-colour;
+  }
+
+  &:hover {
+    border-color: $app-quiet-button-hover-colour;
+    color: $app-quiet-button-hover-colour;
+    background-color: $app-secondary-button-hover-background-colour;
+    text-decoration: none;
+  }
+
+  &:before {
+    content: none;
+  }
+}

@@ -1,0 +1,77 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: links.back
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {%- if data.user.role in ['admin','manager'] %}
+
+        <form action="{{ links.save }}" method="post">
+
+          {{ govukRadios({
+            idPrefix: "political",
+            name: "document[political]",
+            fieldset: {
+              legend: {
+                text: "Do you want to tag this " + (data.document.document_type | documentType | lower) + " to history mode?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+            hint: {
+              text: 'When the government ends, content tagged to history mode can only be edited by GDS and has a banner showing it is associated with a previous government.'
+            },
+            items: [
+              {
+                value: "yes",
+                text: "Yes",
+                checked: checked("document['political']", true) or checked("document['political']", "yes")
+              },
+              {
+                value: "no",
+                text: "No",
+                checked: checked("document['political']", false) or checked("document['political']", "no")
+              }
+            ]
+          }) }}
+
+          {{ govukButton({
+            text: "Save"
+          }) }}
+
+        </form>
+
+      {% else %}
+
+        <h1 class="govuk-heading-l">
+          Change the history mode tag for ‘{{ data.document.title }}’
+        </h1>
+
+        <p class="govuk-body">Only a managing editor can change the political status of a page. You do not have permission to do this.</p>
+
+        <p class="govuk-body">If you think the history mode tag of this content is wrong, you need to ask the managing editor for your organisation.</p>
+
+      {% endif -%}
+
+      <p class="govuk-body">
+        Read the <a href="https://www.gov.uk/guidance/content-design/gov-uk-content-retention-and-withdrawal-archiving-policy" target="_blank">guidance about content from previous governments</a> (link opens in a new window).
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}

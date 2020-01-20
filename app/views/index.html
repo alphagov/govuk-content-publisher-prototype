@@ -1,0 +1,205 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        Documents
+      </h1>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a class="govuk-link" href="/documents">List documents</a></li>
+        <li><a class="govuk-link" href="/document/create">New document</a></li>
+        <!-- <li><a class="govuk-link" href="/document/12345&role=managing-editor">View document details</a></li> -->
+      </ul>
+
+      {{ govukTable({
+        caption: "Document summary",
+        captionClasses: 'govuk-heading-m',
+        firstCellIsHeader: false,
+        head: [
+          {
+            text: "Status"
+          },
+          {
+            text: "Mode"
+          },
+          {
+            text: "Role"
+          },
+          {
+            text: "Mockup"
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "Draft"
+            },
+            {
+              text: ""
+            },
+            {
+              text: "Publisher"
+            },
+            {
+              html: '<a class="govuk-link" href="/document/12345?status=draft&mark=&role=publisher">View<span class="govuk-visually-hidden"> summary page</span></a>'
+            }
+          ],
+            [
+              {
+                text: "Draft"
+              },
+              {
+                text: ""
+              },
+              {
+                text: "Managing editor"
+              },
+              {
+                html: '<a class="govuk-link" href="/document/12345?status=draft&mark=&role=managing-editor">View<span class="govuk-visually-hidden"> summary page</span></a>'
+              }
+            ],
+          [
+            {
+              text: "Draft"
+            },
+            {
+              text: "Empty"
+            },
+            {
+              text: "Managing editor"
+            },
+            {
+              html: '<a class="govuk-link" href="/document/12345?status=draft&mark=empty&role=managing-editor">View<span class="govuk-visually-hidden"> summary page</span></a>'
+            }
+          ],
+          [
+            {
+              text: "Draft"
+            },
+            {
+              text: "No change note"
+            },
+            {
+              text: "Managing editor"
+            },
+            {
+              html: '<a class="govuk-link" href="/document/12345?status=draft&mark=no-change-note&role=managing-editor">View<span class="govuk-visually-hidden"> summary page</span></a>'
+            }
+          ],
+          [
+            {
+              text: "Review"
+            },
+            {
+              text: ""
+            },
+            {
+              text: "Managing editor"
+            },
+            {
+              html: '<a class="govuk-link" href="/document/12345?status=review&mark=&role=&role=managing-editor">View<span class="govuk-visually-hidden"> summary page</span></a>'
+            }
+          ],
+          [
+            {
+              text: "Published"
+            },
+            {
+              text: ""
+            },
+            {
+              text: "Managing editor"
+            },
+            {
+              html: '<a class="govuk-link" href="/document/12345?status=published&mark=&role=&role=managing-editor">View<span class="govuk-visually-hidden"> summary page</span></a>'
+            }
+          ],
+          [
+            {
+              text: "Published"
+            },
+            {
+              text: "Review"
+            },
+            {
+              text: "Managing editor"
+            },
+            {
+              html: '<a class="govuk-link" href="/document/12345?status=published&mark=review&role=&role=managing-editor">View<span class="govuk-visually-hidden"> summary page</span></a>'
+            }
+          ],
+          [
+            {
+              text: "Published"
+            },
+            {
+              text: "Withdrawn"
+            },
+            {
+              text: "Managing editor"
+            },
+            {
+              html: '<a class="govuk-link" href="/document/12345?status=published&mark=withdrawn&role=managing-editor">View<span class="govuk-visually-hidden"> summary page</span></a>'
+            }
+          ],
+          [
+            {
+              text: "Published"
+            },
+            {
+              text: "Political"
+            },
+            {
+              text: "Managing editor"
+            },
+            {
+              html: '<a class="govuk-link" href="/document/12345?status=published&mark=political&role=managing-editor">View<span class="govuk-visually-hidden"> summary page</span></a>'
+            }
+          ],
+          [
+            {
+              text: "Removed"
+            },
+            {
+              text: ""
+            },
+            {
+              text: "Managing editor"
+            },
+            {
+              html: '<!--<a class="govuk-link" href="/document/12345?status=removed&mark=&role=&role=managing-editor">View<span class="govuk-visually-hidden"> summary page</span></a>-->'
+            }
+          ],
+          [
+            {
+              text: "Scheduled"
+            },
+            {
+              text: ""
+            },
+            {
+              text: "Managing editor"
+            },
+            {
+              html: '<a class="govuk-link" href="/document/12345?status=scheduled&mark=&role=&role=managing-editor">View<span class="govuk-visually-hidden"> summary page</span></a>'
+            }
+          ]
+        ]
+      }) }}
+
+    </div>
+</div>
+
+{% endblock %}

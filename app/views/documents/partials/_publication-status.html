@@ -1,0 +1,55 @@
+{{ govukSelect({
+  id: "status",
+  name: "filters[status]",
+  label: {
+    text: "Status",
+    classes: "govuk-label--s"
+  },
+  items: [
+    {
+      value: "",
+      text: "",
+      selected: true if data.filters.status == ""
+    },
+    {
+      value: "draft",
+      text: "Draft",
+      selected: true if data.filters.status == "draft"
+    },
+    {
+      value: "submitted_for_review",
+      text: "Submitted for 2i review",
+      selected: true if data.filters.status == "submitted_for_review"
+    },
+    {
+      value: "scheduled",
+      text: "Scheduled",
+      selected: true if data.filters.status == "scheduled"
+    },
+    {
+      value: "published",
+      text: "Published",
+      selected: true if data.filters.status == "published"
+    },
+    {
+      value: "published_but_needs_2i",
+      text: "Published but needs 2i review",
+      selected: true if data.filters.status == "published_but_needs_2i"
+    },
+    {
+      value: "withdrawn",
+      text: "Withdrawn",
+      selected: true if data.filters.status == "withdrawn"
+    },
+    {
+      value: "removed",
+      text: "Removed",
+      selected: true if data.filters.status == "removed"
+    },
+    {
+      value: "failed_to_publish",
+      text: "Failed to publish",
+      selected: true if data.filters.status == "failed_to_publish"
+    }
+  ]
+}) }}

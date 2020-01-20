@@ -1,0 +1,17 @@
+<section class="app-c-banner {{- ' ' + params.classes if params.classes }} {{- ' app-c-banner--aside' if params.aside }}"{% for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  {% if params.heading -%}
+    <h{{ params.headingLevel | default(2) }} class="app-c-banner__title {{- ' ' + params.heading.classes if params.heading.classes }}">
+      {{- params.heading.html | safe if params.heading.html else params.heading.text -}}
+    </h{{ params.headingLevel | default(2) }}>
+  {% endif -%}
+  {% if params.description -%}
+    <p class="app-c-banner__desc {{- ' ' + params.description.classes if params.description.classes }}">
+      {{- params.description.html | safe if params.description.html else params.description.text -}}
+    </p>
+  {% endif -%}
+  {% if params.aside -%}
+    <p class="app-c-banner__desc {{- ' ' + params.aside.classes if params.aside.classes }}">
+      {{- params.aside.html | safe if params.aside.html else params.aside.text -}}
+    </p>
+  {% endif -%}
+</section>

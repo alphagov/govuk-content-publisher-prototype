@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Side navigation component – GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "../"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span>
+        Side navigation
+      </h1>
+
+      <p class="govuk-body-l">Component showing a secondary navigation in a side of the page.</p>
+
+      <p class="govuk-body"><a class="govuk-link" href="https://content-publisher.integration.publishing.service.gov.uk/component-guide/side_navigation">GOV.UK component guide</a></p>
+
+      <h2 class="govuk-heading-l">Examples</h2>
+
+      <h3 class="govuk-heading-m">Example 1</h3>
+
+      <p class="govuk-body">Default</p>
+
+      {{ appSideNavigation({
+        items: [
+          {
+            text: "What the Beta can and cannot do",
+            href: "#",
+            attributes: {
+              tracking: "UTM-1234"
+            }
+          },
+          {
+            text: "How to use Content Publisher",
+            href: "#",
+            active: true,
+            attributes: {
+              tracking: "UTM-1235"
+            }
+          },
+          {
+            text: "What’s new in Content Publisher",
+            href: "#",
+            attributes: {
+              tracking: "UTM-1236"
+            }
+          }
+        ]
+      }) }}
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-9">Example 2</h3>
+
+      <p class="govuk-body">Without link on active element</p>
+
+      {{ appSideNavigation({
+        items: [
+          {
+            text: "What the Beta can and cannot do",
+            href: "#",
+            attributes: {
+              tracking: "UTM-1235"
+            }
+          },
+          {
+            text: "How to use Content Publisher",
+            active: true,
+            classes: 'govuk-!-font-weight-bold'
+          },
+          {
+            text: "What’s new in Content Publisher",
+            href: "#",
+            attributes: {
+              tracking: "UTM-1234"
+            }
+          }
+        ]
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

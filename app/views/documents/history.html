@@ -1,0 +1,67 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block pageScripts %}
+
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: links.summary
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-l">
+            <span class="govuk-caption-l">{{ data.document.document_type | documentType }}</span>
+            {{ data.document.title if data.document.title else "Untitled document" }}
+          </h1>
+        </div>
+      </div>
+
+      {{ appSubNavigation({
+        label: 'Sub navigation',
+        items: [
+          {
+            text: 'Document summary',
+            href: links.summary
+          },
+          {
+            text: 'Document history',
+            href: links.history,
+            active: true
+          }
+        ]
+      }) }}
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          {% include "./partials/_document-history-list.html" %}
+
+          {% include "./partials/_pagination.html" %}
+
+        </div>
+        <div class="govuk-grid-column-one-third">
+
+          {% include "./partials/_document-history-note.html" %}
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

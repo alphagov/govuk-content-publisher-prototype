@@ -1,0 +1,25 @@
+{{ govukSelect({
+  id: "political",
+  name: "filters[political]",
+  label: {
+    text: "Gets history mode",
+    classes: "govuk-label--s"
+  },
+  items: [
+    {
+      value: "",
+      text: "",
+      selected: true if data.filters.political == ""
+    },
+    {
+      value: "include_political",
+      text: "Yes",
+      selected: true if data.filters.political == "include_political"
+    },
+    {
+      value: "exclude_political",
+      text: "No",
+      selected: true if data.filters.political == "exclude_political"
+    }
+  ]
+}) }}

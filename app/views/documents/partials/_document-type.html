@@ -1,0 +1,25 @@
+{{ govukSelect({
+  id: "document_type",
+  name: "filters[document_type]",
+  label: {
+    text: "Document type",
+    classes: "govuk-label--s"
+  },
+  items: [
+    {
+      value: "",
+      text: "",
+      selected: true if data.filters.document_type == ""
+    },
+    {
+      value: "news_story",
+      text: "News story",
+      selected: true if data.filters.document_type == "news_story"
+    },
+    {
+      value: "press_release",
+      text: "Press release",
+      selected: true if data.filters.document_type == "press_release"
+    }
+  ]
+}) }}

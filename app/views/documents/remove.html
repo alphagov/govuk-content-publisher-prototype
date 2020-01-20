@@ -1,0 +1,72 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/components/markdown-editor.umd.js"></script>
+<script src="/public/javascripts/components/paste-html-to-markdown.js"></script>
+<script src="/public/javascripts/components/markdown-editor.js"></script>
+<script type="text/javascript">
+  var $element = $('#markdown-editor');
+  var markdownEditor = new GOVUK.Modules.MarkdownEditor();
+  markdownEditor.start($element);
+</script>
+
+<script src="/public/javascripts/components/contextual-guidance.js"></script>
+<script type="text/javascript">
+  var $element1 = $('#contextual-guidance-01');
+  var contextualGuidance = new GOVUK.Modules.ContextualGuidance();
+  contextualGuidance.start($element1);
+
+  var $element2 = $('#contextual-guidance-02');
+  var contextualGuidance = new GOVUK.Modules.ContextualGuidance();
+  contextualGuidance.start($element2);
+
+  var $element3 = $('#contextual-guidance-03');
+  var contextualGuidance = new GOVUK.Modules.ContextualGuidance();
+  contextualGuidance.start($element3);
+
+  var $element4 = $('#contextual-guidance-04');
+  var contextualGuidance = new GOVUK.Modules.ContextualGuidance();
+  contextualGuidance.start($element4);
+</script>
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: links.back
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">
+            Remove ‘{{ data.document.title }}’
+          </h1>
+
+          <p class="govuk-body">Sorry, this hasn't been built yet.</p>
+
+          <p class="govuk-body">If you need to remove this content please <a class="govuk-link" href="#">raise a support request</a> and we’ll do it for you.</p>
+
+          <p class="govuk-body">You must include any public explanation or new web address required.</p>
+
+          <p class="govuk-body">Read the <a class="govuk-link" href="#">full guidance on removing content</a>.</p>
+
+        </div>
+      </div>
+
+    </div>
+</div>
+
+{% endblock %}

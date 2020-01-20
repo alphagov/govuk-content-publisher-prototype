@@ -1,0 +1,47 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Components – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "../"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">GOV.UK Prototype</span>
+        Components
+      </h1>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/components/banner/">Banner</a></li>
+        <li><a href="/components/contextual-guidance/">Contextual guidance</a></li>
+        <li><a href="/components/copy-to-clipboard/">Copy to clipboard</a></li>
+        <li><a href="/components/document-list/">Document list</a></li>
+        <li><a href="/components/header/">Header</a></li>
+        <li><a href="/components/inset-prompt/">Inset prompt</a></li>
+        <li><a href="/components/loading-spinner/">Loading spinner</a></li>
+        <li><a href="/components/markdown-editor/">Markdown editor</a></li>
+        <li><a href="/components/metadata/">Metadata</a></li>
+        <li><a href="/components/notice/">Notice</a></li>
+        <li><a href="/components/previous-next-pagination/">Previous/next pagination</a></li>
+        <li><a href="/components/side-navigation/">Side navigation</a></li>
+        <li><a href="/components/sub-navigation/">Sub navigation</a></li>
+        <li><a href="/components/summary-list/">Summary list</a></li>
+        <li><a href="/components/timeline/">Timeline</a></li>
+        <li><a href="/components/toolbar-dropdown/">Toolbar dropdown</a></li>
+        <li><a href="/components/url-preview/">URL preview</a></li>
+      </ul>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Markdown editor component – GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/components/markdown-editor.umd.js"></script>
+<script src="/public/javascripts/components/paste-html-to-markdown.js"></script>
+<script src="/public/javascripts/components/markdown-editor.js"></script>
+<script type="text/javascript">
+  var $element1 = $('#markdown-editor-default');
+  var markdownEditor = new GOVUK.Modules.MarkdownEditor();
+  markdownEditor.start($element1);
+
+  // var $element2 = $('#markdown-editor-error');
+  // var markdownEditor = new GOVUK.Modules.MarkdownEditor();
+  // markdownEditor.start($element2);
+</script>
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "../"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span>
+        Markdown editor
+      </h1>
+
+      <p class="govuk-body-l">Allows editing and previewing markdown.</p>
+
+      <p class="govuk-body"><a class="govuk-link" href="https://content-publisher.integration.publishing.service.gov.uk/component-guide/markdown_editor">GOV.UK component guide</a></p>
+
+      <h2 class="govuk-heading-l">Examples</h2>
+
+      <h3 class="govuk-heading-m">Example 1</h3>
+
+      <p class="govuk-body">The default editor</p>
+
+      {{ appMarkdownEditor({
+        attributes: {
+          id: 'markdown-editor-default'
+        },
+        label: {
+          for: 'markdown-editor',
+          text: 'Label text',
+          classes: 'govuk-!-font-weight-bold'
+        },
+        hint: {
+          text: 'Hint text'
+        },
+        errorMessage: {
+          text: 'Error message'
+        },
+        textarea: {
+          id: 'markdown-editor',
+          name: 'markdown-editor',
+          attributes: {
+            'data-paste-html-to-govspeak': false,
+            spellcheck: true
+          }
+        },
+        value: '## Lorem ispsum dolor sit emet'
+      }) }}
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-9">Example 2</h3>
+
+      <p class="govuk-body">The editor with an error message</p>
+
+      {#{ appMarkdownEditor({
+        attributes: {
+          id: 'markdown-editor-error'
+        }
+      }) }#}
+
+    </div>
+</div>
+
+{% endblock %}

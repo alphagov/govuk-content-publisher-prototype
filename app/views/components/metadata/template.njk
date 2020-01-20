@@ -1,0 +1,14 @@
+{#%- if params.items %#}
+  <div class="app-c-metadata {{- ' app-c-metadata__list--inline' if params.inline }} {{- ' ' + params.classes if params.classes }}" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+    <dl class="app-c-metadata__list">
+      {%- for item in params.items %}
+        <dt class="app-c-metadata__title {{- ' ' + item.title.classes if item.title.classes }}">
+          {{- item.title.html | safe if item.title.html else item.title.text -}}
+        </dt>
+        <dd class="app-c-metadata__description {{- ' ' + item.description.classes if item.description.classes }}">
+          {{- item.description.html | safe if item.description.html else item.description.text -}}
+        </dd>
+      {% endfor -%}
+    </dl>
+  </div>
+{#% endif -%#}

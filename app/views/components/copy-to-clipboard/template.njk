@@ -1,0 +1,30 @@
+{%- from "govuk/components/button/macro.njk" import govukButton -%}
+{%- from "govuk/components/input/macro.njk" import govukInput -%}
+
+<div {%- if params.id %} id="{{ params.id }}"{% endif %} class="app-c-copy-to-clipboard {{- ' ' + params.classes if params.classes }}" data-module="copy-to-clipboard" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+
+  {{ govukInput({
+    id: params.input.id,
+    name: params.input.name,
+    value: params.input.value,
+    label: params.input.label,
+    hint: params.input.hint,
+    errorMessage: params.input.errorMessage,
+    formGroup: params.input.formGroup,
+    classes: 'app-c-input' + (params.input.classes if params.input.classes),
+    attributes: params.input.attributes
+  }) }}
+
+  {{ govukButton({
+    name: params.button.name,
+    type: params.button.type,
+    value: params.button.value,
+    text: params.button.text,
+    html: params.button.html,
+    disabled: params.button.disabled,
+    classes: 'app-c-button app-c-button--secondary-quiet' + (params.button.classes if params.button.classes),
+    attributes: params.button.attributes,
+    preventDoubleClick: params.button.preventDoubleClick
+  }) }}
+
+</div>

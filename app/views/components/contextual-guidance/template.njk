@@ -1,0 +1,25 @@
+<div class="app-c-contextual-guidance {{- ' ' + params.classes if params.classes }}" id="{{ params.id }}"{% for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <div class="app-c-contextual-guidance__input-field">
+        {{- caller() if caller -}}
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <div class="app-c-contextual-guidance__wrapper" for="{{ params.for }}">
+        <div class="app-c-contextual-guidance__guidance">
+          <h{{ params.heading.headingLevel | default(2) }} class="{{ params.heading.classes | default('govuk-heading-s') }}">
+            {{- params.heading.html | safe if params.heading.html else params.heading.text -}}
+          </h{{ params.heading.headingLevel | default(2) }}>
+          {% if params.description.html %}
+            {{- params.description.html | safe -}}
+          {% else %}
+          <p class="govuk-body {{- ' ' + params.description.classes if params.description.classes }}">
+            {{- params.description.text -}}
+          </p>
+          {% endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/components/copy-to-clipboard.js"></script>
+<script type="text/javascript">
+  var $element = $('#review-url');
+  var copyToClipboard = new GOVUK.Modules.CopyToClipboard();
+  copyToClipboard.start($element);
+</script>
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: links.home
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-l">
+            <span class="govuk-caption-l">{{ data.document.document_type | documentType }}</span>
+            {{ data.document.title if data.document.title else "Untitled document" }}
+          </h1>
+        </div>
+      </div>
+
+      {{ appSubNavigation({
+        label: 'Sub navigation',
+        items: [
+          {
+            text: 'Document summary',
+            href: links.summary,
+            active: true
+          },
+          {
+            text: 'Document history',
+            href: links.history
+          }
+        ]
+      }) }}
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+        {% include "./partials/_document-summary.html" %}
+
+        </div>
+        <div class="govuk-grid-column-one-third">
+
+          <aside class="app-side__wrapper">
+
+            {% if data.document.document_status == 'scheduled' %}
+              {% include "./partials/_side-notice-scheduled.html" %}
+            {% endif %}
+
+            <div class="app-side">
+              {% include "./partials/_side-actions.html" %}
+            </div>
+
+            <div class="app-side">
+              {% include "./partials/_side-metadata.html" %}
+            </div>
+
+          </aside>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

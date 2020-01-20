@@ -1,0 +1,7 @@
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype",
+    classes: "app-tag--prototype" if environment != 'production'
+  },
+  html: '<strong>Content Publisher</strong> – This is a prototype – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}

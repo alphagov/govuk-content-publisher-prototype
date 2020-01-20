@@ -1,0 +1,5457 @@
+[
+  {
+    "value": "Academy for Justice Commissioning",
+    "key": "4dfe21ee-acfa-4fc1-9513-cc764e814205",
+    "political": false
+  },
+  {
+    "value": "Academy for Social Justice",
+    "key": "b854f170-53c8-4098-bf77-e8ef42f93107",
+    "political": false
+  },
+  {
+    "value": "Academy for Social Justice Commissioning",
+    "key": "ce357bdb-6396-426a-9f1f-8cbfb444cffd",
+    "political": false
+  },
+  {
+    "value": "Accelerated Access Review",
+    "key": "a0f338c5-e94c-42f8-9c26-b9c2eb6850d3",
+    "political": true
+  },
+  {
+    "value": "Administration of Radioactive Substances Advisory Committee",
+    "key": "b5bd9a64-4315-492e-9679-3e2f6799c769",
+    "political": false
+  },
+  {
+    "value": "Administrative Court",
+    "key": "b0bdfcf3-2763-4002-961e-a0b2d7825038",
+    "political": false
+  },
+  {
+    "value": "Administrative Justice and Tribunals Council",
+    "key": "1248e572-5f97-4c70-bba8-b8e2da8b45bf",
+    "political": false
+  },
+  {
+    "value": "Administrative Justice and Tribunals Council Welsh Committee",
+    "key": "d2244c73-ad80-4d70-a992-1ae2d0a1d288",
+    "political": false
+  },
+  {
+    "value": "Admiralty Court",
+    "key": "2585bb7b-6134-4176-8309-db184573a4c1",
+    "political": false
+  },
+  {
+    "value": "Adult Learning Inspectorate",
+    "key": "801c815e-bb05-4f49-88e8-2d3fa0c3a250",
+    "political": false
+  },
+  {
+    "value": "Advantage West Midlands",
+    "key": "f66dd076-cee8-4d43-a122-fe087848b10d",
+    "political": false
+  },
+  {
+    "value": "Advisory Committee on Animal Feedingstuffs",
+    "key": "b02a8db0-6bbb-4010-9584-1a6623dc7012",
+    "political": false
+  },
+  {
+    "value": "Advisory Committee on Business Appointments",
+    "key": "6e414d7c-61af-4113-b039-435e461ddaf2",
+    "political": false
+  },
+  {
+    "value": "Advisory Committee on Clinical Excellence Awards",
+    "key": "aee6b528-c1f5-404c-bc69-d584e63e20a5",
+    "political": false
+  },
+  {
+    "value": "Advisory Committee on Conscientious Objectors",
+    "key": "a090e915-247a-4a63-a283-f22f948f27b3",
+    "political": false
+  },
+  {
+    "value": "Advisory Committee on Novel Foods and Processes",
+    "key": "c175500c-c1f1-46e3-9e4d-02ef02202264",
+    "political": false
+  },
+  {
+    "value": "Advisory Committee on Pesticides",
+    "key": "e219513b-81a9-418d-9ac8-3476bd4995e5",
+    "political": false
+  },
+  {
+    "value": "Advisory Committee on Releases to the Environment",
+    "key": "baf7f75e-00c3-41b1-accc-c082ef5f83d7",
+    "political": false
+  },
+  {
+    "value": "Advisory Committee on the Microbiological Safety of Food",
+    "key": "53a94971-b4db-48e4-b2c8-2e452f0f090d",
+    "political": false
+  },
+  {
+    "value": "Advisory Committees on Justices of the Peace",
+    "key": "a8a3406a-d2bf-418d-b2d7-26f06c9747ee",
+    "political": false
+  },
+  {
+    "value": "Advisory Council on the Misuse of Drugs",
+    "key": "f12ec794-c57e-4ffc-a2eb-aeeb07f12905",
+    "political": false
+  },
+  {
+    "value": "Advisory Group on Military Medicine",
+    "key": "384b4ae9-e039-4897-be06-cf61e3599d91",
+    "political": false
+  },
+  {
+    "value": "Advisory Panel on Public Sector Information",
+    "key": "7dba9cc9-b522-460a-8f24-77f7be003a39",
+    "political": false
+  },
+  {
+    "value": "Advisory, Conciliation and Arbitration Service",
+    "key": "fb40955a-d2ff-4993-a052-91a7558cbb79",
+    "political": false
+  },
+  {
+    "value": "Agri-Food and Biosciences Institute (Northern Ireland)",
+    "key": "ffcd90a5-5112-454b-b8a0-2819f46bede8",
+    "political": false
+  },
+  {
+    "value": "Agricultural Dwelling House Advisory Committees (x16)",
+    "key": "e1239732-600c-486f-894b-e7fde07e5935",
+    "political": false
+  },
+  {
+    "value": "Agricultural Wages Committee",
+    "key": "efc4c66c-2876-49bc-b8fd-52ef1dfe211b",
+    "political": false
+  },
+  {
+    "value": "Agriculture and Horticulture Development Board",
+    "key": "55aacfdf-a236-4d4f-be82-201014f061a3",
+    "political": false
+  },
+  {
+    "value": "Air Accidents Investigation Branch",
+    "key": "38eb5d8f-2d89-480c-8655-e2e7ac23f8f4",
+    "political": false
+  },
+  {
+    "value": "Airports Commission",
+    "key": "5f8931ae-479b-473c-b6b8-967fed23d10a",
+    "political": false
+  },
+  {
+    "value": "Alcohol Education and Research Council",
+    "key": "7a1ffb4f-1311-43e1-a728-bf1a6be9eed9",
+    "political": false
+  },
+  {
+    "value": "Ancient Monuments Board for Scotland",
+    "key": "587c86e7-cda5-45d6-9bab-9f331ac451ba",
+    "political": false
+  },
+  {
+    "value": "Animal and Plant Health Agency",
+    "key": "4ad67f14-6f9c-4fa4-80ab-687b6d81ea6f",
+    "political": false
+  },
+  {
+    "value": "Animal Health",
+    "key": "99ff113e-3307-42d4-bf49-b333d17e4267",
+    "political": false
+  },
+  {
+    "value": "Animal Health and Veterinary Laboratories Agency",
+    "key": "e0a272d7-82da-495a-a8c5-cc3787817271",
+    "political": false
+  },
+  {
+    "value": "Animal Procedures Committee",
+    "key": "53e57623-3d6f-47c2-a839-a59a9981aba9",
+    "political": false
+  },
+  {
+    "value": "Animals in Science Committee",
+    "key": "39a657d9-6482-4ee6-af90-cf9914ae2439",
+    "political": false
+  },
+  {
+    "value": "Appeals Service Agency",
+    "key": "2e008fab-907c-4387-99c1-17bbfc8ab0d9",
+    "political": false
+  },
+  {
+    "value": "Architects Registration Board",
+    "key": "f79ac634-94d4-459c-9788-b3f3b1f9a293",
+    "political": false
+  },
+  {
+    "value": "Armagh Observatory and Planetarium",
+    "key": "6522b540-b409-440a-b223-605770721e4f",
+    "political": false
+  },
+  {
+    "value": "Armed Forces Personnel Administration Agency",
+    "key": "4c97e73a-c528-4862-86c1-1386f5746a64",
+    "political": false
+  },
+  {
+    "value": "Armed Forces' Pay Review Body",
+    "key": "0cd45244-7fac-4c82-9657-d2633892c6db",
+    "political": false
+  },
+  {
+    "value": "Army Base Repair Organisation",
+    "key": "cfd3a2d7-7fd7-48ab-8f2f-aca4df165b99",
+    "political": false
+  },
+  {
+    "value": "Arts and Humanities Research Council",
+    "key": "9132bf20-dee3-45bb-af5d-9d086bcffe77",
+    "political": false
+  },
+  {
+    "value": "Arts Council England",
+    "key": "16438d29-2b3f-4200-a3e6-e71b609e84f7",
+    "political": false
+  },
+  {
+    "value": "Arts Council of Northern Ireland",
+    "key": "b6849b69-fcd0-4ab0-83ea-dcb9d4e861ce",
+    "political": false
+  },
+  {
+    "value": "Arts Council of Wales",
+    "key": "aee7b74e-9549-4d17-9158-de41faf63f91",
+    "political": false
+  },
+  {
+    "value": "Ashington Education Action Zone",
+    "key": "5bf80445-de9f-44c2-bdef-2a03dd19f3d0",
+    "political": false
+  },
+  {
+    "value": "Asset Protection Agency",
+    "key": "59f9d668-bc97-4bf1-85ad-739dce2c16b6",
+    "political": false
+  },
+  {
+    "value": "Assets Recovery Agency",
+    "key": "01046836-de95-43aa-9b36-941e705bcdf4",
+    "political": false
+  },
+  {
+    "value": "Attorney General's Office",
+    "key": "25aacd68-dc0c-4041-9c3a-df59a5357c23",
+    "political": true
+  },
+  {
+    "value": "Audit Commission",
+    "key": "57636ab1-bff6-4512-a559-c943f85cba3c",
+    "political": false
+  },
+  {
+    "value": "Azelle Rodney Inquiry",
+    "key": "e565ba1d-e163-4d2a-9c73-458313e03045",
+    "political": false
+  },
+  {
+    "value": "Baha Mousa Inquiry",
+    "key": "5f9ba1ca-e4da-4c94-91af-9507beb9dbe7",
+    "political": false
+  },
+  {
+    "value": "Bank of England",
+    "key": "b8a83a88-3a0f-4c41-8c68-95fc71a0d477",
+    "political": false
+  },
+  {
+    "value": "Barker Review of Land Use Planning",
+    "key": "ece8df9c-9ca9-4e72-95d3-75526ad51dc6",
+    "political": false
+  },
+  {
+    "value": "Barrow Education Action Zone",
+    "key": "eae2b59a-8d99-4650-b24e-8d74d1f4ced5",
+    "political": false
+  },
+  {
+    "value": "BBC",
+    "key": "bcd239a4-68bd-402a-963f-b8647a4c8e46",
+    "political": false
+  },
+  {
+    "value": "BBC World Service",
+    "key": "143c2558-4495-477c-b433-7e357273fc48",
+    "political": false
+  },
+  {
+    "value": "Bedford Education Action Zone",
+    "key": "1e995f58-e8eb-4f14-ae86-79a626b77a09",
+    "political": false
+  },
+  {
+    "value": "Behavioural Insights Team",
+    "key": "fb4c4650-17ee-428b-8961-0051b027baa9",
+    "political": false
+  },
+  {
+    "value": "Better Regulation Delivery Office",
+    "key": "bb371e6d-6c48-495a-bc64-494856345e99",
+    "political": true
+  },
+  {
+    "value": "Big Lottery Fund",
+    "key": "0d88b3ae-ca0e-4374-9995-c364ce3f74a3",
+    "political": false
+  },
+  {
+    "value": "Billy Wright Inquiry",
+    "key": "cf472f7b-253e-4a95-9b08-1fa3c29f8cbf",
+    "political": false
+  },
+  {
+    "value": "Biometrics and Forensics Ethics Group",
+    "key": "ca38b91f-33c1-478b-a5c1-d4b4d7a42ee6",
+    "political": false
+  },
+  {
+    "value": "Biometrics Commissioner",
+    "key": "8dc110c3-4b94-4dd0-b5c6-217a6102a298",
+    "political": false
+  },
+  {
+    "value": "Biotechnology and Biological Sciences Research Council",
+    "key": "fbc7160d-50dc-4b6b-bd1e-ec0300b8610e",
+    "political": false
+  },
+  {
+    "value": "Birmingham Organising Committee for the 2022 Commonwealth Games Ltd",
+    "key": "a10a9bf6-3cdf-467e-b5b5-b88be93fcba9",
+    "political": false
+  },
+  {
+    "value": "Bloody Sunday Inquiry",
+    "key": "2e8ba368-20ea-4082-8de5-cd748a6c9fea",
+    "political": false
+  },
+  {
+    "value": "Board of Banking Supervision",
+    "key": "087b327e-143f-44a0-8f39-53ca88b3685e",
+    "political": false
+  },
+  {
+    "value": "Board of Inland Revenue",
+    "key": "982f64d9-33ab-4263-a5aa-102c778cd77c",
+    "political": false
+  },
+  {
+    "value": "Board of Trustees of the Royal Botanic Gardens Kew",
+    "key": "52b8ed10-ed3e-43a3-9bc6-4967c3867e16",
+    "political": false
+  },
+  {
+    "value": "Bolton Education Action Zone",
+    "key": "43d3710a-ffa5-44ac-81dc-dc52fa7e3b32",
+    "political": false
+  },
+  {
+    "value": "Bona Vacantia",
+    "key": "c9109663-0128-4db4-b513-a9cdfb691034",
+    "political": false
+  },
+  {
+    "value": "Border Force",
+    "key": "3808b369-f1d6-44d3-a5b2-a7b7ac931106",
+    "political": false
+  },
+  {
+    "value": "Boundary Commission for England",
+    "key": "020e53fd-8dad-4387-8f05-66ec045f6769",
+    "political": false
+  },
+  {
+    "value": "Boundary Commission for Northern Ireland",
+    "key": "b511923a-f055-4c62-a138-6204e50d3efc",
+    "political": false
+  },
+  {
+    "value": "Boundary Commission for Scotland",
+    "key": "4019c5c7-fba6-4b57-bf3e-3f6b01af1ae8",
+    "political": false
+  },
+  {
+    "value": "Boundary Commission for Wales",
+    "key": "b775fc36-4c81-4f4c-95b8-8bd13c07772c",
+    "political": false
+  },
+  {
+    "value": "BPDTS Ltd",
+    "key": "fb773252-0759-4339-b3c6-c66a6a46722d",
+    "political": false
+  },
+  {
+    "value": "BRB (Residuary) Ltd",
+    "key": "0698337c-7475-4578-9498-e1cbf2c2ff84",
+    "political": false
+  },
+  {
+    "value": "Bridgwater Education Action Zone",
+    "key": "bc637040-f8fd-4050-b738-2bfa38166ff8",
+    "political": false
+  },
+  {
+    "value": "Bristol Education Action Zone",
+    "key": "e4d1562e-e241-4eea-973d-09b6d4792c44",
+    "political": false
+  },
+  {
+    "value": "British Business Bank",
+    "key": "1e93b589-7840-4f12-abcd-57e90b083166",
+    "political": false
+  },
+  {
+    "value": "British Cattle Movement Service",
+    "key": "49e09fa7-f65b-49d6-b4ab-0ca82a548e93",
+    "political": false
+  },
+  {
+    "value": "British Council",
+    "key": "37d2c134-1285-4907-a366-611617cfe44c",
+    "political": false
+  },
+  {
+    "value": "British Educational Communications and Technology Agency",
+    "key": "55c768af-57b5-43e0-ba95-9ce002b4ee77",
+    "political": false
+  },
+  {
+    "value": "British Film Institute",
+    "key": "0bf06d87-d3a8-47c2-b823-e180d933a58c",
+    "political": false
+  },
+  {
+    "value": "British Forces Post Office",
+    "key": "cd4dc45e-5a7a-42b3-8a8a-1f484828d2d6",
+    "political": false
+  },
+  {
+    "value": "British Hallmarking Council",
+    "key": "5f96af07-b11d-4447-8553-c6bdd8c0f0d5",
+    "political": false
+  },
+  {
+    "value": "British Library",
+    "key": "33fca0f5-1f62-493c-a059-5a1e98441f0c",
+    "political": false
+  },
+  {
+    "value": "British Museum",
+    "key": "1bd53730-69f4-46e5-8f11-6a5b3934c5bc",
+    "political": false
+  },
+  {
+    "value": "British Pharmacopoeia Commission",
+    "key": "613ca78b-1269-4e0b-9a9f-2acbaa4c398a",
+    "political": false
+  },
+  {
+    "value": "British Potato Council",
+    "key": "536580c7-9450-4192-be08-09a20445cb59",
+    "political": false
+  },
+  {
+    "value": "British Transport Police Authority",
+    "key": "18d0b663-f4ad-4ead-b6e0-4efab7454456",
+    "political": false
+  },
+  {
+    "value": "Broadcasting Standards Commission",
+    "key": "a9a22756-c149-4495-85d3-7d94213bf4fd",
+    "political": false
+  },
+  {
+    "value": "Broadmoor Hospital investigation",
+    "key": "75fcbd7a-e253-4498-bcf6-7e4c1ddf995f",
+    "political": false
+  },
+  {
+    "value": "Broads Authority",
+    "key": "e0bbdd5d-5e58-437e-ad1f-4134f90c02ed",
+    "political": false
+  },
+  {
+    "value": "Building Regulations Advisory Committee",
+    "key": "0eb3df59-aad1-4cb2-89f5-1de8032d0095",
+    "political": false
+  },
+  {
+    "value": "Building Research Establishment",
+    "key": "84f91d00-164b-4701-a583-3dd5cb5b020d",
+    "political": false
+  },
+  {
+    "value": "Business Development Service",
+    "key": "c4bfb706-5d5a-40f7-ac16-7643159f4fd9",
+    "political": false
+  },
+  {
+    "value": "Buying Solutions",
+    "key": "78d2fb32-adfe-4edb-bd01-5a914ff65357",
+    "political": false
+  },
+  {
+    "value": "Cabinet Office",
+    "key": "96ae61d6-c2a1-48cb-8e67-da9d105ae381",
+    "political": true
+  },
+  {
+    "value": "Cabinet Office Board",
+    "key": "746822e7-8fe8-4a6f-89fc-2b3bd3e0dab8",
+    "political": false
+  },
+  {
+    "value": "Cafcass",
+    "key": "cc46a817-e7f3-4b60-9f5e-a004dc32ba44",
+    "political": false
+  },
+  {
+    "value": "Camborne, Pool and Redruth Education Action Zone",
+    "key": "3ee89e9f-d3b6-46c3-a7c2-e6312c25d90d",
+    "political": false
+  },
+  {
+    "value": "Capacitybuilders",
+    "key": "b355061a-401c-471c-b970-542c114b10aa",
+    "political": false
+  },
+  {
+    "value": "Capital for Enterprise Limited",
+    "key": "ca22a0db-0bd8-4d89-b080-c4e80b49884d",
+    "political": false
+  },
+  {
+    "value": "Care Quality Commission",
+    "key": "a124d48a-7c10-48c9-9a1a-514f9d59cdbf",
+    "political": false
+  },
+  {
+    "value": "Careers Wales",
+    "key": "3fa65136-9467-48e9-af39-f6031bcdae28",
+    "political": false
+  },
+  {
+    "value": "Central Advisory Committee on Compensation",
+    "key": "689091b3-a023-4a18-90c1-8e37d4fee951",
+    "political": false
+  },
+  {
+    "value": "Central Advisory Committee on Pensions and Compensation",
+    "key": "828140a0-769b-4a61-b37f-5528df4edb33",
+    "political": false
+  },
+  {
+    "value": "Central Arbitration Committee",
+    "key": "b512e829-9473-490b-bac1-4be4eec8d7de",
+    "political": false
+  },
+  {
+    "value": "Central Office of Information",
+    "key": "a3ce371f-a916-47da-8dd8-e030ed7daceb",
+    "political": false
+  },
+  {
+    "value": "Central Police Training and Development Authority",
+    "key": "aea62ec3-9c64-4510-a555-c5646ef15545",
+    "political": false
+  },
+  {
+    "value": "Central Science Laboratory",
+    "key": "7efa928e-ab53-4a9e-9eee-afbf8188a9f4",
+    "political": false
+  },
+  {
+    "value": "Centre for Connected and Autonomous Vehicles",
+    "key": "e00316af-9d5b-4223-8097-8851b5ddeb81",
+    "political": false
+  },
+  {
+    "value": "Centre for Data Ethics and Innovation",
+    "key": "1405edcb-943d-42d2-8ec8-c51cd58335a5",
+    "political": false
+  },
+  {
+    "value": "Centre for Defence Enterprise",
+    "key": "1ec706bb-34b5-4abd-99c2-f111aa1b46e5",
+    "political": false
+  },
+  {
+    "value": "Centre for Environment, Fisheries and Aquaculture Science",
+    "key": "fd6cee28-ac4c-4fb5-9f46-54d24a500818",
+    "political": false
+  },
+  {
+    "value": "Centre for the Protection of National Infrastructure",
+    "key": "0a4fbc59-b9c3-47e6-8092-4bdf4e4d16db",
+    "political": false
+  },
+  {
+    "value": "Certification Officer",
+    "key": "3c16fddc-350e-4b2f-abfe-1a7c1821bd28",
+    "political": false
+  },
+  {
+    "value": "CESG",
+    "key": "e3a2fb8d-6b69-4bce-9c51-38e8e2d128c9",
+    "political": false
+  },
+  {
+    "value": "Chancery Division of the High Court",
+    "key": "6fe5b36c-b875-45d8-bbe4-c29702708d44",
+    "political": false
+  },
+  {
+    "value": "Channel 4",
+    "key": "2766247d-5731-46f7-9dfe-fc74f243929d",
+    "political": false
+  },
+  {
+    "value": "Chemical and Biological Defence Establishment",
+    "key": "20efcd47-548b-467a-81d6-40c39f75eb98",
+    "political": false
+  },
+  {
+    "value": "Chevening Scholarship Programme",
+    "key": "740574ed-f753-4c56-9f2e-3176520d65a2",
+    "political": false
+  },
+  {
+    "value": "Chief Fire and Rescue Adviser",
+    "key": "4082456a-b07f-4a36-8fc1-f063b8921243",
+    "political": false
+  },
+  {
+    "value": "Child Maintenance and Enforcement Commission",
+    "key": "1bf91d43-3e91-439a-99f8-35db7d5057e7",
+    "political": false
+  },
+  {
+    "value": "Child Safeguarding Practice Review Panel",
+    "key": "4635462d-6bf0-4d41-9f86-8fdb27ddddd1",
+    "political": false
+  },
+  {
+    "value": "Children's Workforce Development Council",
+    "key": "1e27fae9-c5a5-4e90-b3a5-bb4ee83a4653",
+    "political": false
+  },
+  {
+    "value": "Churches Conservation Trust",
+    "key": "0bbde75d-f8ff-4f7a-b94e-5005505db4f5",
+    "political": false
+  },
+  {
+    "value": "Circuit Commercial Court",
+    "key": "deb54ca3-1425-408a-8e92-a4d74ad497fa",
+    "political": false
+  },
+  {
+    "value": "Civil Aviation Authority",
+    "key": "1400bcfb-c0f2-4e1c-b8fb-1135a2b83088",
+    "political": false
+  },
+  {
+    "value": "Civil Justice Council",
+    "key": "3f99ade1-1078-4a38-8b20-b14fa9ad90ee",
+    "political": false
+  },
+  {
+    "value": "Civil Nuclear Constabulary",
+    "key": "c507c878-87d8-4e4b-bd3a-35eff619f99b",
+    "political": false
+  },
+  {
+    "value": "Civil Nuclear Police Authority",
+    "key": "b0f55845-c93e-44d3-bf04-56261181a845",
+    "political": false
+  },
+  {
+    "value": "Civil Procedure Rule Committee",
+    "key": "8a252529-24b3-43a7-a1ef-de90f413000a",
+    "political": false
+  },
+  {
+    "value": "Civil Service",
+    "key": "73d2631c-a5ee-443b-940b-af67f42735eb",
+    "political": false
+  },
+  {
+    "value": "Civil Service Board",
+    "key": "7a9be5d2-a512-431b-9bf4-ec565fd41c18",
+    "political": false
+  },
+  {
+    "value": "Civil Service Commission",
+    "key": "b64de654-e360-4cdd-ac99-f0c93a20c0ca",
+    "political": false
+  },
+  {
+    "value": "Civil Service Fast Stream",
+    "key": "e1dfcc51-9bda-444c-94f2-d5e4c4b3cd0b",
+    "political": false
+  },
+  {
+    "value": "Civil Service Fast Track Apprenticeship",
+    "key": "1b30277d-fc8c-466c-840d-506b5928db59",
+    "political": false
+  },
+  {
+    "value": "Civil Service Group",
+    "key": "06beeca5-78ea-4aaa-9dc5-1fcfe5170c98",
+    "political": false
+  },
+  {
+    "value": "Civil Service Reform",
+    "key": "a72d3503-b6b1-4134-bdcf-ad5026a54e48",
+    "political": false
+  },
+  {
+    "value": "Civil Service Resourcing",
+    "key": "2c9232a2-04c0-4694-95e5-73004da6dc51",
+    "political": false
+  },
+  {
+    "value": "Clacton and Harwich Education Action Zone",
+    "key": "a5a23248-887d-4ab1-acd2-c2cc62129212",
+    "political": false
+  },
+  {
+    "value": "CO2Sense",
+    "key": "172c5def-3a14-487a-a1e9-b38295bdaf30",
+    "political": false
+  },
+  {
+    "value": "Coal Authority",
+    "key": "ffc70f77-4ee8-4a6b-a5f2-54657ee4f4c6",
+    "political": false
+  },
+  {
+    "value": "College of Policing",
+    "key": "8b1d4a1f-5914-4057-9bb3-d103f553f2ef",
+    "political": false
+  },
+  {
+    "value": "Commercial Court",
+    "key": "60ccfe7d-6222-48ad-89ce-df9a74333a74",
+    "political": false
+  },
+  {
+    "value": "Commission for Architecture and the Built Environment (CABE)",
+    "key": "b0ced774-bb6d-4958-81bf-d0c37933440c",
+    "political": false
+  },
+  {
+    "value": "Commission for Countering Extremism",
+    "key": "87293f84-5ba9-43ca-a26b-1e0fa9c30b9a",
+    "political": false
+  },
+  {
+    "value": "Commission for Health Improvement",
+    "key": "4ad0dcd6-db83-44d8-bc81-5fb6800e63f5",
+    "political": false
+  },
+  {
+    "value": "Commission for Patient and Public Involvement in Health",
+    "key": "5d8bf769-0cc6-443c-8daf-327fd0bd6f69",
+    "political": false
+  },
+  {
+    "value": "Commission for Racial Equality",
+    "key": "9b19bc0a-bf27-48da-abaa-085c2d25447f",
+    "political": false
+  },
+  {
+    "value": "Commission for Rural Communities",
+    "key": "831ae79e-d6dc-48cf-a1d0-f618f37bbc46",
+    "political": false
+  },
+  {
+    "value": "Commission for Social Care Inspection",
+    "key": "d7504d7f-1d2b-4c65-a7f6-f1fb4d219544",
+    "political": false
+  },
+  {
+    "value": "Commission for the Compact",
+    "key": "5786e05f-5517-4a47-a941-890909cd27b8",
+    "political": false
+  },
+  {
+    "value": "Commission on Human Medicines",
+    "key": "7fc0e673-49b7-4e95-9cfc-bed33f9b9b9e",
+    "political": false
+  },
+  {
+    "value": "Commissioner for Public Appointments",
+    "key": "c2082391-55b3-404c-90a2-2df73a43633a",
+    "political": false
+  },
+  {
+    "value": "Commissioner for Shale Gas",
+    "key": "5a8aeb98-54e2-4c49-b9d9-1a1d44cf1966",
+    "political": false
+  },
+  {
+    "value": "Committee on Climate Change",
+    "key": "cbc24f1d-6413-40a3-8ff7-fbb5bbbc7889",
+    "political": false
+  },
+  {
+    "value": "Committee on Fuel Poverty",
+    "key": "65c1a7cd-9440-4812-a01f-63017435a3ac",
+    "political": false
+  },
+  {
+    "value": "Committee on Mutagenicity of Chemicals in Food, Consumer Products and the Environment",
+    "key": "ab5cc717-daaa-4491-89ed-292433358ccc",
+    "political": false
+  },
+  {
+    "value": "Committee on Radioactive Waste Management",
+    "key": "5a99eabd-85c8-401a-9179-f2c11a928e98",
+    "political": false
+  },
+  {
+    "value": "Committee on Standards in Public Life",
+    "key": "844f5a92-4ea1-4a40-90f2-1ad9c9d6778b",
+    "political": false
+  },
+  {
+    "value": "Committee on Toxicity of Chemicals in Food, Consumer Products and the Environment",
+    "key": "b61e9dd6-8797-4179-830d-7ef98dd00d55",
+    "political": false
+  },
+  {
+    "value": "Commonwealth Scholarship Commission in the UK",
+    "key": "154e05f5-4d77-4d92-89e8-ee0ad1064ac4",
+    "political": false
+  },
+  {
+    "value": "Community Development Foundation",
+    "key": "90666672-d019-481e-92bb-91ef77550fac",
+    "political": false
+  },
+  {
+    "value": "Community Fund",
+    "key": "9bead7b0-d390-42b1-89a3-10d351a598ba",
+    "political": false
+  },
+  {
+    "value": "Companies House",
+    "key": "c36bd301-d0c5-4492-86ad-ee7843b8383b",
+    "political": false
+  },
+  {
+    "value": "Companies List",
+    "key": "979f6709-6dda-4b96-b30c-b4b7694cf7d0",
+    "political": false
+  },
+  {
+    "value": "Company Names Tribunal",
+    "key": "6a0be9bd-ba4a-4774-ae3e-966a48f39fc5",
+    "political": false
+  },
+  {
+    "value": "Compensation Agency",
+    "key": "a2e2cb66-35f0-4ee9-8f16-7da6ed086ff4",
+    "political": false
+  },
+  {
+    "value": "Competition and Markets Authority",
+    "key": "957eb4ec-089b-4f71-ba2a-dc69ac8919ea",
+    "political": false
+  },
+  {
+    "value": "Competition Appeal Tribunal",
+    "key": "e97bdf95-cf01-462a-988b-84e42ef69c76",
+    "political": false
+  },
+  {
+    "value": "Competition Commission",
+    "key": "2a3c8f3c-4cd8-4c84-adf4-2ef07c212ec3",
+    "political": false
+  },
+  {
+    "value": "Competition Service",
+    "key": "493c404d-956f-492e-b07f-500f16eca8a5",
+    "political": false
+  },
+  {
+    "value": "Conflict, Stability and Security Fund",
+    "key": "95cd5325-7792-4789-be26-f1315ffdbd60",
+    "political": false
+  },
+  {
+    "value": "Construction Industry Training Board",
+    "key": "8931f5ab-889d-4228-ab3a-633762b36319",
+    "political": false
+  },
+  {
+    "value": "Consumer Council for Postal Services",
+    "key": "8682b57b-258a-407b-9739-a26c009e15f4",
+    "political": false
+  },
+  {
+    "value": "Consumer Council for Water",
+    "key": "49856c04-7866-41a9-ad46-341c94be1962",
+    "political": false
+  },
+  {
+    "value": "Consumer Futures",
+    "key": "86f177d5-bf19-4fd2-8b78-fe37482b100d",
+    "political": false
+  },
+  {
+    "value": "Cooksey Review",
+    "key": "b32dc857-095d-4a57-83d2-bd3f792a6d9b",
+    "political": false
+  },
+  {
+    "value": "Copyright Tribunal",
+    "key": "d622096e-34ec-47ab-9d17-b185458bccf2",
+    "political": false
+  },
+  {
+    "value": "Corby Education Action Zone",
+    "key": "b69832fc-1478-4115-a7be-4eae4e40ffb5",
+    "political": false
+  },
+  {
+    "value": "Council for Catholic Maintained Schools",
+    "key": "0f09fd10-efce-4e3f-acc8-ed271c5e7234",
+    "political": false
+  },
+  {
+    "value": "Council for Healthcare Regulatory Excellence",
+    "key": "541bcf23-24c3-4474-9f45-6053867c798a",
+    "political": false
+  },
+  {
+    "value": "Council for Science and Technology",
+    "key": "fbc49af1-eb3a-4d17-9503-a3c249b8eee4",
+    "political": false
+  },
+  {
+    "value": "Council for the Central Laboratory of the Research Councils",
+    "key": "247510d7-ac6e-4b62-8009-230875a77fb8",
+    "political": false
+  },
+  {
+    "value": "Council on Tribunals",
+    "key": "1436a264-9b63-4249-954a-3bd29ecc52e0",
+    "political": false
+  },
+  {
+    "value": "Counter Fraud and Security Management Service",
+    "key": "e5e788bf-6b3a-4518-bce5-eb3c4b6b7ad6",
+    "political": false
+  },
+  {
+    "value": "Countryside Agency",
+    "key": "9265bc80-2a66-4c8b-911e-345ed7c3374d",
+    "political": false
+  },
+  {
+    "value": "Court of Appeal Civil Division",
+    "key": "e6c3bb29-e8ae-4a62-8ec6-c8b8d78c29ee",
+    "political": false
+  },
+  {
+    "value": "Court of Appeal Criminal Division",
+    "key": "698f9948-62e7-46f5-8e66-44da40c1a989",
+    "political": false
+  },
+  {
+    "value": "Court of Judicature of Northern Ireland",
+    "key": "6612c691-27b5-433f-a866-c1d38d27b238",
+    "political": false
+  },
+  {
+    "value": "Court of Protection",
+    "key": "f6a27bc0-a55b-47da-a132-c3e0c062b4ee",
+    "political": false
+  },
+  {
+    "value": "Covent Garden Market Authority",
+    "key": "15e81063-675e-42e3-b4b9-957b1d0680ba",
+    "political": false
+  },
+  {
+    "value": "Coventry Education Action Zone",
+    "key": "9ef005a5-0200-4fc5-beb9-15ce0ae756fb",
+    "political": false
+  },
+  {
+    "value": "Creative Scotland",
+    "key": "078b2824-81d7-4f5e-9d0e-ae39a0b8174f",
+    "political": false
+  },
+  {
+    "value": "Criminal Cases Review Commission",
+    "key": "47b15cdf-cd1b-47e7-883f-792b284e4526",
+    "political": false
+  },
+  {
+    "value": "Criminal Injuries Compensation Appeals Panel",
+    "key": "d91fccaa-fc62-473d-b61d-2ea14ad55eca",
+    "political": false
+  },
+  {
+    "value": "Criminal Injuries Compensation Appeals Panel for Northern Ireland",
+    "key": "5d27b5cf-495d-431a-9177-447600e56d39",
+    "political": false
+  },
+  {
+    "value": "Criminal Injuries Compensation Authority",
+    "key": "5bf3b781-5f71-4f16-891e-4254c9398094",
+    "political": false
+  },
+  {
+    "value": "Criminal Justice Inspection Northern Ireland",
+    "key": "95e27489-49a5-4fe2-ac10-ad0d1a59ea84",
+    "political": false
+  },
+  {
+    "value": "Criminal Procedure Rule Committee",
+    "key": "83724558-8e63-4fd2-9fc3-8ba968174644",
+    "political": false
+  },
+  {
+    "value": "Criminal Records Bureau",
+    "key": "9fb83648-923f-4e3c-a7fa-21333176a23d",
+    "political": false
+  },
+  {
+    "value": "Crossrail International",
+    "key": "431e1cd2-916a-4841-aab4-d8c6801ccbb9",
+    "political": false
+  },
+  {
+    "value": "Crown Agents Holding and Realisation Board",
+    "key": "d93a1600-83ea-4c2e-9797-2f550562ab76",
+    "political": false
+  },
+  {
+    "value": "Crown Commercial Service",
+    "key": "8437e374-dfa7-4b52-bd88-ebc29032a9e4",
+    "political": false
+  },
+  {
+    "value": "Crown Prosecution Service",
+    "key": "6c97de66-80ac-4eca-9a19-92d16442e72f",
+    "political": false
+  },
+  {
+    "value": "Dartmoor National Park Authority",
+    "key": "01a2126f-c810-4120-94f0-1a5d657c71b1",
+    "political": false
+  },
+  {
+    "value": "Deepcut Review",
+    "key": "7b843c46-78a1-4b14-a45b-be59957ca5f5",
+    "political": false
+  },
+  {
+    "value": "Defence Academy of the United Kingdom",
+    "key": "cd90ce57-4f15-464a-8b3b-d3ea24c04429",
+    "political": false
+  },
+  {
+    "value": "Defence Analytical Services Agency",
+    "key": "f7da6759-1e84-4100-ae38-3692150275fc",
+    "political": false
+  },
+  {
+    "value": "Defence and Security Accelerator",
+    "key": "54f97e9d-33ac-4813-93fb-623e184c4e22",
+    "political": false
+  },
+  {
+    "value": "Defence and Security Media Advisory Committee",
+    "key": "3161a1a9-f759-4acf-962f-3ce3f373693b",
+    "political": false
+  },
+  {
+    "value": "Defence Aviation Repair Agency",
+    "key": "6e17b7c2-43a9-4e1e-abc4-51d9a935b399",
+    "political": false
+  },
+  {
+    "value": "Defence Bills Agency",
+    "key": "36577bd0-e6a8-4c8b-a503-d4fae7cf6982",
+    "political": false
+  },
+  {
+    "value": "Defence Communication Services Agency",
+    "key": "a586cca4-1ece-4c06-9d57-9280143ae8d9",
+    "political": false
+  },
+  {
+    "value": "Defence Electronics and Components Agency",
+    "key": "8fd6a11f-338c-4928-9a17-4f408223c8f6",
+    "political": false
+  },
+  {
+    "value": "Defence Equipment and Support",
+    "key": "73833cda-22ca-4711-87f9-73a98814315d",
+    "political": false
+  },
+  {
+    "value": "Defence Estates",
+    "key": "d0b84cf6-8da8-46e4-9ab1-afe5bb8b85ce",
+    "political": false
+  },
+  {
+    "value": "Defence Infrastructure Organisation",
+    "key": "73068a99-7122-4cad-a876-35ca0b0778b4",
+    "political": false
+  },
+  {
+    "value": "Defence Intelligence and Security Centre",
+    "key": "c1ab34f5-a79b-4cea-a90a-932a105839c7",
+    "political": false
+  },
+  {
+    "value": "Defence Medical Education and Training Agency",
+    "key": "ac0fbc89-92dc-43be-a077-557e8e3edaa4",
+    "political": false
+  },
+  {
+    "value": "Defence Nuclear Organisation",
+    "key": "de8d73a1-cdd1-49ec-9733-7ed1e7976be3",
+    "political": false
+  },
+  {
+    "value": "Defence Nuclear Safety Committee",
+    "key": "8cf971c3-7fb2-4c14-b7e6-ba8119a13705",
+    "political": false
+  },
+  {
+    "value": "Defence Procurement Agency",
+    "key": "39fc26ad-1ad6-48b8-86a2-bcb28607ee52",
+    "political": false
+  },
+  {
+    "value": "Defence Safety Authority",
+    "key": "9b412fdd-ca63-4aee-8530-afd2d893e331",
+    "political": false
+  },
+  {
+    "value": "Defence Science and Technology Laboratory",
+    "key": "43b6c342-c6b7-4ef1-93d2-98f0a9130ccc",
+    "political": false
+  },
+  {
+    "value": "Defence Scientific Advisory Council",
+    "key": "88079297-1d6c-4e30-9fc4-9cc879c3c702",
+    "political": false
+  },
+  {
+    "value": "Defence Sixth Form College",
+    "key": "0897872d-3f43-43b0-8d68-7f03d2440274",
+    "political": false
+  },
+  {
+    "value": "Defence Storage and Distribution Agency",
+    "key": "e754ea27-78b5-41c0-bcc3-fb58e4d4c95a",
+    "political": false
+  },
+  {
+    "value": "Defence Support Group",
+    "key": "fb79ea06-ac7a-4373-8335-2da06c77819f",
+    "political": false
+  },
+  {
+    "value": "Defence Transport and Movements Agency",
+    "key": "653b1e3c-ad9d-4431-9f77-f74edf745ff3",
+    "political": false
+  },
+  {
+    "value": "Defence Vetting Agency",
+    "key": "f0b703f8-0a85-496d-94c1-5ef1af243d3e",
+    "political": false
+  },
+  {
+    "value": "Defence, Press and Broadcasting Advisory Committee",
+    "key": "e3a01f96-9331-4d57-b8fe-f0efe05e7b0e",
+    "political": false
+  },
+  {
+    "value": "Dental Practice Board",
+    "key": "e3b07496-d133-4a87-abcc-9e2f45d570e4",
+    "political": false
+  },
+  {
+    "value": "Dental Vocational Training Authority",
+    "key": "ccf63549-6a6c-4b2c-96c7-2be1ef3e2933",
+    "political": false
+  },
+  {
+    "value": "Department for Business, Energy & Industrial Strategy",
+    "key": "2bde479a-97f2-42b5-986a-287a623c2a1c",
+    "political": true
+  },
+  {
+    "value": "Department for Business, Enterprise and Regulatory Reform",
+    "key": "a3773e86-b0b1-4c96-b1f4-5fff487cca39",
+    "political": true
+  },
+  {
+    "value": "Department for Business, Innovation & Skills",
+    "key": "569a9ee5-c195-4b7f-b9dc-edc17a09113f",
+    "political": true
+  },
+  {
+    "value": "Department for Children, Schools and Families",
+    "key": "aaebe7e8-f73a-4f53-a20d-1a1caca4e289",
+    "political": true
+  },
+  {
+    "value": "Department for Communities (Northern Ireland)",
+    "key": "50767bd3-cbbe-47df-bc5e-ddd0140e4b04",
+    "political": false
+  },
+  {
+    "value": "Department for Constitutional Affairs",
+    "key": "e7c374b2-35c8-4b7d-a6d5-7f2e9f8f3556",
+    "political": true
+  },
+  {
+    "value": "Department for Digital, Culture, Media & Sport",
+    "key": "fd62c5a4-714d-47fe-a612-595d1739251c",
+    "political": true
+  },
+  {
+    "value": "Department for Education",
+    "key": "ebd15ade-73b2-4eaf-b1c3-43034a42eb37",
+    "political": true
+  },
+  {
+    "value": "Department for Education and Skills",
+    "key": "77c1621f-a392-4393-9d8c-9969cd98c1e7",
+    "political": true
+  },
+  {
+    "value": "Department for Employment and Learning",
+    "key": "f4de645e-17ed-4a91-930f-4b2c1f1d4ef6",
+    "political": false
+  },
+  {
+    "value": "Department for Environment, Food & Rural Affairs",
+    "key": "de4e9dc6-cca4-43af-a594-682023b84d6c",
+    "political": true
+  },
+  {
+    "value": "Department for Exiting the European Union",
+    "key": "f323e83c-868b-4bcb-b6e2-a8f9bb40397e",
+    "political": true
+  },
+  {
+    "value": "Department for Infrastructure (Northern Ireland)",
+    "key": "a70fef9b-3a1e-475b-990b-fcf95cbca9b4",
+    "political": false
+  },
+  {
+    "value": "Department for Innovation, Universities and Skills",
+    "key": "04b788e1-8d6a-412e-a15a-1c1390328e47",
+    "political": true
+  },
+  {
+    "value": "Department for International Development",
+    "key": "db994552-7644-404d-a770-a2fe659c661f",
+    "political": true
+  },
+  {
+    "value": "Department for International Trade",
+    "key": "082092f1-656c-470e-b024-229dc6e750e9",
+    "political": true
+  },
+  {
+    "value": "Department for International Trade Defence & Security Organisation",
+    "key": "ed5279b6-6d8d-4031-8867-52a909d62870",
+    "political": false
+  },
+  {
+    "value": "Department for Regional Development (Northern Ireland)",
+    "key": "afe7708a-3e61-4561-b477-cec94ad4f22b",
+    "political": false
+  },
+  {
+    "value": "Department for Social Development",
+    "key": "1ac90743-ac7e-4fdf-ba46-8f5871dc487e",
+    "political": false
+  },
+  {
+    "value": "Department for the Economy (Northern Ireland)",
+    "key": "5c817b46-039f-4c4a-ac63-b28c1c2feb59",
+    "political": false
+  },
+  {
+    "value": "Department for Transport",
+    "key": "4c717efc-f47b-478e-a76d-ce1ae0af1946",
+    "political": true
+  },
+  {
+    "value": "Department for Work and Pensions",
+    "key": "b548a09f-8b35-4104-89f4-f1a40bf3136d",
+    "political": true
+  },
+  {
+    "value": "Department of Agriculture and Rural Development",
+    "key": "11e064e0-5079-4216-b693-c10b8167c620",
+    "political": false
+  },
+  {
+    "value": "Department of Agriculture, Environment and Rural Affairs (Northern Ireland)",
+    "key": "965a76d9-53f6-433d-8f3a-5802f8c7f31c",
+    "political": false
+  },
+  {
+    "value": "Department of Constitutional Affairs",
+    "key": "4c5f5a7b-c27d-4e73-9451-c955dd86face",
+    "political": true
+  },
+  {
+    "value": "Department of Culture, Arts and Leisure",
+    "key": "9f9294bb-b09b-43fa-8e36-9c54bf88e01a",
+    "political": false
+  },
+  {
+    "value": "Department of Education (Northern Ireland)",
+    "key": "b2590ca4-2e95-48a5-96bf-88e0548920f7",
+    "political": false
+  },
+  {
+    "value": "Department of Energy & Climate Change",
+    "key": "d65d4203-01f5-4920-a3b1-f614bfd8e83e",
+    "political": true
+  },
+  {
+    "value": "Department of Enterprise, Trade and Investment (Northern Ireland)",
+    "key": "aae41bb9-9af6-40cc-8cfe-eab6f62ad2c3",
+    "political": false
+  },
+  {
+    "value": "Department of Finance (Northern Ireland)",
+    "key": "79308085-77ad-4473-8863-73cae379ba36",
+    "political": false
+  },
+  {
+    "value": "Department of Finance and Personnel for Northern Ireland",
+    "key": "85349141-6d3e-4296-b17c-d9cc73356855",
+    "political": false
+  },
+  {
+    "value": "Department of Health (Northern Ireland)",
+    "key": "a8636bd4-4e86-47af-987a-b672d4e6fa31",
+    "political": false
+  },
+  {
+    "value": "Department of Health and Social Care",
+    "key": "7cd6bf12-bbe9-4118-8523-f927b0442156",
+    "political": true
+  },
+  {
+    "value": "Department of Health, Social Services and Public Safety",
+    "key": "3638384a-ae3c-4849-990f-2da23df96833",
+    "political": false
+  },
+  {
+    "value": "Department of Inland Revenue",
+    "key": "af13245b-3cf0-4d82-b51e-b519b850bef2",
+    "political": false
+  },
+  {
+    "value": "Department of Justice (Northern Ireland)",
+    "key": "1649c095-3b5e-48c0-bf6b-f2966e590a57",
+    "political": false
+  },
+  {
+    "value": "Department of National Heritage",
+    "key": "364a9362-9244-476c-8a9b-c124a4e96bc6",
+    "political": true
+  },
+  {
+    "value": "Department of Social Security",
+    "key": "e2768146-3fe2-4a81-b1b5-9c931deca22b",
+    "political": true
+  },
+  {
+    "value": "Department of the Environment (Northern Ireland)",
+    "key": "6b012ebf-20c4-4125-929f-8867ad2a2b4e",
+    "political": false
+  },
+  {
+    "value": "Department of the Environment, Transport and the Regions",
+    "key": "971eb79c-9236-47ff-9af1-b32c835a88fc",
+    "political": true
+  },
+  {
+    "value": "Department of Trade and Industry",
+    "key": "fc490b59-de8a-4fa8-b5cc-4d9de65b329b",
+    "political": true
+  },
+  {
+    "value": "Deputy Prime Minister's Office",
+    "key": "5a1467ef-2946-4d06-831d-8153d25d6ff4",
+    "political": true
+  },
+  {
+    "value": "Derby North East Education Action Zone",
+    "key": "d879a016-2e79-41a9-b89f-e6f302721e97",
+    "political": false
+  },
+  {
+    "value": "Design Council",
+    "key": "b46b40e6-55d3-4c4d-b67e-227066911f95",
+    "political": false
+  },
+  {
+    "value": "DfT OLR Holdings Limited",
+    "key": "1a1b0057-fb53-4df6-9cec-1adf882a483d",
+    "political": false
+  },
+  {
+    "value": "Digital, Data and Technology Profession",
+    "key": "9aeff00a-32b6-40de-b2fd-bf4664c5cd2c",
+    "political": false
+  },
+  {
+    "value": "Dingle Granby Toxteth Education Action Zone",
+    "key": "852de5c7-b3ac-4d3d-90da-dbbed6a488a8",
+    "political": false
+  },
+  {
+    "value": "Directly Operated Railways Limited",
+    "key": "debb39a6-cc57-442e-8673-65af9bd0e624",
+    "political": false
+  },
+  {
+    "value": "Disability and Carers Service",
+    "key": "65b0865a-ca9f-4b13-b47f-0b9ae2c22efb",
+    "political": false
+  },
+  {
+    "value": "Disability Rights Commission",
+    "key": "ee89d3f8-8fc0-4c4f-81de-d4ec792c171c",
+    "political": false
+  },
+  {
+    "value": "Disabled People’s Employment Corporation (GB) Ltd",
+    "key": "4d82bb31-00d0-431d-82b7-707869f06cc7",
+    "political": false
+  },
+  {
+    "value": "Disabled Persons Transport Advisory Committee",
+    "key": "b969a617-7c4b-4d3b-97ef-41656ef688c9",
+    "political": false
+  },
+  {
+    "value": "Disclosure and Barring Service",
+    "key": "77311cfc-4947-4a94-8b96-5412b1a359ab",
+    "political": false
+  },
+  {
+    "value": "Disposal Services Agency",
+    "key": "2927c807-87ee-4fc8-b36a-24fdab3c0c9f",
+    "political": false
+  },
+  {
+    "value": "District Valuer Services (DVS)",
+    "key": "32cc780c-3902-4ad6-b13d-17b445f11693",
+    "political": false
+  },
+  {
+    "value": "Dounreay",
+    "key": "8404de56-3973-4ad5-808f-b6dc4b71a9a3",
+    "political": false
+  },
+  {
+    "value": "Downham and Bellingham Education Action Zone",
+    "key": "545923a7-fff7-479c-a1b7-007417c6fb78",
+    "political": false
+  },
+  {
+    "value": "Drinking Water Inspectorate",
+    "key": "d1461afd-ce85-40f9-bcae-4841ed9be1aa",
+    "political": false
+  },
+  {
+    "value": "Driver and Vehicle Licensing Agency",
+    "key": "70580624-93b5-4aed-823b-76042486c769",
+    "political": false
+  },
+  {
+    "value": "Driver and Vehicle Standards Agency",
+    "key": "d39237a5-678b-4bb5-a372-eb2cb036933d",
+    "political": false
+  },
+  {
+    "value": "Driver and Vehicle Testing Agency",
+    "key": "e1248bcb-ed91-4672-a50b-b001c62027fc",
+    "political": false
+  },
+  {
+    "value": "Driving Standards Agency",
+    "key": "304d93a6-dd72-4a52-8858-387d8d83a309",
+    "political": false
+  },
+  {
+    "value": "Dudley Education Action Zone",
+    "key": "db4dea60-5bde-4546-b8ce-886fdfb7f30a",
+    "political": false
+  },
+  {
+    "value": "Easington and Seaham Education Action Zone",
+    "key": "5c276d43-8451-4a32-8395-9f7a67f16653",
+    "political": false
+  },
+  {
+    "value": "East Cleveland Education Action Zone",
+    "key": "2be6656a-dee6-45c0-9ab5-a7de279ab6bb",
+    "political": false
+  },
+  {
+    "value": "East Manchester Education Action Zone",
+    "key": "aefc08ea-0c91-46b9-99ce-068985fcae43",
+    "political": false
+  },
+  {
+    "value": "East Midlands Development Agency (emda)",
+    "key": "532c8374-f11e-41dc-9b0d-269290b62547",
+    "political": false
+  },
+  {
+    "value": "East of England Development Agency",
+    "key": "8990c250-5a5a-4102-ad0b-7f221fadc4d0",
+    "political": false
+  },
+  {
+    "value": "East West Railway Company Limited",
+    "key": "55af09d1-b130-4d23-a1ac-05c6b2b82797",
+    "political": false
+  },
+  {
+    "value": "Eastern Health and Social Services Board",
+    "key": "64e68d82-849d-4058-978f-48ccb786b5e2",
+    "political": false
+  },
+  {
+    "value": "Ebbsfleet Development Corporation",
+    "key": "a0c87b97-7eff-498f-a918-16f1492f7d3e",
+    "political": false
+  },
+  {
+    "value": "Economic and Social Research Council",
+    "key": "a0f1fbc3-783b-42cb-b583-3934a6c2e652",
+    "political": false
+  },
+  {
+    "value": "Education and Skills Funding Agency",
+    "key": "71381a6e-aa5c-43ae-a982-be9bfd46ea5b",
+    "political": false
+  },
+  {
+    "value": "Education Funding Agency",
+    "key": "b9fc8528-81d1-419b-8748-6c00be71044b",
+    "political": true
+  },
+  {
+    "value": "Efficiency and Reform Group",
+    "key": "ec61fac5-95e9-46bb-8429-7129aab6d96d",
+    "political": false
+  },
+  {
+    "value": "Eliasch Review",
+    "key": "d5ea213f-706b-4980-afd7-5e3d2bfbf60b",
+    "political": false
+  },
+  {
+    "value": "Ellesmere Port Education Action Zone",
+    "key": "7c336df2-13c0-41e2-ade8-49b8ef8a2ec7",
+    "political": false
+  },
+  {
+    "value": "Employment Agency Standards Inspectorate",
+    "key": "0e90b2b0-dd95-4fd2-89ed-47672cf19ae3",
+    "political": false
+  },
+  {
+    "value": "Employment Appeal Tribunal",
+    "key": "caeb418c-d11c-4352-92e9-47b21289f696",
+    "political": false
+  },
+  {
+    "value": "Employment Tribunal",
+    "key": "8bb37087-a5a7-4493-8afe-900b36ebc927",
+    "political": false
+  },
+  {
+    "value": "Engineering and Physical Sciences Research Council",
+    "key": "bcad7427-0a73-47ff-8199-82df7faf83b5",
+    "political": false
+  },
+  {
+    "value": "Engineering Construction Industry Training Board",
+    "key": "e5fe8c83-8a3a-46df-a95c-6ea154b05103",
+    "political": false
+  },
+  {
+    "value": "English Heritage",
+    "key": "2d9aa015-eb03-461b-a82d-ce420c635d25",
+    "political": false
+  },
+  {
+    "value": "English Institute of Sport",
+    "key": "8d7b0ba5-867c-4c5f-8e99-720c6b017fa0",
+    "political": false
+  },
+  {
+    "value": "English Nature",
+    "key": "7f768653-eda0-406f-8182-1a775f063fa3",
+    "political": false
+  },
+  {
+    "value": "English Partnerships",
+    "key": "3f4622d2-15a1-4d57-b294-8a6d986e92fa",
+    "political": true
+  },
+  {
+    "value": "English Sports Council",
+    "key": "17021d0a-2a28-4be4-a86b-f73a91e14310",
+    "political": false
+  },
+  {
+    "value": "Enterprise Ulster",
+    "key": "0cd6c1a8-55af-4f92-9bb1-1b2fbdb80ae9",
+    "political": false
+  },
+  {
+    "value": "Environment Agency",
+    "key": "16628142-57b2-4611-bc03-5912785acee3",
+    "political": false
+  },
+  {
+    "value": "Environment and Heritage Service",
+    "key": "7c58aa87-45fb-4e29-9639-3a203f20bc0c",
+    "political": false
+  },
+  {
+    "value": "Equal Opportunities Commission",
+    "key": "0f6e1b66-06ac-44ec-a100-b55a5d859a52",
+    "political": false
+  },
+  {
+    "value": "Equality 2025",
+    "key": "e5e72d77-be67-44bf-be40-3ee08e12964f",
+    "political": false
+  },
+  {
+    "value": "Equality and Human Rights Commission",
+    "key": "673fea70-eba1-4218-8d13-84aa9bbfd20c",
+    "political": false
+  },
+  {
+    "value": "Equality Commission for Northern Ireland",
+    "key": "74c14487-ef9f-449f-ba8d-a3aad4f1f0b1",
+    "political": false
+  },
+  {
+    "value": "Equitable Life Inquiry",
+    "key": "80f207d0-47ac-4b41-8d92-d47a5ef7ef2b",
+    "political": false
+  },
+  {
+    "value": "Estyn",
+    "key": "6bbb5031-a3a2-4c67-92f9-69a7d699171e",
+    "political": false
+  },
+  {
+    "value": "Examination team on child care procedures and practice in North Wales",
+    "key": "32d0dfd9-68ba-4bf6-8373-7eebaf5f9c7e",
+    "political": false
+  },
+  {
+    "value": "Exchequer and Audit Department",
+    "key": "c73fa7ab-6a62-4fb1-890b-d1b1469ad69b",
+    "political": false
+  },
+  {
+    "value": "Exmoor National Park Authority",
+    "key": "8fc36a1b-b4f2-4b58-b86d-d160a9c161bb",
+    "political": false
+  },
+  {
+    "value": "Export Control Joint Unit",
+    "key": "183520bb-7f82-487d-91d4-bb079cc259a2",
+    "political": false
+  },
+  {
+    "value": "Export Guarantees Advisory Council",
+    "key": "724a1175-b20d-4de9-bbbc-c2c6f2ac2863",
+    "political": false
+  },
+  {
+    "value": "Family Division of the High Court",
+    "key": "e549f426-3c3e-4830-9271-313013823931",
+    "political": false
+  },
+  {
+    "value": "Family Health Services Appeal Authority",
+    "key": "d6d77d76-fc3b-428c-a043-6b1002fed4a4",
+    "political": false
+  },
+  {
+    "value": "Family Justice Council",
+    "key": "63ba61da-3566-4f67-b960-a76a23c3898f",
+    "political": false
+  },
+  {
+    "value": "Family Procedure Rule Committee",
+    "key": "04261dc0-e80f-482b-98e6-f0998394ec72",
+    "political": false
+  },
+  {
+    "value": "FCO Services",
+    "key": "114b27e6-7305-45f1-b3fa-c546fa169634",
+    "political": false
+  },
+  {
+    "value": "Financial Conduct Authority",
+    "key": "ae164d28-d506-404b-86df-cebd41a884eb",
+    "political": false
+  },
+  {
+    "value": "Financial Reporting Council",
+    "key": "58d99415-2d4a-4791-b15c-189c56668acb",
+    "political": false
+  },
+  {
+    "value": "Financial Services Organisation",
+    "key": "5aa9b98d-8a50-4d40-8c12-f0d2974da297",
+    "political": false
+  },
+  {
+    "value": "Financial Services Trade and Investment Board",
+    "key": "d8262754-af6a-4206-b393-057ad65f856c",
+    "political": false
+  },
+  {
+    "value": "Fire Authority for Northern Ireland",
+    "key": "3954fe6f-a217-4a19-ac99-a1140338ddf4",
+    "political": false
+  },
+  {
+    "value": "Fire Service College",
+    "key": "530bbbdf-8b69-45e2-b0aa-ba1e868076ac",
+    "political": false
+  },
+  {
+    "value": "Firearms Consultative Committee",
+    "key": "3b2ac159-ff1e-44d1-b692-eb9bc537be9c",
+    "political": false
+  },
+  {
+    "value": "Firebuy",
+    "key": "2a162d12-9417-4c4d-aadc-3d2b88b77a07",
+    "political": false
+  },
+  {
+    "value": "First-tier Tribunal (Asylum Support)",
+    "key": "7141e343-e7bb-483b-920a-c6a5cf8f758c",
+    "political": false
+  },
+  {
+    "value": "First-tier Tribunal (Care Standards)",
+    "key": "4f12bb0a-439b-4198-8c6b-afcccde3782a",
+    "political": false
+  },
+  {
+    "value": "First-tier Tribunal (Criminal Injuries Compensation)",
+    "key": "c0dd3391-5198-40b4-845d-26e0873e0763",
+    "political": false
+  },
+  {
+    "value": "First-tier Tribunal (General Regulatory Chamber)",
+    "key": "6dc74e3b-8ee4-4310-8685-a84fc2602961",
+    "political": false
+  },
+  {
+    "value": "First-tier Tribunal (Immigration and Asylum)",
+    "key": "7a71bfc2-d67d-4db9-baef-95b38c41f336",
+    "political": false
+  },
+  {
+    "value": "First-tier Tribunal (Mental Health)",
+    "key": "9b41f151-cd80-4ecb-8176-a23731ef9a4c",
+    "political": false
+  },
+  {
+    "value": "First-tier Tribunal (Property Chamber)",
+    "key": "bb2b028f-efaa-44fd-b3f8-971b25cb51a2",
+    "political": false
+  },
+  {
+    "value": "First-tier Tribunal (Social Security and Child Support)",
+    "key": "2dc6e3cf-c181-4a2c-8ff7-1d8f8f268b57",
+    "political": false
+  },
+  {
+    "value": "First-tier Tribunal (Special Educational Needs and Disability)",
+    "key": "d3cd3a1b-ba40-4b8a-9534-be6783235178",
+    "political": false
+  },
+  {
+    "value": "First-tier Tribunal (Tax)",
+    "key": "11cd9334-7bad-4f67-a8ee-1680e64c6be1",
+    "political": false
+  },
+  {
+    "value": "First-tier Tribunal (War Pensions and Armed Forces Compensation)",
+    "key": "7cc471e5-365a-4b90-8c47-d5c87c29347a",
+    "political": false
+  },
+  {
+    "value": "Fisheries Conservancy Board for Northern Ireland",
+    "key": "2ba2430a-ca4d-4064-b35c-d78cb02041dc",
+    "political": false
+  },
+  {
+    "value": "Fleet Air Arm Museum",
+    "key": "8c3b5dee-0e61-4d0b-888d-5c510c6b80ac",
+    "political": false
+  },
+  {
+    "value": "Food from Britain",
+    "key": "5f4b60b7-7bec-4243-aa70-e2118366c819",
+    "political": false
+  },
+  {
+    "value": "Food Safety Promotion Board",
+    "key": "4671ed2d-30d1-4e92-b18a-79c283de7c1a",
+    "political": false
+  },
+  {
+    "value": "Food Standards Agency",
+    "key": "447f8075-1c8c-40d3-8119-3e45ea9e6496",
+    "political": false
+  },
+  {
+    "value": "Football Licensing Authority",
+    "key": "e876e932-987b-43cf-8374-811c8b1cd93c",
+    "political": false
+  },
+  {
+    "value": "Foreign & Commonwealth Office",
+    "key": "9adfc4ed-9f6c-4976-a6d8-18d34356367c",
+    "political": true
+  },
+  {
+    "value": "Foreign Compensation Commission",
+    "key": "8fe1001f-009c-4c19-b4b1-f6c4327484bb",
+    "political": false
+  },
+  {
+    "value": "Forensic Science Northern Ireland",
+    "key": "d2abba6e-47e4-4625-aca1-c47ec5c753e6",
+    "political": false
+  },
+  {
+    "value": "Forensic Science Regulator",
+    "key": "403b037a-5975-46d3-bb3b-02405ca964b8",
+    "political": false
+  },
+  {
+    "value": "Forensic Science Service",
+    "key": "4562eced-3c84-4798-a732-cf9acea6c6ad",
+    "political": false
+  },
+  {
+    "value": "Forest Research",
+    "key": "d740d375-ec0c-43fb-91c8-ca2bf5701093",
+    "political": false
+  },
+  {
+    "value": "Forest Service",
+    "key": "83b49f2e-e06d-41ac-96ce-c6c193cb3a59",
+    "political": false
+  },
+  {
+    "value": "Forestry Commission",
+    "key": "8bf5624b-dec2-44fa-9b6c-daed166333a5",
+    "political": false
+  },
+  {
+    "value": "Forestry England",
+    "key": "dbf69c86-d5f7-4785-8f8e-26d74240d7fb",
+    "political": false
+  },
+  {
+    "value": "Fuel Poverty Advisory Group",
+    "key": "0fa07490-7bbb-4cb3-b7e8-ae0fd7ab68fe",
+    "political": false
+  },
+  {
+    "value": "Further and Higher Education Funding Councils for Wales",
+    "key": "8ee59143-039e-4c20-b02e-46281cee3302",
+    "political": false
+  },
+  {
+    "value": "Further Education Commissioner",
+    "key": "7c4a25e0-8672-4036-8245-0a2f330fbdfa",
+    "political": false
+  },
+  {
+    "value": "Gambling Commission",
+    "key": "4a76efdd-cf13-4eee-ad61-e13c3e6bf45e",
+    "political": false
+  },
+  {
+    "value": "Gaming Board for Great Britain",
+    "key": "25678866-86c3-430e-aef0-6a40ea41d22a",
+    "political": false
+  },
+  {
+    "value": "Gangmasters and Labour Abuse Authority",
+    "key": "95347397-3f2f-410f-886e-4c96636c6c80",
+    "political": false
+  },
+  {
+    "value": "Gangmasters Licensing Appeals",
+    "key": "006fd813-9717-449b-9594-3a609ce36ea9",
+    "political": false
+  },
+  {
+    "value": "Gangmasters Licensing Authority",
+    "key": "4dbcc134-bdcc-4f67-be6c-9a3f6b4918f1",
+    "political": false
+  },
+  {
+    "value": "Gas and Electricity Consumer Council (Energywatch)",
+    "key": "011237f2-fd9e-46e2-9b04-f662a6657e0b",
+    "political": false
+  },
+  {
+    "value": "Geffrye Museum",
+    "key": "1cfddf1c-85b5-414b-81d4-d9892e090890",
+    "political": false
+  },
+  {
+    "value": "General Advisory Committee on Science",
+    "key": "7c75bfa9-f13b-4d1e-b083-1fb75d5f7a76",
+    "political": false
+  },
+  {
+    "value": "General Consumer Council for Northern Ireland",
+    "key": "a3ec3eba-80a8-4eda-89fa-9be41b50eca7",
+    "political": false
+  },
+  {
+    "value": "General Social Care Council",
+    "key": "88cc903e-e91f-48ef-b331-b90bb9d9e077",
+    "political": false
+  },
+  {
+    "value": "General Teaching Council for England",
+    "key": "4c71fdca-6d89-4c9f-b942-11b1060187f4",
+    "political": false
+  },
+  {
+    "value": "Geospatial Commission",
+    "key": "a433ae2c-d499-4f5e-a510-74107b943af7",
+    "political": false
+  },
+  {
+    "value": "Gloucester Education Action Zone",
+    "key": "3c17c060-32f9-46e4-89ed-a40a0c6c199c",
+    "political": false
+  },
+  {
+    "value": "Government Actuary's Department",
+    "key": "02e01dc9-a4c4-46d9-b496-a618c89afe62",
+    "political": false
+  },
+  {
+    "value": "Government Car and Despatch Agency",
+    "key": "e7aa48d8-a13d-4802-a2f5-e886dd1dc364",
+    "political": false
+  },
+  {
+    "value": "Government Chemist",
+    "key": "9748e764-3ea4-4f58-bf1c-656970401a22",
+    "political": false
+  },
+  {
+    "value": "Government Commercial Function",
+    "key": "ddbddda2-2460-4ed5-a274-d6731376bef8",
+    "political": false
+  },
+  {
+    "value": "Government Communication Service",
+    "key": "39d7f79d-7470-46bf-8a27-425a9693b984",
+    "political": false
+  },
+  {
+    "value": "Government Communications Headquarters",
+    "key": "dbae9ee3-b1da-4fda-8dd6-8f2c568c9b1d",
+    "political": false
+  },
+  {
+    "value": "Government Corporate Finance Profession",
+    "key": "3afaba92-b9ee-43b2-82d1-0c3ef4808af2",
+    "political": false
+  },
+  {
+    "value": "Government Digital Service",
+    "key": "af07d5a5-df63-4ddc-9383-6a666845ebe9",
+    "political": false
+  },
+  {
+    "value": "Government Economic Service",
+    "key": "4e34a225-1264-4af4-961a-22784b510232",
+    "political": false
+  },
+  {
+    "value": "Government Equalities Office",
+    "key": "3df55660-43a9-4494-8146-a0a492a975b6",
+    "political": true
+  },
+  {
+    "value": "Government Estates Management",
+    "key": "ae20564a-68e3-4da9-a331-a2df8060e2e2",
+    "political": false
+  },
+  {
+    "value": "Government Finance Function",
+    "key": "8051158e-24de-4717-b384-6484fc0c3f24",
+    "political": false
+  },
+  {
+    "value": "Government Finance Profession",
+    "key": "c0aaecd9-3134-41d1-a4ce-0b7b2b083186",
+    "political": false
+  },
+  {
+    "value": "Government Internal Audit Agency",
+    "key": "bad7475f-f594-4c59-8e69-e1865d778678",
+    "political": false
+  },
+  {
+    "value": "Government IT Profession",
+    "key": "a9d2010d-9afa-4e89-845b-be99e3555396",
+    "political": false
+  },
+  {
+    "value": "Government Knowledge & Information Management Profession",
+    "key": "6edf0b89-3bde-453c-9505-82928f94cfe3",
+    "political": false
+  },
+  {
+    "value": "Government Legal Department",
+    "key": "bac52ec5-df89-42b3-a034-2de01107f1d3",
+    "political": false
+  },
+  {
+    "value": "Government Legal Profession",
+    "key": "85300f1d-21d1-4377-84dd-6ee787b1f911",
+    "political": false
+  },
+  {
+    "value": "Government Legal Service",
+    "key": "261d485c-9ef5-4665-94fb-d728fb3af0d6",
+    "political": false
+  },
+  {
+    "value": "Government Occupational Psychology Profession",
+    "key": "41c5a6b1-5106-4086-b478-94655f392483",
+    "political": false
+  },
+  {
+    "value": "Government Office for Science",
+    "key": "37c13dbd-1662-4c14-8a09-d4f921851e00",
+    "political": false
+  },
+  {
+    "value": "Government Operational Research Service",
+    "key": "0a884634-3590-44f1-bdb1-46eeac2f8211",
+    "political": false
+  },
+  {
+    "value": "Government Partnerships International",
+    "key": "f3e82740-738d-4a8c-89df-f9c516bfc668",
+    "political": false
+  },
+  {
+    "value": "Government Planning Inspectors",
+    "key": "96755831-b0bc-4b58-a7ed-5acd9351a4c2",
+    "political": false
+  },
+  {
+    "value": "Government Planning Profession",
+    "key": "f46c9756-7bd6-4dd0-95b6-52d4c937003e",
+    "political": false
+  },
+  {
+    "value": "Government Procurement Service",
+    "key": "dab2e4db-e548-49d0-afe1-0c06a20fc195",
+    "political": false
+  },
+  {
+    "value": "Government Property Agency",
+    "key": "e8ca4eeb-69b9-41f6-a6ff-971bf4dd0cb1",
+    "political": false
+  },
+  {
+    "value": "Government Property Profession",
+    "key": "f8766ca5-5420-44f8-83f4-214b21842c68",
+    "political": false
+  },
+  {
+    "value": "Government Science & Engineering Profession",
+    "key": "a8f22644-e810-4ce6-b38d-4692d29b3145",
+    "political": false
+  },
+  {
+    "value": "Government Security Profession",
+    "key": "c24a31d8-cf2a-4a41-87de-2f7de25098f4",
+    "political": false
+  },
+  {
+    "value": "Government Social Research Profession",
+    "key": "77d5e16e-1b32-4051-a8e6-c2230d762cfe",
+    "political": false
+  },
+  {
+    "value": "Government Statistical Service",
+    "key": "c665dfa6-0a82-4aaf-b84e-0ea78ccd0e8e",
+    "political": false
+  },
+  {
+    "value": "Government Tax Profession",
+    "key": "bdc52eda-e370-47c2-afc6-8454e9fa2a79",
+    "political": false
+  },
+  {
+    "value": "Government Veterinary Services",
+    "key": "5aa41748-a66e-4886-b47a-08a7d846370e",
+    "political": false
+  },
+  {
+    "value": "Gowers Review of Intellectual Property",
+    "key": "8e01a076-3a77-4272-a812-708177719de1",
+    "political": false
+  },
+  {
+    "value": "Great Britain-China Centre",
+    "key": "e6f0d3e8-33c5-4639-a093-19b76a8714a1",
+    "political": false
+  },
+  {
+    "value": "Great Yarmouth Education Action Zone",
+    "key": "55d8e65d-dd03-4074-a3b1-87112a1d5f0d",
+    "political": false
+  },
+  {
+    "value": "Greenwich Education Action Zone",
+    "key": "ef7ff4ec-2d2b-4db4-b125-fe409ef93256",
+    "political": false
+  },
+  {
+    "value": "Groceries Code Adjudicator",
+    "key": "c39170d6-85de-408e-87cf-37d0005bb791",
+    "political": false
+  },
+  {
+    "value": "H.M. Customs and Excise",
+    "key": "327b500d-68ef-402f-bd54-511566fca106",
+    "political": false
+  },
+  {
+    "value": "H.M. Inspectorate of Court Administration",
+    "key": "bc99b38b-fc87-4c9a-8b58-7344d95cb20e",
+    "political": false
+  },
+  {
+    "value": "H.M. Inspectorate of Explosives for Northern Ireland",
+    "key": "6e43fa29-d97b-404e-8a5b-ffbe22e130a4",
+    "political": false
+  },
+  {
+    "value": "Hackney Education Action Zone",
+    "key": "355e1321-96c5-4c56-8249-4a22dff4497a",
+    "political": false
+  },
+  {
+    "value": "Hamilton Oxford Education Action Zone",
+    "key": "3db907c7-3670-4607-9d6b-29f37769225b",
+    "political": false
+  },
+  {
+    "value": "Hastings and St Leonards Education Action Zone",
+    "key": "b9b9e74f-68e0-4ccf-9897-f74e5468dd29",
+    "political": false
+  },
+  {
+    "value": "Health and Safety Executive",
+    "key": "5416838d-cdd3-4172-94db-caafd966fdf3",
+    "political": false
+  },
+  {
+    "value": "Health and Social Care Information Centre",
+    "key": "dad552a3-bb63-4825-a3ec-f06c4409bda4",
+    "political": false
+  },
+  {
+    "value": "Health Education England",
+    "key": "b48f2dab-c504-41b6-8c95-1da4cf97065f",
+    "political": false
+  },
+  {
+    "value": "Health Protection Agency",
+    "key": "ec076665-ef99-4843-8ca0-bf7043fcb668",
+    "political": false
+  },
+  {
+    "value": "Health Research Authority",
+    "key": "ce54091b-f918-40c7-8a94-2242571b3507",
+    "political": false
+  },
+  {
+    "value": "Healthcare Commission",
+    "key": "fb4856f9-9652-454f-ab80-30728f3712d1",
+    "political": false
+  },
+  {
+    "value": "Healthcare UK",
+    "key": "036eacbb-80b5-471d-8793-293b7cdc68e2",
+    "political": false
+  },
+  {
+    "value": "Hearing Aid Council",
+    "key": "56158471-a377-4cf3-b001-f26e31f5ad46",
+    "political": false
+  },
+  {
+    "value": "Heart of Slough Education Action Zone",
+    "key": "679e5414-b029-4efe-b331-51283c790996",
+    "political": false
+  },
+  {
+    "value": "Her Majesty's Government Communications Centre",
+    "key": "0fd1fd4f-5779-4cf4-ac37-6fe1a91ad15c",
+    "political": false
+  },
+  {
+    "value": "Her Majesty's Magistrates Courts Service Inspectorate",
+    "key": "08affd57-9f22-45f5-b416-a66d8232498d",
+    "political": false
+  },
+  {
+    "value": "Her Majesty’s Prison and Probation Service",
+    "key": "37a2a3c3-ccd7-46b0-8b81-199a746a2768",
+    "political": false
+  },
+  {
+    "value": "Heritage Lottery Fund (administered by the NHMF)",
+    "key": "d82fa952-4654-41e8-8ac0-8e1c7aecb531",
+    "political": false
+  },
+  {
+    "value": "High Speed Two (HS2) Limited",
+    "key": "b80fab8b-6ed4-426a-bb8d-f4b614437671",
+    "political": false
+  },
+  {
+    "value": "Higher Education Funding Council for England",
+    "key": "b8e51cc0-de20-47a7-8d36-aec6736d3884",
+    "political": false
+  },
+  {
+    "value": "Higher Education Statistics Agency",
+    "key": "60de9b00-a982-4449-a995-f2353e86fb95",
+    "political": false
+  },
+  {
+    "value": "Highways Agency",
+    "key": "14e2f2c2-6606-4f3f-92ed-24dedce86e3b",
+    "political": false
+  },
+  {
+    "value": "Highways England",
+    "key": "ddad017a-eb20-41d9-8386-56293be68aab",
+    "political": false
+  },
+  {
+    "value": "Hillsborough Independent Panel",
+    "key": "3d408056-3956-450f-b2fb-367bea521c19",
+    "political": false
+  },
+  {
+    "value": "Historic England",
+    "key": "4dc9c134-62e4-40ab-aaa0-45ca55f0a1e3",
+    "political": false
+  },
+  {
+    "value": "Historic Royal Palaces",
+    "key": "a3fc9456-1a58-4549-9672-c3528fd75632",
+    "political": false
+  },
+  {
+    "value": "HM Courts & Tribunals Service",
+    "key": "6f757605-ab8f-4b62-84e4-99f79cf085c2",
+    "political": false
+  },
+  {
+    "value": "HM Courts Service",
+    "key": "d6e01278-c1e5-4e96-a553-5e3a6bebf236",
+    "political": false
+  },
+  {
+    "value": "HM Crown Prosecution Service Inspectorate",
+    "key": "80d7633e-2e65-46f0-8328-d71692ca3cc4",
+    "political": false
+  },
+  {
+    "value": "HM Inspectorate of Constabulary",
+    "key": "124c53f6-67ce-48a1-9b13-10dd26500b70",
+    "political": false
+  },
+  {
+    "value": "HM Inspectorate of Constabulary and Fire & Rescue Services",
+    "key": "8e7cdcf3-d960-41dd-bd99-3e10e6379df9",
+    "political": false
+  },
+  {
+    "value": "HM Inspectorate of Prisons",
+    "key": "d85bc1fb-fca0-4d10-b9ff-a637ed4110bc",
+    "political": false
+  },
+  {
+    "value": "HM Inspectorate of Probation",
+    "key": "906f6d40-ba00-48ae-9c41-a0964dfa1b81",
+    "political": false
+  },
+  {
+    "value": "HM Land Registry",
+    "key": "5c54ae52-341b-499e-a6dd-67f04633b8cf",
+    "political": false
+  },
+  {
+    "value": "HM Nautical Almanac Office",
+    "key": "205c4066-fcf3-4a9b-95b2-e068744a8757",
+    "political": false
+  },
+  {
+    "value": "HM Passport Office",
+    "key": "3a96a1e0-21e3-4aae-8e84-f90860ed3dbf",
+    "political": false
+  },
+  {
+    "value": "HM Prison Service",
+    "key": "05b3ff92-52c9-4577-b08e-7514b40c98ff",
+    "political": false
+  },
+  {
+    "value": "HM Revenue & Customs",
+    "key": "6667cce2-e809-4e21-ae09-cb0bdc1ddda3",
+    "political": false
+  },
+  {
+    "value": "HM Treasury",
+    "key": "1994e0e4-bd19-4966-bbd7-f293d6e90a6b",
+    "political": true
+  },
+  {
+    "value": "Home Office",
+    "key": "06056197-bc69-4147-aa28-070bca132178",
+    "political": true
+  },
+  {
+    "value": "Home-Grown Cereals Authority",
+    "key": "cb45c9f9-ec76-4e18-bca2-14bec0652499",
+    "political": false
+  },
+  {
+    "value": "Homes and Communities Agency",
+    "key": "5ddb26f6-caad-4b14-97a7-fabcfa25d4bc",
+    "political": true
+  },
+  {
+    "value": "Homes England",
+    "key": "ad6f059a-f36c-48eb-a07f-4a6856f08f7f",
+    "political": true
+  },
+  {
+    "value": "Horniman Public Museum and Public Park Trust",
+    "key": "aa59fde3-e687-445e-a5e9-036e515002ab",
+    "political": false
+  },
+  {
+    "value": "Horserace Betting Levy Board",
+    "key": "3cf62435-602b-4dc5-ac32-b01d635d0cc7",
+    "political": false
+  },
+  {
+    "value": "Horticultural Development Council",
+    "key": "52ac6a61-8657-4093-928d-afe545ad5cbb",
+    "political": false
+  },
+  {
+    "value": "House of Lords Appointments Commission",
+    "key": "53e21b5a-ee6e-42b5-9c8b-5e060d4fda9d",
+    "political": false
+  },
+  {
+    "value": "Housing Corporation",
+    "key": "5208aede-165d-494e-b0fc-675bb2351d9b",
+    "political": true
+  },
+  {
+    "value": "Housing Ombudsman",
+    "key": "9e28ceb5-667e-4950-bd82-22dec742f20d",
+    "political": false
+  },
+  {
+    "value": "HSC Business Services Organisation (Northern Ireland)",
+    "key": "2408fbfe-72c9-4ca1-a9f2-598e143bb560",
+    "political": false
+  },
+  {
+    "value": "Human Fertilisation and Embryology Authority",
+    "key": "12c1fef7-2477-409c-bc14-839eeac85bca",
+    "political": false
+  },
+  {
+    "value": "Human Resources Profession",
+    "key": "72a4d3ba-f55b-4cbd-9cd2-fbed71166875",
+    "political": false
+  },
+  {
+    "value": "Human Tissue Authority",
+    "key": "d2f1fdad-1c75-49d2-8395-6689312ce992",
+    "political": false
+  },
+  {
+    "value": "Hybu Cig Cymru - Meat Promotion Wales",
+    "key": "83bc07ac-70eb-40b9-a7ce-cc06d45b27b1",
+    "political": false
+  },
+  {
+    "value": "ICL Inquiry",
+    "key": "4c51bdf9-1807-41b4-b684-f08193810fb1",
+    "political": false
+  },
+  {
+    "value": "Identity and Passport Service",
+    "key": "067f99ed-0346-4593-9e2b-4d62198c7cde",
+    "political": false
+  },
+  {
+    "value": "Immigration Enforcement",
+    "key": "9981b813-468f-414a-a468-28f5438811f4",
+    "political": true
+  },
+  {
+    "value": "Imperial War Museum",
+    "key": "9ec60cf3-32f6-454b-803e-1ce494baa554",
+    "political": false
+  },
+  {
+    "value": "Independent Advisory Panel on Deaths in Custody",
+    "key": "c815749f-a60c-43c6-91b1-895aceba412f",
+    "political": false
+  },
+  {
+    "value": "Independent Agricultural Appeals Panel",
+    "key": "7a1b7347-6040-4b8c-9687-b18a0125b5e6",
+    "political": false
+  },
+  {
+    "value": "Independent Anti-slavery Commissioner",
+    "key": "cc338777-40c1-4b8c-9167-0e90739dfa3c",
+    "political": false
+  },
+  {
+    "value": "Independent Case Examiner",
+    "key": "98fe93e5-1c17-49cb-97bd-01bdc822f9db",
+    "political": false
+  },
+  {
+    "value": "Independent Chief Inspector of Borders and Immigration",
+    "key": "e71e4ae0-7b14-48f0-9cc9-8150ce5d0cd3",
+    "political": false
+  },
+  {
+    "value": "Independent Commission for Aid Impact",
+    "key": "576ef8b8-7d03-402a-a849-8da28ca72151",
+    "political": false
+  },
+  {
+    "value": "Independent Commission on Civil Aviation Noise",
+    "key": "a55d4905-8daf-496b-b551-f02369ada68d",
+    "political": false
+  },
+  {
+    "value": "Independent Commission on Freedom of Information",
+    "key": "e73baa65-73ec-4809-8762-11af3e1629f4",
+    "political": false
+  },
+  {
+    "value": "Independent Complaints Reviewer",
+    "key": "94560f1b-2612-4fd8-9495-d040a9f1b00b",
+    "political": false
+  },
+  {
+    "value": "Independent Dormant Assets Commission",
+    "key": "ec2d53a1-0d51-4c9c-8d14-31cfee762922",
+    "political": false
+  },
+  {
+    "value": "Independent Family Returns Panel",
+    "key": "bd11e70f-ad2d-458d-a9cf-b54dc096a541",
+    "political": false
+  },
+  {
+    "value": "Independent Living Fund",
+    "key": "b8a6a8f2-d04f-4346-90c1-d28898565866",
+    "political": false
+  },
+  {
+    "value": "Independent Medical Expert Group",
+    "key": "b87c5464-1fe2-4385-8990-790cd585b931",
+    "political": false
+  },
+  {
+    "value": "Independent Monitoring Boards",
+    "key": "6752d15f-19e3-4235-afa0-96f191f18c54",
+    "political": false
+  },
+  {
+    "value": "Independent Monitoring Commission",
+    "key": "384c5237-c897-46f8-8699-27a084cc35d0",
+    "political": false
+  },
+  {
+    "value": "Independent Office for Police Conduct",
+    "key": "845769f6-794e-4999-8925-ac760e16862d",
+    "political": false
+  },
+  {
+    "value": "Independent Parliamentary Standards Authority",
+    "key": "9c6083ea-0b66-458a-9e39-67f99fd65162",
+    "political": false
+  },
+  {
+    "value": "Independent Police Complaints Commission",
+    "key": "5aeea609-52dc-4cc6-ab47-c5936a3bcee5",
+    "political": false
+  },
+  {
+    "value": "Independent Reconfiguration Panel",
+    "key": "171abbf3-beca-46b9-a0c3-4b4ff1e8c8ed",
+    "political": false
+  },
+  {
+    "value": "Independent Review Mechanism",
+    "key": "54fd4cc7-c628-4ca7-b2e0-870bf24d36b8",
+    "political": false
+  },
+  {
+    "value": "Independent Review of Police Officer and Staff Remuneration and Conditions",
+    "key": "692a3012-ddc7-4859-a270-74962ac62ef0",
+    "political": false
+  },
+  {
+    "value": "Independent Review of the UK Postal Services Sector",
+    "key": "b5acf936-fd43-4f8b-aad1-70797793e6a1",
+    "political": false
+  },
+  {
+    "value": "Independent Reviewer of Terrorism Legislation",
+    "key": "e10280ca-1e4d-4819-af01-cf2950ff65b5",
+    "political": false
+  },
+  {
+    "value": "Independent Safeguarding Authority",
+    "key": "59800d10-aa8c-4f89-a820-fe063a2b724d",
+    "political": false
+  },
+  {
+    "value": "Independent Television Commission",
+    "key": "ddfa93be-6593-4dd8-bcf1-dd5fe5654b0d",
+    "political": false
+  },
+  {
+    "value": "Industrial Development Advisory Board",
+    "key": "24484a19-997b-4702-8500-a059b26e951b",
+    "political": false
+  },
+  {
+    "value": "Industrial Injuries Advisory Council",
+    "key": "c5bfac93-8575-4b9e-af4f-12feafa46881",
+    "political": false
+  },
+  {
+    "value": "Information Commissioner's Office",
+    "key": "763d15dd-c454-4f5b-876d-838a6cfc2fae",
+    "political": false
+  },
+  {
+    "value": "Information Services Division (Scotland)",
+    "key": "9783d098-3218-4570-84c2-58ed66e919dc",
+    "political": false
+  },
+  {
+    "value": "Infrastructure and Projects Authority",
+    "key": "28fbe4cf-7848-4e77-9ed2-e71935fb5bf1",
+    "political": false
+  },
+  {
+    "value": "Infrastructure Planning Commission",
+    "key": "a3c61f5e-2669-424e-b76a-29da6421eaca",
+    "political": false
+  },
+  {
+    "value": "Infrastructure UK",
+    "key": "697bf058-5764-467c-8969-32102447953b",
+    "political": true
+  },
+  {
+    "value": "Innovate UK",
+    "key": "ac27c5b8-bf8e-482d-8425-01918a7fd5c4",
+    "political": false
+  },
+  {
+    "value": "Inquiry into the supervision of the Bank of Credit and Commerce International",
+    "key": "0398096c-6742-4cf3-934a-09fa70309beb",
+    "political": false
+  },
+  {
+    "value": "Insolvency List",
+    "key": "3709a046-c121-47b5-881a-115580f5ee2d",
+    "political": false
+  },
+  {
+    "value": "Insolvency Practitioners Tribunal",
+    "key": "64642a32-f3f6-40ab-99ea-7abd5053081f",
+    "political": false
+  },
+  {
+    "value": "Insolvency Rules Committee",
+    "key": "f46df4d8-dfa3-40a1-bd9a-6d6148ce43be",
+    "political": false
+  },
+  {
+    "value": "Institute for Apprenticeships",
+    "key": "a081cd5b-c41d-4389-ac65-982e7570680d",
+    "political": false
+  },
+  {
+    "value": "Institute for Apprenticeships and Technical Education",
+    "key": "de9f4888-4cd0-4efd-a14a-34e7c936df73",
+    "political": false
+  },
+  {
+    "value": "Intellectual Property Enterprise Court",
+    "key": "4297e87f-4d1d-43f5-8850-26fba1818e08",
+    "political": false
+  },
+  {
+    "value": "Intellectual Property Office",
+    "key": "5d6f9583-991f-413d-ae83-be7274e5eae4",
+    "political": false
+  },
+  {
+    "value": "Intelligence Analysis",
+    "key": "f4440936-40b2-4ca8-94e5-eb922c6c665c",
+    "political": false
+  },
+  {
+    "value": "Intelligence Services Commissioner",
+    "key": "5c5ce8b0-8a4a-44d4-a37c-9a5595025d14",
+    "political": false
+  },
+  {
+    "value": "Interception of Communications Commissioner",
+    "key": "ceb78367-8aa4-494b-ab44-71bdaeff939f",
+    "political": false
+  },
+  {
+    "value": "Internal Audit Profession",
+    "key": "ec79610b-788e-46b8-b468-087e5cac3be8",
+    "political": false
+  },
+  {
+    "value": "Investigatory Powers Commissioner's Office",
+    "key": "c032577f-7ed4-4fc2-8151-8c44d574a730",
+    "political": false
+  },
+  {
+    "value": "Investigatory Powers Tribunal",
+    "key": "4f3914c9-9b7f-48e7-85fd-30cd98d6c9fe",
+    "political": false
+  },
+  {
+    "value": "Investors in People UK",
+    "key": "8a1e3362-108f-446d-a7f6-c6a39e392a13",
+    "political": false
+  },
+  {
+    "value": "Iraq Inquiry",
+    "key": "edaa47a1-a986-4eac-a57a-ceea1b93a053",
+    "political": false
+  },
+  {
+    "value": "jHub Defence Innovation",
+    "key": "6e606a19-61e2-4ae4-8133-1af4a360655b",
+    "political": false
+  },
+  {
+    "value": "Joint Forces Command",
+    "key": "28441569-a901-4d7a-8b11-c0411ad008e2",
+    "political": false
+  },
+  {
+    "value": "Joint Nature Conservation Committee",
+    "key": "04da446d-df33-496b-a3c0-368e1d97fbb7",
+    "political": false
+  },
+  {
+    "value": "Judicial Appointments and Conduct Ombudsman",
+    "key": "26e55584-4db9-4476-a527-a3c5cb1eb6d2",
+    "political": false
+  },
+  {
+    "value": "Judicial Appointments Commission",
+    "key": "48ab7323-b4b7-41a4-bb8e-487ebdd5cdae",
+    "political": false
+  },
+  {
+    "value": "Judicial Office",
+    "key": "8c35283c-1045-4363-a51c-32209e58deee",
+    "political": false
+  },
+  {
+    "value": "Kent and Somerset Education Action Zone",
+    "key": "e10895ce-fcef-4ff6-8558-174611c4c16c",
+    "political": false
+  },
+  {
+    "value": "Kerr / Haslam Inquiry",
+    "key": "e39a9b23-be55-43e1-a000-98d495808c61",
+    "political": false
+  },
+  {
+    "value": "Kitts Green and Shard End Education Action Zone",
+    "key": "8d13f031-9806-4ce0-a8f5-752f4c5223da",
+    "political": false
+  },
+  {
+    "value": "Labour Relations Agency",
+    "key": "41684df9-c665-4e39-9818-1aa3a4c1bc74",
+    "political": false
+  },
+  {
+    "value": "Lake District National Park Authority",
+    "key": "521ef7a8-cd3c-410a-913e-97b27c686f61",
+    "political": false
+  },
+  {
+    "value": "Lammy Review",
+    "key": "94bea512-8422-413b-9c82-bfc4ee5f268b",
+    "political": false
+  },
+  {
+    "value": "Land Registers of Northern Ireland",
+    "key": "a4c7bc66-b96b-4a07-ba53-06837193f57c",
+    "political": false
+  },
+  {
+    "value": "Land Registration Rule Committee",
+    "key": "25ee0af2-ee25-4dde-b5dd-1b75b0bad76e",
+    "political": false
+  },
+  {
+    "value": "Law Commission",
+    "key": "664625d0-5799-4a70-9e79-95a1df8cb887",
+    "political": false
+  },
+  {
+    "value": "Learning and Skills Council",
+    "key": "a8ee6f64-6439-4143-a7b8-63572ae5efcd",
+    "political": false
+  },
+  {
+    "value": "Leasehold Advisory Service",
+    "key": "efe5af99-f8ae-4dd3-867b-e29119f65fe4",
+    "political": false
+  },
+  {
+    "value": "Legal Aid Agency",
+    "key": "6ba90ae6-972d-4d48-ad66-693bbb31496d",
+    "political": false
+  },
+  {
+    "value": "Legal Aid Board",
+    "key": "de981232-d406-4d7f-adc7-046c3f908815",
+    "political": false
+  },
+  {
+    "value": "Legal Services Agency (Northern Ireland)",
+    "key": "892b7d05-ad17-4872-b8ed-b6defa9d9ab2",
+    "political": false
+  },
+  {
+    "value": "Legal Services Board",
+    "key": "1bfc68b1-30d5-4924-8e2d-b4b9eed71b26",
+    "political": false
+  },
+  {
+    "value": "Legal Services Commission",
+    "key": "8010b372-ea79-467b-9221-da7a2330ea72",
+    "political": false
+  },
+  {
+    "value": "Leigh Park Education Action Zone",
+    "key": "da5025ed-e79b-471e-8f39-0e6e56ced940",
+    "political": false
+  },
+  {
+    "value": "Leitch Review of Skills",
+    "key": "a3b51c30-7f49-4250-86f7-7249eb08d5e7",
+    "political": false
+  },
+  {
+    "value": "Leveson Inquiry",
+    "key": "5b839aab-4da2-43a4-8408-d79d2f151ec9",
+    "political": false
+  },
+  {
+    "value": "Life Sciences Organisation",
+    "key": "43566eec-f3eb-4d1d-bfb9-a247176ab3fa",
+    "political": false
+  },
+  {
+    "value": "Life Sentence Review Commissioners",
+    "key": "85d57316-5ddb-4e87-84a6-24d3b8558369",
+    "political": false
+  },
+  {
+    "value": "Livestock and Meat Commission for Northern Ireland",
+    "key": "31980c3b-1f83-4d18-9daa-deb12483e094",
+    "political": false
+  },
+  {
+    "value": "Local Better Regulation Office",
+    "key": "7d8daca1-9d59-4355-b338-58f435a4ff1c",
+    "political": false
+  },
+  {
+    "value": "Local Government and Social Care Ombudsman",
+    "key": "9ada320d-b9c6-4a67-92c5-10a5aee9ba10",
+    "political": false
+  },
+  {
+    "value": "LocatED",
+    "key": "690082aa-386d-4074-b1f2-0123be7268ac",
+    "political": false
+  },
+  {
+    "value": "London and Continental Railways Limited",
+    "key": "a9a27d7f-c0d2-4a1b-9ad2-baf38f4dc1db",
+    "political": false
+  },
+  {
+    "value": "London Thames Gateway Development Corporation",
+    "key": "f1e5373d-6b82-47a4-9dfe-595f060360f6",
+    "political": false
+  },
+  {
+    "value": "Lord Chancellor's Department",
+    "key": "dfa0264d-870c-49b4-91c9-d19b1ab8dbe0",
+    "political": true
+  },
+  {
+    "value": "Loughs Agency",
+    "key": "2afd1cdf-b98c-49c4-bd54-8ad50f9ce9c5",
+    "political": false
+  },
+  {
+    "value": "Low Level Waste Repository Ltd",
+    "key": "51693b1c-ad88-42c4-a55d-cc5c447b8d99",
+    "political": false
+  },
+  {
+    "value": "Low Pay Commission",
+    "key": "56026645-0033-45ca-b988-8629a31a9882",
+    "political": false
+  },
+  {
+    "value": "Lyons Inquiry into Local Government",
+    "key": "4004d8b5-7af8-4257-b431-ee93170d753b",
+    "political": false
+  },
+  {
+    "value": "Macur Review",
+    "key": "fc40d53a-f77d-4460-8dce-fe9f747e545e",
+    "political": false
+  },
+  {
+    "value": "Magnox Ltd",
+    "key": "80e1bd59-c8a4-4ad1-986e-d79355ea96b2",
+    "political": false
+  },
+  {
+    "value": "Marine Accident Investigation Branch",
+    "key": "9c66b9a3-1e6a-48e8-974d-2a5635f84679",
+    "political": false
+  },
+  {
+    "value": "Marine Fisheries Agency",
+    "key": "a75cb951-e078-4341-9d73-32371a981e18",
+    "political": false
+  },
+  {
+    "value": "Marine Management Organisation",
+    "key": "8d56bb52-2f79-4b6d-9fc6-6d7dcc4f7586",
+    "political": false
+  },
+  {
+    "value": "Maritime and Coastguard Agency",
+    "key": "23a24aa8-1711-42b6-bf6b-47af0f230295",
+    "political": false
+  },
+  {
+    "value": "Marshall Aid Commemoration Commission",
+    "key": "c3704b95-a9b8-4dcc-84f4-5af987813d18",
+    "political": false
+  },
+  {
+    "value": "Meat and Livestock Commission",
+    "key": "c4b9bcd9-c3a7-4c3f-9314-e88b88b2c591",
+    "political": false
+  },
+  {
+    "value": "Meat Hygiene Service",
+    "key": "e2d3a417-dc63-41df-a8d6-46f6534c2d3c",
+    "political": false
+  },
+  {
+    "value": "Medical Profession",
+    "key": "660c6a4d-6d84-43b4-9f4a-72bcc9710b33",
+    "political": false
+  },
+  {
+    "value": "Medical Research Council",
+    "key": "c4e35ca7-01ed-4b2c-97cb-b31d9ebdb4dd",
+    "political": false
+  },
+  {
+    "value": "Medical Supplies Agency",
+    "key": "089cf76a-2f39-4bf9-b62e-dfee0595665d",
+    "political": false
+  },
+  {
+    "value": "Medicines and Healthcare products Regulatory Agency",
+    "key": "240f72bd-9a4d-4f39-94d9-77235cadde8e",
+    "political": false
+  },
+  {
+    "value": "Mental Health Act Commission",
+    "key": "c4cb3de2-9a8b-48e3-96aa-02d5ab1ddfd5",
+    "political": false
+  },
+  {
+    "value": "Met Office",
+    "key": "cb2b9743-d253-40c1-a037-c5770a7b90cd",
+    "political": false
+  },
+  {
+    "value": "Mid Staffordshire NHS Foundation Trust Public Inquiry 2010",
+    "key": "4d24733b-7b00-481f-b16c-6cd80e4ac632",
+    "political": false
+  },
+  {
+    "value": "Mid Staffordshire NHS Foundation Trust Public Inquiry 2013",
+    "key": "a1e032af-26f3-4d15-8557-06aa981254c0",
+    "political": false
+  },
+  {
+    "value": "Migration Advisory Committee",
+    "key": "141baba8-f1c1-404d-9e3d-13db046e7b39",
+    "political": false
+  },
+  {
+    "value": "Military Aviation Authority",
+    "key": "b9f31e72-291a-4cfd-927e-667a46279465",
+    "political": false
+  },
+  {
+    "value": "Milk Development Council",
+    "key": "a02b964d-b97b-4077-b5af-cf40c7af86e0",
+    "political": false
+  },
+  {
+    "value": "Millennium Commission",
+    "key": "f2fc3c7f-d683-4821-af3f-8abca169dd4e",
+    "political": false
+  },
+  {
+    "value": "Ministry of Defence",
+    "key": "d994e55c-48c9-4795-b872-58d8ec98af12",
+    "political": true
+  },
+  {
+    "value": "Ministry of Defence Police and Guarding Agency",
+    "key": "2f32c618-f818-4226-a832-cd4c4ccb65e9",
+    "political": false
+  },
+  {
+    "value": "Ministry of Housing, Communities & Local Government",
+    "key": "2e7868a8-38f5-4ff6-b62f-9a15d1c22d28",
+    "political": true
+  },
+  {
+    "value": "Ministry of Justice",
+    "key": "dcc907d6-433c-42df-9ffb-d9c68be5dc4d",
+    "political": true
+  },
+  {
+    "value": "Monitor",
+    "key": "f285e31f-e2ba-4014-a0d9-013365f27166",
+    "political": false
+  },
+  {
+    "value": "Monopolies and Mergers Commission",
+    "key": "7a3419a5-6454-4841-a48e-d14b27cd6bf9",
+    "political": false
+  },
+  {
+    "value": "Morecambe Bay Investigation",
+    "key": "33f69a27-4bee-4f4a-bd3c-7ec62562be74",
+    "political": false
+  },
+  {
+    "value": "Mull of Kintyre Review",
+    "key": "10be712d-dc35-4124-81b3-1f9464434a20",
+    "political": false
+  },
+  {
+    "value": "Museums, Libraries and Archives Council",
+    "key": "3da440b3-0cac-4b2e-8eb8-e01734f6d2f5",
+    "political": false
+  },
+  {
+    "value": "National Army Museum",
+    "key": "6e025dd8-a7f3-4d9e-8936-eb93f5419dc8",
+    "political": false
+  },
+  {
+    "value": "National Biological Standards Board",
+    "key": "faa9e8d2-d5b8-4a09-875c-4617d481c32f",
+    "political": false
+  },
+  {
+    "value": "National Blood Authority",
+    "key": "9b81880a-bffa-4e87-928a-c8efefd67f85",
+    "political": false
+  },
+  {
+    "value": "National Care Standards Commission",
+    "key": "e9492f8f-5721-4489-86c7-809617724565",
+    "political": false
+  },
+  {
+    "value": "National Citizen Service",
+    "key": "2d16cd11-2040-4711-a4a8-9d09fc425f2f",
+    "political": false
+  },
+  {
+    "value": "National College for School Leadership",
+    "key": "d6b3a921-2d47-4ef0-8248-ac3c2fb50ba6",
+    "political": false
+  },
+  {
+    "value": "National College for Teaching and Leadership",
+    "key": "e1cbab66-b0d3-4186-917c-afd4f3fb6967",
+    "political": true
+  },
+  {
+    "value": "National Counter Terrorism Security Office",
+    "key": "d965471b-56e2-4995-8790-ab47924f6071",
+    "political": false
+  },
+  {
+    "value": "National Crime Agency",
+    "key": "4623aadb-f96e-4bfb-b6fb-007dab3c5185",
+    "political": false
+  },
+  {
+    "value": "National Crime Agency Remuneration Review Body",
+    "key": "546e6646-80df-433a-ad10-6dea80ebd8ca",
+    "political": false
+  },
+  {
+    "value": "National Crime Squad",
+    "key": "51ec3fba-90af-4098-889a-1d1384447aa5",
+    "political": false
+  },
+  {
+    "value": "National Criminal Intelligence Service",
+    "key": "5c630f25-4ecb-4643-b89e-1d57193ef076",
+    "political": false
+  },
+  {
+    "value": "National Cyber Security Centre",
+    "key": "268e0f61-a32c-4cfb-8c89-96a504919b35",
+    "political": false
+  },
+  {
+    "value": "National Data Guardian",
+    "key": "c9fa14af-052d-451c-a003-5d03a13b92b2",
+    "political": false
+  },
+  {
+    "value": "National DNA Database Ethics Group",
+    "key": "8559ab3b-383c-428c-b57c-7604e22ce8e2",
+    "political": false
+  },
+  {
+    "value": "National Employer Advisory Board",
+    "key": "fbeb7cc1-c9a0-4cc6-9550-6dd87c262f5f",
+    "political": false
+  },
+  {
+    "value": "National Employment Savings Trust (NEST) Corporation",
+    "key": "4d14dda6-55a5-4bfa-9e4b-25dda8207b37",
+    "political": false
+  },
+  {
+    "value": "National Endowment for Science, Technology and the Arts",
+    "key": "4eed1a78-2d66-4cf8-ac22-61542a1cfa48",
+    "political": false
+  },
+  {
+    "value": "National Forest Company",
+    "key": "bb74310b-0d52-49d8-bd38-72df8f868950",
+    "political": false
+  },
+  {
+    "value": "National Fraud Authority",
+    "key": "9e2fa982-1cf6-400e-bfce-c8222a2efce3",
+    "political": false
+  },
+  {
+    "value": "National Gallery",
+    "key": "4c3d83bd-00fc-432c-9b1a-2d4d16008976",
+    "political": false
+  },
+  {
+    "value": "National Heritage Memorial Fund",
+    "key": "898a7d06-0d77-4190-bc14-c4c4a4768f44",
+    "political": false
+  },
+  {
+    "value": "National Information Board",
+    "key": "3b1a557b-c411-4169-970d-cb40e2eb2bcd",
+    "political": false
+  },
+  {
+    "value": "National Infrastructure Commission",
+    "key": "2ca05037-b1c6-44f3-a9ef-a35cb6c6a47a",
+    "political": false
+  },
+  {
+    "value": "National Institute for Health and Care Excellence",
+    "key": "1ad98e10-6422-4202-9d39-e341787d527c",
+    "political": false
+  },
+  {
+    "value": "National Lottery Heritage Fund",
+    "key": "03a68050-8c23-4d59-a3bf-5be7589579f9",
+    "political": false
+  },
+  {
+    "value": "National Measurement and Regulation Office",
+    "key": "9c0cb3f3-8cea-4597-b719-ec168c36063f",
+    "political": false
+  },
+  {
+    "value": "National Measurement Office",
+    "key": "bf70fb51-06d0-4625-85bb-410bdf42cddc",
+    "political": false
+  },
+  {
+    "value": "National Museum of the Royal Navy",
+    "key": "a2a82282-91a6-467e-b396-494cf770d02c",
+    "political": false
+  },
+  {
+    "value": "National Museums and Galleries of Northern Ireland",
+    "key": "ff6a33c0-4c47-4bb3-b9b8-5b05aab2da86",
+    "political": false
+  },
+  {
+    "value": "National Museums Liverpool",
+    "key": "8819799d-d7cd-4b1f-8dcc-d8db9670c707",
+    "political": false
+  },
+  {
+    "value": "National Museums of Scotland",
+    "key": "f55dfd8e-169c-4d71-880c-49ced68db645",
+    "political": false
+  },
+  {
+    "value": "National Offender Management Service",
+    "key": "8ece113b-f63c-44e1-8673-768cc78bf919",
+    "political": false
+  },
+  {
+    "value": "National Patient Safety Agency",
+    "key": "6698bbce-2928-44c3-9968-9542e6a26b28",
+    "political": false
+  },
+  {
+    "value": "National Policing Improvement Agency",
+    "key": "2028703a-76ab-4214-b5b3-1b601e084cb8",
+    "political": false
+  },
+  {
+    "value": "National Portrait Gallery",
+    "key": "e81e15cf-90b2-43f3-b3f5-c48735531c23",
+    "political": false
+  },
+  {
+    "value": "National Probation Service",
+    "key": "d64a0959-bedf-4c6d-8e94-d607cc56ab5b",
+    "political": false
+  },
+  {
+    "value": "National Radiological Protection Board",
+    "key": "b36cbdf2-78de-4a7c-9f18-c43c1a7d4b98",
+    "political": false
+  },
+  {
+    "value": "National Records of Scotland",
+    "key": "f48ee4f8-913f-46af-ba73-e36d5cf0aa75",
+    "political": false
+  },
+  {
+    "value": "National School of Government",
+    "key": "44365ea1-29fc-414a-9fea-3aaed1926cd7",
+    "political": false
+  },
+  {
+    "value": "National security and intelligence",
+    "key": "354bc716-9654-4b5e-b24d-172588e24ca3",
+    "political": false
+  },
+  {
+    "value": "National Treatment Agency for Substance Misuse",
+    "key": "5bc73fec-5726-4354-bad4-13a6ba1ca4a3",
+    "political": false
+  },
+  {
+    "value": "National Weights and Measures Laboratory",
+    "key": "e42e3a37-5eb7-45c7-8f89-5d7aa8b7da57",
+    "political": false
+  },
+  {
+    "value": "Natural England",
+    "key": "d3ce4ba7-bc75-46b4-89d9-38cb3240376d",
+    "political": false
+  },
+  {
+    "value": "Natural Environment Research Council",
+    "key": "e83c99b4-d96e-4772-88bc-2973e9412475",
+    "political": false
+  },
+  {
+    "value": "Natural History Museum",
+    "key": "085eb0d3-4696-4252-a7b0-71913cdba56b",
+    "political": false
+  },
+  {
+    "value": "Natural Resources Institute",
+    "key": "e7a4a731-61bd-487d-8114-ecfa2f3bfad9",
+    "political": false
+  },
+  {
+    "value": "Natural Resources Wales",
+    "key": "83926803-2033-4cf6-8b8b-53a82d3aaa74",
+    "political": false
+  },
+  {
+    "value": "Nature Conservancy Council",
+    "key": "1931848c-976e-4336-aae0-493d16945626",
+    "political": false
+  },
+  {
+    "value": "Network Rail",
+    "key": "6fec95fb-2d8c-4015-bfb6-799c2e8949b3",
+    "political": false
+  },
+  {
+    "value": "New Forest National Park Authority",
+    "key": "b24f28d7-97ea-4c31-b5bd-114111f87b9a",
+    "political": false
+  },
+  {
+    "value": "New Opportunities Fund",
+    "key": "1d9954cb-fe3d-46ca-917e-9d5c92588aaa",
+    "political": false
+  },
+  {
+    "value": "NHS Appointments Commission",
+    "key": "8c018708-5e4f-46b8-a3c4-46432690a081",
+    "political": false
+  },
+  {
+    "value": "NHS Blood and Transplant",
+    "key": "3e40a8d5-a3fd-4b7a-9e60-7df3849a8e42",
+    "political": false
+  },
+  {
+    "value": "NHS Business Services Authority",
+    "key": "07cebb86-ead7-4b80-ac96-fbd68a8d8b6f",
+    "political": false
+  },
+  {
+    "value": "NHS Counter Fraud Authority",
+    "key": "72c51156-6779-4d53-bb29-2e878453516f",
+    "political": false
+  },
+  {
+    "value": "NHS Digital",
+    "key": "57167442-dc92-49bf-a897-8a1969031c52",
+    "political": false
+  },
+  {
+    "value": "NHS Direct National Health Service Trust",
+    "key": "a876dbc5-bb55-4ede-8992-4531b34e3f21",
+    "political": false
+  },
+  {
+    "value": "NHS England",
+    "key": "f07b4bb8-8af6-42da-a161-3d90027e980c",
+    "political": false
+  },
+  {
+    "value": "NHS Estates",
+    "key": "18f8c51f-8bad-4282-acc2-24e8508f2472",
+    "political": false
+  },
+  {
+    "value": "NHS Improvement",
+    "key": "cc7a2d0a-07dd-46a3-a12d-c63642e570fa",
+    "political": false
+  },
+  {
+    "value": "NHS Information Centre",
+    "key": "61f289e3-da7d-4ef0-b3e5-d474d88eb69b",
+    "political": false
+  },
+  {
+    "value": "NHS Institute for Innovation and Improvement",
+    "key": "ee36adac-5b8d-405d-b100-60140f8e5da3",
+    "political": false
+  },
+  {
+    "value": "NHS Litigation Authority",
+    "key": "d3cfb789-27b7-4f4e-82a0-a29c9ca0c363",
+    "political": false
+  },
+  {
+    "value": "NHS Logistics Authority",
+    "key": "c676608c-6bdb-473d-ad6e-d5ae7d43317e",
+    "political": false
+  },
+  {
+    "value": "NHS Pay Review Body",
+    "key": "0c9b6c77-7e98-4a39-98a2-8e56b201217c",
+    "political": false
+  },
+  {
+    "value": "NHS Pensions Agency",
+    "key": "7caf5447-3f0a-427d-9a8c-b9db4eba593e",
+    "political": false
+  },
+  {
+    "value": "NHS Professionals",
+    "key": "1457d850-d8b5-42ec-bad9-8f3df224e96a",
+    "political": false
+  },
+  {
+    "value": "NHS Purchasing and Supply Agency",
+    "key": "240957b8-ee02-4e4a-b8dc-9f2ada4b0a13",
+    "political": false
+  },
+  {
+    "value": "NHS Resolution",
+    "key": "c719de90-8031-4c28-ba42-d9a49624b4c8",
+    "political": false
+  },
+  {
+    "value": "NHS Trust Development Authority",
+    "key": "4ecebcc6-8cb0-4906-bd84-8541fbc8f7b3",
+    "political": false
+  },
+  {
+    "value": "NHS Wales Informatics Service",
+    "key": "5708dd26-4c45-4e1a-8996-522ecdab3ed7",
+    "political": false
+  },
+  {
+    "value": "Nimrod Review",
+    "key": "752dbddc-8ab9-43bb-a0b2-219cbc6e6728",
+    "political": false
+  },
+  {
+    "value": "North East Derbyshire Coalfields Education Action Zone",
+    "key": "9512962f-16a5-4962-9760-15653a66105a",
+    "political": false
+  },
+  {
+    "value": "North East Education and Library Board",
+    "key": "8ed0e3f8-1be4-4d78-9fb6-5a3fb945b8c1",
+    "political": false
+  },
+  {
+    "value": "North Gillingham Education Action Zone",
+    "key": "f560236b-8bf4-4781-bc8d-fc0fcd16ea55",
+    "political": false
+  },
+  {
+    "value": "North Islington Education Action Zone",
+    "key": "936366b7-727c-4b11-95db-299f4bfcf880",
+    "political": false
+  },
+  {
+    "value": "North Stockton Education Action Zone",
+    "key": "4efb5379-6d41-4ebc-8480-810f790a19db",
+    "political": false
+  },
+  {
+    "value": "North West Development Agency",
+    "key": "f54d0655-8e53-4336-9418-09c7e3341c3f",
+    "political": false
+  },
+  {
+    "value": "North West Shropshire Education Action Zone",
+    "key": "bc65baaa-3ff2-4b56-ba19-8e31581bc58b",
+    "political": false
+  },
+  {
+    "value": "North York Moors National Park Authority",
+    "key": "1986a54b-eea9-45b5-8534-6830fec6fbfc",
+    "political": false
+  },
+  {
+    "value": "Northampton County Court Business Centre",
+    "key": "eb295743-22f3-411a-9b26-e67f1b146a33",
+    "political": false
+  },
+  {
+    "value": "Northern Health and Social Services Board",
+    "key": "28c60001-e96d-428d-9904-224ca89cd25f",
+    "political": false
+  },
+  {
+    "value": "Northern Ireland Audit Office",
+    "key": "9140b9eb-3b35-4618-a7ee-b56a22648751",
+    "political": false
+  },
+  {
+    "value": "Northern Ireland Authority for Energy Regulation",
+    "key": "3226eb4b-d061-480f-a25c-3c05b3ecd606",
+    "political": false
+  },
+  {
+    "value": "Northern Ireland Child Support Agency",
+    "key": "83238085-05c4-456c-829e-d491b6a402ae",
+    "political": false
+  },
+  {
+    "value": "Northern Ireland Commissioner for Children and Young People",
+    "key": "a1f5f9ce-e54d-460c-8877-72c6e11f3333",
+    "political": false
+  },
+  {
+    "value": "Northern Ireland Council for the Curriculum, Examinations and Assessment",
+    "key": "cd9291d8-a04e-4afb-b680-528b8f917f47",
+    "political": false
+  },
+  {
+    "value": "Northern Ireland Courts and Tribunals Service",
+    "key": "afaed224-8319-43c3-836a-0308b89081ca",
+    "political": false
+  },
+  {
+    "value": "Northern Ireland Executive",
+    "key": "2aecc4c9-6ef3-43fb-9a82-987e3321db25",
+    "political": false
+  },
+  {
+    "value": "Northern Ireland Health and Social Services Estates Agency",
+    "key": "20eaee92-9c57-44dd-8c7c-8f19dd829e82",
+    "political": false
+  },
+  {
+    "value": "Northern Ireland Housing Executive",
+    "key": "8809dcd1-c8ec-4e01-8c57-e349e052420f",
+    "political": false
+  },
+  {
+    "value": "Northern Ireland Human Rights Commission",
+    "key": "0c9e53f3-e5fc-4a23-9095-4868ffb4537d",
+    "political": false
+  },
+  {
+    "value": "Northern Ireland Judicial Appointments Commission",
+    "key": "0e3949bd-5aab-4991-89db-19f05d761015",
+    "political": false
+  },
+  {
+    "value": "Northern Ireland Judicial Appointments Ombudsman",
+    "key": "0124ff6b-5aec-4263-9760-6b199fea71b7",
+    "political": false
+  },
+  {
+    "value": "Northern Ireland Law Commission",
+    "key": "14d2bfad-fb01-4fc4-a2a4-e4b563ec6189",
+    "political": false
+  },
+  {
+    "value": "Northern Ireland Legal Services Commission",
+    "key": "f4a33b79-6f19-495a-8db9-f7e25f3ae788",
+    "political": false
+  },
+  {
+    "value": "Northern Ireland Local Government Officers' Superannuation Committee",
+    "key": "e5b2ad1c-84bf-4bd2-a11b-eb91c8b0061e",
+    "political": false
+  },
+  {
+    "value": "Northern Ireland Office",
+    "key": "234148b2-66d6-457c-9d06-2bf2b98533ca",
+    "political": true
+  },
+  {
+    "value": "Northern Ireland Ombudsman",
+    "key": "df373e59-363d-4ddf-b3c3-66d0f4c4dce7",
+    "political": false
+  },
+  {
+    "value": "Northern Ireland Police Fund",
+    "key": "defa56f3-405e-44f8-af2a-2a4f7e902673",
+    "political": false
+  },
+  {
+    "value": "Northern Ireland Policing Board",
+    "key": "9d5e9caf-1a1f-4911-9209-8fd084fd683c",
+    "political": false
+  },
+  {
+    "value": "Northern Ireland Practice and Education Council",
+    "key": "db54238a-5c8f-441c-b742-339a65603df6",
+    "political": false
+  },
+  {
+    "value": "Northern Ireland Prison Service",
+    "key": "676ba870-134a-48a3-80fd-150fc824398e",
+    "political": false
+  },
+  {
+    "value": "Northern Ireland Social Care Council",
+    "key": "70d514e3-b663-4990-a33d-84e4bc4b5f0d",
+    "political": false
+  },
+  {
+    "value": "Northern Ireland Social Security Agency",
+    "key": "2363aad4-77ba-44de-92b5-f7cc58c4dcd7",
+    "political": false
+  },
+  {
+    "value": "Northern Ireland Statistics and Research Agency",
+    "key": "93a0b041-ecb9-45d2-9135-37aee4b79573",
+    "political": false
+  },
+  {
+    "value": "Northern Ireland Tourist Board",
+    "key": "abfd6aa9-a3cb-4d5b-a0ca-2ff7ab15e3fd",
+    "political": false
+  },
+  {
+    "value": "Northern Lighthouse Board",
+    "key": "de9cee94-b1c6-45b4-a371-dbead4a9b6a5",
+    "political": false
+  },
+  {
+    "value": "Northumberland National Park Authority",
+    "key": "47ced70c-1c03-42d8-8ead-4e7270563864",
+    "political": false
+  },
+  {
+    "value": "Northwest Business Link",
+    "key": "8ab18569-f3c4-462b-a798-edca5db7c83c",
+    "political": false
+  },
+  {
+    "value": "Northwest Regional Development Agency",
+    "key": "eb546a9e-5a4c-4d0e-94db-42d4ba98fc82",
+    "political": false
+  },
+  {
+    "value": "NS&I",
+    "key": "590039e7-1976-48fa-b84d-d688d4661269",
+    "political": false
+  },
+  {
+    "value": "Nuclear Decommissioning Authority",
+    "key": "bd692b3d-2d4c-43d9-aa85-32c465e1984a",
+    "political": false
+  },
+  {
+    "value": "Nuclear Liabilities Financing Assurance Board",
+    "key": "f3674dcf-fbe7-4077-8b8a-e5e09fd0d5d4",
+    "political": false
+  },
+  {
+    "value": "Nuclear Research Advisory Council",
+    "key": "92963897-7720-443f-81aa-65bb6be7e6f5",
+    "political": false
+  },
+  {
+    "value": "Ofcom",
+    "key": "956ecc87-b889-4c41-ac39-ba6a6ba48e97",
+    "political": false
+  },
+  {
+    "value": "Office for Artificial Intelligence",
+    "key": "485a7163-751f-43a8-a837-af4755d9cf6d",
+    "political": false
+  },
+  {
+    "value": "Office for Budget Responsibility",
+    "key": "1c117305-51f8-497a-9372-9330d1e59497",
+    "political": false
+  },
+  {
+    "value": "Office for Civil Society",
+    "key": "ee691bca-65fa-47f7-b3e8-99cbc568ad18",
+    "political": false
+  },
+  {
+    "value": "Office for Communications Data Authorisations",
+    "key": "4fb740d7-ed0e-4d8e-9c7e-2774f844c989",
+    "political": false
+  },
+  {
+    "value": "Office for Criminal Justice Reform",
+    "key": "3d326d8d-369c-453d-ab8d-32fdfebb299c",
+    "political": false
+  },
+  {
+    "value": "Office for Disability Issues",
+    "key": "889c12d3-4120-46a2-b6c9-d2c64a03adb3",
+    "political": true
+  },
+  {
+    "value": "Office for Fair Access",
+    "key": "2111aeb0-1638-4ca6-ac85-c4064b70ad0b",
+    "political": false
+  },
+  {
+    "value": "Office for Life Sciences",
+    "key": "e54fd95b-b175-48f5-a406-bd36396f38a3",
+    "political": false
+  },
+  {
+    "value": "Office for Low Emission Vehicles",
+    "key": "767f262c-9c80-44c2-9614-53d505ecc34b",
+    "political": true
+  },
+  {
+    "value": "Office for National Statistics",
+    "key": "5da4ab94-39b2-40cf-99ae-1af4f6b4206d",
+    "political": false
+  },
+  {
+    "value": "Office for Nuclear Regulation",
+    "key": "8ac3d81f-fb44-4b17-ba8d-0a8bb547fb14",
+    "political": false
+  },
+  {
+    "value": "Office for Product Safety and Standards",
+    "key": "a0ee18e7-9e1e-4ba1-aed5-f3f287dce752",
+    "political": false
+  },
+  {
+    "value": "Office for Students",
+    "key": "349da970-6d4b-40ba-9b4c-57c75b17ce29",
+    "political": false
+  },
+  {
+    "value": "Office for Tenants and Social Landlords",
+    "key": "a71064b2-6ad1-418a-bedf-c80038ec911e",
+    "political": false
+  },
+  {
+    "value": "Office of Fair Trading",
+    "key": "50fdc300-48b8-4ac8-8dc3-7bc1ef054da1",
+    "political": false
+  },
+  {
+    "value": "Office of Financial Sanctions Implementation",
+    "key": "e82999a0-79f0-4c77-a8f1-39135e7a123c",
+    "political": false
+  },
+  {
+    "value": "Office of HM Paymaster General",
+    "key": "9ee25ea4-7984-4584-a33b-98e469c321b1",
+    "political": false
+  },
+  {
+    "value": "Office of Manpower Economics",
+    "key": "0432ce78-0eba-4f37-814c-528a05f72dbd",
+    "political": false
+  },
+  {
+    "value": "Office of Rail and Road",
+    "key": "a183f1ed-c0ab-45bb-af9a-77e531520ef7",
+    "political": false
+  },
+  {
+    "value": "Office of Rail Regulation",
+    "key": "73f390ba-72b1-433e-9b8c-66cf628a2a86",
+    "political": false
+  },
+  {
+    "value": "Office of Surveillance Commissioners",
+    "key": "ece080aa-adc5-41fc-b2c9-4e10cd6ae265",
+    "political": false
+  },
+  {
+    "value": "Office of Tax Simplification",
+    "key": "3d4c4dd4-4bdd-4493-aebf-a6f89db95aed",
+    "political": false
+  },
+  {
+    "value": "Office of Telecommunications",
+    "key": "f8af3592-128c-44d6-9986-e15554f2f6fd",
+    "political": false
+  },
+  {
+    "value": "Office of the Advocate General for Scotland",
+    "key": "93f52ac4-7eb5-47bf-acfe-c11d1c8e8d76",
+    "political": true
+  },
+  {
+    "value": "Office of the Chief Electoral Officer for Northern Ireland",
+    "key": "bc99f386-187f-46a9-b00d-1932dea2cfaa",
+    "political": false
+  },
+  {
+    "value": "Office of the Children's Commissioner",
+    "key": "5600e779-18df-493c-980e-e95b132a0bb5",
+    "political": false
+  },
+  {
+    "value": "Office of the Commissioner for Protection Against Unlawful Industrial Action",
+    "key": "4b766ea5-c2a1-4200-b84f-a6f1844f8cf2",
+    "political": false
+  },
+  {
+    "value": "Office of the Commissioner for the Rights of Trade Union Members",
+    "key": "b405898f-655f-4b63-a27a-b652f94f8e41",
+    "political": false
+  },
+  {
+    "value": "Office of the Data Protection Registrar",
+    "key": "648124a4-a97a-44bd-8aec-5353b8692c34",
+    "political": false
+  },
+  {
+    "value": "Office of the First Minister and Deputy First Minister",
+    "key": "1ab57373-3fce-4362-a355-38bb656b4c57",
+    "political": false
+  },
+  {
+    "value": "Office of the Health Professions Adjudicator",
+    "key": "9e53617b-2604-4758-ab40-4facbebfa748",
+    "political": false
+  },
+  {
+    "value": "Office of the Identity Commissioner",
+    "key": "be223e92-2c4f-428a-9a5d-6bf2a6bcf2f6",
+    "political": false
+  },
+  {
+    "value": "Office of the Immigration Services Commissioner",
+    "key": "97fa8d93-bdc4-476f-8f10-1c426383734b",
+    "political": false
+  },
+  {
+    "value": "Office of the Lay Observer",
+    "key": "1614a3bd-75fb-4148-be98-485a274807bc",
+    "political": false
+  },
+  {
+    "value": "Office of the Leader of the House of Commons",
+    "key": "3cba3de4-da66-470b-ac4a-75a0bd05f7cc",
+    "political": true
+  },
+  {
+    "value": "Office of the Leader of the House of Lords",
+    "key": "7f6b788d-1e91-4f87-b315-8a44fb773182",
+    "political": true
+  },
+  {
+    "value": "Office of the Legal Services Complaints Commissioner",
+    "key": "a8b0dc0b-d13c-4c39-8d6d-454b74cb3e9f",
+    "political": false
+  },
+  {
+    "value": "Office of the Legal Services Ombudsman",
+    "key": "b6ed42c6-fe6d-42c7-bdbc-b004c5e7aa5b",
+    "political": false
+  },
+  {
+    "value": "Office of the Oversight Commissioner",
+    "key": "6097d6d4-e487-4c94-854d-3442a70965ce",
+    "political": false
+  },
+  {
+    "value": "Office of the Parliamentary Counsel",
+    "key": "9f80fe62-b229-4517-9e32-f560b5c518ce",
+    "political": false
+  },
+  {
+    "value": "Office of the Police Ombudsman for Northern Ireland",
+    "key": "3f43ee0c-1989-4d2b-87db-773cec90fb0b",
+    "political": false
+  },
+  {
+    "value": "Office of the Public Guardian",
+    "key": "8d40ed48-ef2a-42af-a02b-bd4cc84cabc1",
+    "political": false
+  },
+  {
+    "value": "Office of the Registrar of Consultant Lobbyists",
+    "key": "a5967c4e-7b38-4a9a-8862-f3840ac11052",
+    "political": false
+  },
+  {
+    "value": "Office of the Regulator of Community Interest Companies",
+    "key": "518ea730-81db-4d3b-8080-50cd6e0784cd",
+    "political": false
+  },
+  {
+    "value": "Office of the Schools Adjudicator",
+    "key": "e7f33769-a539-4fb4-b24f-f6c1cabc3f59",
+    "political": false
+  },
+  {
+    "value": "Office of the Secretary of State for Scotland",
+    "key": "db674609-f9d6-4700-b5c7-31ae810a661b",
+    "political": true
+  },
+  {
+    "value": "Office of the Secretary of State for Wales",
+    "key": "4f9fe232-e7a2-48e8-99b1-8f7828680493",
+    "political": true
+  },
+  {
+    "value": "Official Solicitor and Public Trustee",
+    "key": "0fac336b-7685-4b1b-bdf1-37e4e964bf67",
+    "political": false
+  },
+  {
+    "value": "Offshore Petroleum Regulator for Environment and Decommissioning",
+    "key": "4b4d374a-8967-4be7-a8b9-8a65ae821c12",
+    "political": false
+  },
+  {
+    "value": "Ofgem",
+    "key": "844d0880-14b1-4de1-bfb6-f233f3d5ae1d",
+    "political": false
+  },
+  {
+    "value": "Ofqual",
+    "key": "83f6e93f-bb2c-46ab-9b02-394f972b7030",
+    "political": false
+  },
+  {
+    "value": "Ofsted",
+    "key": "ad5f6169-ac7b-4382-9eb6-e58af71a2f00",
+    "political": false
+  },
+  {
+    "value": "Oftel",
+    "key": "5b2ccfca-d9ab-42d3-9fe3-9b525b807d78",
+    "political": false
+  },
+  {
+    "value": "OGCbuyingsolutions",
+    "key": "1e55b3a6-fbc7-44d0-961d-384403d3e6da",
+    "political": false
+  },
+  {
+    "value": "Oil and Gas Authority",
+    "key": "3f7d012c-fd86-41f9-aa53-2397370e85be",
+    "political": false
+  },
+  {
+    "value": "Olympic Delivery Authority",
+    "key": "5d407b48-22dd-4b4c-86d3-d0dc67ea729a",
+    "political": false
+  },
+  {
+    "value": "One North East",
+    "key": "897a2ba9-f5a3-4464-bbf1-6041acc93f9d",
+    "political": false
+  },
+  {
+    "value": "Open Public Services",
+    "key": "83579fe6-c696-4bea-9eab-f33fedd4d277",
+    "political": true
+  },
+  {
+    "value": "Operational Delivery Profession",
+    "key": "751013b2-30cb-4154-a943-7117ef92aa99",
+    "political": false
+  },
+  {
+    "value": "Ordnance Survey",
+    "key": "b6d83795-a693-4f88-90fb-a5f67cd680a3",
+    "political": false
+  },
+  {
+    "value": "Ordnance Survey of Northern Ireland",
+    "key": "7c963d08-3759-4d61-a329-5bd9b156e288",
+    "political": false
+  },
+  {
+    "value": "Parades Commission for Northern Ireland",
+    "key": "1c5e8c3b-0918-4cf5-a252-a9a7245d8c5a",
+    "political": false
+  },
+  {
+    "value": "Parliamentary Contributory Pension Fund",
+    "key": "307e6294-ba89-4fbf-b108-cadcf296a319",
+    "political": false
+  },
+  {
+    "value": "Parole Board",
+    "key": "6c16969d-d8df-4580-aa3b-6e6982f62cd5",
+    "political": false
+  },
+  {
+    "value": "Parole Commissioners for Northern Ireland",
+    "key": "47fdb8e3-cf2e-4fb2-996d-801fffc3c1ec",
+    "political": false
+  },
+  {
+    "value": "Particle Physics and Astronomy Research Council",
+    "key": "74268fc7-b56b-4414-8be1-48e8c1ba9023",
+    "political": false
+  },
+  {
+    "value": "Passenger Focus",
+    "key": "6293a5cd-80b1-4d6d-8f8d-9fb58b37d81e",
+    "political": false
+  },
+  {
+    "value": "Patents Court",
+    "key": "1949760d-6441-4f4e-add9-6ff2ce8e134b",
+    "political": false
+  },
+  {
+    "value": "Patrick Finucane Review",
+    "key": "127a870f-fa7e-4bd5-bcb2-6c89d0c41fab",
+    "political": false
+  },
+  {
+    "value": "Payment Systems Regulator",
+    "key": "7b4d7435-d1cc-48fb-8d0d-faa1f42d6d64",
+    "political": false
+  },
+  {
+    "value": "Peak District National Park Authority",
+    "key": "0d1ad2e2-b336-48af-965d-1f26ba51a6af",
+    "political": false
+  },
+  {
+    "value": "Pension Protection Fund",
+    "key": "234e02d3-ec77-4a99-b523-e4f5993d7a38",
+    "political": false
+  },
+  {
+    "value": "Pension Service",
+    "key": "d7e497ac-f566-4a30-b0a2-29903311a1a6",
+    "political": false
+  },
+  {
+    "value": "Pension, Disability and Carers Service",
+    "key": "b1d1c203-f21f-4b77-b932-8764a048e755",
+    "political": false
+  },
+  {
+    "value": "People, Pay and Pensions Agency",
+    "key": "206a60c2-e483-416e-9ea1-4c63b1f9e9ab",
+    "political": false
+  },
+  {
+    "value": "Personal Accounts Delivery Authority",
+    "key": "772330ce-cca9-41b1-94ba-6f7c2225fc6f",
+    "political": false
+  },
+  {
+    "value": "Pesticides Safety Directorate",
+    "key": "fb9ed1fd-c7aa-4964-91b5-d27522fd09da",
+    "political": false
+  },
+  {
+    "value": "Peterlee Education Action Zone",
+    "key": "f4ef8906-47c6-45df-9330-7ecb8ffb66c5",
+    "political": false
+  },
+  {
+    "value": "Phoenix Sports",
+    "key": "57a6cd8e-9a57-49d6-bfaf-13e049c1191b",
+    "political": false
+  },
+  {
+    "value": "Phone-paid Services Authority",
+    "key": "357bbff0-9d2c-414b-bba8-b5dfed43edad",
+    "political": false
+  },
+  {
+    "value": "Planning Court",
+    "key": "43eb2384-527c-40f8-aa0c-c0669fb6a65d",
+    "political": false
+  },
+  {
+    "value": "Planning Inspectorate",
+    "key": "5e946baf-6dde-4916-a55e-8d44e0cdfe58",
+    "political": false
+  },
+  {
+    "value": "Planning Service",
+    "key": "05602b94-5720-474e-b889-4cb62151f7f9",
+    "political": false
+  },
+  {
+    "value": "Plant Varieties and Seeds Tribunal",
+    "key": "f3139802-fa73-4275-90f1-92232198a52e",
+    "political": false
+  },
+  {
+    "value": "Plymouth Education Action Zone",
+    "key": "0aa9d433-8738-4235-8810-8db5ff0a5449",
+    "political": false
+  },
+  {
+    "value": "Police Advisory Board for England and Wales",
+    "key": "7e3bacb0-231d-48a2-be62-2fae4cb94e0b",
+    "political": false
+  },
+  {
+    "value": "Police Arbitration Tribunal",
+    "key": "03fa0510-eeb1-41a6-a7d7-cb45185b2a2e",
+    "political": false
+  },
+  {
+    "value": "Police Complaints Authority",
+    "key": "2a8dd651-85ee-4976-a6ed-2fc63d588276",
+    "political": false
+  },
+  {
+    "value": "Police Discipline Appeals Tribunal",
+    "key": "1f3efab6-9890-4ccd-9dff-647907b21dba",
+    "political": false
+  },
+  {
+    "value": "Police Information Technology Organisation",
+    "key": "74620853-9cf9-4747-bd48-d2514c52d2c3",
+    "political": false
+  },
+  {
+    "value": "Police Negotiating Board",
+    "key": "d0b8a90d-5be6-4f7b-80b0-00213fa50169",
+    "political": false
+  },
+  {
+    "value": "Police Remuneration Review Body",
+    "key": "1956ab4a-7cb3-438d-b3ba-8c087cc1eba7",
+    "political": false
+  },
+  {
+    "value": "Police Service of Northern Ireland",
+    "key": "bc9a5403-9ee4-40a4-8d14-cc7a24202d68",
+    "political": false
+  },
+  {
+    "value": "Policy Profession",
+    "key": "86599a68-fd10-474c-8603-5ddb703ecfae",
+    "political": false
+  },
+  {
+    "value": "Polytechnics and Colleges Funding Council",
+    "key": "2f061ea2-fa78-4244-8460-410bfc7b71d8",
+    "political": false
+  },
+  {
+    "value": "Porton Biopharma Limited",
+    "key": "4b4f7a61-e342-4ebb-ac25-cf0352388fff",
+    "political": false
+  },
+  {
+    "value": "Postal Services Commission",
+    "key": "41da6a79-7294-4ca6-90ed-eb5418a46864",
+    "political": false
+  },
+  {
+    "value": "Postgraduate Medical Education and Training Board",
+    "key": "a835481c-20bf-430a-a76d-3568136142cd",
+    "political": false
+  },
+  {
+    "value": "Prescription Pricing Authority",
+    "key": "a6ebf3dc-743a-4194-8a6b-1df2a5c9c793",
+    "political": false
+  },
+  {
+    "value": "Preventing Sexual Violence in Conflict Initiative",
+    "key": "e474d31e-d466-4221-acdd-d8d4833e6043",
+    "political": false
+  },
+  {
+    "value": "Prime Minister's Office, 10 Downing Street",
+    "key": "705dbea4-8bd7-422e-ba9c-254557f77f81",
+    "political": true
+  },
+  {
+    "value": "Prison Service Pay Review Body",
+    "key": "3b5c4f57-19c0-4501-8818-f1da500e8495",
+    "political": false
+  },
+  {
+    "value": "Prisons and Probation Ombudsman",
+    "key": "5f7442a4-8c5c-4674-a4ac-ff403119f947",
+    "political": false
+  },
+  {
+    "value": "Privy Council Office",
+    "key": "46d4b289-88ec-4123-be2e-ea7d3bcf73a1",
+    "political": false
+  },
+  {
+    "value": "Probation Board for Northern Ireland",
+    "key": "58db0eb8-a8c0-444f-9c16-d190bc244927",
+    "political": false
+  },
+  {
+    "value": "Procurement profession",
+    "key": "1c6b20f6-b4f5-457d-a268-73f6f5ff50b4",
+    "political": false
+  },
+  {
+    "value": "Professional Oversight Board",
+    "key": "739e4f6a-7a2c-4e0b-b397-40d8134dd263",
+    "political": false
+  },
+  {
+    "value": "Professional Standards Authority for Health and Social Care",
+    "key": "c50c586a-2aea-4f32-8072-641c9d9227ec",
+    "political": false
+  },
+  {
+    "value": "Project Delivery Profession",
+    "key": "8bd7cd69-6d65-4036-8ae9-096b9f1e5bb9",
+    "political": false
+  },
+  {
+    "value": "Public Accounts Commission",
+    "key": "e1f85de1-010e-4961-98d7-6bad785d6724",
+    "political": false
+  },
+  {
+    "value": "Public Health Agency (Northern Ireland)",
+    "key": "3360cb75-a882-48cd-bbb7-0059ec2ecf89",
+    "political": false
+  },
+  {
+    "value": "Public Health England",
+    "key": "1343f283-19e9-4fbb-86b1-58c7549d874b",
+    "political": false
+  },
+  {
+    "value": "Public Health Laboratory Service Board",
+    "key": "faa18472-6314-4de0-9dda-e2bac337bf13",
+    "political": false
+  },
+  {
+    "value": "Public Health Wales",
+    "key": "b35e41ea-1975-465c-8369-21505ff823ce",
+    "political": false
+  },
+  {
+    "value": "Public Lending Right Office",
+    "key": "ce0fc94f-bfed-49fa-bbd0-167f3ca2be07",
+    "political": false
+  },
+  {
+    "value": "Public Prosecution Service for Northern Ireland",
+    "key": "0f94fafd-f61e-47ae-8c11-d376a677d0a2",
+    "political": false
+  },
+  {
+    "value": "Pubs Code Adjudicator",
+    "key": "08c7e23c-d822-406c-812b-3de9c03a0518",
+    "political": false
+  },
+  {
+    "value": "Qualifications and Curriculum Authority",
+    "key": "2e7825a0-6205-42a9-a77e-24001a53c974",
+    "political": false
+  },
+  {
+    "value": "Qualifications and Curriculum Development Agency",
+    "key": "2c7f26fc-b5db-42ef-9bfd-d2b4bac3d625",
+    "political": false
+  },
+  {
+    "value": "Queen Elizabeth II Conference Centre",
+    "key": "c2da0e5f-4706-4fe8-be25-eaca49dd1f86",
+    "political": false
+  },
+  {
+    "value": "Queen's Bench Division of the High Court",
+    "key": "dea8d335-9c90-43a7-ab9c-9b2d56e3cfd3",
+    "political": false
+  },
+  {
+    "value": "Queen's Harbour Master",
+    "key": "deaee9ef-4979-45b9-afc6-6cdb56abd2e3",
+    "political": false
+  },
+  {
+    "value": "Race Disparity Unit",
+    "key": "941040f7-b103-4269-b2b7-6689fd9978f1",
+    "political": false
+  },
+  {
+    "value": "Radioactive Waste Management",
+    "key": "ff1d1b43-ee2b-4529-a227-68f83ca5e266",
+    "political": false
+  },
+  {
+    "value": "Rail Accident Investigation Branch",
+    "key": "013872d8-8bbb-4e80-9b79-45c7c5cf9177",
+    "political": false
+  },
+  {
+    "value": "Rail Safety and Standards Board",
+    "key": "62ceb9fe-bb8b-4587-acc0-ec903e68ddd1",
+    "political": false
+  },
+  {
+    "value": "Railway Heritage Committee",
+    "key": "63dfedcf-0b7a-4890-ab98-affa70b15738",
+    "political": false
+  },
+  {
+    "value": "Redfern Inquiry",
+    "key": "7eb03ed8-866a-41c1-8979-1de726a8a143",
+    "political": false
+  },
+  {
+    "value": "Regeneration Investment Organisation",
+    "key": "b0d5608e-d7f5-4152-beac-b3cf40c045fa",
+    "political": false
+  },
+  {
+    "value": "Regional Schools Commissioners",
+    "key": "5bd27739-54b2-413a-84a9-55aa1a314ccb",
+    "political": false
+  },
+  {
+    "value": "Regulator of Social Housing",
+    "key": "0e8892fa-d676-43c4-9f51-9674e1830892",
+    "political": false
+  },
+  {
+    "value": "Regulatory Delivery",
+    "key": "2ccd5003-9bc3-45b1-aa6d-e14066512a97",
+    "political": false
+  },
+  {
+    "value": "Regulatory Policy Committee",
+    "key": "855e9471-8f8e-49cb-b613-28058188ced7",
+    "political": false
+  },
+  {
+    "value": "Remploy Ltd",
+    "key": "03291b96-fa53-4dd9-8268-8975ee6bc94c",
+    "political": false
+  },
+  {
+    "value": "Remploy Pension Scheme Trustees Ltd",
+    "key": "b2ba4572-1c4d-4e1a-8e04-38fc1e89ba2e",
+    "political": false
+  },
+  {
+    "value": "Renewable Fuels Agency",
+    "key": "ab7f7e57-b064-49fb-b499-3fbde6dd9ddb",
+    "political": true
+  },
+  {
+    "value": "Rent Service",
+    "key": "0e60e3df-3559-432b-a1d9-945828237923",
+    "political": false
+  },
+  {
+    "value": "Reserve Forces Appeal Tribunal",
+    "key": "d80c7242-5b66-4b47-9965-1d768a2d89b8",
+    "political": false
+  },
+  {
+    "value": "Reserve Forces' and Cadets' Associations",
+    "key": "88df8ced-89b1-4d95-9b6a-72d1d4f324a8",
+    "political": false
+  },
+  {
+    "value": "Revenue and Customs Prosecutions Office",
+    "key": "c0a1a56f-a396-4f08-8fc0-238169386f72",
+    "political": false
+  },
+  {
+    "value": "Review Board for Government Contracts",
+    "key": "c39fbb1f-d643-4087-b210-ddb88c45336b",
+    "political": false
+  },
+  {
+    "value": "Review Body for Nursing and Other Health Professions",
+    "key": "985addde-0b12-4921-b674-9625a390aefe",
+    "political": false
+  },
+  {
+    "value": "Review Body on Doctors' and Dentists' Remuneration",
+    "key": "928b7987-72a2-485f-bf70-7d7c1238bc0c",
+    "political": false
+  },
+  {
+    "value": "Rivers Agency",
+    "key": "8b2f6030-0b5e-4614-9649-094808d0982a",
+    "political": false
+  },
+  {
+    "value": "Roads Service",
+    "key": "98135dd3-e889-45a9-8490-7ba60b19d1bb",
+    "political": false
+  },
+  {
+    "value": "Rosemary Nelson Inquiry",
+    "key": "b9f21b20-cb0b-4795-a439-d9165cf38e68",
+    "political": false
+  },
+  {
+    "value": "Royal Air Force Museum",
+    "key": "f8d90636-4655-4a20-865d-95a51fe4380b",
+    "political": false
+  },
+  {
+    "value": "Royal Armouries Museum",
+    "key": "b2fc37d1-bc47-4bef-aa62-e9f01a5f7f32",
+    "political": false
+  },
+  {
+    "value": "Royal Commission on Criminal Justice",
+    "key": "621d5440-c479-4874-8fe1-9da4d99c0d56",
+    "political": false
+  },
+  {
+    "value": "Royal Commission on Environmental Pollution",
+    "key": "349a1dec-3a77-42a1-b5a4-056f733b70af",
+    "political": false
+  },
+  {
+    "value": "Royal Liverpool Childrens Inquiry",
+    "key": "598b5cb5-83fc-4446-9445-ff5db968f4e5",
+    "political": false
+  },
+  {
+    "value": "Royal Mail",
+    "key": "ea21a030-0274-412b-a768-deaa5acf2abe",
+    "political": false
+  },
+  {
+    "value": "Royal Marines Museum",
+    "key": "2f19ac9b-692b-4d33-a2b0-201daf0cd92f",
+    "political": false
+  },
+  {
+    "value": "Royal Mint",
+    "key": "b760c595-862e-4210-8f23-1a19dd07f4e7",
+    "political": false
+  },
+  {
+    "value": "Royal Mint Advisory Committee",
+    "key": "5a4e80a1-aaf8-40b1-bfda-9153bb79733e",
+    "political": false
+  },
+  {
+    "value": "Royal Museums Greenwich",
+    "key": "0fb2c31d-c6dd-4be9-9a0b-297edc5b4930",
+    "political": false
+  },
+  {
+    "value": "Royal Navy Submarine Museum",
+    "key": "5e757ef5-434b-4a72-bef5-6227c01afab1",
+    "political": false
+  },
+  {
+    "value": "Royal Parks",
+    "key": "2cff7e4b-452d-4322-9222-ecf89ea5caaf",
+    "political": false
+  },
+  {
+    "value": "Royal Trustees' Office",
+    "key": "2670e0e5-0fd1-4f74-b59e-4a98dc931a03",
+    "political": false
+  },
+  {
+    "value": "Rural Development Programme for England Network",
+    "key": "4d269929-de06-4597-a25e-811969d0e797",
+    "political": false
+  },
+  {
+    "value": "Rural Payments Agency",
+    "key": "e8fae147-6232-4163-a3f1-1c15b755a8a4",
+    "political": false
+  },
+  {
+    "value": "S4C",
+    "key": "dd0229b4-f5c2-4049-a485-cf1470dfd53d",
+    "political": false
+  },
+  {
+    "value": "School Food Trust",
+    "key": "11c2d121-b7c3-4baf-a1c3-72d7fe5f2cc4",
+    "political": false
+  },
+  {
+    "value": "School Teachers' Review Body",
+    "key": "ab9a4afd-4e0f-4e76-8b9c-4c2afe955ac1",
+    "political": false
+  },
+  {
+    "value": "Schools Commissioners Group",
+    "key": "30637a3a-bd24-4db6-b172-c49500bf50a5",
+    "political": false
+  },
+  {
+    "value": "Science Advisory Council",
+    "key": "43559ac9-1d97-43c2-b77d-0541c799c643",
+    "political": false
+  },
+  {
+    "value": "Science and Technology Facilities Council",
+    "key": "a24bcb07-b88b-4e9c-ab06-98527242b78e",
+    "political": false
+  },
+  {
+    "value": "Science Museum Group",
+    "key": "6ee60260-9821-4908-8363-6b94f079e384",
+    "political": false
+  },
+  {
+    "value": "Scientific Advisory Committee on the Medical Implications of Less-Lethal Weapons",
+    "key": "c746a78d-c490-44da-8ed5-7733fc8da353",
+    "political": false
+  },
+  {
+    "value": "Scottish Arts Council",
+    "key": "4a09cb12-18f8-4059-99a9-761c8abd2740",
+    "political": false
+  },
+  {
+    "value": "Scottish Hospital Trust",
+    "key": "80f55380-0cb7-48dc-8306-c2c614f8e49e",
+    "political": false
+  },
+  {
+    "value": "Scottish Law Commission",
+    "key": "beeae01e-d8c1-4d6c-af84-bb7b62ee5808",
+    "political": false
+  },
+  {
+    "value": "Scottish Office",
+    "key": "13670958-b893-46a7-8044-af0d6a873e7e",
+    "political": true
+  },
+  {
+    "value": "Scottish Screen",
+    "key": "3d8854c6-3284-4bcc-a758-390b2e8c362b",
+    "political": false
+  },
+  {
+    "value": "Scottish Sports Council",
+    "key": "4610eb31-1c47-472f-a007-d6ade4d29917",
+    "political": false
+  },
+  {
+    "value": "Sea Fish Industry Authority",
+    "key": "d682a499-3446-4520-b333-af62cb35a105",
+    "political": false
+  },
+  {
+    "value": "Secret Intelligence Service",
+    "key": "aaa6186d-9753-4532-b500-6ab745045231",
+    "political": false
+  },
+  {
+    "value": "Security Industry Authority",
+    "key": "5a0dd987-eea3-470c-97fa-e346c5cff682",
+    "political": false
+  },
+  {
+    "value": "Security Vetting Appeals Panel",
+    "key": "feb0ab2b-dc16-4fc7-abff-8668618d6987",
+    "political": false
+  },
+  {
+    "value": "Sellafield Ltd",
+    "key": "35ec21d9-c787-4821-871c-f914069e7904",
+    "political": false
+  },
+  {
+    "value": "Senior Courts Costs Office",
+    "key": "cda9f3ce-3f24-40dd-b9a0-02d4cb30211d",
+    "political": false
+  },
+  {
+    "value": "Senior Salaries Review Body",
+    "key": "e3115d57-8ee5-4bbf-96e0-f167c8729a6e",
+    "political": false
+  },
+  {
+    "value": "Sentence Review Commissioners",
+    "key": "586dc0f3-6c77-48d7-9f2f-d2a59ce5ac25",
+    "political": false
+  },
+  {
+    "value": "Sentencing Council for England and Wales",
+    "key": "cffae6e9-47d4-4f92-a026-753f5b32d0ad",
+    "political": false
+  },
+  {
+    "value": "Serious Fraud Office",
+    "key": "ebae4517-422f-44dd-9f87-13304c9815cb",
+    "political": false
+  },
+  {
+    "value": "Serious Organised Crime Agency",
+    "key": "d38f09d9-fdd0-4755-9946-e0f1c7de8fdb",
+    "political": false
+  },
+  {
+    "value": "Service Children's Education",
+    "key": "11d5e611-df1c-4b90-b4cf-d6d56058268c",
+    "political": false
+  },
+  {
+    "value": "Service Complaints Commissioner",
+    "key": "524fdeea-0b6e-404f-8ce8-2b3b7a853d66",
+    "political": false
+  },
+  {
+    "value": "Service Complaints Ombudsman",
+    "key": "5b71dd34-5508-4fdb-a095-132b7c74b3ec",
+    "political": false
+  },
+  {
+    "value": "Service Personnel and Veterans Agency",
+    "key": "d65a2eb9-10c8-462a-8627-dd97691caf9b",
+    "political": false
+  },
+  {
+    "value": "Service Prosecuting Authority",
+    "key": "5c29e774-0d4a-4d08-9200-4b051a9695b7",
+    "political": false
+  },
+  {
+    "value": "Shipman Inquiry",
+    "key": "4d3a7139-fdf1-4f0a-8d39-ffca7c6f1335",
+    "political": false
+  },
+  {
+    "value": "Single Financial Guidance Body",
+    "key": "ccc9dff8-87b7-4d0f-8d78-b8339063b440",
+    "political": false
+  },
+  {
+    "value": "Single Source Regulations Office",
+    "key": "29fe29c8-e6d3-4c61-abb1-bdd13e23b48d",
+    "political": false
+  },
+  {
+    "value": "Sir John Soane's Museum",
+    "key": "fcb99346-0249-4bee-a65e-82961c0169be",
+    "political": false
+  },
+  {
+    "value": "SITPRO",
+    "key": "818a3bea-2efd-4da1-a7b7-7e3266d5a083",
+    "political": false
+  },
+  {
+    "value": "Skills Funding Agency",
+    "key": "3e5a6924-b369-4eb3-8b06-3c0814701de4",
+    "political": false
+  },
+  {
+    "value": "Small Business Commissioner",
+    "key": "2104dd53-cf67-4768-a588-a41407a9a374",
+    "political": false
+  },
+  {
+    "value": "Social Mobility and Child Poverty Commission",
+    "key": "64f4bc11-2a27-46a1-b246-b16c8243c91b",
+    "political": false
+  },
+  {
+    "value": "Social Mobility Commission",
+    "key": "6f6b7204-37b2-4b96-aee3-fb12c2c23e84",
+    "political": false
+  },
+  {
+    "value": "Social Science Research Committee",
+    "key": "4e66f90b-17fe-4d83-83f8-92f42f3071ab",
+    "political": false
+  },
+  {
+    "value": "Social Security Advisory Committee",
+    "key": "882bef25-6922-4fbb-9049-7bc2575646f6",
+    "political": false
+  },
+  {
+    "value": "Social Security Agency",
+    "key": "eb2ebc56-f79a-4091-920b-79227ad69220",
+    "political": false
+  },
+  {
+    "value": "South Bradford Education Action Zone",
+    "key": "e83a4924-721f-491a-b166-6c57e435ed5a",
+    "political": false
+  },
+  {
+    "value": "South Downs National Park Authority",
+    "key": "dade1d0f-5a69-4b57-8798-f60c1a75e706",
+    "political": false
+  },
+  {
+    "value": "South East England Development Agency",
+    "key": "ff63567b-0258-480e-b489-14a060504ac3",
+    "political": false
+  },
+  {
+    "value": "South East England Virtual Education Action Zone",
+    "key": "dc753fcc-d1aa-4ab8-af3b-f3b949395076",
+    "political": false
+  },
+  {
+    "value": "South East Sheffield Education Action Zone",
+    "key": "f0c910cf-8d29-4ee0-baba-acab93746fad",
+    "political": false
+  },
+  {
+    "value": "South Eastern Education and Library Board",
+    "key": "ec748f6d-62d4-4667-a5b9-fe0f4b91d475",
+    "political": false
+  },
+  {
+    "value": "South West of England Regional Development Agency",
+    "key": "1224b1d3-29db-452c-b5ff-9ad7a6f29fde",
+    "political": false
+  },
+  {
+    "value": "Southend Education Action Zone",
+    "key": "4da86e25-94ff-4f5b-982f-8503e33aa697",
+    "political": false
+  },
+  {
+    "value": "Southern Health and Social Services Board",
+    "key": "31166f83-eac8-4a3d-a9f9-0a70ace42027",
+    "political": false
+  },
+  {
+    "value": "Special EU Programmes Body",
+    "key": "3e94999c-9099-4d53-b76a-ab5b6c7c9fba",
+    "political": false
+  },
+  {
+    "value": "Speke Garston Education Action Zone",
+    "key": "fa8e45e6-6409-49c7-b453-6dc724246b79",
+    "political": false
+  },
+  {
+    "value": "Sport England",
+    "key": "7d365379-2e0e-4b45-a8e6-3de68d8dbbf0",
+    "political": false
+  },
+  {
+    "value": "Sports Council for Northern Ireland",
+    "key": "2c00fe8c-7602-41e9-a0d6-61738b4e672f",
+    "political": false
+  },
+  {
+    "value": "Sports Council for Wales",
+    "key": "617996e1-ae36-4d19-b86c-fd9bfd4d04db",
+    "political": false
+  },
+  {
+    "value": "Sports Grounds Safety Authority",
+    "key": "fdadc7ea-bd78-4a7a-a6eb-a8f657356994",
+    "political": false
+  },
+  {
+    "value": "Stabilisation Unit",
+    "key": "b6bb0230-0cb0-4bd3-9465-a0f69b70f405",
+    "political": false
+  },
+  {
+    "value": "Staff Commission for Education and Library Boards",
+    "key": "837190b4-3740-47ee-86cf-0d5a4bdd0ad9",
+    "political": false
+  },
+  {
+    "value": "Standards and Testing Agency",
+    "key": "863ffacd-d313-49c1-b856-58fe0799fd41",
+    "political": false
+  },
+  {
+    "value": "Standards Board for England",
+    "key": "09e98314-e833-4850-bf54-70f9a1a0e478",
+    "political": false
+  },
+  {
+    "value": "State Veterinary Service",
+    "key": "c726d3f1-c729-44a5-8909-2845df7eaf46",
+    "political": false
+  },
+  {
+    "value": "Statistics Commission",
+    "key": "7d938082-dd73-4f8c-bd7e-01b237cfaf56",
+    "political": false
+  },
+  {
+    "value": "Stoke Education Action Zone",
+    "key": "67afa984-be4d-4ac4-b557-d65271d0318b",
+    "political": false
+  },
+  {
+    "value": "Strategic Rail Authority",
+    "key": "807e455b-0ae4-421a-8f38-8393f6fec5e9",
+    "political": false
+  },
+  {
+    "value": "Student Loans Company",
+    "key": "9a9111aa-1db8-4025-8dd2-e08ec3175e72",
+    "political": false
+  },
+  {
+    "value": "Sunderland Education Action Zone",
+    "key": "d35b09ca-b14a-4938-81eb-80ab0fe0b03f",
+    "political": false
+  },
+  {
+    "value": "Supreme Court of the United Kingdom",
+    "key": "ed629212-17e1-44cd-b41a-52103cdaaea9",
+    "political": false
+  },
+  {
+    "value": "Surveillance Camera Commissioner",
+    "key": "e0f81015-d2a5-4f08-be6e-c68aa8f9f43f",
+    "political": false
+  },
+  {
+    "value": "Sutherland Inquiry",
+    "key": "a2f70375-d8b7-4a26-9740-67858393a136",
+    "political": false
+  },
+  {
+    "value": "Tate",
+    "key": "7b38b48c-aad8-48f6-8bfa-1c48e07ef483",
+    "political": false
+  },
+  {
+    "value": "Teaching Regulation Agency",
+    "key": "2344a5fc-281e-4f49-aaac-3f3a0755638b",
+    "political": false
+  },
+  {
+    "value": "Technical Advisory Board",
+    "key": "6ed5afe4-c914-48a6-a783-710fc5d1d4b4",
+    "political": false
+  },
+  {
+    "value": "Technology and Construction Court",
+    "key": "d698caa2-9ee6-4a59-9831-8dd90aff0ce5",
+    "political": false
+  },
+  {
+    "value": "Technology Strategy Board",
+    "key": "bfeb444f-2430-4f20-a7b8-5f1748813cc2",
+    "political": false
+  },
+  {
+    "value": "Telford and Wrekin Education Action Zone",
+    "key": "4d028d6d-bd73-42a3-99ed-7060250c4a4c",
+    "political": false
+  },
+  {
+    "value": "Tenant Services Authority",
+    "key": "f36eeb19-1c7a-4b62-9ad4-d2eb9e7a4617",
+    "political": false
+  },
+  {
+    "value": "The Adjudicator’s Office",
+    "key": "e7e47593-78d2-4f08-86bd-32a54bdbd766",
+    "political": false
+  },
+  {
+    "value": "The Advisory Council on National Records and Archives",
+    "key": "1d2551af-6a93-4666-8977-e82ed4a8a336",
+    "political": false
+  },
+  {
+    "value": "The Business and Property Courts",
+    "key": "730b9f35-8a43-4298-861d-810a4c745a65",
+    "political": false
+  },
+  {
+    "value": "The Business List",
+    "key": "98767b60-d993-4849-b9e9-c6893e2c98d3",
+    "political": false
+  },
+  {
+    "value": "The Charity Commission",
+    "key": "489e651f-34c8-4b34-bdd7-e13c2324cde3",
+    "political": false
+  },
+  {
+    "value": "The Competition List",
+    "key": "054b8af0-f926-43ee-bb34-c5b33ae4f56a",
+    "political": false
+  },
+  {
+    "value": "The Crown Estate",
+    "key": "ffa569b0-8f28-4145-a489-8d3749d78d8e",
+    "political": false
+  },
+  {
+    "value": "The Electoral Commission",
+    "key": "5bbc65c0-8fbc-4794-8157-42a60ed97f87",
+    "political": false
+  },
+  {
+    "value": "The Executive Office (Northern Ireland)",
+    "key": "2f8a3e24-a21b-4e0c-a68e-22f236a0cc0c",
+    "political": false
+  },
+  {
+    "value": "The Financial List",
+    "key": "5adb0242-3318-4e25-9a45-5031c8e024d8",
+    "political": false
+  },
+  {
+    "value": "The Food and Environment Research Agency",
+    "key": "e8391764-e67c-4de9-86e0-ff2adf160593",
+    "political": false
+  },
+  {
+    "value": "The Insolvency Service",
+    "key": "c8406408-8376-45e0-95b4-7e74cef2c260",
+    "political": false
+  },
+  {
+    "value": "The Intellectual Property List",
+    "key": "f293a5fc-effa-40b9-8b5e-9b9d11d3cad2",
+    "political": false
+  },
+  {
+    "value": "The Jeffrey Review",
+    "key": "d95e8bf4-7219-4024-95cf-d7e3ebe8bd3e",
+    "political": false
+  },
+  {
+    "value": "The Legal Ombudsman",
+    "key": "68c38333-e325-4446-a514-86a958f740bb",
+    "political": false
+  },
+  {
+    "value": "The McKay Commission",
+    "key": "0f950b2a-0396-475b-896f-975bd811ad7c",
+    "political": false
+  },
+  {
+    "value": "The National Archives",
+    "key": "891aa2d1-7c17-4997-880c-939e0b0d4367",
+    "political": false
+  },
+  {
+    "value": "The National Lottery Community Fund",
+    "key": "af7b989f-8fff-45cf-a657-8c5cb9cd1aec",
+    "political": false
+  },
+  {
+    "value": "The Oil and Pipelines Agency",
+    "key": "fae8eb44-b6ce-4795-82f9-fc9a9058265a",
+    "political": false
+  },
+  {
+    "value": "The Parliamentary and Health Service Ombudsman",
+    "key": "8e0d056a-96f7-4240-8ae5-7bd7aa7ce94c",
+    "political": false
+  },
+  {
+    "value": "The Pension Protection Fund Ombudsman",
+    "key": "6a285ab2-f068-40d8-a4a7-1db8cb42da45",
+    "political": false
+  },
+  {
+    "value": "The Pensions Advisory Service",
+    "key": "9d6ec831-77c1-4140-9ebd-8cbf87245565",
+    "political": false
+  },
+  {
+    "value": "The Pensions Ombudsman",
+    "key": "9db1fb50-bf20-4cf0-a00d-5a95654b7d7e",
+    "political": false
+  },
+  {
+    "value": "The Pensions Regulator",
+    "key": "283a5e75-445b-47d7-8b46-a2bd74fb8232",
+    "political": false
+  },
+  {
+    "value": "The Property, Trusts and Probate List",
+    "key": "78844c14-97fa-4e4a-8f24-20da1fe32d96",
+    "political": false
+  },
+  {
+    "value": "The Revenue List",
+    "key": "d2779acd-602b-42cb-b6d5-57a9844b8fa6",
+    "political": false
+  },
+  {
+    "value": "The Reviewing Committee on the Export of Works of Art and Objects of Cultural Interest",
+    "key": "1841971f-d489-4da3-9c2b-5c9c0f6c5009",
+    "political": false
+  },
+  {
+    "value": "The Scottish Government",
+    "key": "f4eaf4ab-3bf0-4c6e-b35c-852eaaa695d9",
+    "political": false
+  },
+  {
+    "value": "The Security Service",
+    "key": "3d41fee8-845c-456f-857b-12cc35763003",
+    "political": false
+  },
+  {
+    "value": "The Shareholder Executive",
+    "key": "80a4898c-0540-4f6b-9ad5-17b67faf058e",
+    "political": true
+  },
+  {
+    "value": "The Theatres Trust",
+    "key": "939c2f15-f739-4e98-80ba-675be1f462d8",
+    "political": false
+  },
+  {
+    "value": "The Water Services Regulation Authority",
+    "key": "99dd36d9-5e9f-4c04-a21e-175d1e680988",
+    "political": false
+  },
+  {
+    "value": "Third Party Campaigning Review",
+    "key": "5ff655fe-3069-4a83-b6f1-1e7ec481eff7",
+    "political": false
+  },
+  {
+    "value": "Thurrock Thames Gateway Development Corporation",
+    "key": "ccd43855-5e9f-4091-947e-052265bb4b36",
+    "political": false
+  },
+  {
+    "value": "Traffic Commissioners for Great Britain",
+    "key": "78dfc32b-b1ef-44ca-924c-a2cf773e87ca",
+    "political": false
+  },
+  {
+    "value": "Training and Development Agency for Schools",
+    "key": "25a6f77f-cb29-4cb9-8623-69ee220b50a1",
+    "political": false
+  },
+  {
+    "value": "Transport Focus",
+    "key": "0efd6cb8-0a8d-4e7f-b546-50dec25cc155",
+    "political": false
+  },
+  {
+    "value": "Treasure Valuation Committee",
+    "key": "92cb30a3-5da7-4309-afcd-72603723ef3f",
+    "political": false
+  },
+  {
+    "value": "Treasury Solicitor’s Department",
+    "key": "cae0cb98-8c71-416e-b7af-c46f535219fd",
+    "political": false
+  },
+  {
+    "value": "Tribunal Procedure Committee",
+    "key": "74c41a82-c057-4a8f-8cb5-3683cfc1e45c",
+    "political": false
+  },
+  {
+    "value": "Trinity House",
+    "key": "d514dc11-5204-452e-9c43-1c040fdb6005",
+    "political": false
+  },
+  {
+    "value": "Trust ports",
+    "key": "ba3417fb-5a6e-4635-86f6-7ec051f1e328",
+    "political": false
+  },
+  {
+    "value": "UK Anti-Doping",
+    "key": "2fc4bc8b-5937-4c8c-86dd-7de689b21022",
+    "political": false
+  },
+  {
+    "value": "UK Asset Resolution Limited",
+    "key": "951f41e8-b237-4f04-9f5b-96e895db4a7b",
+    "political": false
+  },
+  {
+    "value": "UK Atomic Energy Authority",
+    "key": "bb4afa19-6b2f-4bf7-9725-22a259c90c73",
+    "political": false
+  },
+  {
+    "value": "UK Border Agency",
+    "key": "819510fa-f484-4a44-bb30-430c24797efe",
+    "political": false
+  },
+  {
+    "value": "UK Co-ordinating Body",
+    "key": "4d2b3868-3512-41ce-94a9-f724ebc3c7c4",
+    "political": false
+  },
+  {
+    "value": "UK Commission for Employment and Skills",
+    "key": "9aa9d352-2c7d-41e1-8965-612fcc24d282",
+    "political": false
+  },
+  {
+    "value": "UK Council for Internet Safety",
+    "key": "d78c6e86-da0c-4ff6-acb3-8b913136784a",
+    "political": false
+  },
+  {
+    "value": "UK Debt Management Office",
+    "key": "f72a155e-a9d9-46a4-b195-d6fa90a23de0",
+    "political": false
+  },
+  {
+    "value": "UK Export Finance",
+    "key": "c4e41647-ad69-4e96-843b-05fa7867bbc0",
+    "political": true
+  },
+  {
+    "value": "UK Film Council",
+    "key": "e71732b9-0661-4e27-a2a5-cda85d43991d",
+    "political": false
+  },
+  {
+    "value": "UK Financial Investments Limited",
+    "key": "de2cca29-9491-4392-838a-8ce619ef9ae2",
+    "political": false
+  },
+  {
+    "value": "UK Government Decontamination Service",
+    "key": "0f801280-dd7c-49ee-b668-607694782a6d",
+    "political": false
+  },
+  {
+    "value": "UK Government Investments",
+    "key": "5329e3f4-08e5-4166-9bb2-434312442ce7",
+    "political": false
+  },
+  {
+    "value": "UK Green Investment Bank",
+    "key": "dc960890-6e46-417e-bc8d-2404f086bccd",
+    "political": false
+  },
+  {
+    "value": "UK Holocaust Memorial Foundation",
+    "key": "0183a2d3-ce7b-47cf-966d-1323b74865bc",
+    "political": false
+  },
+  {
+    "value": "UK Hydrographic Office",
+    "key": "27ed5a13-e8e3-4dc1-9775-902d351e9ef4",
+    "political": false
+  },
+  {
+    "value": "UK National Contact Point",
+    "key": "0c2e4d53-f5d8-466a-af5e-4ca9cb589695",
+    "political": false
+  },
+  {
+    "value": "UK Passport Service",
+    "key": "6ccd7811-868d-4a06-b9d5-2a2e87c3f521",
+    "political": false
+  },
+  {
+    "value": "UK Research and Innovation",
+    "key": "d664afa8-ecd3-4e03-b914-d60aed4709c6",
+    "political": false
+  },
+  {
+    "value": "UK Space Agency",
+    "key": "1a22a221-513b-4a8d-ae97-e3668b6d5568",
+    "political": false
+  },
+  {
+    "value": "UK Sport",
+    "key": "6a2e54ca-60b3-4436-b546-7430fbafbb23",
+    "political": false
+  },
+  {
+    "value": "UK Statistics Authority",
+    "key": "cd90918d-e15b-4d9a-939d-deabc465c824",
+    "political": false
+  },
+  {
+    "value": "UK Trade & Investment",
+    "key": "b045c8df-d3c4-4219-88d8-264dc9ee5cc8",
+    "political": false
+  },
+  {
+    "value": "UK Transplant",
+    "key": "fe84149d-7ab5-4755-9833-713b6cfb6534",
+    "political": false
+  },
+  {
+    "value": "UK Visas and Immigration",
+    "key": "04148522-b0c1-4137-b687-5f3c3bdd561a",
+    "political": false
+  },
+  {
+    "value": "UKTI Education",
+    "key": "dc0563a8-689c-49b9-be86-eb89adde5499",
+    "political": false
+  },
+  {
+    "value": "UKTI Life Sciences Organisation",
+    "key": "9f14321d-8686-4cc0-a2f9-16c4869790f8",
+    "political": false
+  },
+  {
+    "value": "United Kingdom Blood Transfusion Services",
+    "key": "2f7af2ff-fde9-425b-9dfd-3b5e1e50fe3b",
+    "political": false
+  },
+  {
+    "value": "United Kingdom Reserve Forces Association",
+    "key": "839afa5e-cd59-4f59-8018-7a935e4b4ef1",
+    "political": false
+  },
+  {
+    "value": "United Kingdom Security Vetting",
+    "key": "471796ac-7421-4425-9cc6-a27ad81e850a",
+    "political": false
+  },
+  {
+    "value": "Upper Tribunal (Administrative Appeals Chamber)",
+    "key": "4c2e325a-2d95-442b-856a-e7fb9f9e3cf8",
+    "political": false
+  },
+  {
+    "value": "Upper Tribunal (Immigration and Asylum Chamber)",
+    "key": "db2c5331-e960-4807-9ac7-89f1fceda883",
+    "political": false
+  },
+  {
+    "value": "Upper Tribunal (Lands Chamber)",
+    "key": "dded0912-517d-4186-bd3b-a14acfb7d780",
+    "political": false
+  },
+  {
+    "value": "Upper Tribunal (Tax and Chancery Chamber)",
+    "key": "1a68b2cc-eb52-4528-8989-429f710da00f",
+    "political": false
+  },
+  {
+    "value": "Valuation and Lands Agency",
+    "key": "6980ea0a-9dcd-4f4a-b4d5-7632115f5693",
+    "political": false
+  },
+  {
+    "value": "Valuation Office Agency",
+    "key": "ae98edb5-87b4-4a69-a31a-e0e5298f949d",
+    "political": false
+  },
+  {
+    "value": "Valuation Tribunal for England",
+    "key": "06fc84b7-f0de-4da4-b8fd-d4547dbab3f9",
+    "political": false
+  },
+  {
+    "value": "Valuation Tribunal Service",
+    "key": "7e6ad32c-a97f-48cb-a3aa-b0d134d639fa",
+    "political": false
+  },
+  {
+    "value": "Varney Review",
+    "key": "6679c561-6bcf-45b4-9b90-1e7ad62aa12e",
+    "political": false
+  },
+  {
+    "value": "Vehicle and Operator Services Agency",
+    "key": "f3dc9b48-1119-4130-9bc4-98f5e3fd7fab",
+    "political": false
+  },
+  {
+    "value": "Vehicle Certification Agency",
+    "key": "685a3312-e096-4fde-b6c7-c8cf324d4784",
+    "political": false
+  },
+  {
+    "value": "Veterans Advisory and Pensions Committees",
+    "key": "dfe3c6ad-238b-4330-924a-33000e5b0df0",
+    "political": false
+  },
+  {
+    "value": "Veterans UK",
+    "key": "33cf4faf-f09b-457d-b516-0704547e1f89",
+    "political": false
+  },
+  {
+    "value": "Veterinary Laboratories Agency",
+    "key": "17820e1b-372f-4c66-acde-c867a74041cf",
+    "political": false
+  },
+  {
+    "value": "Veterinary Medicines Directorate",
+    "key": "da332ae4-d021-4800-aa53-826058a46923",
+    "political": false
+  },
+  {
+    "value": "Veterinary Products Committee",
+    "key": "0060cddd-0be2-42d5-8a7e-89c766951185",
+    "political": false
+  },
+  {
+    "value": "Veterinary Residues Committee",
+    "key": "b6e97f48-b9f1-49da-b3ab-b752d3b38d89",
+    "political": false
+  },
+  {
+    "value": "Victims' Advisory Panel",
+    "key": "9466746e-bf99-4962-b87a-06d27d7e7a78",
+    "political": false
+  },
+  {
+    "value": "Victims' Commissioner",
+    "key": "28d6fb6e-d601-4cc4-802b-e060474e0f7e",
+    "political": false
+  },
+  {
+    "value": "Victoria and Albert Museum",
+    "key": "30b3709d-2140-4795-b511-0256f62eb6ca",
+    "political": false
+  },
+  {
+    "value": "Victoria Climbié Inquiry",
+    "key": "be3caae9-863f-4372-afa4-19820fb06ee5",
+    "political": false
+  },
+  {
+    "value": "VisitBritain",
+    "key": "7f34c9c5-4e1f-4688-9731-3b44ddd3ede2",
+    "political": false
+  },
+  {
+    "value": "VisitEngland",
+    "key": "8ac8728f-ae2e-4e4b-ac38-819bbf55269e",
+    "political": false
+  },
+  {
+    "value": "Wakefield Education Action Zone",
+    "key": "2fd2336c-cdcc-41b1-9aa0-f713b85a7893",
+    "political": false
+  },
+  {
+    "value": "Wales Audit Office",
+    "key": "02eeab27-868c-4e3f-ad8f-4c8237571bf1",
+    "political": false
+  },
+  {
+    "value": "Wallace Collection",
+    "key": "e6b23b05-05fc-4b9c-b8fb-4752a439a243",
+    "political": false
+  },
+  {
+    "value": "Warship Support Agency",
+    "key": "d41499ad-8e05-4f82-98ef-10974c26e23b",
+    "political": false
+  },
+  {
+    "value": "Water Service (Northern Ireland)",
+    "key": "fdf8e2b1-ad22-4c23-8b0a-74b47042a351",
+    "political": false
+  },
+  {
+    "value": "Waterways Ireland",
+    "key": "8aa91887-0e8d-4869-a38a-3c36e5aa14e6",
+    "political": false
+  },
+  {
+    "value": "Wave Hub",
+    "key": "e952f0a0-e912-4d71-b127-1b116339265c",
+    "political": false
+  },
+  {
+    "value": "Wednesbury Education Action Zone",
+    "key": "86f2b699-88de-468f-bb37-97e4147a2d0f",
+    "political": false
+  },
+  {
+    "value": "Welsh Development Agency",
+    "key": "db2b1579-2719-4135-9e6f-b440458d5bdf",
+    "political": false
+  },
+  {
+    "value": "Welsh Government",
+    "key": "cb0a039c-a89d-4143-8277-67e18c16c6bf",
+    "political": false
+  },
+  {
+    "value": "Welsh Language Commissioner",
+    "key": "9ef5055d-9ab4-4a6e-afb5-7cdb2f5f2d6c",
+    "political": false
+  },
+  {
+    "value": "Welsh Office",
+    "key": "6cc81e25-a8a7-41ff-b328-5441ca39d57d",
+    "political": true
+  },
+  {
+    "value": "West Northamptonshire Development Corporation",
+    "key": "e43a338e-c266-45be-b8e8-5e17f9a7f7ce",
+    "political": false
+  },
+  {
+    "value": "Western Education and Library Board",
+    "key": "38ae3d07-3756-497c-abd9-450128b14be9",
+    "political": false
+  },
+  {
+    "value": "Western Health and Social Services Board",
+    "key": "8d1effc1-3608-4611-8abe-ee8bdc7c5c29",
+    "political": false
+  },
+  {
+    "value": "Westminster Education Action Zone",
+    "key": "d135c610-7d94-4e0c-ada9-295232bc6030",
+    "political": false
+  },
+  {
+    "value": "Westminster Foundation for Democracy",
+    "key": "9d2fc568-068a-45ec-9ee1-ba65abb4a4e9",
+    "political": false
+  },
+  {
+    "value": "Wilton Park",
+    "key": "a787a14d-3bdd-44fc-820a-f821efd74f81",
+    "political": false
+  },
+  {
+    "value": "Windrush Commemoration Committee",
+    "key": "5ee63249-c7a9-406a-b3e0-bcdc7e21437d",
+    "political": false
+  },
+  {
+    "value": "Withernsea and Southern Holderness Education Action Zone",
+    "key": "ab0829ad-485b-41f8-b7f6-013a1f8a37da",
+    "political": false
+  },
+  {
+    "value": "Wolverhampton Education Action Zone",
+    "key": "7491e7f6-30e2-41e3-be5e-9551266bd938",
+    "political": false
+  },
+  {
+    "value": "Working Ventures UK",
+    "key": "4667c61c-ed16-4bb0-9e4f-279b30a2d3b6",
+    "political": false
+  },
+  {
+    "value": "Wythenshawe Education Action Zone",
+    "key": "4614d4f6-757b-416f-bcb3-3ccf6141c2ce",
+    "political": false
+  },
+  {
+    "value": "Yorkshire Dales National Park Authority",
+    "key": "830a6924-20ee-4390-9d8b-409632dae5ba",
+    "political": false
+  },
+  {
+    "value": "Yorkshire Forward",
+    "key": "2205b6b2-885f-42ee-8bbb-321a85fd806d",
+    "political": false
+  },
+  {
+    "value": "Young People's Learning Agency",
+    "key": "0bc1de67-3c11-4094-a18e-7dd7d617ff90",
+    "political": false
+  },
+  {
+    "value": "Youth Justice Agency of Northern Ireland",
+    "key": "a0540be1-ffa1-40a7-ae02-df05668c9d1f",
+    "political": false
+  },
+  {
+    "value": "Youth Justice Board for England and Wales",
+    "key": "7ad091b4-9098-4abd-aae3-1d2b790ee11e",
+    "political": false
+  },
+  {
+    "value": "Zahid Mubarek Inquiry",
+    "key": "ac6b48dd-e681-4d86-9af6-1aebdc1e6b1c",
+    "political": false
+  }
+]

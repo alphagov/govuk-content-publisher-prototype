@@ -1,0 +1,147 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Document list component – GOV.UK Prototype
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype",
+    classes: "app-tag--prototype"
+  },
+  html: 'This is a prototype – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+{{ govukBackLink({
+  text: "Back",
+  href: "../"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span>
+        Document list
+      </h1>
+
+      <p class="govuk-body-l">Displays an ordered list of links to documents including document type and when updated.</p>
+
+      <p class="govuk-body"><a class="govuk-link" href="https://components.publishing.service.gov.uk/component-guide/document_list">GOV.UK component guide</a></p>
+
+      <h2 class="govuk-heading-l">Examples</h2>
+
+      <h3 class="govuk-heading-m">Example 1</h3>
+
+      {{ appDocumentList({
+        items: [{
+          href: '#',
+          title: {
+            text: 'Document 1'
+          },
+          metadata: {
+            document_type: 'Statutory guidance'
+          }
+        },
+        {
+          href: '#',
+          title: {
+            text: 'Document 2'
+          },
+          metadata: {
+            document_type: 'Statutory guidance'
+          }
+        },
+        {
+          href: '#',
+          title: {
+            text: 'Document 3'
+          },
+          metadata: {
+            document_type: 'Statutory guidance'
+          }
+        }]
+      }) }}
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-9">Example 2</h3>
+
+      {{ appDocumentList({
+        items: [{
+          href: '#',
+          title: {
+            text: 'Document 1'
+          },
+          description: {
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec pharetra ipsum. Duis euismod augue nisl.'
+          },
+          metadata: {
+            public_updated_at: '2019-06-27T08:29:44.000+00:00',
+            document_type: 'Statutory guidance'
+          }
+        },
+        {
+          href: '#',
+          title: {
+            text: 'Document 2'
+          },
+          description: {
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec pharetra ipsum. Duis euismod augue nisl.'
+          },
+          metadata: {
+            public_updated_at: '2019-07-27T09:29:44.000+00:00',
+            document_type: 'Statutory guidance'
+          }
+        },
+        {
+          href: '#',
+          title: {
+            text: 'Document 3'
+          },
+          description: {
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec pharetra ipsum. Duis euismod augue nisl.'
+          },
+          metadata: {
+          public_updated_at: '2019-08-27T10:29:44.000+00:00',
+            document_type: 'Statutory guidance'
+          }
+        }]
+      }) }}
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-9">Example 3</h3>
+
+      {{ appDocumentList({
+        items: [{
+          href: '#',
+          title: {
+            text: 'Document 1'
+          },
+          description: {
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec pharetra ipsum. Duis euismod augue nisl.'
+          }
+        },
+        {
+          href: '#',
+          title: {
+            text: 'Document 2'
+          },
+          description: {
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec pharetra ipsum. Duis euismod augue nisl.'
+          }
+        },
+        {
+          href: '#',
+          title: {
+            text: 'Document 3'
+          },
+          description: {
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nec pharetra ipsum. Duis euismod augue nisl.'
+          }
+        }]
+      }) }}
+
+    </div>
+</div>
+
+{% endblock %}

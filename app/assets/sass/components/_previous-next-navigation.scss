@@ -1,0 +1,72 @@
+/* ==========================================================================
+   #PREVIOUS/NEXT NAVIGATION
+   Based on https://github.com/alphagov/govuk_publishing_components/blob/master/app/assets/stylesheets/govuk_publishing_components/components/_previous-and-next-navigation.scss
+   ========================================================================== */
+.app-pagination {
+  display: block;
+  margin: govuk-spacing(6) (- govuk-spacing(3) );
+}
+
+.app-pagination__list {
+  margin: 0;
+  padding: 0;
+}
+
+.app-pagination__item {
+  @include govuk-font($size: 16, $line-height: (20 / 16));
+  list-style: none;
+}
+
+.app-pagination__link {
+  @extend %govuk-link;
+  display: block;
+  padding: govuk-spacing(3);
+  text-decoration: none;
+
+  &:hover,
+  &:active,
+  &:visited {
+    color: $govuk-link-colour;
+  }
+
+  &:hover,
+  &:active {
+    background-color: govuk-colour("light-grey", $legacy: "grey-4");
+  }
+
+  &:focus {
+    @include govuk-focused-text;
+  }
+}
+
+.app-pagination__link-title {
+  display: block;
+}
+
+.app-pagination__link-divider {
+  @include govuk-visually-hidden;
+}
+
+.app-pagination__link-text {
+  @include govuk-font(19, $weight: bold);
+  margin-left: govuk-spacing(2);
+}
+
+.app-pagination__link-icon {
+  @include govuk-font($size: 24, $line-height: (33.75 / 27));
+  display: inline-block;
+  margin-bottom: 1px;
+  height: .482em;
+  width: .63em;
+}
+
+.app-pagination__link-label {
+  display: inline-block;
+  margin-top: .1em;
+  text-decoration: underline;
+  margin-left: govuk-spacing(5);
+
+  @include govuk-media-query($from: tablet) {
+    margin-left: govuk-spacing(6);
+  }
+}

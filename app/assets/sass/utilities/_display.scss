@@ -1,0 +1,26 @@
+/* ==========================================================================
+   #DISPLAY
+   Based on https://github.com/alphagov/content-publisher/blob/master/app/assets/stylesheets/utilities/_display.scss
+   ========================================================================== */
+
+.app-hidden {
+  display: none;
+}
+
+.app-inline-block {
+  display: inline-block;
+}
+
+.app-js-only {
+  display: none;
+}
+
+.js-enabled {
+  .app-no-js {
+    display: none;
+  }
+
+  .app-js-only {
+    display: block;
+  }
+}

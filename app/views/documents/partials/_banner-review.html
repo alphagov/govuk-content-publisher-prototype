@@ -1,0 +1,24 @@
+{{ appInsetPrompt({
+  title: {
+    text: 'Content has been marked as ready for 2i review'
+  },
+  description: {
+    html: appCopyToClipboard({
+      id: 'review-url',
+      input: {
+        id: 'review-url-input',
+        name: 'review-url-input',
+        label: {
+          text: 'Send the Content Publisher link to another publisher for them to review. When content is ready you or they can publish it.'
+        },
+        value: 'http://content-publisher.integration.publishing.gov.uk' + data.document.base_path,
+        attributes: {
+          readonly: 'readonly'
+        }
+      },
+      button: {
+        text: 'Copy link'
+      }
+    })
+  }
+}) }}

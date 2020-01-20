@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Inset prompt component – GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "../"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span>
+        Inset prompt
+      </h1>
+
+      <p class="govuk-body-l">A prompt to users represented as inset content.</p>
+
+      <p class="govuk-body"><a class="govuk-link" href="https://content-publisher.integration.publishing.service.gov.uk/component-guide/inset_prompt">GOV.UK component guide</a></p>
+
+      <h2 class="govuk-heading-l">Examples</h2>
+
+      <h3 class="govuk-heading-m">Example 1</h3>
+
+      <p class="govuk-body">Default</p>
+
+      {{ appInsetPrompt({
+        title: {
+          text: 'Please meet these requirements before publishing'
+        },
+        description: {
+          text: 'Document needs a summary before publishing (at least 10 characters)'
+        }
+      }) }}
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-9">Example 2</h3>
+
+      <p class="govuk-body">With items passed in as HTML</p>
+
+      {%- set descriptionHtml %}
+      <ul class="govuk-list app-c-inset-prompt__list">
+        <li><a class="govuk-link govuk-link--no-visited-state" href="#">Document needs a title before publishing (at least 10 characters)</a></li>
+        <li>Document needs a summary before publishing (at least 10 characters)</li>
+      </ul>
+      {% endset -%}
+
+      {{ appInsetPrompt({
+        title: {
+          text: 'Please meet these requirements before publishing'
+        },
+        description: {
+          html: descriptionHtml
+        }
+      }) }}
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-9">Example 3</h3>
+
+      <p class="govuk-body">Error</p>
+
+      {{ appInsetPrompt({
+        error: true,
+        title: {
+          text: 'There is a problem'
+        },
+        description: {
+          text: "‘Title here’ was not published"
+        }
+      }) }}
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-9">Example 4</h3>
+
+      <p class="govuk-body">List of items array</p>
+
+      {{ appInsetPrompt({
+        title: {
+          text: 'There is a problem'
+        },
+        items: [{
+          text: 'Document needs a title before publishing (at least 10 characters)',
+          href: '#'
+        }, {
+          text: 'Document needs a summary before publishing (at least 10 characters)',
+          href: '#'
+        }]
+      }) }}
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,229 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/components/markdown-editor.umd.js"></script>
+<script src="/public/javascripts/components/paste-html-to-markdown.js"></script>
+<script src="/public/javascripts/components/markdown-editor.js"></script>
+<script type="text/javascript">
+  var $element = $('#markdown-editor');
+  var markdownEditor = new GOVUK.Modules.MarkdownEditor();
+  markdownEditor.start($element);
+</script>
+
+<script src="/public/javascripts/components/contextual-guidance.js"></script>
+<script type="text/javascript">
+  var $element1 = $('#contextual-guidance-01');
+  var contextualGuidance = new GOVUK.Modules.ContextualGuidance();
+  contextualGuidance.start($element1);
+
+  var $element2 = $('#contextual-guidance-02');
+  var contextualGuidance = new GOVUK.Modules.ContextualGuidance();
+  contextualGuidance.start($element2);
+
+  var $element3 = $('#contextual-guidance-03');
+  var contextualGuidance = new GOVUK.Modules.ContextualGuidance();
+  contextualGuidance.start($element3);
+
+  var $element4 = $('#contextual-guidance-04');
+  var contextualGuidance = new GOVUK.Modules.ContextualGuidance();
+  contextualGuidance.start($element4);
+</script>
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: links.back
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">
+            Create a new edition for ‘{{ data.document.title }}’
+          </h1>
+
+        </div>
+      </div>
+
+      {% if data.user.role != 'admin' and data.document.document_status == 'published' and data.document.political == true and data.document.government.current == false %}
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+
+            <p class="govuk-body">Only a GDS admin can create a new edition of a live page in history mode. You do not have permission to do this.</p>
+
+            <p class="govuk-body">If you think this content needs to be updated, or should not be in history mode, you need to <a class="govuk-link" href="https://support.publishing.service.gov.uk/content_advice_request/new" target="_blank">make a request to GDS in GOV.UK support</a> (link opens in a new window).</p>
+
+            <p class="govuk-body">Read the <a class="govuk-link" href="https://www.gov.uk/guidance/content-design" target="_blank">full guidance on creating content</a> (link opens in a new window).</p>
+
+          </div>
+        </div>
+
+      {% else %}
+
+        <form action="{{ links.save }}" accept-charset="UTF-8" method="post">
+
+          {%- call appContextualGuidance({
+            id: 'contextual-guidance-01',
+            for: 'title',
+            heading: {
+              text: 'Writing a title'
+            },
+            description: {
+              text: 'The title must make clear what the content offers users. Use the words your users do to help them find this. Avoid wordplay or teases.'
+            }
+          }) %}
+
+            {{ govukTextarea({
+              id: "title",
+              name: "document[title]",
+              label: {
+                text: "Title",
+                classes: "govuk-!-font-weight-bold"
+              },
+              rows: 2,
+              value: data.document.title
+            }) }}
+
+          {% endcall -%}
+
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+            {{ appUrlPreview({
+              path: data.document.base_path
+            }) }}
+            </div>
+          </div>
+
+          {%- call appContextualGuidance({
+            id: 'contextual-guidance-02',
+            for: 'summary',
+            heading: {
+              text: 'Writing a summary'
+            },
+            description: {
+              text: 'The summary explains the main point of the content and it should end with a full stop. Keep it short, possibly under 160 characters, and avoid repeating the first line of the body.'
+            }
+          }) %}
+
+            {{ govukTextarea({
+              id: "summary",
+              name: "document[description]",
+              label: {
+                text: "Summary",
+                classes: "govuk-!-font-weight-bold"
+              },
+              value: data.document.description
+            }) }}
+
+          {% endcall -%}
+
+          {% set bodyGuidanceHtml %}
+            {% include "./partials/_guidance-body-text.html" %}
+          {% endset %}
+
+          {%- call appContextualGuidance({
+            id: 'contextual-guidance-03',
+            for: 'body',
+            heading: {
+              text: 'Writing content'
+            },
+            description: {
+              html: bodyGuidanceHtml
+            }
+          }) %}
+
+            {{ appMarkdownEditor({
+              attributes: {
+                id: "markdown-editor"
+              },
+              label: {
+                text: "Body",
+                classes: "govuk-!-font-weight-bold"
+              },
+              textarea: {
+                id: "body",
+                name: "document[details][body]",
+                rows: 20,
+                attributes: {
+                  spellcheck: false
+                }
+              },
+              value: data.document.details.body | toMarkdown
+            }) }}
+
+          {% endcall -%}
+
+          {%- call appContextualGuidance({
+            id: 'contextual-guidance-04',
+            for: 'revision-change-note',
+            heading: {
+              text: 'Writing change notes'
+            },
+            description: {
+              html: 'Describe the change for users. Include or refer to any new or updated information. This change note will be published on the page and emailed to subscribers. The ‘last updated’ date will change.<p><a href="#">Full guidance on change notes</a></p>'
+            },
+            classes: 'govuk-!-margin-top-4'
+          }) %}
+
+
+            {{ govukRadios({
+              idPrefix: "political",
+              name: "document[political]",
+              fieldset: {
+                legend: {
+                  text: "Is the content change significant to users?",
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--s"
+                }
+              },
+              items: [
+                {
+                  value: "yes",
+                  text: "Yes – information has been added or updated",
+                  checked: true,
+                  conditional: {
+                    html: govukTextarea({
+                      id: "revision-change-note",
+                      name: "document[revision][change_note]",
+                      label: {
+                        text: "Public change note",
+                        classes: "govuk-!-font-weight-bold"
+                      }
+                    })
+                  }
+                },
+                {
+                  value: "no",
+                  text: "No – it's a minor style update"
+                }
+              ]
+            }) }}
+
+          {% endcall -%}
+
+          {{ govukButton({
+            text: "Save"
+          }) }}
+
+        </form>
+
+      {% endif %}
+
+    </div>
+</div>
+
+{% endblock %}

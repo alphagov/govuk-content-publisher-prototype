@@ -1,0 +1,149 @@
+/* ==========================================================================
+   #MARKDOWN EDITOR
+   Based on https://github.com/alphagov/content-publisher/blob/master/app/assets/stylesheets/components/_markdown-editor.scss
+   ========================================================================== */
+
+ $app-toolbar-button-size: 50px;
+
+ .app-c-markdown-editor {
+   .govuk-textarea {
+     border-top: 0;
+     resize: vertical;
+
+     &:focus {
+       outline: none;
+       box-shadow: none;
+     }
+   }
+ }
+
+ .app-c-markdown-editor__container--focused {
+   outline: $govuk-focus-width solid $govuk-focus-colour;
+   outline-offset: $govuk-border-width-form-element;
+   box-shadow: $govuk-input-border-colour 0 0 0 $govuk-border-width-form-element;
+ }
+
+ .app-c-markdown-editor__head {
+   @include govuk-font(19);
+   display: block;
+   border: $govuk-border-width-form-element solid $govuk-input-border-colour;
+   border-bottom: 0;
+   background-color: govuk-colour("white");
+ }
+
+ .app-c-markdown-editor__preview-toggle {
+   width: 100%;
+   border-bottom: $govuk-border-width-form-element solid $govuk-border-colour;
+   background-color: govuk-colour("light-grey");
+   font-size: 0; //fix the spacing between the inline-block toggle buttons
+ }
+
+ .app-c-markdown-editor__button {
+   @include govuk-link-common;
+   @include govuk-font(19);
+   display: inline-block;
+   margin-bottom: -$govuk-border-width-form-element;
+   padding: govuk-spacing(2) govuk-spacing(2) govuk-spacing(2) - $govuk-border-width-form-element;
+   border: $govuk-border-width-form-element solid transparent;
+   border-top: 0;
+   border-bottom: 0;
+   color: $govuk-link-colour;
+   background-color: transparent;
+   cursor: pointer;
+
+   &:focus {
+     @include govuk-focused-text;
+     outline: none;
+     box-shadow: none;
+   }
+ }
+
+ .app-c-markdown-editor__button--muted {
+   padding: govuk-spacing(2);
+   border-right: $govuk-border-width-form-element solid $govuk-border-colour;
+   border-left: $govuk-border-width-form-element solid $govuk-border-colour;
+   color: $govuk-text-colour;
+   background: govuk-colour("light-grey");
+   text-decoration: none;
+
+   &:focus {
+     @include govuk-focused-text;
+     outline: none;
+     box-shadow: none;
+   }
+
+   &:first-child {
+     border-left-color: transparent;
+   }
+ }
+
+ .app-c-markdown-editor__input {
+   display: block;
+ }
+
+ .app-c-markdown-editor__preview {
+   display: none;
+   margin-top: 0;
+   color: $govuk-text-colour;
+
+   .govuk-textarea {
+     padding: govuk-spacing(6);
+     overflow: scroll;
+     background-color: govuk-colour("light-grey");
+   }
+
+   .govuk-govspeak {
+     .image {
+       margin: 0;
+     }
+   }
+ }
+
+ .app-c-markdown-editor__toolbar {
+   background-color: govuk-colour("light-grey");
+   line-height: 0;
+ }
+
+ .app-c-markdown-editor__toolbar-group {
+   display: table;
+   width: 100%;
+ }
+
+ .app-c-markdown-editor__toolbar-button {
+   display: inline-block;
+   width: $app-toolbar-button-size;
+   height: $app-toolbar-button-size;
+   background: none;
+
+   &:focus {
+     @include govuk-focused-text;
+     outline: none;
+     box-shadow: none;
+   }
+
+   &:hover {
+     background-color: govuk-colour("light-grey");
+     cursor: pointer;
+   }
+ }
+
+ .app-c-markdown-editor__toolbar-icon {
+   display: inline-block;
+   background: inherit;
+   fill: currentColor;
+   pointer-events: none;
+ }
+
+ .app-c-markdown-editor__toolbar-button--text {
+   @include govuk-font($size: 16, $weight: bold);
+   width: auto;
+   padding: govuk-spacing(3);
+   border: 0;
+   border-left: 4px solid govuk-colour("white");
+   background: transparent;
+   vertical-align: top;
+ }
+
+ .app-c-markdown-editor__toolbar-button--end {
+   float: right;
+ }

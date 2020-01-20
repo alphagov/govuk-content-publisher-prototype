@@ -1,0 +1,51 @@
+/* ==========================================================================
+   #LINKS
+   Based on https://github.com/alphagov/content-publisher/blob/master/app/assets/stylesheets/core/_link.scss
+   ========================================================================== */
+
+.app-link--button {
+  @extend %govuk-body-m;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: $govuk-link-colour;
+  background: transparent;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+// TODO: support this modifier in govuk-frontend
+.app-link--destructive {
+  color: $govuk-error-colour;
+  @include govuk-font(19);
+
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    color: $govuk-error-colour;
+  }
+
+  &:focus {
+    color: $govuk-focus-text-colour;
+  }
+}
+
+.app-link--right {
+  @include govuk-font(19);
+  float: right;
+}
+
+.app-link--inline {
+  display: inline-block;
+  padding: govuk-spacing(3) 0;
+
+  @include govuk-font(19);
+  @include govuk-media-query($from: tablet) {
+    padding: 8px govuk-spacing(3);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

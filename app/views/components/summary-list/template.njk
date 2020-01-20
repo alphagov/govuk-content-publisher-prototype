@@ -1,0 +1,68 @@
+{%- macro _actionLink(action) %}
+  <a class="govuk-link {{- ' ' + action.classes if action.classes }}" href="{{ action.href }}" {%- for attribute, value in action.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+    {{- action.html | safe if action.html else action.text -}}
+    {%- if action.visuallyHiddenText -%}
+      <span class="govuk-visually-hidden"> {{ action.visuallyHiddenText }}</span>
+    {% endif -%}
+  </a>
+{% endmacro -%}
+
+{# Determine if we need 2 or 3 columns #}
+{% set anyRowHasActions = false %}
+{% for row in params.rows %}
+  {% set anyRowHasActions = true if row.actions.items | length else anyRowHasActions %}
+{% endfor -%}
+
+<div class="app-c-summary-list {{- ' ' + params.classes if params.classes }}" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+  {%- if params.heading %}
+    <h{{ params.heading.headingLevel | default(3) }} class="{{ params.heading.classes | default('govuk-heading-m') }}">
+      {{- params.heading.html | safe if params.heading.html else params.heading.text -}}
+    </h{{ params.heading.headingLevel | default(3) }}>
+    {%- if params.actions %}
+      <ul class="govuk-summary-list__actions-list">
+        {% for action in params.actions %}
+          <li class="govuk-summary-list__actions-list-item">
+            {{- _actionLink(action) -}}
+          </li>
+        {% endfor -%}
+      </ul>
+    {% endif -%}
+  {% endif -%}
+  {%- if params.rows.length %}
+    <dl class="govuk-summary-list">
+      {%- for row in params.rows %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key {{- ' ' + row.key.classes if row.key.classes }}">
+            {{- row.key.html | safe if row.key.html else row.key.text -}}
+          </dt>
+          <dd class="govuk-summary-list__value {{- ' ' + row.value.classes if row.value.classes }}">
+            {{- row.value.html | safe if row.value.html else row.value.text -}}
+          </dd>
+          {%- if row.actions.items.length %}
+            <dd class="govuk-summary-list__actions {{- ' ' + row.actions.classes if row.actions.classes }}">
+              {%- if row.actions.items.length == 1 %}
+                {{- _actionLink(row.actions.items[0]) -}}
+              {% else %}
+                <ul class="govuk-summary-list__actions-list">
+                  {%- for action in row.actions.items %}
+                    <li class="govuk-summary-list__actions-list-item">
+                      {{- _actionLink(action) -}}
+                    </li>
+                  {% endfor -%}
+                </ul>
+              {% endif -%}
+            </dd>
+          {% elif anyRowHasActions %}
+            {# Add dummy column to extend border #}
+            <span class="govuk-summary-list__actions"></span>
+          {% endif -%}
+        </div>
+      {% endfor -%}
+    </dl>
+  {% endif -%}
+  {%- if caller %}
+  <div class="app-c-summary__block">
+    {{- caller() -}}
+  </div>
+  {% endif -%}
+</div>

@@ -1,0 +1,136 @@
+/* ==========================================================================
+   #TOOLBAR DROPDOWN
+   Based on https://github.com/alphagov/content-publisher/blob/master/app/assets/stylesheets/components/_toolbar-dropdown.scss
+   ========================================================================== */
+
+$app-dropdown-arrow-size: 12px;
+$app-dropdown-arrow-spacing: $app-dropdown-arrow-size / 2;
+
+.app-c-toolbar-dropdown {
+  display: inline-block;
+  position: relative;
+  min-width: 120px;
+  min-height: 50px;
+  background: inherit;
+  text-align: left;
+
+  .app-c-toolbar-dropdown__container {
+    display: none;
+  }
+
+  &[open] {
+    .app-c-toolbar-dropdown__container {
+      display: block;
+    }
+  }
+}
+
+.app-c-toolbar-dropdown--end {
+  float: right;
+  border-left: 4px solid govuk-colour("white");
+}
+
+.app-c-toolbar-dropdown__title {
+  @include govuk-font($size: 16, $weight: bold);
+  display: block;
+  padding: govuk-spacing(3);
+  border: 0;
+  background: inherit;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    background-color: govuk-colour("light-grey");
+  }
+
+  &:focus {
+    @include govuk-focused-text;
+    outline: none;
+    box-shadow: none;
+  }
+
+  &::after {
+    content: "";
+    position: relative;
+    top: 4px;
+    float: right;
+    @include govuk-shape-arrow($direction: down, $base: $app-dropdown-arrow-size, $display: inline-block);
+  }
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+
+.app-c-toolbar-dropdown__container {
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+}
+
+.app-c-toolbar-dropdown__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.app-c-toolbar-dropdown__list-item {
+  margin: 0;
+  padding: 0;
+}
+
+.app-c-toolbar-dropdown__link {
+  @include govuk-font($size: 16);
+
+  display: block;
+  padding: govuk-spacing(3);
+  color: $govuk-text-colour;
+  background: govuk-colour("light-grey");
+  text-decoration: none;
+  -webkit-appearance: none;
+  appearance: none;
+
+  &:hover {
+    background-color: govuk-colour("light-grey");
+  }
+
+  &:focus {
+    @include govuk-focused-text;
+    outline: none;
+    box-shadow: none;
+  }
+
+  &::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+  }
+}
+
+.app-c-toolbar-dropdown__button {
+  @include govuk-font($size: 16);
+  display: block;
+  width: 100%;
+  padding: govuk-spacing(3);
+  border: 0;
+  color: $govuk-text-colour;
+  background: govuk-colour("light-grey");
+  text-align: inherit;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+
+  &:hover {
+    background-color: govuk-colour("light-grey");
+  }
+
+  &:focus {
+    @include govuk-focused-text;
+    outline: none;
+    box-shadow: none;
+  }
+
+  &::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+  }
+}

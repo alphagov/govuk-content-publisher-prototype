@@ -1,0 +1,151 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-l">
+            Documents
+          </h1>
+        </div>
+        <div class="govuk-grid-column-one-third app-grid-column--align-right">
+          {{ govukButton({
+            text: "Create new document",
+            href: "/documents/super-type"
+          }) }}
+        </div>
+
+      </div>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-quarter">
+
+          <form action="/documents" method="get">
+
+            {{ govukInput({
+              id: "title_or_url",
+              name: "filters[title_or_url]",
+              label: {
+                text: "Title or URL",
+                classes: "govuk-label--s"
+              },
+              attributes: {
+                autocomplete: off,
+                autocapitalize: off,
+                spellcheck: false
+              },
+              value: data.filters.title_or_url if data.filters.title_or_url
+            }) }}
+
+            {% include "./partials/_organisation-select.html" %}
+
+            {% include "./partials/_document-type.html" %}
+
+            {% include "./partials/_publication-status.html" %}
+
+            {% include "./partials/_political-status.html" %}
+
+            {% include "./partials/_history-mode-status.html" %}
+
+            {{ govukButton({
+              text: "Filter"
+            }) }}
+
+          </form>
+
+          <p class="govuk-body">
+            <a class="govuk-link govuk-link--no-visited-state" href="/documents?filters=&sort=">Clear all filters</a>
+          </p>
+
+          <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">
+
+          <p class="govuk-heading-s">Guidance</p>
+
+          <p class="govuk-body">
+            <a class="govuk-link" target="_blank" href="https://www.gov.uk/topic/government-digital-guidance/content-publishing">Planning, writing and managing content</a>
+          </p>
+
+        </div>
+        <div class="govuk-grid-column-three-quarters">
+
+          <p class="govuk-body govuk-!-margin-bottom-1">
+            <strong>{{ total_count }}</strong> documents
+          </p>
+
+          {%- if documents.length %}
+
+            <table class="govuk-table govuk-table--sortable">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th scope="col" class="govuk-table__header">Document title</th>
+                  <th scope="col" class="govuk-table__header">Status</th>
+                  <th scope="col" class="govuk-table__header govuk-table__header--active">
+                    {% if data.sort == 'desc' %}
+                      <a class="app-table__sort-link app-table__sort-link--ascending" href="/documents/?sort=asc">Last updated</a>
+                    {% else %}
+                      <a class="app-table__sort-link app-table__sort-link--descending" href="/documents/?sort=desc">Last updated</a>
+                    {% endif %}
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                {%- for document in documents -%}
+                <tr class="govuk-table__row">
+                  <td class="govuk-table__cell">
+                    {{- appDocumentList({
+                      items: [{
+                        href: '/documents/' + document.content_id,
+                        title: {
+                          text: document.title if document.title else "Untitled document"
+                        },
+                        metadata: {
+                          document_type: document.document_type | documentType,
+                          last_edited_by: document.last_updated_by
+                        }
+                      }]
+                    }) -}}
+                  </td>
+                  <td class="govuk-table__cell">
+                    {{ document.document_status | documentStatus }}
+                  </td>
+                  <td class="govuk-table__cell">
+                    {{ document.updated_at | govDate if document.updated_at }}
+                  </td>
+                </tr>
+                {% endfor -%}
+              </tbody>
+            </table>
+
+            {% include "./partials/_pagination.html" %}
+
+          {% else %}
+
+            <p class="govuk-body govuk-!-margin-top-5">Improve your search results:</p>
+
+            <ul class="govuk-list govuk-list--bullet">
+              <li>removing filters</li>
+              <li>searching for something less specific</li>
+              <li>double-checking your spelling</li>
+            </ul>
+
+          {% endif -%}
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

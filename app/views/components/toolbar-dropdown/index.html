@@ -1,0 +1,124 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  URL preview component – GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/components/toolbar-dropdown.js"></script>
+<script type="text/javascript">
+  var $element1 = $('#example-1');
+  var toolbarDropdown1 = new GOVUK.Modules.ToolbarDropdown();
+  toolbarDropdown1.start($element1);
+
+  var $element2 = $('#example-2');
+  var toolbarDropdown2 = new GOVUK.Modules.ToolbarDropdown();
+  toolbarDropdown2.start($element2);
+</script>
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "../"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span>
+        Toolbar dropdown
+      </h1>
+
+      <p class="govuk-body-l">Toggles a contextual overlay for displaying lists of buttons.</p>
+
+      <p class="govuk-body"><a class="govuk-link" href="https://content-publisher.integration.publishing.service.gov.uk/component-guide/toolbar_dropdown">GOV.UK component guide</a></p>
+
+      <h2 class="govuk-heading-l">Examples</h2>
+
+      <h3 class="govuk-heading-m">Example 1</h3>
+
+      <p class="govuk-body">Default</p>
+
+      {{ appToolbarDropdown({
+        title: {
+          text: "Insert"
+        },
+        items: [
+          {
+            text: "Image",
+            href: "#",
+            target: "_blank",
+            attributes: {
+              "data-module": "inline-image-modal",
+              "data-modal-action": "open"
+            }
+          },
+          {
+            element: "button",
+            text: "Contact",
+            type: "submit",
+            name: "submit"
+          }
+        ],
+        attributes: {
+          "id": "example-1",
+          "data-module": "toolbar-dropdown"
+        }
+      }) }}
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-9">Example 2</h3>
+
+      <p class="govuk-body">Within markdown editor toolbar</p>
+
+      <div class="app-c-markdown-editor__toolbar">
+        <markdown-toolbar class="app-c-markdown-editor__toolbar-group" for="markdown-editor">
+
+          {{ appToolbarDropdown({
+            items: [
+              {
+                element: "button",
+                text: "Attachment",
+                type: "submit",
+                name: "submit"
+              },
+              {
+                element: "button",
+                text: "Contact",
+                type: "submit",
+                name: "submit"
+              },
+              {
+                element: "button",
+                text: "Image",
+                type: "submit",
+                name: "submit"
+              },
+              {
+                element: "button",
+                text: "Video",
+                type: "submit",
+                name: "submit"
+              }
+            ],
+            classes: "app-c-toolbar-dropdown--end",
+            attributes: {
+              "id": "example-2",
+              "data-module": "toolbar-dropdown"
+            }
+          }) }}
+
+        </markdown-toolbar>
+      </div>
+
+
+
+
+    </div>
+</div>
+
+{% endblock %}

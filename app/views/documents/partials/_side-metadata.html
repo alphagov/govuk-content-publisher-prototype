@@ -1,0 +1,69 @@
+{%- if data.document.withdrawn_notice | length %}
+
+  {{ appMetadata({
+    items: [{
+        title: {
+          text: 'Status'
+        },
+        description: {
+          text: "Withdrawn"
+        }
+      }, {
+        title: {
+          text: 'Withdrawn on'
+        },
+        description: {
+          text: data.document.withdrawn_notice.withdrawn_at | govTime + ' on ' + data.document.withdrawn_notice.withdrawn_at | govDate
+        }
+      }, {
+        title: {
+          text: 'Withdrawn by'
+        },
+        description: {
+          text: 'Simon Whatley'
+        }
+      }]
+  }) }}
+
+{% else %}
+
+  {{ appMetadata({
+    items: [{
+        title: {
+          text: 'Status'
+        },
+        description: {
+          text: data.document.document_status | documentStatus if data.document.document_status else "Unknown"
+        }
+      }, {
+        title: {
+          text: 'Last updated on'
+        },
+        description: {
+          text: data.document.updated_at | govTime + ' on ' + data.document.updated_at | govDate
+        }
+      }, {
+        title: {
+          text: 'Last updated by'
+        },
+        description: {
+          text: data.document.last_updated_by
+        }
+      }, {
+        title: {
+          text: 'Created on'
+        },
+        description: {
+          text: data.document.first_published_at | govTime + ' on ' + data.document.first_published_at | govDate
+        }
+      }, {
+        title: {
+          text: 'Created by'
+        },
+        description: {
+          text: data.document.created_by
+        }
+      }]
+  }) }}
+
+{% endif -%}

@@ -1,0 +1,35 @@
+/* ==========================================================================
+   #URL PREVIEW
+   Based on https://github.com/alphagov/content-publisher/blob/master/app/assets/stylesheets/components/_url-preview.scss
+   ========================================================================== */
+
+.app-c-url-preview {
+  @include govuk-font(19);
+
+  @include govuk-responsive-margin(6, "bottom");
+
+  .govuk-inset-text {
+    margin-top: 0;
+  }
+}
+
+.app-c-url-preview__title {
+  @include govuk-font($size: 19, $weight: bold);
+  margin: 0;
+}
+
+.app-c-url-preview__url {
+  word-wrap: break-word;
+}
+
+.app-c-url-preview__default-message,
+.app-c-url-preview__error-message,
+.app-c-url-preview__url {
+  margin: 0;
+}
+
+.app-c-url-preview__default-message--hidden,
+.app-c-url-preview__error-message--hidden,
+.app-c-url-preview__url--hidden {
+  display: none;
+}

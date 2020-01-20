@@ -1,0 +1,12 @@
+/* ==========================================================================
+   #HISTORY
+   Based on https://github.com/alphagov/content-publisher/blob/master/app/assets/stylesheets/objects/_history.scss
+   ========================================================================== */
+
+.app-timeline-entry {
+  @include govuk-font(19);
+}
+
+.app-timeline-entry__dateline {
+  color: $govuk-secondary-text-colour;
+}

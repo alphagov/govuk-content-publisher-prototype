@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Header component – GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "../"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span>
+        Header
+      </h1>
+
+      <p class="govuk-body-l">The header provides the crown logo, product or service name and navigation.</p>
+
+      <p class="govuk-body"><a class="govuk-link" href="https://content-publisher.integration.publishing.service.gov.uk/component-guide/layout_header">GOV.UK component guide</a></p>
+
+      <h2 class="govuk-heading-l">Examples</h2>
+
+      <h3 class="govuk-heading-m">Example 1</h3>
+
+      <p class="govuk-body">Lorem ipsum</p>
+
+      {{ appHeader({
+        serviceName: {
+          text: 'Publishing'
+        },
+        environment: 'production',
+        navigation: {
+          label: 'Account navigation',
+          items: [{
+            text: 'Account name',
+            href: '#',
+            active: true
+          }, {
+            text: 'Sign out',
+            href: '#'
+          }]
+        }
+      }) }}
+
+      <h3 class="govuk-heading-m govuk-!-margin-top-9">Example 2</h3>
+
+      <p class="govuk-body">Lorem ipsum</p>
+
+      {{ appHeader({
+        serviceName: {
+          text: 'Publishing'
+        },
+        environment: 'integration',
+        navigation: {
+          label: 'Account navigation',
+          items: [{
+            text: 'Account name',
+            href: '#',
+            active: true
+          }, {
+            text: 'Sign out',
+            href: '#'
+          }]
+        }
+      }) }}
+
+    </div>
+</div>
+
+{% endblock %}

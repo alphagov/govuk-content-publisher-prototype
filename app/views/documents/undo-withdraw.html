@@ -1,0 +1,89 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/components/contextual-guidance.js"></script>
+<script type="text/javascript">
+  var $element1 = $('#contextual-guidance-01');
+  var contextualGuidance = new GOVUK.Modules.ContextualGuidance();
+  contextualGuidance.start($element1);
+</script>
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: links.back
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">
+            Undo the withdrawal of ‘{{ data.document.title }}’
+          </h1>
+
+        </div>
+      </div>
+
+      {%- if data.document.document_status == 'published' and data.document.political == true and data.document.government.current == false %}
+
+        {%- if data.user.role in ['editor','manager'] %}
+
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+
+              <p class="govuk-body">Only a GDS admin can make changes to a live page in history mode. You do not have permission to do this.</p>
+
+              <p class="govuk-body">If you think this content needs to be updated, or should not be in history mode, you need to <a class="govuk-link" href="https://support.publishing.service.gov.uk/content_advice_request/new" target="_blank">make a request to GDS in GOV.UK support</a> (link opens in a new window).</p>
+
+              <p class="govuk-body">Read the <a class="govuk-link" href="https://www.gov.uk/guidance/content-design/gov-uk-content-retention-and-withdrawal-archiving-policy" target="_blank">guidance on withdrawing or removing content</a> (link opens in a new window).</p>
+
+            </div>
+          </div>
+
+        {% else %}
+
+          {% include "./partials/_withdraw-form.html" %}
+
+        {% endif -%}
+
+      {% else %}
+
+        {%- if data.user.role in ['admin','manager'] %}
+
+          {% include "./partials/_withdraw-form.html" %}
+
+        {% else %}
+
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+
+              <p class="govuk-body">Only a managing editor can undo a withdrawn live page. You do not have permission to do this.</p>
+
+              <p class="govuk-body">If you think this content is not relevant anymore or that it shouldn’t be on GOV.UK you need to ask the managing editor for your organisation.</p>
+
+              <p class="govuk-body">Read the <a class="govuk-link" href="https://www.gov.uk/guidance/content-design/gov-uk-content-retention-and-withdrawal-archiving-policy" target="_blank">full guidance on withdrawing or removing content</a> (link opens in a new window).</p>
+
+            </div>
+          </div>
+
+        {% endif -%}
+
+      {% endif -%}
+
+    </div>
+</div>
+
+{% endblock %}

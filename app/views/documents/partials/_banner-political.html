@@ -1,0 +1,8 @@
+{{ appNotice({
+  heading: {
+    text: 'This ' + (data.document.document_type | documentType | lower) + ' is in history mode'
+  },
+  description: {
+    text: 'It was created under the ' + data.document.government.title
+  }
+}) }}

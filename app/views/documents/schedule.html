@@ -1,0 +1,110 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block pageScripts %}
+
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: links.back
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">
+            Set a date and time to publish
+          </h1>
+
+          {{ govukDateInput({
+            id: "date-to-publish",
+            fieldset: {
+              legend: {
+                text: "When do you want to publish?",
+                isPageHeading: false,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            hint: {
+              text: "For example, " + (date | dateAdd(2) | date('D MM YYYY'))
+            },
+            items: [
+              {
+                id: "date-to-publish-day",
+                name: "document[schedule][date][day]",
+                label: "Day",
+                classes: "govuk-input--width-2"
+              },
+              {
+                id: "date-to-publish-month",
+                name: "document[schedule][date][month]",
+                label: "Month",
+                classes: "govuk-input--width-2"
+              },
+              {
+                id: "date-to-publish-year",
+                name: "document[schedule][date][year]",
+                label: "Year",
+                classes: "govuk-input--width-4"
+              }
+            ]
+          }) }}
+
+          {{ govukInput({
+            id: "time-to-publish",
+            name: "document[schedule][time]",
+            label: {
+              text: "Time",
+              classes: "govuk-label--s"
+            },
+            hint: {
+              text: "For example, 9:00am"
+            },
+            classes: "govuk-input--width-5"
+          }) }}
+
+          {{ govukRadios({
+            idPrefix: "schedule-action",
+            name: "document[schedule][action]",
+            items: [
+              {
+                value: "save",
+                text: "Save proposed date and time",
+                checked: checked("document['schedule']['action']", "save")
+              },
+              {
+                value: "schedule",
+                text: "Schedule to publish",
+                checked: checked("document['schedule']['action']", "schedule")
+              }
+            ]
+          }) }}
+
+          {{ govukButton({
+            text: "Save and continue"
+          }) }}
+
+          <p class="govuk-body">
+            <a class="govuk-link govuk-link--no-visited-state" href="{{ links.back }}">Cancel</a>
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

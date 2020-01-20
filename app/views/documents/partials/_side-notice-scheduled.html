@@ -1,0 +1,24 @@
+{%- set scheduledHtml %}
+<p class="govuk-body govuk-!-margin-bottom-1">
+  Scheduled to publish at {{ data.document.publishing_scheduled_at | govTime }} on {{ data.document.publishing_scheduled_at | govDate }}
+</p>
+<ul class="govuk-list govuk-!-margin-0">
+  <li>
+    <a class="govuk-link govuk-link--no-visited-state" href="{{ actions.schedule }}">Change date</a>
+  </li>
+  <li>
+    <form action="#" accept-charset="UTF-8" method="post">
+      <button class="govuk-link app-link--button govuk-link--no-visited-state">
+        Stop scheduled publishing
+      </button>
+    </form>
+  </li>
+</ul>
+{% endset -%}
+
+{{ appNotice({
+  description: {
+    html: scheduledHtml
+  },
+  classes: 'govuk-!-margin-bottom-4'
+}) }}

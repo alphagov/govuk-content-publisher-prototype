@@ -1,0 +1,20 @@
+{{ appPreviousNextNavigation({
+  previous: {
+    href: links.previous,
+    title: {
+      text: 'Previous page'
+    },
+    label: {
+      text: (page_number-1) + ' of ' + page_count
+    }
+  } if page_number >= 2,
+  next: {
+    href: links.next,
+    title: {
+      text: 'Next page'
+    },
+    label: {
+      text: ((page_number+1) + ' of ' + page_count) if page_number else ('1 of ' + page_count)
+    }
+  } if not (page_number == page_count)
+}) }}

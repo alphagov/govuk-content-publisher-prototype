@@ -1,0 +1,28 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <p class="govuk-body">Are you sure you want to undo the withdrawal?</p>
+
+    <p class="govuk-body">This will remove the withdrawn banner and republish the content immediately. It will not send an email alert to users.</p>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <form action="{{ links.save }}" method="post">
+
+      {{ govukButton({
+        text: "Yes, undo withdrawal",
+        classes: "govuk-button--warning"
+      }) }}
+
+    </form>
+
+    <p class="govuk-body">
+      <a class="govuk-link govuk-link--no-visited-state" href="{{ links.back }}">Cancel</a>
+    </p>
+
+  </div>
+</div>

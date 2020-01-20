@@ -1,0 +1,107 @@
+/* ==========================================================================
+   #OVERWRITES
+   Based on https://github.com/alphagov/content-publisher/blob/master/app/assets/stylesheets/utilities/_overwrites.scss
+   ========================================================================== */
+
+.app-c-textarea {
+  max-width: 100%;
+}
+
+.govuk-select[multiple] {
+  height: 100%;
+}
+
+.govuk-table {
+  .app-c-document-list__item {
+    margin: 0;
+    padding: 0;
+  }
+
+  .app-c-document-list__item-title {
+    @extend %govuk-link;
+    font-weight: normal;
+  }
+
+  .app-c-document-list__attribute {
+    @include govuk-font(16);
+  }
+
+  .govuk-table__body {
+    .govuk-table__cell {
+      @include govuk-font(16);
+      max-width: 150px;
+
+      &:nth-of-type(1) {
+        max-width: none;
+      }
+    }
+  }
+}
+
+.govuk-table--sortable {
+  .govuk-table__header--active {
+    .app-table__sort-link {
+      white-space: nowrap;
+    }
+  }
+}
+
+.govuk-footer__heading {
+  @include govuk-visually-hidden;
+}
+
+.govuk-select {
+  width: 100%;
+}
+
+.app-c-phase-banner {
+  .app-c-phase-banner__banner-item {
+    display: none;
+    margin-right: govuk-spacing(4);
+
+    @include govuk-media-query($from: desktop) {
+      display: inline-block;
+    }
+  }
+
+  .govuk-link {
+    font-size: inherit;
+  }
+}
+
+.app-selected-topics {
+  .govuk-breadcrumbs {
+    @include govuk-font(19);
+  }
+}
+
+.govuk-inset-text {
+  .govuk-govspeak {
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .govuk-link {
+    word-wrap: break-word;
+  }
+}
+
+.govuk-hint {
+  .govuk-list {
+    color: $govuk-secondary-text-colour;
+  }
+}
+
+.govuk-grid-column-one-third,
+.govuk-grid-column-two-thirds {
+  position: relative;
+}
+
+.govuk-tabs {
+  .govuk-heading-l {
+    @include govuk-media-query($from: tablet) {
+      @include govuk-visually-hidden;
+    }
+  }
+}

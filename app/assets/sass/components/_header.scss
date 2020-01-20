@@ -1,0 +1,81 @@
+/* ==========================================================================
+   #HEADER
+   Based on https://github.com/alphagov/govuk_publishing_components/blob/master/app/assets/stylesheets/govuk_publishing_components/components/_layout-header.scss
+   ========================================================================== */
+
+// @import "node_modules/govuk-frontend/govuk/components/header/header";
+// @import "node_modules/govuk-frontend/govuk/components/tag/tag";
+
+.app-c-layout-header--production .govuk-header__container {
+  border-bottom-color: govuk-colour("red", $legacy: "bright-red");
+}
+
+.app-c-layout-header--integration .govuk-header__container,
+.app-c-layout-header--staging .govuk-header__container {
+  border-bottom-color: govuk-colour("yellow");
+}
+
+.app-c-layout-header--example .govuk-header__container {
+  border-bottom-color: govuk-colour("bright-purple");
+}
+
+.app-c-layout-header--development .govuk-header__container {
+  border-bottom-color: govuk-colour("dark-grey", $legacy: "grey-1");
+}
+
+.app-c-header__logo {
+  white-space: nowrap;
+  width: auto;
+}
+
+.app-c-header__content {
+  width: auto;
+
+  @include govuk-media-query($from: desktop) {
+    float: right;
+  }
+}
+
+.app-c-header__product-name {
+  display: none;
+
+  @include govuk-media-query($from: tablet) {
+    display: inline-block;
+  }
+}
+
+.app-c-environment-tag {
+  @include govuk-font($size: 14, $weight: "bold");
+  padding: 2px 5px 0;
+  margin-left: 3px;
+  vertical-align: middle;
+  display: none;
+
+  @include govuk-media-query($from: tablet) {
+    display: inline-block;
+  }
+}
+
+.app-c-environment-tag--production {
+  background-color: govuk-colour("red", $legacy: "bright-red");
+}
+
+.app-c-environment-tag--example {
+  background-color: govuk-colour("bright-purple");
+}
+
+.app-c-environment-tag--development {
+  background-color: govuk-colour("dark-grey", $legacy: "grey-1");
+}
+
+.app-c-environment-tag--staging,
+.app-c-environment-tag--integration {
+  background-color: govuk-colour("yellow");
+  color: govuk-colour("black");
+}
+
+.govuk-header__navigation-item--collapsed-menu-only {
+  @include govuk-media-query($from: desktop) {
+    display: none;
+  }
+}

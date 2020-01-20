@@ -1,0 +1,34 @@
+<div class="app-c-timeline {{- ' ' + params.classes if params.classes}}" {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
+
+  {%- for item in params.items %}
+  <div class="app-c-timeline__item {{- ' ' + item.classes if item.classes}}" {%- for attribute, value in item.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
+
+    <div class="app-c-timeline__header">
+      <h{{ params.headingLevel | default(2) }} class="app-c-timeline__title">
+        {{- item.label.html | safe if item.label.html else item.label.text -}}
+      </h{{ params.headingLevel | default(2) }}>
+      {% if item.byline %}
+        <p class="app-c-timeline__byline">by {{ item.byline.html | safe if item.byline.html else item.byline.text }}</p>
+      {% endif %}
+    </div>
+
+    {%- if item.datetime.timestamp | length %}
+      <p class="app-c-timeline__date">
+        <time datetime="{{ item.datetime.timestamp }}">
+          {%- if item.datetime.type %}
+            {{- item.datetime.timestamp | govDate(item.datetime.type) -}}
+          {% else %}
+            {{- item.datetime.timestamp | date(item.datetime.format) -}}
+          {% endif -%}
+        </time>
+      </p>
+    {% endif -%}
+
+    <div class="app-c-timeline__description">
+      {{- item.html | safe if item.html else item.text -}}
+    </div>
+
+  </div>
+  {% endfor -%}
+
+</div>

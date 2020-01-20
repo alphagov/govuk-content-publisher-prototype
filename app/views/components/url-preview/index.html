@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  URL preview component – GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/components/url-preview.js"></script>
+<script type="text/javascript">
+  var $element = $('#title');
+  var urlPreview = new GOVUK.Modules.UrlPreview();
+  urlPreview.start($element);
+</script>
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "../"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span>
+        URL preview
+      </h1>
+
+      <p class="govuk-body-l">Generates URL from an input value and validates it with a server endpoint.</p>
+
+      <p class="govuk-body"><a class="govuk-link" href="https://content-publisher.integration.publishing.service.gov.uk/component-guide/url_preview">GOV.UK component guide</a></p>
+
+      <h2 class="govuk-heading-l">Examples</h2>
+
+      <h3 class="govuk-heading-m">Example 1</h3>
+
+      <p class="govuk-body">Lorem ipsum</p>
+
+      {{ govukInput({
+        id: "title",
+        name: "title",
+        value: 'hello world',
+        classes: 'govuk-visually-hidden',
+        attributes: {
+          'data-url-preview': 'input'
+        }
+      }) }}
+
+      {{ appUrlPreview({
+
+      }) }}
+
+      <!-- <h3 class="govuk-heading-m govuk-!-margin-top-9">Example 2</h3>
+
+      <p class="govuk-body">Lorem ispsum</p>
+
+      {#{ appUrlPreview({
+
+      }) }#} -->
+
+    </div>
+</div>
+
+{% endblock %}
