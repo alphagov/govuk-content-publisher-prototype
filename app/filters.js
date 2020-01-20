@@ -6,6 +6,8 @@ const numeral = require('numeral');
 
 const TurndownService = require('turndown');
 
+const mimetypes = require('./data/mimetypes.json');
+
 module.exports = function (env) {
   /**
    * Instantiate object used to store the methods registered as a
@@ -168,6 +170,63 @@ module.exports = function (env) {
     let turndownService = new TurndownService();
 
     return turndownService.turndown(html);
+  }
+
+  /* ------------------------------------------------------------------
+   utility functions to determine file size
+  ------------------------------------------------------------------ */
+  filters.fileSizeFormat = function(input, binary) {
+  	let kwargs = getKwargs(arguments);
+  	binary = (kwargs.binary !== undefined) ? kwargs.binary : binary;
+
+  	let base = binary ? 1024 : 1000;
+  	let bytes = parseFloat(input);
+  	let units = [
+  		'Bytes',
+  		(binary ? 'KiB' : 'KB'),
+  		(binary ? 'MiB' : 'MB'),
+  		(binary ? 'GiB' : 'GB'),
+  		(binary ? 'TiB' : 'TB'),
+  		(binary ? 'PiB' : 'PB'),
+  		(binary ? 'EiB' : 'EB'),
+  		(binary ? 'ZiB' : 'ZB'),
+  		(binary ? 'YiB' : 'YB')
+  	];
+
+  	if (bytes === 1) {
+  		return '1 Byte';
+  	} else if (bytes < base) {
+  		return bytes + ' Bytes';
+  	} else {
+  		return units.reduce(function (match, unit, index) {
+  			let size = Math.pow(base, index);
+  			if (bytes >= size) {
+  				return (bytes/size).toFixed(1) + ' ' + unit;
+  			}
+  			return match;
+  		});
+  	}
+  }
+
+  function getKwargs(args) {
+  	let kwargs = [].pop.call(args);
+  	return (typeof kwargs === 'object' && kwargs.__keywords) ? kwargs : {};
+  }
+
+  /* ------------------------------------------------------------------
+    utility functions to determine document content type
+  ------------------------------------------------------------------ */
+  filters.parseContentType = function(type, attribute = 'abbreviation') {
+
+    if (!type)
+      return null;
+
+    let mimetype = mimetypes.filter( (obj) =>
+      obj.type == type
+    )[0];
+
+    return mimetype[attribute];
+
   }
 
   /* ------------------------------------------------------------------

@@ -1,0 +1,45 @@
+
+{% call appSummaryList({
+  heading: {
+    text: "Attachments"
+  },
+  actions: [
+    {
+      href: links.attachments,
+      text: "Change",
+      visuallyHiddenText: "attachments",
+      classes: "app-c-summary-list__edit-section-link"
+    }
+  ] if data.document.document_status != 'published'
+}) %}
+
+<!-- ,
+rows: [
+  {
+    key: {
+      text: "Attachment title 1"
+    },
+    value: {
+      text: "Something useful"
+    },
+    actions: {
+      items: [
+        {
+          href: "#",
+          text: "Change",
+          visuallyHiddenText: "attachment 1"
+        }
+      ]
+    }
+  }
+] -->
+
+{%- if data.document.attachments.length %}
+
+{% else %}
+
+  <p class="govuk-body">There are no attachments for this document.</p>
+
+{% endif -%}
+
+{% endcall %}

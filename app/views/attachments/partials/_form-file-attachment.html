@@ -1,0 +1,138 @@
+<p class="govuk-body">All files must be accessible. Read <a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/guidance/how-to-publish-on-gov-uk/accessible-pdfs">full guidance on accessible attachments</a>.</p>
+<p class="govuk-body">Files must be uploaded in an <a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/guidance/content-design/planning-content#open-formats">open standards file format</a>. For example, .odt not .docx.</p>
+
+<form action="{{ links.save }}" accept-charset="UTF-8" method="post">
+  <!-- enctype="multipart/form-data" -->
+  <input type="hidden" name="document[attachment][type]" value="file">
+
+  {{ govukFileUpload({
+    id: "attachment-file",
+    name: "document[attachment][file]",
+    label: {
+      text: "Choose a file",
+      classes: "govuk-!-font-weight-bold"
+    }
+  }) }}
+
+  {{ govukInput({
+    id: "attachment-title",
+    name: "document[attachment][title]",
+    label: {
+      text: "Attachment title",
+      classes: "govuk-!-font-weight-bold"
+    },
+    hint: {
+      text: "Use the official title of the document"
+    },
+    value: attachment.title if attachment.title,
+    attributes: {
+      "autocomplete": "off",
+      "autocapitalize": "off"
+    }
+  }) }}
+
+  {{ govukInput({
+    id: "attachment-isbn",
+    name: "document[attachment][isbn]",
+    label: {
+      text: "ISBN (optional)",
+      classes: "govuk-!-font-weight-bold"
+    },
+    hint: {
+      text: "Some guidance here"
+    },
+    value: attachment.isbn if attachment.isbn,
+    attributes: {
+      "autocomplete": "off",
+      "autocapitalize": "off"
+    }
+  }) }}
+
+  <!--
+    TODO: validate ISBN
+    https://en.wikipedia.org/wiki/International_Standard_Book_Number
+    https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s13.html
+
+    ^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$
+  -->
+
+  {{ govukInput({
+    id: "attachment-urn",
+    name: "document[attachment][urn]",
+    label: {
+      text: "Unique reference (optional)",
+      classes: "govuk-!-font-weight-bold"
+    },
+    hint: {
+      text: "Some guidance here"
+    },
+    value: attachment.urn if attachment.urn,
+    attributes: {
+      "autocomplete": "off",
+      "autocapitalize": "off"
+    }
+  }) }}
+
+  {{ govukInput({
+    id: "attachment-cpn",
+    name: "document[attachment][cpn]",
+    label: {
+      text: "Command paper number (optional)",
+      classes: "govuk-!-font-weight-bold"
+    },
+    hint: {
+      text: "Some guidance here"
+    },
+    value: attachment.cpn if attachment.cpn,
+    attributes: {
+      "autocomplete": "off",
+      "autocapitalize": "off"
+    }
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "attachment-unnumbered",
+    name: "document[attachment][unnumbered]",
+    items: [
+      {
+        value: "yes",
+        text: "Unnumbered",
+        checked: true if attachment.unnumbered == "yes"
+      }
+    ]
+  }) }}
+
+  {{ govukInput({
+    id: "attachment-hcpn",
+    name: "document[attachment][hcpn]",
+    label: {
+      text: "House of Commons paper number (optional)",
+      classes: "govuk-!-font-weight-bold"
+    },
+    hint: {
+      text: "Some guidance here"
+    },
+    value: attachment.hcpn if attachment.hcpn,
+    attributes: {
+      "autocomplete": "off",
+      "autocapitalize": "off"
+    }
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "attachment-unnumbered-act",
+    name: "document[attachment][unnumbered_act]",
+    items: [
+      {
+        value: "yes",
+        text: "Unnumbered act paper",
+        checked: true if attachment.unnumbered_act == "yes"
+      }
+    ]
+  }) }}
+
+  {{ govukButton({
+    text: "Save attachment"
+  }) }}
+
+</form>

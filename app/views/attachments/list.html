@@ -1,0 +1,127 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/components/button-menu.js"></script>
+<script type="text/javascript">
+  new GOVUKPublishingFrontend.ButtonMenu({
+    container: $('.button-menu-1'),
+    mq: '(min-width: 45em)',
+    buttonText: 'Actions'
+  });
+</script>
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: links.back
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">
+            Attachments for ‘{{ data.document.title }}’
+          </h1>
+
+          {{ appButtonMenu({
+            classes: 'button-menu-1',
+            items: [{
+              text: 'Add HTML attachment',
+              classes: 'govuk-button',
+              href: '/documents/da6161d9-8562-463d-8fea-a3065671ec54/attachments/create?type=html'
+            }, {
+              text: 'Add file attachment',
+              classes: 'govuk-button--secondary',
+              href: '/documents/da6161d9-8562-463d-8fea-a3065671ec54/attachments/create?type=file'
+            }, {
+              text: 'Add external link',
+              classes: 'govuk-button--secondary',
+              href: '/documents/da6161d9-8562-463d-8fea-a3065671ec54/attachments/create?type=external'
+            }]
+          }) }}
+
+        </div>
+      </div>
+
+      <div class="govuk-grid-row govuk-!-margin-top-8">
+        <div class="govuk-grid-column-full">
+          <h2 class="govuk-heading-m">All attachments</h2>
+
+          <p>Attachments will be automatically listed on the document.</p>
+
+          {%- for attachment in attachments %}
+
+            {%- call appAttachmentActions({
+              items: [
+                {
+                  text: 'Edit details',
+                  href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/update'
+                },
+                {
+                  text: 'Download',
+                  href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/download'
+                } if attachment.type == 'file',
+                {
+                  text: 'Delete attachment',
+                  href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/delete',
+                  classes: 'app-link--destructive'
+                }
+              ]
+            }) %}
+
+              {{ appAttachment({
+                heading: {
+                  text: attachment.title
+                },
+                href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id
+              }) if attachment.type == 'external' }}
+
+              {{ appAttachment({
+                heading: {
+                  text: attachment.title
+                },
+                href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id,
+                metadata: {
+                  filename: 'attachment.pdf',
+                  fileSize: 1234560,
+                  contentType: 'application/pdf',
+                  pageCount: 25,
+                  thumbnail: 'document'
+                }
+              }) if attachment.type == 'file' }}
+
+              {{ appAttachment({
+                heading: {
+                  text: attachment.title
+                },
+                href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id,
+                metadata: {
+                  contentType: 'text/html',
+                  thumbnail: 'document'
+                }
+              }) if attachment.type == 'html' }}
+
+            {% endcall -%}
+
+          {% endfor -%}
+
+        </div>
+      </div>
+
+    </div>
+</div>
+
+{% endblock %}

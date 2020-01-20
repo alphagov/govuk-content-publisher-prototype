@@ -59,7 +59,7 @@ exports.document_list = function(req, res) {
   let documents = fs.readdirSync(directoryPath,'utf8');
 
   // Only get JSON documents
-  documents = documents.filter( doc => doc.match(/.*\.(json)/ig))
+  documents = documents.filter( doc => doc.match(/.*\.(json)/ig));
 
   const docArray = [];
 
@@ -128,6 +128,7 @@ exports.document_summary_get = function(req, res) {
         summary: '/documents/' + req.params.id,
         history: '/documents/' + req.params.id + '/history',
         content: '/documents/' + req.params.id + '/content',
+        attachments: '/documents/' + req.params.id + '/attachments',
         images: '/documents/' + req.params.id + '/images',
         topics: '/documents/' + req.params.id + '/topics',
         tags: '/documents/' + req.params.id + '/tags',

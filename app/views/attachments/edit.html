@@ -1,0 +1,76 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/components/markdown-editor.umd.js"></script>
+<script src="/public/javascripts/components/paste-html-to-markdown.js"></script>
+<script src="/public/javascripts/components/markdown-editor.js"></script>
+<script type="text/javascript">
+  var $element = $('#markdown-editor');
+  var markdownEditor = new GOVUK.Modules.MarkdownEditor();
+  markdownEditor.start($element);
+</script>
+
+<script src="/public/javascripts/components/contextual-guidance.js"></script>
+<script type="text/javascript">
+  var $element1 = $('#contextual-guidance-01');
+  var contextualGuidance = new GOVUK.Modules.ContextualGuidance();
+  contextualGuidance.start($element1);
+
+  var $element2 = $('#contextual-guidance-02');
+  var contextualGuidance = new GOVUK.Modules.ContextualGuidance();
+  contextualGuidance.start($element2);
+</script>
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: links.back
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">
+            Update attachment ‘{{ attachment.title }}’
+          </h1>
+
+        </div>
+      </div>
+
+      {%- if attachment.type == 'external' %}
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            {% include "./partials/_form-external-attachment.html" %}
+          </div>
+        </div>
+      {% endif -%}
+
+      {%- if attachment.type == 'file' %}
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            {% include "./partials/_form-file-attachment.html" %}
+          </div>
+        </div>
+      {% endif -%}
+
+      {%- if attachment.type == 'html' %}
+        {% include "./partials/_form-html-attachment.html" %}
+      {% endif -%}
+
+    </div>
+  </div>
+
+{% endblock %}
