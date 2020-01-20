@@ -119,25 +119,25 @@ router.get('/documents', checkIsAuthenticated, document_controller.document_list
 // GET request for creating an attachment. NOTE This must come before routes that display attachment (uses id).
 router.get('/documents/:document_id/attachments/create', checkIsAuthenticated, attachment_controller.attachment_create_get);
 
-// POST request for creating Document.
+// POST request for creating an attachment.
 router.post('/documents/:document_id/attachments/create', checkIsAuthenticated, attachment_controller.attachment_create_post);
 
-// GET request to delete Document.
+// GET request to delete an attachment.
 router.get('/documents/:document_id/attachments/:attachment_id/delete', checkIsAuthenticated, attachment_controller.attachment_delete_get);
 
-// POST request to delete Document.
+// POST request to delete an attachment.
 router.post('/documents/:document_id/attachments/:attachment_id/delete', checkIsAuthenticated, attachment_controller.attachment_delete_post);
 
-// GET request to update Document.
+// GET request to update an attachment.
 router.get('/documents/:document_id/attachments/:attachment_id/update', checkIsAuthenticated, attachment_controller.attachment_update_get);
 
-// POST request to update Document.
+// POST request to update an attachment.
 router.post('/documents/:document_id/attachments/:attachment_id/update', checkIsAuthenticated, attachment_controller.attachment_update_post);
 
-// GET request for one Document.
+// GET request for one attachment.
 router.get('/documents/:document_id/attachments/:attachment_id/', checkIsAuthenticated, attachment_controller.attachment_detail);
 
-// GET request for list of all Document items.
+// GET request for list of all attachment items.
 router.get('/documents/:document_id/attachments', checkIsAuthenticated, attachment_controller.attachment_list);
 
 
