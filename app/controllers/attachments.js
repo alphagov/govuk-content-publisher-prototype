@@ -3,34 +3,34 @@ const fs = require('fs');
 // const multer = require('multer');
 const uuid = require('uuid/v1');
 
-// var Attachment = require('../models/attachments');
+const Attachments = require('../models/attachments');
 
 // Display list of all attachments.
 exports.attachment_list = function(req, res) {
   // res.send('NOT IMPLEMENTED: attachment list');
 
-  // attachment uploads directory path
-  const directoryPath = path.join(__dirname, '../data/attachments/', req.params.document_id);
-
-  // check if document directory exists in attachment uploads directory
-  if (!fs.existsSync(directoryPath)) {
-    fs.mkdirSync(directoryPath);
-  }
-
-  let attachments = fs.readdirSync(directoryPath,'utf8');
-  // Only get JSON documents
-  attachments = attachments.filter( doc => doc.match(/.*\.(json)/ig));
-
-  const attachmentArray = [];
-
-  attachments.forEach(function (filename) {
-    let rawdata = fs.readFileSync(directoryPath + '/' + filename);
-    let attachmentData = JSON.parse(rawdata);
-    attachmentArray.push(attachmentData);
-  });
+  // // attachment uploads directory path
+  // const directoryPath = path.join(__dirname, '../data/attachments/', req.params.document_id);
+  //
+  // // check if document directory exists in attachment uploads directory
+  // if (!fs.existsSync(directoryPath)) {
+  //   fs.mkdirSync(directoryPath);
+  // }
+  //
+  // let attachments = fs.readdirSync(directoryPath,'utf8');
+  // // Only get JSON documents
+  // attachments = attachments.filter( doc => doc.match(/.*\.(json)/ig));
+  //
+  // const attachmentArray = [];
+  //
+  // attachments.forEach(function (filename) {
+  //   let rawdata = fs.readFileSync(directoryPath + '/' + filename);
+  //   let attachmentData = JSON.parse(rawdata);
+  //   attachmentArray.push(attachmentData);
+  // });
 
   res.render('../views/attachments/list', {
-    attachments: attachmentArray,
+    attachments: Attachments.findByDocumentId(req.params.document_id),
     links: {
       back: '/documents/' + req.params.document_id,
       save: '/documents/' + req.params.document_id + '/attachments'
@@ -43,13 +43,13 @@ exports.attachment_detail = function(req, res) {
   // res.send('NOT IMPLEMENTED: attachment detail: ' + req.params.attachment_id);
 
   // attachment uploads directory path
-  const directoryPath = path.join(__dirname, '../data/attachments/', req.params.document_id);
-
-  let rawdata = fs.readFileSync(directoryPath + '/' + req.params.attachment_id + '.json');
-  let attachmentData = JSON.parse(rawdata);
+  // const directoryPath = path.join(__dirname, '../data/attachments/', req.params.document_id);
+  //
+  // let rawdata = fs.readFileSync(directoryPath + '/' + req.params.attachment_id + '.json');
+  // let attachmentData = JSON.parse(rawdata);
 
   res.render('../views/attachments/show', {
-    attachment: attachmentData,
+    attachment: Attachments.findById(req.params.document_id, req.params.attachment_id),
     links: {
       back: '/documents/' + req.params.document_id + '/attachments',
       edit: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id,
@@ -154,13 +154,14 @@ exports.attachment_update_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: attachment update GET');
 
   // attachment uploads directory path
-  const directoryPath = path.join(__dirname, '../data/attachments/', req.params.document_id);
+  // const directoryPath = path.join(__dirname, '../data/attachments/', req.params.document_id);
+  //
+  // const filePath = directoryPath + '/' + req.params.attachment_id + '.json';
+  //
+  // let rawdata = fs.readFileSync(filePath);
+  // let attachmentData = JSON.parse(rawdata);
 
-  const filePath = directoryPath + '/' + req.params.attachment_id + '.json';
-
-  let rawdata = fs.readFileSync(filePath);
-  let attachmentData = JSON.parse(rawdata);
-
+  // HACK this is to mock the details of a file
   let fileMetadata = {
     filename: 'attachment.pdf',
     fileSize: 1234560,
@@ -171,7 +172,7 @@ exports.attachment_update_get = function(req, res) {
 
   res.render('../views/attachments/edit', {
     id: req.params.attachment_id,
-    attachment: attachmentData,
+    attachment: Attachments.findById(req.params.document_id, req.params.attachment_id),
     file: fileMetadata,
     links: {
       back: '/documents/' + req.params.document_id + '/attachments',

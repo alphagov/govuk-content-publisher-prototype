@@ -5,7 +5,8 @@ const organisations = require('../data/organisations.json');
 const governments = require('../data/governments.json');
 const users = require('../data/users.json');
 
-var Document = require('../models/documents');
+const Documents = require('../models/documents');
+const Attachments = require('../models/attachments');
 
 function paginate(array, page_size, page_number) {
   --page_number; // because pages logically start with 1, but technically with 0
@@ -123,6 +124,7 @@ exports.document_summary_get = function(req, res) {
   else {
 
     res.render('../views/documents/summary', {
+      attachments: Attachments.findByDocumentId(req.params.id),
       links: {
         home: '/documents',
         summary: '/documents/' + req.params.id,
