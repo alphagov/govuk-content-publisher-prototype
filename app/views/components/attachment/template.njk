@@ -21,9 +21,9 @@
   </div>
   <div class="app-c-attachment__details">
     <h{{ params.headingLevel | default(2) }} class="app-c-attachment__title {{- ' ' + params.heading.classes if params.heading.classes }}" {%- for attribute, value in params.heading.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
-      <a class="govuk-link govuk-link--no-visited-state app-c-attachment__link" target="_self" href="{{ params.href }}">
+      {%- if params.href | length %}<a class="govuk-link govuk-link--no-visited-state app-c-attachment__link" target="_self" href="{{ params.href }}">{% endif -%}
         {{- params.heading.html | safe if params.heading.html else params.heading.text -}}
-      </a>
+      {%- if params.href | length %}</a>{% endif -%}
     </h{{ params.headingLevel | default(2) }}>
     {%- if params.metadata %}
       <p class="app-c-attachment__metadata">
