@@ -14,7 +14,7 @@
 
   {%- if attachments | length %}
 
-  <dl class="govuk-summary-list govuk-summary-list--no-border">
+  <dl class="govuk-summary-list govuk-summary-list--no-border app-c-summary-list--number">
     {%- for attachment in attachments %}
     <div class="govuk-summary-list__row">
       <dt class="govuk-summary-list__key">
@@ -24,16 +24,18 @@
         {{ attachment.title }}
         <p>{{ attachment.type | attachmentType }}</p>
       </dd>
-      <!-- <dd class="govuk-summary-list__actions">
-        <a class="govuk-link" href="#">
+      {%- if data.change == 'true' %}
+      <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="/documents/{{ attachment.document_id }}/attachments/{{ attachment.content_id }}/update">
           Change<span class="govuk-visually-hidden"> {{ attachment.title }}</span>
         </a>
       </dd>
       <dd class="govuk-summary-list__actions">
-        <a class="govuk-link app-link--destructive" href="#">
+        <a class="govuk-link app-link--destructive" href="/documents/{{ attachment.document_id }}/attachments/{{ attachment.content_id }}/delete">
           Delete<span class="govuk-visually-hidden"> {{ attachment.title }}</span>
         </a>
-      </dd> -->
+      </dd>
+      {% endif -%}
     </div>
     {% endfor -%}
   </dl>

@@ -38,19 +38,23 @@
 
           {{ appButtonMenu({
             classes: 'button-menu-1',
-            items: [{
-              text: 'Add HTML attachment',
-              classes: 'govuk-button',
-              href: '/documents/da6161d9-8562-463d-8fea-a3065671ec54/attachments/create?type=html'
-            }, {
-              text: 'Add file attachment',
-              classes: 'govuk-button--secondary',
-              href: '/documents/da6161d9-8562-463d-8fea-a3065671ec54/attachments/create?type=file'
-            }, {
-              text: 'Add external link',
-              classes: 'govuk-button--secondary',
-              href: '/documents/da6161d9-8562-463d-8fea-a3065671ec54/attachments/create?type=external'
-            }]
+            items: [
+              {
+                text: 'Add HTML attachment',
+                classes: 'govuk-button',
+                href: '/documents/da6161d9-8562-463d-8fea-a3065671ec54/attachments/create?type=html'
+              },
+              {
+                text: 'Add file attachment',
+                classes: 'govuk-button',
+                href: '/documents/da6161d9-8562-463d-8fea-a3065671ec54/attachments/create?type=file'
+              },
+              {
+                text: 'Add external link',
+                classes: 'govuk-button',
+                href: '/documents/da6161d9-8562-463d-8fea-a3065671ec54/attachments/create?type=external'
+              }
+            ]
           }) }}
 
         </div>
@@ -79,21 +83,21 @@
                   href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/delete',
                   classes: 'app-link--destructive'
                 }
-              ]
+              ] if data.actions != "hide"
             }) %}
 
               {{ appAttachment({
                 heading: {
                   text: attachment.title
                 },
-                href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id
+                href: ('/documents/' + attachment.document_id + '/attachments/' + attachment.content_id) if data.links != "hide"
               }) if attachment.type == 'external' }}
 
               {{ appAttachment({
                 heading: {
                   text: attachment.title
                 },
-                href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id,
+                href: ('/documents/' + attachment.document_id + '/attachments/' + attachment.content_id) if data.links != "hide",
                 metadata: {
                   filename: 'attachment.pdf',
                   fileSize: 1234560,
@@ -107,7 +111,7 @@
                 heading: {
                   text: attachment.title
                 },
-                href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id,
+                href: ('/documents/' + attachment.document_id + '/attachments/' + attachment.content_id) if data.links != "hide",
                 metadata: {
                   contentType: 'text/html',
                   thumbnail: 'document'

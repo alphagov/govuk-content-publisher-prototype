@@ -1,7 +1,16 @@
 const path = require('path');
 const fs = require('fs');
 
-// get attachments.
+// https://www.callicoder.com/node-js-express-mongodb-restful-crud-api-tutorial/
+
+exports.save = function() {
+
+};
+
+exports.find = function() {
+
+};
+
 exports.findById = function(document_id, attachment_id) {
 
   // attachment uploads directory path
@@ -13,6 +22,14 @@ exports.findById = function(document_id, attachment_id) {
   let attachmentData = JSON.parse(rawdata);
 
   return attachmentData;
+
+};
+
+exports.findByIdAndUpdate = function(attachment_id) {
+
+};
+
+exports.findByIdAndDelete = function(attachment_id) {
 
 };
 

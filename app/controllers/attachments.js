@@ -105,6 +105,10 @@ exports.attachment_create_post = function(req, res) {
   attachmentData.created_at = new Date();
   attachmentData.created_by = req.session.data.user.display_name;
 
+  if (req.session.data.document.attachment.type === 'file' || req.session.data.document.attachment.type == 'html') {
+    attachmentData.order_url = "https://www.gov.uk/guidance/how-to-buy-printed-copies-of-official-documents";
+  }
+
   // create a JSON sting for the submitted data
   const fileData = JSON.stringify(attachmentData);
 
@@ -212,10 +216,16 @@ exports.attachment_update_post = function(req, res) {
     // TODO: work out the hierarchy of HCPN and unnumbered act
     attachmentData.hcpn = req.session.data.document.attachment.hcpn;
     attachmentData.unnumbered_act = req.session.data.document.attachment.unnumbered_act;
+
+    attachmentData.parliamentary_session = req.session.data.document.attachment.parliamentary_session;
   }
 
   if (attachmentData.type === 'html') {
     attachmentData.body = req.session.data.document.attachment.body;
+  }
+
+  if (attachmentData.type === 'file' || attachmentData.type == 'html') {
+    attachmentData.order_url = "https://www.gov.uk/guidance/how-to-buy-printed-copies-of-official-documents";
   }
 
   attachmentData.updated_at = new Date();

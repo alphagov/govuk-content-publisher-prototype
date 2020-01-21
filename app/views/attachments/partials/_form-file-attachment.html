@@ -42,6 +42,7 @@
       text: "Some guidance here"
     },
     value: attachment.isbn if attachment.isbn,
+    classes: "govuk-!-width-one-half",
     attributes: {
       "autocomplete": "off",
       "autocapitalize": "off"
@@ -67,6 +68,7 @@
       text: "Some guidance here"
     },
     value: attachment.urn if attachment.urn,
+    classes: "govuk-!-width-one-half",
     attributes: {
       "autocomplete": "off",
       "autocapitalize": "off"
@@ -84,6 +86,7 @@
       text: "Some guidance here"
     },
     value: attachment.cpn if attachment.cpn,
+    classes: "govuk-!-width-one-half",
     attributes: {
       "autocomplete": "off",
       "autocapitalize": "off"
@@ -113,6 +116,7 @@
       text: "Some guidance here"
     },
     value: attachment.hcpn if attachment.hcpn,
+    classes: "govuk-!-width-one-half",
     attributes: {
       "autocomplete": "off",
       "autocapitalize": "off"
@@ -131,8 +135,75 @@
     ]
   }) }}
 
+  {#{ govukInput({
+    id: "attachment-parliamentary-session",
+    name: "document[attachment][parliamentary_session]",
+    label: {
+      text: "Parliamentary session (optional)",
+      classes: "govuk-!-font-weight-bold"
+    },
+    hint: {
+      text: "Some guidance here"
+    },
+    value: attachment.parliamentary_session if attachment.parliamentary_session,
+    classes: "govuk-!-width-one-half",
+    attributes: {
+      "autocomplete": "off",
+      "autocapitalize": "off"
+    }
+  }) }#}
+
+  {{ govukSelect({
+    id: "attachment-parliamentary-session",
+    name: "document[attachment][parliamentary_session]",
+    label: {
+      text: "Parliamentary session (optional)",
+      classes: "govuk-!-font-weight-bold"
+    },
+    hint: {
+      text: "Some guidance here"
+    },
+    classes: "govuk-!-width-one-half",
+    items: [
+      {
+        value: "",
+        text: "",
+        selected: true if attachment.parliamentary_session == ""
+      },
+      {
+        value: "2020-21",
+        text: "2020-21",
+        selected: true if attachment.parliamentary_session == "2020-21"
+      },
+      {
+        value: "2019-20",
+        text: "2019-20",
+        selected: true if attachment.parliamentary_session == "2019-20"
+      },
+      {
+        value: "2018-19",
+        text: "2018-19",
+        selected: true if attachment.parliamentary_session == "2018-19"
+      },
+      {
+        value: "2017-18",
+        text: "2017-18",
+        selected: true if attachment.parliamentary_session == "2017-18"
+      },
+      {
+        value: "2016-17",
+        text: "2016-17",
+        selected: true if attachment.parliamentary_session == "2016-17"
+      }
+    ]
+  }) }}
+
   {{ govukButton({
     text: "Save attachment"
   }) }}
 
 </form>
+
+<p class="govuk-body">
+  <a class="govuk-link" href="{{ links.back }}">Cancel</a>
+</p>
