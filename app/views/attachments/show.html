@@ -27,7 +27,7 @@
 
           <h1 class="govuk-heading-l">
             <span class="govuk-caption-l">{{ attachment.type | upper + ' attachment' if attachment.type == 'html' else attachment.type | capitalize + ' attachment' }}</span>
-            {{ attachment.title }}
+            {{ attachment.title if attachment.title | length else "Untitled attachment" }}
           </h1>
 
         </div>

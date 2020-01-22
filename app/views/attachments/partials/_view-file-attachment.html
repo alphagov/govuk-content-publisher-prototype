@@ -6,7 +6,7 @@
         text: "File"
       },
       value: {
-        html: '<a class="govuk-link" href="#">' + (attachment.title | slugify) + '.pdf</a>'
+        html: '<a class="govuk-link" href="#">' + (attachment.title | slugify) + '.pdf</a>' if attachment.title | length
       }
     },
     {
@@ -14,7 +14,7 @@
         text: "Attachment title"
       },
       value: {
-        text: attachment.title
+        text: attachment.title if attachment.title | length else "Untitled attachment"
       }
     },
     {

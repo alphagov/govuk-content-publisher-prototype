@@ -90,14 +90,14 @@
 
                 {{ appAttachment({
                   heading: {
-                    text: attachment.title
+                    text: attachment.title if attachment.title | length else "Untitled attachment"
                   },
                   href: ('/documents/' + attachment.document_id + '/attachments/' + attachment.content_id) if data.links != "hide"
                 }) if attachment.type == 'external' }}
 
                 {{ appAttachment({
                   heading: {
-                    text: attachment.title
+                    text: attachment.title if attachment.title | length else "Untitled attachment"
                   },
                   href: ('/documents/' + attachment.document_id + '/attachments/' + attachment.content_id) if data.links != "hide",
                   metadata: {
@@ -111,7 +111,7 @@
 
                 {{ appAttachment({
                   heading: {
-                    text: attachment.title
+                    text: attachment.title if attachment.title | length else "Untitled attachment"
                   },
                   href: ('/documents/' + attachment.document_id + '/attachments/' + attachment.content_id) if data.links != "hide",
                   metadata: {
