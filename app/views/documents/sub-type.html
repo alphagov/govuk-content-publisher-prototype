@@ -68,7 +68,7 @@
                 "classes": "govuk-label--s"
               },
               "hint": {
-                "text": "Bylined articles writtenin the name of a minister or official, usually republished from elsewhere."
+                "text": "Bylined articles written in the name of a minister or official, usually republished from elsewhere."
               },
               "checked": checked('document_sub_type', 'authored_article')
             } if data.document_type == "articles_correspondence",
@@ -79,18 +79,18 @@
                 "classes": "govuk-label--s"
               },
               "hint": {
-                "text": "Ministerial or departmental responses (eg to campaign letters), announcements, or statements;regularly issued circulars or bulletins (eg fire service circulars), official correspondence to professionals (eg “Dear chief planning officer” letters);letters to individuals or organisations that are published to share with a wider audience than their original recipient;online versions of e-bulletins or newsletters. Do not use for: minutes, agendas or other meeting papers. Attach them to relevant “policy detail”, “team” or “our governance” pages instead."
+                "text": "Minister or organisation responses (for example to campaign letters), correspondence to individuals, organisations and professionals, circulars, bulletins and newsletters."
               },
               "checked": checked('document_sub_type', 'correspondence')
             } if data.document_type == "articles_correspondence",
             {
               "value": "guidance",
-              "text": "Guidance",
+              "text": "Non-statutory guidance",
               "label": {
                 "classes": "govuk-label--s"
               },
               "hint": {
-                "text": "Non-statutory guidance publications. Includes: manuals, handbooks and other documents that offer advice. Do not use for: statutory guidance (use the “statutory guidance” publication type) or guidance about completing a form (attach to same publication as the form itself)."
+                "text": "Non-statutory guidance publications like manuals, handbooks and other documents that offer advice. Use for content produced as a standalone hard-copy publication. For web-original content use ‘detailed guide’."
               },
               "checked": checked('document_sub_type', 'guidance')
             } if data.document_type == "guidance",
@@ -101,7 +101,7 @@
                 "classes": "govuk-label--s"
               },
               "hint": {
-                "text": "Guidance which relevant users are legally obliged to follow. (For non-statutory guidance publications, use the “guidance” sub-type)."
+                "text": "Guidance which relevant users are legally obliged to follow."
               },
               "checked": checked('document_sub_type', 'statutory_guidance')
             } if data.document_type == "guidance",
@@ -112,7 +112,18 @@
                 "classes": "govuk-label--s"
               },
               "hint": {
-                "text": "summary of what it's about"
+                "text": "Long, complex guidance or legal documents for specialist users who are familiar with a topic, usually with named or numbered chapters or clauses."
+              },
+              "checked": checked('document_sub_type', 'manuals')
+            } if data.document_type == "guidance",
+            {
+              "value": "detailed_guide",
+              "text": "Detailed guide",
+              "label": {
+                "classes": "govuk-label--s"
+              },
+              "hint": {
+                "text": "Guidance for specialist or professional users detailing the steps they need to take to complete a clearly defined task."
               },
               "checked": checked('document_sub_type', 'manuals')
             } if data.document_type == "guidance"

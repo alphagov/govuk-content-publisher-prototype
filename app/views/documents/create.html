@@ -44,7 +44,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       <h1 class="govuk-heading-l">
-        New {{ data.document_type | documentType | lower }}
+        New {{ (data.document_sub_type | documentType | lower) if data.document_sub_type else (data.document_type | documentType | lower | replace("foi","FOI")) }}
       </h1>
 
       <form action="{{ links.next }}" method="post">

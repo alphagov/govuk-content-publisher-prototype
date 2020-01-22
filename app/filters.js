@@ -72,18 +72,21 @@ module.exports = function (env) {
     switch (type) {
       case 'articles_correspondence': return 'Articles and correspondence';
       case 'authored_article': return 'Authored article';
+      case 'case_study': return 'Case study';
       case 'consultation': return 'Consultation';
       case 'corporate_information': return 'Corporate information';
       case 'corporate_report': return 'Corporate report';
       case 'correspondence': return 'Correspondence';
       case 'decision': return 'Decision';
+      case 'detailed_guide': return 'Detailed guide';
       case 'fatality_notice': return 'Fatality notice';
       case 'foi_release': return 'FOI release';
       case 'form': return 'Form';
       case 'guidance_regulation': return 'Guidance and regulation';
-      case 'guidance': return 'Guidance';
+      case 'guidance': return 'Non-statutory guidance';
       case 'impact_assessment': return 'Impact assessment';
       case 'independent_report': return 'Independent report';
+      case 'international_treaty': return 'International treaty';
       case 'manuals': return 'Manuals';
       case 'map': return 'Map';
       case 'national_statistics': return 'National statistics';
@@ -97,8 +100,11 @@ module.exports = function (env) {
       case 'policy_paper': return 'Policy paper';
       case 'press_release': return 'Press release';
       case 'regulation': return 'Regulation';
+      case 'research_analysis': return 'Research and analysis';
       case 'speech': return 'Speech';
       case 'statement_to_parliament': return 'Statement to Parliament';
+      case 'statistics_announcement': return 'Statistics announcement';
+      case 'statistical_dataset': return 'Statistical dataset';
       case 'statutory_guidance': return 'Statutory guidance';
       case 'transparency_statistics': return 'Transparency and statistics';
       case 'transparency': return 'Transparency';
