@@ -29,7 +29,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-      <div class="govuk-grid-row">
+      <div class="govuk-grid-row govuk-!-margin-bottom-8">
         <div class="govuk-grid-column-two-thirds">
 
           <h1 class="govuk-heading-l">
@@ -60,8 +60,8 @@
         </div>
       </div>
 
-      <div class="govuk-grid-row govuk-!-margin-top-8">
-        <div class="govuk-grid-column-full">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
           <h2 class="govuk-heading-m">All attachments</h2>
 
           {% if attachments | length %}
@@ -120,6 +120,11 @@
                     thumbnail: 'document'
                   }
                 }) if attachment.type == 'html' }}
+
+                <div class="app-o-order-controls js-order-controls">
+                  <button class="govuk-button app-c-button--secondary-quiet js-up">Up</button>
+                  <button class="govuk-button app-c-button--secondary-quiet js-down">Down</button>
+                </div>
 
               {% endcall -%}
 

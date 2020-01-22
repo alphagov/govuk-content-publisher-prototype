@@ -7,11 +7,26 @@
 
 <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
 <script type="text/javascript">
-  Sortable.create(attachmentsList, {
+
+  Sortable.prototype.moveItem = function (index, toIndex) {
+    var itemEl = this.el.children[index]
+        toEl = this.el.children[toIndex]
+
+    this.el.insertBefore(itemEl, toEl && (+toIndex ? toEl.nextElementSibling : toEl))
+  }
+
+  var sortableAttachments = Sortable.create(attachmentsList, {
     ghostClass: "app-c-attachment-meta--ghost",
     chosenClass: "app-c-attachment-meta--chosen",
     dragClass: "app-c-attachment-meta--drag"
   })
+
+  attachments = attachmentsList.querySelectorAll('.app-c-attachment-meta')
+
+  attachments.forEach((item, i) => {
+    item.querySelector('.js-up').addEventListener("click", function () { sortableAttachments.moveItem(i, i-1) })
+    item.querySelector('.js-down').addEventListener("click", function () { sortableAttachments.moveItem(i, i+1) })
+  });
 </script>
 
 <script src="/public/javascripts/application.js"></script>
