@@ -5,6 +5,15 @@
   <script src="{{scriptUrl}}"></script>
 {% endfor %}
 
+<script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
+<script type="text/javascript">
+  Sortable.create(attachmentsList, {
+    ghostClass: "app-c-attachment-meta--ghost",
+    chosenClass: "app-c-attachment-meta--chosen",
+    dragClass: "app-c-attachment-meta--drag"
+  })
+</script>
+
 <script src="/public/javascripts/application.js"></script>
 <script src="/public/javascripts/toggle.js"></script>
 <script type="text/javascript">

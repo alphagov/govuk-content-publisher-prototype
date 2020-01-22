@@ -68,6 +68,7 @@
 
             <p class="govuk-body">All attachments will appear on the document when it’s published.</p>
 
+            <div id="attachmentsList">
             {%- for attachment in attachments %}
 
               {%- call appAttachmentActions({
@@ -123,6 +124,7 @@
               {% endcall -%}
 
             {% endfor -%}
+            </div>
 
           {% else %}
 
