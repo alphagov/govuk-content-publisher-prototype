@@ -64,63 +64,71 @@
         <div class="govuk-grid-column-full">
           <h2 class="govuk-heading-m">All attachments</h2>
 
-          <p>Attachments will be automatically listed on the document.</p>
+          {% if attachments | length %}
 
-          {%- for attachment in attachments %}
+            <p class="govuk-body">All attachments will appear on the document when it’s published.</p>
 
-            {%- call appAttachmentActions({
-              items: [
-                {
-                  text: 'Edit details',
-                  href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/update'
-                },
-                {
-                  text: 'Download',
-                  href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/download'
-                } if attachment.type == 'file',
-                {
-                  text: 'Delete attachment',
-                  href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/delete',
-                  classes: 'app-link--destructive'
-                }
-              ] if data.actions != "hide"
-            }) %}
+            {%- for attachment in attachments %}
 
-              {{ appAttachment({
-                heading: {
-                  text: attachment.title
-                },
-                href: ('/documents/' + attachment.document_id + '/attachments/' + attachment.content_id) if data.links != "hide"
-              }) if attachment.type == 'external' }}
+              {%- call appAttachmentActions({
+                items: [
+                  {
+                    text: 'Edit details',
+                    href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/update'
+                  },
+                  {
+                    text: 'Download',
+                    href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/download'
+                  } if attachment.type == 'file',
+                  {
+                    text: 'Delete attachment',
+                    href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/delete',
+                    classes: 'app-link--destructive'
+                  }
+                ] if data.actions != "hide"
+              }) %}
 
-              {{ appAttachment({
-                heading: {
-                  text: attachment.title
-                },
-                href: ('/documents/' + attachment.document_id + '/attachments/' + attachment.content_id) if data.links != "hide",
-                metadata: {
-                  filename: 'attachment.pdf',
-                  fileSize: 1234560,
-                  contentType: 'application/pdf',
-                  pageCount: 25,
-                  thumbnail: 'document'
-                }
-              }) if attachment.type == 'file' }}
+                {{ appAttachment({
+                  heading: {
+                    text: attachment.title
+                  },
+                  href: ('/documents/' + attachment.document_id + '/attachments/' + attachment.content_id) if data.links != "hide"
+                }) if attachment.type == 'external' }}
 
-              {{ appAttachment({
-                heading: {
-                  text: attachment.title
-                },
-                href: ('/documents/' + attachment.document_id + '/attachments/' + attachment.content_id) if data.links != "hide",
-                metadata: {
-                  contentType: 'text/html',
-                  thumbnail: 'document'
-                }
-              }) if attachment.type == 'html' }}
+                {{ appAttachment({
+                  heading: {
+                    text: attachment.title
+                  },
+                  href: ('/documents/' + attachment.document_id + '/attachments/' + attachment.content_id) if data.links != "hide",
+                  metadata: {
+                    filename: 'attachment.pdf',
+                    fileSize: 1234560,
+                    contentType: 'application/pdf',
+                    pageCount: 25,
+                    thumbnail: 'document'
+                  }
+                }) if attachment.type == 'file' }}
 
-            {% endcall -%}
+                {{ appAttachment({
+                  heading: {
+                    text: attachment.title
+                  },
+                  href: ('/documents/' + attachment.document_id + '/attachments/' + attachment.content_id) if data.links != "hide",
+                  metadata: {
+                    contentType: 'text/html',
+                    thumbnail: 'document'
+                  }
+                }) if attachment.type == 'html' }}
 
-          {% endfor -%}
+              {% endcall -%}
+
+            {% endfor -%}
+
+          {% else %}
+
+            <p class="govuk-body">There are no attachments yet. You’ll need to add attachments before you can publish this document.</p>
+
+          {% endif -%}
 
         </div>
       </div>

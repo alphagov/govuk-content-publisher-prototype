@@ -1,4 +1,4 @@
-<p class="govuk-body">Some guidance here</p>
+<p class="govuk-body">Include the link to a document that is not published on GOV.UK.</p>
 
 <form action="{{ links.save }}" accept-charset="UTF-8" method="post">
   <input type="hidden" name="document[attachment][type]" value="external">
@@ -26,6 +26,9 @@
     label: {
       text: "External URL",
       classes: "govuk-!-font-weight-bold"
+    },
+    hint: {
+      text: "Enter the full URL (including http)."
     },
     value: attachment.url if attachment.url,
     attributes: {

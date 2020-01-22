@@ -14,59 +14,35 @@
 
   {%- if attachments | length %}
 
-  <dl class="govuk-summary-list govuk-summary-list--no-border app-c-summary-list--number">
-    {%- for attachment in attachments %}
-    <div class="govuk-summary-list__row">
-      <dt class="govuk-summary-list__key">
-        {{ loop.index }}
-      </dt>
-      <dd class="govuk-summary-list__value govuk-!-font-weight-bold">
-        {{ attachment.title }}
-        <p>{{ attachment.type | attachmentType }}</p>
-      </dd>
-      {%- if data.change == 'true' %}
-      <dd class="govuk-summary-list__actions">
-        <a class="govuk-link" href="/documents/{{ attachment.document_id }}/attachments/{{ attachment.content_id }}/update">
-          Change<span class="govuk-visually-hidden"> {{ attachment.title }}</span>
-        </a>
-      </dd>
-      <dd class="govuk-summary-list__actions">
-        <a class="govuk-link app-link--destructive" href="/documents/{{ attachment.document_id }}/attachments/{{ attachment.content_id }}/delete">
-          Delete<span class="govuk-visually-hidden"> {{ attachment.title }}</span>
-        </a>
-      </dd>
-      {% endif -%}
-    </div>
-    {% endfor -%}
-  </dl>
-
-
-  <!-- ,
-  rows: [
-    {
-      key: {
-        text: "Attachment title 1"
-      },
-      value: {
-        text: "Something useful"
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "attachment 1"
-          }
-        ]
-      }
-    }
-  ] -->
-
-
+    <dl class="govuk-summary-list govuk-summary-list--no-border app-c-summary-list--number">
+      {%- for attachment in attachments %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          {{ loop.index }}
+        </dt>
+        <dd class="govuk-summary-list__value govuk-!-font-weight-bold">
+          {{ attachment.title }}
+          <p>{{ attachment.type | attachmentType }}</p>
+        </dd>
+        {%- if data.change == 'true' %}
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/documents/{{ attachment.document_id }}/attachments/{{ attachment.content_id }}/update">
+            Change<span class="govuk-visually-hidden"> {{ attachment.title }}</span>
+          </a>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link app-link--destructive" href="/documents/{{ attachment.document_id }}/attachments/{{ attachment.content_id }}/delete">
+            Delete<span class="govuk-visually-hidden"> {{ attachment.title }}</span>
+          </a>
+        </dd>
+        {% endif -%}
+      </div>
+      {% endfor -%}
+    </dl>
 
   {% else %}
 
-    <p class="govuk-body">There are no attachments for this document.</p>
+    <p class="govuk-body">There are no attachments yet. You’ll need to add attachments before you can publish this document.</p>
 
   {% endif -%}
 
