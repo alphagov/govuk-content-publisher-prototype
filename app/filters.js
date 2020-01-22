@@ -246,6 +246,23 @@ module.exports = function (env) {
   }
 
   /* ------------------------------------------------------------------
+    utility function to slugify text in Nunjucks
+    example: {{ "This is some text" | slugify }}
+    outputs: this-is-some-text
+  ------------------------------------------------------------------ */
+  filters.slugify = function(text) {
+
+    if (!text)
+      return null;
+
+    return text.toLowerCase()
+            .replace(/[^\w\s-]/g, '') // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
+            .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
+            .replace(/^-+|-+$/g, ''); // remove leading, trailing -
+
+  }
+
+  /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */
   return filters

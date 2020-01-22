@@ -6,7 +6,7 @@
         text: "File"
       },
       value: {
-        html: '<a class="govuk-link" href="#">a-file-name.pdf</a>'
+        html: '<a class="govuk-link" href="#">' + (attachment.title | slugify) + '.pdf</a>'
       }
     },
     {
@@ -38,7 +38,7 @@
         text: "Command paper number"
       },
       value: {
-        text: "Unnumbered" if attachment.unnumbered else attachment.cpn
+        text: "Unnumbered paper" if attachment.unnumbered else attachment.cpn
       }
     },
     {
@@ -46,7 +46,23 @@
         text: "House of Commons paper number"
       },
       value: {
-        text: "Unnumbered" if attachment.unnumbered_act else attachment.hcpn
+        text: "Unnumbered act" if attachment.unnumbered_act else attachment.hcpn
+      }
+    },
+    {
+      key: {
+        text: "Parliamentary session"
+      },
+      value: {
+        text: attachment.parliamentary_session
+      }
+    },
+    {
+      key: {
+        text: "Order URL"
+      },
+      value: {
+        html: '<a class="govuk-link" href="' + attachment.order_url + '" target="_blank">' + attachment.order_url + '</a>'
       }
     }
   ]
