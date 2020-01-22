@@ -7,28 +7,6 @@ const Attachments = require('../models/attachments');
 
 // Display list of all attachments.
 exports.attachment_list = function(req, res) {
-  // res.send('NOT IMPLEMENTED: attachment list');
-
-  // // attachment uploads directory path
-  // const directoryPath = path.join(__dirname, '../data/attachments/', req.params.document_id);
-  //
-  // // check if document directory exists in attachment uploads directory
-  // if (!fs.existsSync(directoryPath)) {
-  //   fs.mkdirSync(directoryPath);
-  // }
-  //
-  // let attachments = fs.readdirSync(directoryPath,'utf8');
-  // // Only get JSON documents
-  // attachments = attachments.filter( doc => doc.match(/.*\.(json)/ig));
-  //
-  // const attachmentArray = [];
-  //
-  // attachments.forEach(function (filename) {
-  //   let rawdata = fs.readFileSync(directoryPath + '/' + filename);
-  //   let attachmentData = JSON.parse(rawdata);
-  //   attachmentArray.push(attachmentData);
-  // });
-
   res.render('../views/attachments/list', {
     attachments: Attachments.findByDocumentId(req.params.document_id),
     links: {
@@ -40,14 +18,6 @@ exports.attachment_list = function(req, res) {
 
 // Display detail page for a specific book.
 exports.attachment_detail = function(req, res) {
-  // res.send('NOT IMPLEMENTED: attachment detail: ' + req.params.attachment_id);
-
-  // attachment uploads directory path
-  // const directoryPath = path.join(__dirname, '../data/attachments/', req.params.document_id);
-  //
-  // let rawdata = fs.readFileSync(directoryPath + '/' + req.params.attachment_id + '.json');
-  // let attachmentData = JSON.parse(rawdata);
-
   res.render('../views/attachments/show', {
     attachment: Attachments.findById(req.params.document_id, req.params.attachment_id),
     links: {
@@ -60,7 +30,6 @@ exports.attachment_detail = function(req, res) {
 
 // Display attachment create form on GET.
 exports.attachment_create_get = function(req, res) {
-  // res.send('NOT IMPLEMENTED: attachment create GET');
   const types = ['html','file','external'];
 
   if (types.indexOf(req.query.type) === -1) {
@@ -115,12 +84,16 @@ exports.attachment_create_post = function(req, res) {
   // write the JSON data
   fs.writeFileSync(filePath, fileData);
 
-  // delete the attachment data we no longer need
-  delete req.session.data.document.attachment;
-
   // redirect the user back to the attachments page
   // TODO: show flash message (success/failure)
-  res.redirect('/documents/' + req.params.document_id + '/attachments');
+  if (req.session.data.document.attachment.type === 'external') {
+    // delete the attachment data we no longer need
+    delete req.session.data.document.attachment;
+    res.redirect('/documents/' + req.params.document_id + '/attachments');
+  } else {
+    res.redirect('/documents/' + req.params.document_id + '/attachments/' + attachmentData.content_id + '/metadata');
+  }
+
 
 };
 
@@ -188,8 +161,6 @@ exports.attachment_update_get = function(req, res) {
 
 // Handle attachment update on POST.
 exports.attachment_update_post = function(req, res) {
-  // res.send('NOT IMPLEMENTED: attachment update POST');
-
   // attachment uploads directory path
   const directoryPath = path.join(__dirname, '../data/attachments/', req.params.document_id);
 
@@ -200,6 +171,80 @@ exports.attachment_update_post = function(req, res) {
 
   // attachment data
   attachmentData.title = req.session.data.document.attachment.title;
+
+  // if (attachmentData.type === 'external') {
+  //   attachmentData.url = req.session.data.document.attachment.url;
+  // }
+  //
+  // if (attachmentData.type === 'file') {
+  //   attachmentData.isbn = req.session.data.document.attachment.isbn;
+  //   attachmentData.urn = req.session.data.document.attachment.urn;
+  //
+  //   // TODO: work out the hierarchy of CPN and unnumbered
+  //   attachmentData.cpn = req.session.data.document.attachment.cpn;
+  //   attachmentData.unnumbered = req.session.data.document.attachment.unnumbered;
+  //
+  //   // TODO: work out the hierarchy of HCPN and unnumbered act
+  //   attachmentData.hcpn = req.session.data.document.attachment.hcpn;
+  //   attachmentData.unnumbered_act = req.session.data.document.attachment.unnumbered_act;
+  //
+  //   attachmentData.parliamentary_session = req.session.data.document.attachment.parliamentary_session;
+  // }
+  //
+  // if (attachmentData.type === 'html') {
+  //   attachmentData.body = req.session.data.document.attachment.body;
+  // }
+  //
+  // if (attachmentData.type === 'file' || attachmentData.type == 'html') {
+  //   attachmentData.order_url = "https://www.gov.uk/guidance/how-to-buy-printed-copies-of-official-documents";
+  // }
+
+  attachmentData.updated_at = new Date();
+  attachmentData.updated_by = req.session.data.user.display_name;
+
+  // create a JSON sting for the submitted data
+  const fileData = JSON.stringify(attachmentData);
+
+  // write the JSON data
+  fs.writeFileSync(filePath, fileData);
+
+  // delete the attachment data we no longer need
+  // delete req.session.data.document.attachment;
+
+  // redirect the user back to the attachments page
+  // TODO: show flash message (success/failure)
+  if (attachmentData.type === 'external') {
+    res.redirect('/documents/' + req.params.document_id + '/attachments');
+  } else {
+    res.redirect('/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/metadata');
+  }
+
+
+};
+
+// Display attachment metadata form on GET.
+exports.attachment_update_metadata_get = function(req, res) {
+
+  // Get attachment data
+  let attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
+
+  res.render('../views/attachments/metadata', {
+    attachment: attachmentData,
+    links: {
+      back: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/update',
+      save: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/metadata'
+    }
+  });
+
+};
+
+// Handle attachment metadata update on POST.
+exports.attachment_update_metadata_post = function(req, res) {
+
+  // Get attachment data
+  let attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
+
+  // console.log('Before', attachmentData);
 
   if (attachmentData.type === 'external') {
     attachmentData.url = req.session.data.document.attachment.url;
@@ -231,6 +276,12 @@ exports.attachment_update_post = function(req, res) {
   attachmentData.updated_at = new Date();
   attachmentData.updated_by = req.session.data.user.display_name;
 
+  // console.log('After', attachmentData);
+
+  // attachment uploads directory path
+  const directoryPath = path.join(__dirname, '../data/attachments/', req.params.document_id);
+
+  const filePath = directoryPath + '/' + req.params.attachment_id + '.json';
   // create a JSON sting for the submitted data
   const fileData = JSON.stringify(attachmentData);
 
@@ -243,5 +294,4 @@ exports.attachment_update_post = function(req, res) {
   // redirect the user back to the attachments page
   // TODO: show flash message (success/failure)
   res.redirect('/documents/' + req.params.document_id + '/attachments');
-
 };

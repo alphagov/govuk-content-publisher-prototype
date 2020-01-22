@@ -134,6 +134,12 @@ router.get('/documents/:document_id/attachments/:attachment_id/update', checkIsA
 // POST request to update an attachment.
 router.post('/documents/:document_id/attachments/:attachment_id/update', checkIsAuthenticated, attachment_controller.attachment_update_post);
 
+// GET request to delete an attachment.
+router.get('/documents/:document_id/attachments/:attachment_id/metadata', checkIsAuthenticated, attachment_controller.attachment_update_metadata_get);
+
+// POST request to delete an attachment.
+router.post('/documents/:document_id/attachments/:attachment_id/metadata', checkIsAuthenticated, attachment_controller.attachment_update_metadata_post);
+
 // GET request for one attachment.
 router.get('/documents/:document_id/attachments/:attachment_id/', checkIsAuthenticated, attachment_controller.attachment_detail);
 
