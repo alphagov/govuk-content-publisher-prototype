@@ -155,8 +155,8 @@
 
                 {%- if attachments | length > 1 %}
                   <div class="app-o-order-controls js-order-controls">
-                    <button class="govuk-button app-c-button--secondary-quiet js-up">Up</button>
-                    <button class="govuk-button app-c-button--secondary-quiet js-down">Down</button>
+                    {%- if not loop.first %}<button class="govuk-button app-c-button--secondary-quiet js-up">Up</button>{% endif %}
+                    {% if not loop.last %}<button class="govuk-button app-c-button--secondary-quiet js-down">Down</button>{% endif -%}
                   </div>
                 {% endif -%}
 

@@ -104,6 +104,7 @@ exports.attachment_delete_get = function(req, res) {
 
   res.render('../views/attachments/delete', {
     id: req.params.attachment_id,
+    attachment: Attachments.findById(req.params.document_id, req.params.attachment_id),
     links: {
       back: '/documents/' + req.params.document_id + '/attachments',
       delete: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/delete'
