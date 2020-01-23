@@ -47,7 +47,7 @@
           text: 'Last updated by'
         },
         description: {
-          text: data.document.last_updated_by
+          text: data.document.last_updated_by if data.document.last_updated_by | length else "Unknown"
         }
       }, {
         title: {
@@ -61,7 +61,7 @@
           text: 'Created by'
         },
         description: {
-          text: data.document.created_by
+          text: data.document.created_by if data.document.created_by | length else "Unknown"
         }
       }]
   }) }}
