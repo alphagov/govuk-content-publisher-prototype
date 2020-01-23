@@ -121,10 +121,12 @@
                   }
                 }) if attachment.type == 'html' }}
 
-                <div class="app-o-order-controls js-order-controls">
-                  <button class="govuk-button app-c-button--secondary-quiet js-up">Up</button>
-                  <button class="govuk-button app-c-button--secondary-quiet js-down">Down</button>
-                </div>
+                {%- if attachments | length > 1 %}
+                  <div class="app-o-order-controls js-order-controls">
+                    <button class="govuk-button app-c-button--secondary-quiet js-up">Up</button>
+                    <button class="govuk-button app-c-button--secondary-quiet js-down">Down</button>
+                  </div>
+                {% endif -%}
 
               {% endcall -%}
 
