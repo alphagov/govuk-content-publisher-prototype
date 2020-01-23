@@ -172,9 +172,9 @@ exports.attachment_update_post = function(req, res) {
   // attachment data
   attachmentData.title = req.session.data.document.attachment.title;
 
-  // if (attachmentData.type === 'external') {
-  //   attachmentData.url = req.session.data.document.attachment.url;
-  // }
+  if (attachmentData.type === 'external') {
+    attachmentData.url = req.session.data.document.attachment.url;
+  }
   //
   // if (attachmentData.type === 'file') {
   //   attachmentData.isbn = req.session.data.document.attachment.isbn;
@@ -245,10 +245,6 @@ exports.attachment_update_metadata_post = function(req, res) {
   let attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
 
   // console.log('Before', attachmentData);
-
-  if (attachmentData.type === 'external') {
-    attachmentData.url = req.session.data.document.attachment.url;
-  }
 
   if (attachmentData.type === 'file') {
     attachmentData.isbn = req.session.data.document.attachment.isbn;
