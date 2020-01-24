@@ -66,9 +66,9 @@ module.exports = function (env) {
   }
 
  /* ------------------------------------------------------------------
-  numeral filter for use in Nunjucks
-  example: {{ params.number | numeral("0,00.0") }}
-  outputs: 1,000.00
+  language filter for use in Nunjucks
+  example: {{ "en" | language }}
+  outputs: English
  ------------------------------------------------------------------ */
  filters.language = function(code, type = 'english_name') {
    if (!code)
