@@ -259,15 +259,34 @@ exports.attachment_update_metadata_post = function(req, res) {
     attachmentData.isbn = req.session.data.document.attachment.isbn;
     attachmentData.urn = req.session.data.document.attachment.urn;
 
-    // TODO: work out the hierarchy of CPN and unnumbered
-    attachmentData.cpn = req.session.data.document.attachment.cpn;
-    attachmentData.unnumbered = req.session.data.document.attachment.unnumbered;
+    if (attachmentData.official_document === 'yes_command_paper') {
+      attachmentData.unnumbered = req.session.data.document.attachment.unnumbered;
 
-    // TODO: work out the hierarchy of HCPN and unnumbered act
-    attachmentData.hcpn = req.session.data.document.attachment.hcpn;
-    attachmentData.unnumbered_act = req.session.data.document.attachment.unnumbered_act;
+      if (attachmentData.unnumbered === undefined) {
+        attachmentData.cpn = req.session.data.document.attachment.cpn;
+      } else {
+        attachmentData.cpn = '';
+      }
+    } else {
+      attachmentData.unnumbered = '';
+      attachmentData.cpn = '';
+    }
 
-    attachmentData.parliamentary_session = req.session.data.document.attachment.parliamentary_session;
+    if (attachmentData.official_document === 'yes_house_of_commons_paper') {
+      attachmentData.parliamentary_session = req.session.data.document.attachment.parliamentary_session;
+      attachmentData.unnumbered_act = req.session.data.document.attachment.unnumbered_act;
+
+      if (attachmentData.unnumbered_act === undefined) {
+        attachmentData.hcpn = req.session.data.document.attachment.hcpn;
+      } else {
+        attachmentData.hcpn = '';
+      }
+    } else {
+      attachmentData.unnumbered_act = '';
+      attachmentData.hcpn = '';
+      attachmentData.parliamentary_session = '';
+    }
+
   }
 
   if (attachmentData.type === 'html') {
