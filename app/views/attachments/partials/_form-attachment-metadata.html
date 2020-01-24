@@ -4,7 +4,7 @@
     id: "attachment-isbn",
     name: "document[attachment][isbn]",
     label: {
-      text: "ISBN (optional)",
+      text: "ISBN",
       classes: "govuk-!-font-weight-bold"
     },
     hint: {
@@ -30,7 +30,7 @@
     id: "attachment-urn",
     name: "document[attachment][urn]",
     label: {
-      text: "Unique reference (optional)",
+      text: "Unique reference",
       classes: "govuk-!-font-weight-bold"
     },
     hint: {
@@ -44,110 +44,161 @@
     }
   }) }}
 
-  {{ govukInput({
-    id: "attachment-cpn",
-    name: "document[attachment][cpn]",
-    label: {
-      text: "Command paper number (optional)",
-      classes: "govuk-!-font-weight-bold"
+  {%- set command_paper_html %}
+
+    {{ govukInput({
+      id: "attachment-cpn",
+      name: "document[attachment][cpn]",
+      label: {
+        text: "Command paper number",
+        classes: "govuk-!-font-weight-bold"
+      },
+      hint: {
+        text: "Include its number or tick ‘unnumbered’ if this document is a command paper that was laid in Parliament."
+      },
+      value: attachment.cpn if attachment.cpn,
+      classes: "govuk-!-width-one-half",
+      attributes: {
+        "autocomplete": "off",
+        "autocapitalize": "off"
+      }
+    }) }}
+
+    {{ govukCheckboxes({
+      idPrefix: "attachment-unnumbered",
+      name: "document[attachment][unnumbered]",
+      items: [
+        {
+          value: "yes",
+          text: "Unnumbered",
+          checked: true if attachment.unnumbered == "yes"
+        }
+      ]
+    }) }}
+
+  {% endset -%}
+
+  {%- set house_of_commons_paper_html %}
+
+    {{ govukInput({
+      id: "attachment-hcpn",
+      name: "document[attachment][hcpn]",
+      label: {
+        text: "House of Commons paper number",
+        classes: "govuk-!-font-weight-bold"
+      },
+      hint: {
+        text: "Include its number or tick ‘unnumbered act paper’ if this document is a House of Commons paper that was laid in Parliament."
+      },
+      value: attachment.hcpn if attachment.hcpn,
+      classes: "govuk-!-width-one-half",
+      attributes: {
+        "autocomplete": "off",
+        "autocapitalize": "off"
+      }
+    }) }}
+
+    {{ govukCheckboxes({
+      idPrefix: "attachment-unnumbered-act",
+      name: "document[attachment][unnumbered_act]",
+      items: [
+        {
+          value: "yes",
+          text: "Unnumbered act paper",
+          checked: true if attachment.unnumbered_act == "yes"
+        }
+      ]
+    }) }}
+
+    {{ govukSelect({
+      id: "attachment-parliamentary-session",
+      name: "document[attachment][parliamentary_session]",
+      label: {
+        text: "Parliamentary session",
+        classes: "govuk-!-font-weight-bold"
+      },
+      hint: {
+        text: "For official publications, select the parliamentary session when the publication was laid in Parliament."
+      },
+      classes: "govuk-!-width-one-half",
+      items: [
+        {
+          value: "",
+          text: "",
+          selected: true if attachment.parliamentary_session == ""
+        },
+        {
+          value: "2020-21",
+          text: "2020-21",
+          selected: true if attachment.parliamentary_session == "2020-21"
+        },
+        {
+          value: "2019-20",
+          text: "2019-20",
+          selected: true if attachment.parliamentary_session == "2019-20"
+        },
+        {
+          value: "2018-19",
+          text: "2018-19",
+          selected: true if attachment.parliamentary_session == "2018-19"
+        },
+        {
+          value: "2017-18",
+          text: "2017-18",
+          selected: true if attachment.parliamentary_session == "2017-18"
+        },
+        {
+          value: "2016-17",
+          text: "2016-17",
+          selected: true if attachment.parliamentary_session == "2016-17"
+        }
+      ]
+    }) }}
+
+  {% endset -%}
+
+  {{ govukRadios({
+    idPrefix: "official-document",
+    name: "document[attachment][official_document]",
+    fieldset: {
+      legend: {
+        text: "Is this an official document?",
+        isPageHeading: false,
+        classes: "govuk-fieldset__legend--s"
+      }
     },
     hint: {
-      text: "Include its number or tick ‘unnumbered’ if this document is a command paper that was laid in Parliament."
+      text: "SOME USEFUL INFORMATION HERE"
     },
-    value: attachment.cpn if attachment.cpn,
-    classes: "govuk-!-width-one-half",
-    attributes: {
-      "autocomplete": "off",
-      "autocapitalize": "off"
-    }
-  }) }}
-
-  {{ govukCheckboxes({
-    idPrefix: "attachment-unnumbered",
-    name: "document[attachment][unnumbered]",
     items: [
       {
-        value: "yes",
-        text: "Unnumbered",
-        checked: true if attachment.unnumbered == "yes"
+        value: "yes_command_paper",
+        text: "Yes, this is a command paper",
+        conditional: {
+          html: command_paper_html
+        },
+        checked: true if attachment.official_document == "yes_command_paper"
+      },
+      {
+        value: "yes_house_of_commons_paper",
+        text: "Yes, this is a House of Commons paper",
+        conditional: {
+          html: house_of_commons_paper_html
+        },
+        checked: true if attachment.official_document == "yes_house_of_commons_paper"
+      },
+      {
+        value: "no",
+        text: "No, this isn't an official document",
+        checked: true if attachment.official_document == "no"
       }
     ]
   }) }}
 
-  {{ govukInput({
-    id: "attachment-hcpn",
-    name: "document[attachment][hcpn]",
-    label: {
-      text: "House of Commons paper number (optional)",
-      classes: "govuk-!-font-weight-bold"
-    },
-    hint: {
-      text: "Include its number or tick ‘unnumbered act paper’ if this document is a House of Commons paper that was laid in Parliament."
-    },
-    value: attachment.hcpn if attachment.hcpn,
-    classes: "govuk-!-width-one-half",
-    attributes: {
-      "autocomplete": "off",
-      "autocapitalize": "off"
-    }
-  }) }}
-
-  {{ govukCheckboxes({
-    idPrefix: "attachment-unnumbered-act",
-    name: "document[attachment][unnumbered_act]",
-    items: [
-      {
-        value: "yes",
-        text: "Unnumbered act paper",
-        checked: true if attachment.unnumbered_act == "yes"
-      }
-    ]
-  }) }}
-
-  {{ govukSelect({
-    id: "attachment-parliamentary-session",
-    name: "document[attachment][parliamentary_session]",
-    label: {
-      text: "Parliamentary session (optional)",
-      classes: "govuk-!-font-weight-bold"
-    },
-    hint: {
-      text: "For official publications, select the parliamentary session when the publication was laid in Parliament."
-    },
-    classes: "govuk-!-width-one-half",
-    items: [
-      {
-        value: "",
-        text: "",
-        selected: true if attachment.parliamentary_session == ""
-      },
-      {
-        value: "2020-21",
-        text: "2020-21",
-        selected: true if attachment.parliamentary_session == "2020-21"
-      },
-      {
-        value: "2019-20",
-        text: "2019-20",
-        selected: true if attachment.parliamentary_session == "2019-20"
-      },
-      {
-        value: "2018-19",
-        text: "2018-19",
-        selected: true if attachment.parliamentary_session == "2018-19"
-      },
-      {
-        value: "2017-18",
-        text: "2017-18",
-        selected: true if attachment.parliamentary_session == "2017-18"
-      },
-      {
-        value: "2016-17",
-        text: "2016-17",
-        selected: true if attachment.parliamentary_session == "2016-17"
-      }
-    ]
-  }) }}
+  {#{ govukDetails({
+    summaryText: "Summary text",
+    text: "Text"
+  }) }#}
 
   {{ govukButton({
     text: "Save and finish"

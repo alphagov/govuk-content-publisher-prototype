@@ -31,6 +31,936 @@
     }
   }) }}
 
+  {{ govukSelect({
+    id: "attachment-language",
+    name: "document[attachment][language]",
+    label: {
+      text: "Attachment language",
+      classes: "govuk-!-font-weight-bold"
+    },
+    hint: {
+      text: "SOME USEFUL INFORMATION HERE"
+    },
+    classes: "govuk-!-width-one-half",
+    items: [
+      {
+        "value": "",
+        "text": "",
+        "selected": true if attachment.language == ""
+      },
+      {
+        "value": "ab",
+        "text": "Abkhazian",
+        "selected": true if attachment.language == "ab"
+      },
+      {
+        "value": "aa",
+        "text": "Afar",
+        "selected": true if attachment.language == "aa"
+      },
+      {
+        "value": "af",
+        "text": "Afrikaans",
+        "selected": true if attachment.language == "af"
+      },
+      {
+        "value": "ak",
+        "text": "Akan",
+        "selected": true if attachment.language == "ak"
+      },
+      {
+        "value": "sq",
+        "text": "Albanian",
+        "selected": true if attachment.language == "sq"
+      },
+      {
+        "value": "am",
+        "text": "Amharic",
+        "selected": true if attachment.language == "am"
+      },
+      {
+        "value": "ar",
+        "text": "Arabic",
+        "selected": true if attachment.language == "ar"
+      },
+      {
+        "value": "an",
+        "text": "Aragonese",
+        "selected": true if attachment.language == "an"
+      },
+      {
+        "value": "hy",
+        "text": "Armenian",
+        "selected": true if attachment.language == "hy"
+      },
+      {
+        "value": "as",
+        "text": "Assamese",
+        "selected": true if attachment.language == "as"
+      },
+      {
+        "value": "av",
+        "text": "Avaric",
+        "selected": true if attachment.language == "av"
+      },
+      {
+        "value": "ae",
+        "text": "Avestan",
+        "selected": true if attachment.language == "ae"
+      },
+      {
+        "value": "ay",
+        "text": "Aymara",
+        "selected": true if attachment.language == "ay"
+      },
+      {
+        "value": "az",
+        "text": "Azerbaijani",
+        "selected": true if attachment.language == "az"
+      },
+      {
+        "value": "bm",
+        "text": "Bambara",
+        "selected": true if attachment.language == "bm"
+      },
+      {
+        "value": "ba",
+        "text": "Bashkir",
+        "selected": true if attachment.language == "ba"
+      },
+      {
+        "value": "eu",
+        "text": "Basque",
+        "selected": true if attachment.language == "eu"
+      },
+      {
+        "value": "be",
+        "text": "Belarusian",
+        "selected": true if attachment.language == "be"
+      },
+      {
+        "value": "bn",
+        "text": "Bengali",
+        "selected": true if attachment.language == "bn"
+      },
+      {
+        "value": "bh",
+        "text": "Bihari languages",
+        "selected": true if attachment.language == "bh"
+      },
+      {
+        "value": "bi",
+        "text": "Bislama",
+        "selected": true if attachment.language == "bi"
+      },
+      {
+        "value": "bs",
+        "text": "Bosnian",
+        "selected": true if attachment.language == "bs"
+      },
+      {
+        "value": "br",
+        "text": "Breton",
+        "selected": true if attachment.language == "br"
+      },
+      {
+        "value": "bg",
+        "text": "Bulgarian",
+        "selected": true if attachment.language == "bg"
+      },
+      {
+        "value": "my",
+        "text": "Burmese",
+        "selected": true if attachment.language == "my"
+      },
+      {
+        "value": "ca",
+        "text": "Catalan, Valencian",
+        "selected": true if attachment.language == "ca"
+      },
+      {
+        "value": "ch",
+        "text": "Chamorro",
+        "selected": true if attachment.language == "ch"
+      },
+      {
+        "value": "ce",
+        "text": "Chechen",
+        "selected": true if attachment.language == "ce"
+      },
+      {
+        "value": "ny",
+        "text": "Chichewa, Chewa, Nyanja",
+        "selected": true if attachment.language == "ny"
+      },
+      {
+        "value": "zh",
+        "text": "Chinese",
+        "selected": true if attachment.language == "zh"
+      },
+      {
+        "value": "cv",
+        "text": "Chuvash",
+        "selected": true if attachment.language == "cv"
+      },
+      {
+        "value": "kw",
+        "text": "Cornish",
+        "selected": true if attachment.language == "kw"
+      },
+      {
+        "value": "co",
+        "text": "Corsican",
+        "selected": true if attachment.language == "co"
+      },
+      {
+        "value": "cr",
+        "text": "Cree",
+        "selected": true if attachment.language == "cr"
+      },
+      {
+        "value": "hr",
+        "text": "Croatian",
+        "selected": true if attachment.language == "hr"
+      },
+      {
+        "value": "cs",
+        "text": "Czech",
+        "selected": true if attachment.language == "cs"
+      },
+      {
+        "value": "da",
+        "text": "Danish",
+        "selected": true if attachment.language == "da"
+      },
+      {
+        "value": "dv",
+        "text": "Divehi, Dhivehi, Maldivian",
+        "selected": true if attachment.language == "dv"
+      },
+      {
+        "value": "nl",
+        "text": "Dutch, Flemish",
+        "selected": true if attachment.language == "nl"
+      },
+      {
+        "value": "dz",
+        "text": "Dzongkha",
+        "selected": true if attachment.language == "dz"
+      },
+      {
+        "value": "en",
+        "text": "English",
+        "selected": true if attachment.language == "en"
+      },
+      {
+        "value": "eo",
+        "text": "Esperanto",
+        "selected": true if attachment.language == "eo"
+      },
+      {
+        "value": "et",
+        "text": "Estonian",
+        "selected": true if attachment.language == "et"
+      },
+      {
+        "value": "ee",
+        "text": "Ewe",
+        "selected": true if attachment.language == "ee"
+      },
+      {
+        "value": "fo",
+        "text": "Faroese",
+        "selected": true if attachment.language == "fo"
+      },
+      {
+        "value": "fj",
+        "text": "Fijian",
+        "selected": true if attachment.language == "fj"
+      },
+      {
+        "value": "fi",
+        "text": "Finnish",
+        "selected": true if attachment.language == "fi"
+      },
+      {
+        "value": "fr",
+        "text": "French",
+        "selected": true if attachment.language == "fr"
+      },
+      {
+        "value": "ff",
+        "text": "Fulah",
+        "selected": true if attachment.language == "ff"
+      },
+      {
+        "value": "gl",
+        "text": "Galician",
+        "selected": true if attachment.language == "gl"
+      },
+      {
+        "value": "ka",
+        "text": "Georgian",
+        "selected": true if attachment.language == "ka"
+      },
+      {
+        "value": "de",
+        "text": "German",
+        "selected": true if attachment.language == "de"
+      },
+      {
+        "value": "el",
+        "text": "Greek, Modern (1453-)",
+        "selected": true if attachment.language == "el"
+      },
+      {
+        "value": "gn",
+        "text": "Guarani",
+        "selected": true if attachment.language == "gn"
+      },
+      {
+        "value": "gu",
+        "text": "Gujarati",
+        "selected": true if attachment.language == "gu"
+      },
+      {
+        "value": "ht",
+        "text": "Haitian, Haitian Creole",
+        "selected": true if attachment.language == "ht"
+      },
+      {
+        "value": "ha",
+        "text": "Hausa",
+        "selected": true if attachment.language == "ha"
+      },
+      {
+        "value": "he",
+        "text": "Hebrew",
+        "selected": true if attachment.language == "he"
+      },
+      {
+        "value": "hz",
+        "text": "Herero",
+        "selected": true if attachment.language == "hz"
+      },
+      {
+        "value": "hi",
+        "text": "Hindi",
+        "selected": true if attachment.language == "hi"
+      },
+      {
+        "value": "ho",
+        "text": "Hiri Motu",
+        "selected": true if attachment.language == "ho"
+      },
+      {
+        "value": "hu",
+        "text": "Hungarian",
+        "selected": true if attachment.language == "hu"
+      },
+      {
+        "value": "id",
+        "text": "Indonesian",
+        "selected": true if attachment.language == "id"
+      },
+      {
+        "value": "ga",
+        "text": "Irish",
+        "selected": true if attachment.language == "ga"
+      },
+      {
+        "value": "ig",
+        "text": "Igbo",
+        "selected": true if attachment.language == "ig"
+      },
+      {
+        "value": "ik",
+        "text": "Inupiaq",
+        "selected": true if attachment.language == "ik"
+      },
+      {
+        "value": "io",
+        "text": "Ido",
+        "selected": true if attachment.language == "io"
+      },
+      {
+        "value": "is",
+        "text": "Icelandic",
+        "selected": true if attachment.language == "is"
+      },
+      {
+        "value": "it",
+        "text": "Italian",
+        "selected": true if attachment.language == "it"
+      },
+      {
+        "value": "iu",
+        "text": "Inuktitut",
+        "selected": true if attachment.language == "iu"
+      },
+      {
+        "value": "ja",
+        "text": "Japanese",
+        "selected": true if attachment.language == "ja"
+      },
+      {
+        "value": "jv",
+        "text": "Javanese",
+        "selected": true if attachment.language == "jv"
+      },
+      {
+        "value": "kl",
+        "text": "Kalaallisut, Greenlandic",
+        "selected": true if attachment.language == "kl"
+      },
+      {
+        "value": "kn",
+        "text": "Kannada",
+        "selected": true if attachment.language == "kn"
+      },
+      {
+        "value": "kr",
+        "text": "Kanuri",
+        "selected": true if attachment.language == "kr"
+      },
+      {
+        "value": "ks",
+        "text": "Kashmiri",
+        "selected": true if attachment.language == "ks"
+      },
+      {
+        "value": "kk",
+        "text": "Kazakh",
+        "selected": true if attachment.language == "kk"
+      },
+      {
+        "value": "km",
+        "text": "Central Khmer",
+        "selected": true if attachment.language == "km"
+      },
+      {
+        "value": "ki",
+        "text": "Kikuyu, Gikuyu",
+        "selected": true if attachment.language == "ki"
+      },
+      {
+        "value": "rw",
+        "text": "Kinyarwanda",
+        "selected": true if attachment.language == "rw"
+      },
+      {
+        "value": "ky",
+        "text": "Kirghiz, Kyrgyz",
+        "selected": true if attachment.language == "ky"
+      },
+      {
+        "value": "kv",
+        "text": "Komi",
+        "selected": true if attachment.language == "kv"
+      },
+      {
+        "value": "kg",
+        "text": "Kongo",
+        "selected": true if attachment.language == "kg"
+      },
+      {
+        "value": "ko",
+        "text": "Korean",
+        "selected": true if attachment.language == "ko"
+      },
+      {
+        "value": "ku",
+        "text": "Kurdish",
+        "selected": true if attachment.language == "ku"
+      },
+      {
+        "value": "kj",
+        "text": "Kuanyama, Kwanyama",
+        "selected": true if attachment.language == "kj"
+      },
+      {
+        "value": "la",
+        "text": "Latin",
+        "selected": true if attachment.language == "la"
+      },
+      {
+        "value": "lb",
+        "text": "Luxembourgish, Letzeburgesch",
+        "selected": true if attachment.language == "lb"
+      },
+      {
+        "value": "lg",
+        "text": "Ganda",
+        "selected": true if attachment.language == "lg"
+      },
+      {
+        "value": "li",
+        "text": "Limburgan, Limburger, Limburgish",
+        "selected": true if attachment.language == "li"
+      },
+      {
+        "value": "ln",
+        "text": "Lingala",
+        "selected": true if attachment.language == "ln"
+      },
+      {
+        "value": "lo",
+        "text": "Lao",
+        "selected": true if attachment.language == "lo"
+      },
+      {
+        "value": "lt",
+        "text": "Lithuanian",
+        "selected": true if attachment.language == "lt"
+      },
+      {
+        "value": "lu",
+        "text": "Luba-Katanga",
+        "selected": true if attachment.language == "lu"
+      },
+      {
+        "value": "lv",
+        "text": "Latvian",
+        "selected": true if attachment.language == "lv"
+      },
+      {
+        "value": "gv",
+        "text": "Manx",
+        "selected": true if attachment.language == "gv"
+      },
+      {
+        "value": "mk",
+        "text": "Macedonian",
+        "selected": true if attachment.language == "mk"
+      },
+      {
+        "value": "mg",
+        "text": "Malagasy",
+        "selected": true if attachment.language == "mg"
+      },
+      {
+        "value": "ms",
+        "text": "Malay",
+        "selected": true if attachment.language == "ms"
+      },
+      {
+        "value": "ml",
+        "text": "Malayalam",
+        "selected": true if attachment.language == "ml"
+      },
+      {
+        "value": "mt",
+        "text": "Maltese",
+        "selected": true if attachment.language == "mt"
+      },
+      {
+        "value": "mi",
+        "text": "Maori",
+        "selected": true if attachment.language == "mi"
+      },
+      {
+        "value": "mr",
+        "text": "Marathi",
+        "selected": true if attachment.language == "mr"
+      },
+      {
+        "value": "mh",
+        "text": "Marshallese",
+        "selected": true if attachment.language == "mh"
+      },
+      {
+        "value": "mn",
+        "text": "Mongolian",
+        "selected": true if attachment.language == "mn"
+      },
+      {
+        "value": "na",
+        "text": "Nauru",
+        "selected": true if attachment.language == "na"
+      },
+      {
+        "value": "nv",
+        "text": "Navajo, Navaho",
+        "selected": true if attachment.language == "nv"
+      },
+      {
+        "value": "nd",
+        "text": "North Ndebele",
+        "selected": true if attachment.language == "nd"
+      },
+      {
+        "value": "ne",
+        "text": "Nepali",
+        "selected": true if attachment.language == "ne"
+      },
+      {
+        "value": "ng",
+        "text": "Ndonga",
+        "selected": true if attachment.language == "ng"
+      },
+      {
+        "value": "nb",
+        "text": "Norwegian Bokmål",
+        "selected": true if attachment.language == "nb"
+      },
+      {
+        "value": "nn",
+        "text": "Norwegian Nynorsk",
+        "selected": true if attachment.language == "nn"
+      },
+      {
+        "value": "no",
+        "text": "Norwegian",
+        "selected": true if attachment.language == "no"
+      },
+      {
+        "value": "ii",
+        "text": "Sichuan Yi, Nuosu",
+        "selected": true if attachment.language == "ii"
+      },
+      {
+        "value": "nr",
+        "text": "South Ndebele",
+        "selected": true if attachment.language == "nr"
+      },
+      {
+        "value": "oc",
+        "text": "Occitan",
+        "selected": true if attachment.language == "oc"
+      },
+      {
+        "value": "oj",
+        "text": "Ojibwa",
+        "selected": true if attachment.language == "oj"
+      },
+      {
+        "value": "cu",
+        "text": "Church Slavic, Old Slavonic, Church Slavonic, Old Bulgarian, Old Church Slavonic",
+        "selected": true if attachment.language == "cu"
+      },
+      {
+        "value": "om",
+        "text": "Oromo",
+        "selected": true if attachment.language == "om"
+      },
+      {
+        "value": "or",
+        "text": "Oriya",
+        "selected": true if attachment.language == "or"
+      },
+      {
+        "value": "os",
+        "text": "Ossetian, Ossetic",
+        "selected": true if attachment.language == "os"
+      },
+      {
+        "value": "pa",
+        "text": "Punjabi, Panjabi",
+        "selected": true if attachment.language == "pa"
+      },
+      {
+        "value": "pi",
+        "text": "Pali",
+        "selected": true if attachment.language == "pi"
+      },
+      {
+        "value": "fa",
+        "text": "Persian",
+        "selected": true if attachment.language == "fa"
+      },
+      {
+        "value": "pl",
+        "text": "Polish",
+        "selected": true if attachment.language == "pl"
+      },
+      {
+        "value": "ps",
+        "text": "Pashto, Pushto",
+        "selected": true if attachment.language == "ps"
+      },
+      {
+        "value": "pt",
+        "text": "Portuguese",
+        "selected": true if attachment.language == "pt"
+      },
+      {
+        "value": "qu",
+        "text": "Quechua",
+        "selected": true if attachment.language == "qu"
+      },
+      {
+        "value": "rm",
+        "text": "Romansh",
+        "selected": true if attachment.language == "rm"
+      },
+      {
+        "value": "rn",
+        "text": "Rundi",
+        "selected": true if attachment.language == "rn"
+      },
+      {
+        "value": "ro",
+        "text": "Romanian, Moldavian, Moldovan",
+        "selected": true if attachment.language == "ro"
+      },
+      {
+        "value": "ru",
+        "text": "Russian",
+        "selected": true if attachment.language == "ru"
+      },
+      {
+        "value": "sa",
+        "text": "Sanskrit",
+        "selected": true if attachment.language == "sa"
+      },
+      {
+        "value": "sc",
+        "text": "Sardinian",
+        "selected": true if attachment.language == "sc"
+      },
+      {
+        "value": "sd",
+        "text": "Sindhi",
+        "selected": true if attachment.language == "sd"
+      },
+      {
+        "value": "se",
+        "text": "Northern Sami",
+        "selected": true if attachment.language == "se"
+      },
+      {
+        "value": "sm",
+        "text": "Samoan",
+        "selected": true if attachment.language == "sm"
+      },
+      {
+        "value": "sg",
+        "text": "Sango",
+        "selected": true if attachment.language == "sg"
+      },
+      {
+        "value": "sr",
+        "text": "Serbian",
+        "selected": true if attachment.language == "sr"
+      },
+      {
+        "value": "gd",
+        "text": "Gaelic, Scottish Gaelic",
+        "selected": true if attachment.language == "gd"
+      },
+      {
+        "value": "sn",
+        "text": "Shona",
+        "selected": true if attachment.language == "sn"
+      },
+      {
+        "value": "si",
+        "text": "Sinhala, Sinhalese",
+        "selected": true if attachment.language == "si"
+      },
+      {
+        "value": "sk",
+        "text": "Slovak",
+        "selected": true if attachment.language == "sk"
+      },
+      {
+        "value": "sl",
+        "text": "Slovenian",
+        "selected": true if attachment.language == "sl"
+      },
+      {
+        "value": "so",
+        "text": "Somali",
+        "selected": true if attachment.language == "so"
+      },
+      {
+        "value": "st",
+        "text": "Southern Sotho",
+        "selected": true if attachment.language == "st"
+      },
+      {
+        "value": "es",
+        "text": "Spanish, Castilian",
+        "selected": true if attachment.language == "es"
+      },
+      {
+        "value": "su",
+        "text": "Sundanese",
+        "selected": true if attachment.language == "su"
+      },
+      {
+        "value": "sw",
+        "text": "Swahili",
+        "selected": true if attachment.language == "sw"
+      },
+      {
+        "value": "ss",
+        "text": "Swati",
+        "selected": true if attachment.language == "ss"
+      },
+      {
+        "value": "sv",
+        "text": "Swedish",
+        "selected": true if attachment.language == "sv"
+      },
+      {
+        "value": "ta",
+        "text": "Tamil",
+        "selected": true if attachment.language == "ta"
+      },
+      {
+        "value": "te",
+        "text": "Telugu",
+        "selected": true if attachment.language == "te"
+      },
+      {
+        "value": "tg",
+        "text": "Tajik",
+        "selected": true if attachment.language == "tg"
+      },
+      {
+        "value": "th",
+        "text": "Thai",
+        "selected": true if attachment.language == "th"
+      },
+      {
+        "value": "ti",
+        "text": "Tigrinya",
+        "selected": true if attachment.language == "ti"
+      },
+      {
+        "value": "bo",
+        "text": "Tibetan",
+        "selected": true if attachment.language == "bo"
+      },
+      {
+        "value": "tk",
+        "text": "Turkmen",
+        "selected": true if attachment.language == "tk"
+      },
+      {
+        "value": "tl",
+        "text": "Tagalog",
+        "selected": true if attachment.language == "tl"
+      },
+      {
+        "value": "tn",
+        "text": "Tswana",
+        "selected": true if attachment.language == "tn"
+      },
+      {
+        "value": "to",
+        "text": "Tonga (Tonga Islands)",
+        "selected": true if attachment.language == "to"
+      },
+      {
+        "value": "tr",
+        "text": "Turkish",
+        "selected": true if attachment.language == "tr"
+      },
+      {
+        "value": "ts",
+        "text": "Tsonga",
+        "selected": true if attachment.language == "ts"
+      },
+      {
+        "value": "tt",
+        "text": "Tatar",
+        "selected": true if attachment.language == "tt"
+      },
+      {
+        "value": "tw",
+        "text": "Twi",
+        "selected": true if attachment.language == "tw"
+      },
+      {
+        "value": "ty",
+        "text": "Tahitian",
+        "selected": true if attachment.language == "ty"
+      },
+      {
+        "value": "ug",
+        "text": "Uighur, Uyghur",
+        "selected": true if attachment.language == "ug"
+      },
+      {
+        "value": "uk",
+        "text": "Ukrainian",
+        "selected": true if attachment.language == "uk"
+      },
+      {
+        "value": "ur",
+        "text": "Urdu",
+        "selected": true if attachment.language == "ur"
+      },
+      {
+        "value": "uz",
+        "text": "Uzbek",
+        "selected": true if attachment.language == "uz"
+      },
+      {
+        "value": "ve",
+        "text": "Venda",
+        "selected": true if attachment.language == "ve"
+      },
+      {
+        "value": "vi",
+        "text": "Vietnamese",
+        "selected": true if attachment.language == "vi"
+      },
+      {
+        "value": "vo",
+        "text": "Volapük",
+        "selected": true if attachment.language == "vo"
+      },
+      {
+        "value": "wa",
+        "text": "Walloon",
+        "selected": true if attachment.language == "wa"
+      },
+      {
+        "value": "cy",
+        "text": "Welsh",
+        "selected": true if attachment.language == "cy"
+      },
+      {
+        "value": "wo",
+        "text": "Wolof",
+        "selected": true if attachment.language == "wo"
+      },
+      {
+        "value": "fy",
+        "text": "Western Frisian",
+        "selected": true if attachment.language == "fy"
+      },
+      {
+        "value": "xh",
+        "text": "Xhosa",
+        "selected": true if attachment.language == "xh"
+      },
+      {
+        "value": "yi",
+        "text": "Yiddish",
+        "selected": true if attachment.language == "yi"
+      },
+      {
+        "value": "yo",
+        "text": "Yoruba",
+        "selected": true if attachment.language == "yo"
+      },
+      {
+        "value": "za",
+        "text": "Zhuang, Chuang",
+        "selected": true if attachment.language == "za"
+      },
+      {
+        "value": "zu",
+        "text": "Zulu",
+        "selected": true if attachment.language == "zu"
+      }
+    ]
+  }) }}
+
   {{ govukButton({
     text: "Save and continue"
   }) }}

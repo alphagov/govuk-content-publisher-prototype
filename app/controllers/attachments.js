@@ -176,6 +176,10 @@ exports.attachment_update_post = function(req, res) {
   if (attachmentData.type === 'external') {
     attachmentData.url = req.session.data.document.attachment.url;
   }
+
+  if (attachmentData.type === 'file') {
+    attachmentData.language = req.session.data.document.attachment.language;
+  }
   //
   // if (attachmentData.type === 'file') {
   //   attachmentData.isbn = req.session.data.document.attachment.isbn;
@@ -247,7 +251,11 @@ exports.attachment_update_metadata_post = function(req, res) {
 
   // console.log('Before', attachmentData);
 
-  if (attachmentData.type === 'file') {
+  if (attachmentData.type === 'file' || attachmentData.type == 'html') {
+    attachmentData.order_url = "https://www.gov.uk/guidance/how-to-buy-printed-copies-of-official-documents";
+
+    attachmentData.official_document = req.session.data.document.attachment.official_document;
+
     attachmentData.isbn = req.session.data.document.attachment.isbn;
     attachmentData.urn = req.session.data.document.attachment.urn;
 
@@ -266,9 +274,9 @@ exports.attachment_update_metadata_post = function(req, res) {
     attachmentData.body = req.session.data.document.attachment.body;
   }
 
-  if (attachmentData.type === 'file' || attachmentData.type == 'html') {
-    attachmentData.order_url = "https://www.gov.uk/guidance/how-to-buy-printed-copies-of-official-documents";
-  }
+  // if (attachmentData.type === 'file' || attachmentData.type == 'html') {
+  //   attachmentData.order_url = "https://www.gov.uk/guidance/how-to-buy-printed-copies-of-official-documents";
+  // }
 
   attachmentData.updated_at = new Date();
   attachmentData.updated_by = req.session.data.user.display_name;
