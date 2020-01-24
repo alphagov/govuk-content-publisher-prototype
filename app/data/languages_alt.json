@@ -1,0 +1,1290 @@
+[
+  {
+    "code": "ab",
+    "code_3": "abk",
+    "group": "Northwest Caucasian",
+    "english_name": "Abkhazian",
+    "iso_name": "аҧсуа бызшәа, аҧсшәа"
+  },
+  {
+    "code": "aa",
+    "code_3": "aar",
+    "group": "Afro-Asiatic",
+    "english_name": "Afar",
+    "iso_name": "Afaraf"
+  },
+  {
+    "code": "af",
+    "code_3": "afr",
+    "group": "Indo-European",
+    "english_name": "Afrikaans",
+    "iso_name": "Afrikaans"
+  },
+  {
+    "code": "ak",
+    "code_3": "aka",
+    "group": "Niger–Congo",
+    "english_name": "Akan",
+    "iso_name": "Akan"
+  },
+  {
+    "code": "sq",
+    "code_3": "sqi",
+    "group": "Indo-European",
+    "english_name": "Albanian",
+    "iso_name": "Shqip"
+  },
+  {
+    "code": "am",
+    "code_3": "amh",
+    "group": "Afro-Asiatic",
+    "english_name": "Amharic",
+    "iso_name": "አማርኛ"
+  },
+  {
+    "code": "ar",
+    "code_3": "ara",
+    "group": "Afro-Asiatic",
+    "english_name": "Arabic",
+    "iso_name": "العربية"
+  },
+  {
+    "code": "an",
+    "code_3": "arg",
+    "group": "Indo-European",
+    "english_name": "Aragonese",
+    "iso_name": "aragonés"
+  },
+  {
+    "code": "hy",
+    "code_3": "hye",
+    "group": "Indo-European",
+    "english_name": "Armenian",
+    "iso_name": "Հայերեն"
+  },
+  {
+    "code": "as",
+    "code_3": "asm",
+    "group": "Indo-European",
+    "english_name": "Assamese",
+    "iso_name": "অসমীয়া"
+  },
+  {
+    "code": "av",
+    "code_3": "ava",
+    "group": "Northeast Caucasian",
+    "english_name": "Avaric",
+    "iso_name": "авар мацӀ, магӀарул мацӀ"
+  },
+  {
+    "code": "ae",
+    "code_3": "ave",
+    "group": "Indo-European",
+    "english_name": "Avestan",
+    "iso_name": "avesta"
+  },
+  {
+    "code": "ay",
+    "code_3": "aym",
+    "group": "Aymaran",
+    "english_name": "Aymara",
+    "iso_name": "aymar aru"
+  },
+  {
+    "code": "az",
+    "code_3": "aze",
+    "group": "Turkic",
+    "english_name": "Azerbaijani",
+    "iso_name": "azərbaycan dili"
+  },
+  {
+    "code": "bm",
+    "code_3": "bam",
+    "group": "Niger–Congo",
+    "english_name": "Bambara",
+    "iso_name": "bamanankan"
+  },
+  {
+    "code": "ba",
+    "code_3": "bak",
+    "group": "Turkic",
+    "english_name": "Bashkir",
+    "iso_name": "башҡорт теле"
+  },
+  {
+    "code": "eu",
+    "code_3": "eus",
+    "group": "Language isolate",
+    "english_name": "Basque",
+    "iso_name": "euskara, euskera"
+  },
+  {
+    "code": "be",
+    "code_3": "bel",
+    "group": "Indo-European",
+    "english_name": "Belarusian",
+    "iso_name": "беларуская мова"
+  },
+  {
+    "code": "bn",
+    "code_3": "ben",
+    "group": "Indo-European",
+    "english_name": "Bengali",
+    "iso_name": "বাংলা"
+  },
+  {
+    "code": "bh",
+    "code_3": "bih",
+    "group": "Indo-European",
+    "english_name": "Bihari languages",
+    "iso_name": "भोजपुरी"
+  },
+  {
+    "code": "bi",
+    "code_3": "bis",
+    "group": "Creole",
+    "english_name": "Bislama",
+    "iso_name": "Bislama"
+  },
+  {
+    "code": "bs",
+    "code_3": "bos",
+    "group": "Indo-European",
+    "english_name": "Bosnian",
+    "iso_name": "bosanski jezik"
+  },
+  {
+    "code": "br",
+    "code_3": "bre",
+    "group": "Indo-European",
+    "english_name": "Breton",
+    "iso_name": "brezhoneg"
+  },
+  {
+    "code": "bg",
+    "code_3": "bul",
+    "group": "Indo-European",
+    "english_name": "Bulgarian",
+    "iso_name": "български език"
+  },
+  {
+    "code": "my",
+    "code_3": "mya",
+    "group": "Sino-Tibetan",
+    "english_name": "Burmese",
+    "iso_name": "ဗမာစာ"
+  },
+  {
+    "code": "ca",
+    "code_3": "cat",
+    "group": "Indo-European",
+    "english_name": "Catalan, Valencian",
+    "iso_name": "català, valencià"
+  },
+  {
+    "code": "ch",
+    "code_3": "cha",
+    "group": "Austronesian",
+    "english_name": "Chamorro",
+    "iso_name": "Chamoru"
+  },
+  {
+    "code": "ce",
+    "code_3": "che",
+    "group": "Northeast Caucasian",
+    "english_name": "Chechen",
+    "iso_name": "нохчийн мотт"
+  },
+  {
+    "code": "ny",
+    "code_3": "nya",
+    "group": "Niger–Congo",
+    "english_name": "Chichewa, Chewa, Nyanja",
+    "iso_name": "chiCheŵa, chinyanja"
+  },
+  {
+    "code": "zh",
+    "code_3": "zho",
+    "group": "Sino-Tibetan",
+    "english_name": "Chinese",
+    "iso_name": "中文 (Zhōngwén), 汉语, 漢語"
+  },
+  {
+    "code": "cv",
+    "code_3": "chv",
+    "group": "Turkic",
+    "english_name": "Chuvash",
+    "iso_name": "чӑваш чӗлхи"
+  },
+  {
+    "code": "kw",
+    "code_3": "cor",
+    "group": "Indo-European",
+    "english_name": "Cornish",
+    "iso_name": "Kernewek"
+  },
+  {
+    "code": "co",
+    "code_3": "cos",
+    "group": "Indo-European",
+    "english_name": "Corsican",
+    "iso_name": "corsu, lingua corsa"
+  },
+  {
+    "code": "cr",
+    "code_3": "cre",
+    "group": "Algonquian",
+    "english_name": "Cree",
+    "iso_name": "ᓀᐦᐃᔭᐍᐏᐣ"
+  },
+  {
+    "code": "hr",
+    "code_3": "hrv",
+    "group": "Indo-European",
+    "english_name": "Croatian",
+    "iso_name": "hrvatski jezik"
+  },
+  {
+    "code": "cs",
+    "code_3": "ces",
+    "group": "Indo-European",
+    "english_name": "Czech",
+    "iso_name": "čeština, český jazyk"
+  },
+  {
+    "code": "da",
+    "code_3": "dan",
+    "group": "Indo-European",
+    "english_name": "Danish",
+    "iso_name": "dansk"
+  },
+  {
+    "code": "dv",
+    "code_3": "div",
+    "group": "Indo-European",
+    "english_name": "Divehi, Dhivehi, Maldivian",
+    "iso_name": "ދިވެހި"
+  },
+  {
+    "code": "nl",
+    "code_3": "nld",
+    "group": "Indo-European",
+    "english_name": "Dutch, Flemish",
+    "iso_name": "Nederlands, Vlaams"
+  },
+  {
+    "code": "dz",
+    "code_3": "dzo",
+    "group": "Sino-Tibetan",
+    "english_name": "Dzongkha",
+    "iso_name": "རྫོང་ཁ"
+  },
+  {
+    "code": "en",
+    "code_3": "eng",
+    "group": "Indo-European",
+    "english_name": "English",
+    "iso_name": "English"
+  },
+  {
+    "code": "eo",
+    "code_3": "epo",
+    "group": "Constructed",
+    "english_name": "Esperanto",
+    "iso_name": "Esperanto"
+  },
+  {
+    "code": "et",
+    "code_3": "est",
+    "group": "Uralic",
+    "english_name": "Estonian",
+    "iso_name": "eesti, eesti keel"
+  },
+  {
+    "code": "ee",
+    "code_3": "ewe",
+    "group": "Niger–Congo",
+    "english_name": "Ewe",
+    "iso_name": "Eʋegbe"
+  },
+  {
+    "code": "fo",
+    "code_3": "fao",
+    "group": "Indo-European",
+    "english_name": "Faroese",
+    "iso_name": "føroyskt"
+  },
+  {
+    "code": "fj",
+    "code_3": "fij",
+    "group": "Austronesian",
+    "english_name": "Fijian",
+    "iso_name": "vosa Vakaviti"
+  },
+  {
+    "code": "fi",
+    "code_3": "fin",
+    "group": "Uralic",
+    "english_name": "Finnish",
+    "iso_name": "suomi, suomen kieli"
+  },
+  {
+    "code": "fr",
+    "code_3": "fra",
+    "group": "Indo-European",
+    "english_name": "French",
+    "iso_name": "français, langue française"
+  },
+  {
+    "code": "ff",
+    "code_3": "ful",
+    "group": "Niger–Congo",
+    "english_name": "Fulah",
+    "iso_name": "Fulfulde, Pulaar, Pular"
+  },
+  {
+    "code": "gl",
+    "code_3": "glg",
+    "group": "Indo-European",
+    "english_name": "Galician",
+    "iso_name": "Galego"
+  },
+  {
+    "code": "ka",
+    "code_3": "kat",
+    "group": "Kartvelian",
+    "english_name": "Georgian",
+    "iso_name": "ქართული"
+  },
+  {
+    "code": "de",
+    "code_3": "deu",
+    "group": "Indo-European",
+    "english_name": "German",
+    "iso_name": "Deutsch"
+  },
+  {
+    "code": "el",
+    "code_3": "ell",
+    "group": "Indo-European",
+    "english_name": "Greek, Modern (1453-)",
+    "iso_name": "ελληνικά"
+  },
+  {
+    "code": "gn",
+    "code_3": "grn",
+    "group": "Tupian",
+    "english_name": "Guarani",
+    "iso_name": "Avañe'ẽ"
+  },
+  {
+    "code": "gu",
+    "code_3": "guj",
+    "group": "Indo-European",
+    "english_name": "Gujarati",
+    "iso_name": "ગુજરાતી"
+  },
+  {
+    "code": "ht",
+    "code_3": "hat",
+    "group": "Creole",
+    "english_name": "Haitian, Haitian Creole",
+    "iso_name": "Kreyòl ayisyen"
+  },
+  {
+    "code": "ha",
+    "code_3": "hau",
+    "group": "Afro-Asiatic",
+    "english_name": "Hausa",
+    "iso_name": "(Hausa) هَوُسَ"
+  },
+  {
+    "code": "he",
+    "code_3": "heb",
+    "group": "Afro-Asiatic",
+    "english_name": "Hebrew",
+    "iso_name": "עברית"
+  },
+  {
+    "code": "hz",
+    "code_3": "her",
+    "group": "Niger–Congo",
+    "english_name": "Herero",
+    "iso_name": "Otjiherero"
+  },
+  {
+    "code": "hi",
+    "code_3": "hin",
+    "group": "Indo-European",
+    "english_name": "Hindi",
+    "iso_name": "हिन्दी, हिंदी"
+  },
+  {
+    "code": "ho",
+    "code_3": "hmo",
+    "group": "Austronesian",
+    "english_name": "Hiri Motu",
+    "iso_name": "Hiri Motu"
+  },
+  {
+    "code": "hu",
+    "code_3": "hun",
+    "group": "Uralic",
+    "english_name": "Hungarian",
+    "iso_name": "magyar"
+  },
+  {
+    "code": "ia",
+    "code_3": "ina",
+    "group": "Constructed",
+    "english_name": "Interlingua (International Auxiliary Language Association)",
+    "iso_name": "Interlingua"
+  },
+  {
+    "code": "id",
+    "code_3": "ind",
+    "group": "Austronesian",
+    "english_name": "Indonesian",
+    "iso_name": "Bahasa Indonesia"
+  },
+  {
+    "code": "ie",
+    "code_3": "ile",
+    "group": "Constructed",
+    "english_name": "Interlingue, Occidental",
+    "iso_name": "(originally:) Occidental, (after WWII:) Interlingue"
+  },
+  {
+    "code": "ga",
+    "code_3": "gle",
+    "group": "Indo-European",
+    "english_name": "Irish",
+    "iso_name": "Gaeilge"
+  },
+  {
+    "code": "ig",
+    "code_3": "ibo",
+    "group": "Niger–Congo",
+    "english_name": "Igbo",
+    "iso_name": "Asụsụ Igbo"
+  },
+  {
+    "code": "ik",
+    "code_3": "ipk",
+    "group": "Eskimo–Aleut",
+    "english_name": "Inupiaq",
+    "iso_name": "Iñupiaq, Iñupiatun"
+  },
+  {
+    "code": "io",
+    "code_3": "ido",
+    "group": "Constructed",
+    "english_name": "Ido",
+    "iso_name": "Ido"
+  },
+  {
+    "code": "is",
+    "code_3": "isl",
+    "group": "Indo-European",
+    "english_name": "Icelandic",
+    "iso_name": "Íslenska"
+  },
+  {
+    "code": "it",
+    "code_3": "ita",
+    "group": "Indo-European",
+    "english_name": "Italian",
+    "iso_name": "Italiano"
+  },
+  {
+    "code": "iu",
+    "code_3": "iku",
+    "group": "Eskimo–Aleut",
+    "english_name": "Inuktitut",
+    "iso_name": "ᐃᓄᒃᑎᑐᑦ"
+  },
+  {
+    "code": "ja",
+    "code_3": "jpn",
+    "group": "Japonic",
+    "english_name": "Japanese",
+    "iso_name": "日本語 (にほんご)"
+  },
+  {
+    "code": "jv",
+    "code_3": "jav",
+    "group": "Austronesian",
+    "english_name": "Javanese",
+    "iso_name": "ꦧꦱꦗꦮ, Basa Jawa"
+  },
+  {
+    "code": "kl",
+    "code_3": "kal",
+    "group": "Eskimo–Aleut",
+    "english_name": "Kalaallisut, Greenlandic",
+    "iso_name": "kalaallisut, kalaallit oqaasii"
+  },
+  {
+    "code": "kn",
+    "code_3": "kan",
+    "group": "Dravidian",
+    "english_name": "Kannada",
+    "iso_name": "ಕನ್ನಡ"
+  },
+  {
+    "code": "kr",
+    "code_3": "kau",
+    "group": "Nilo-Saharan",
+    "english_name": "Kanuri",
+    "iso_name": "Kanuri"
+  },
+  {
+    "code": "ks",
+    "code_3": "kas",
+    "group": "Indo-European",
+    "english_name": "Kashmiri",
+    "iso_name": "कश्मीरी, كشميري‎"
+  },
+  {
+    "code": "kk",
+    "code_3": "kaz",
+    "group": "Turkic",
+    "english_name": "Kazakh",
+    "iso_name": "қазақ тілі"
+  },
+  {
+    "code": "km",
+    "code_3": "khm",
+    "group": "Austroasiatic",
+    "english_name": "Central Khmer",
+    "iso_name": "ខ្មែរ, ខេមរភាសា, ភាសាខ្មែរ"
+  },
+  {
+    "code": "ki",
+    "code_3": "kik",
+    "group": "Niger–Congo",
+    "english_name": "Kikuyu, Gikuyu",
+    "iso_name": "Gĩkũyũ"
+  },
+  {
+    "code": "rw",
+    "code_3": "kin",
+    "group": "Niger–Congo",
+    "english_name": "Kinyarwanda",
+    "iso_name": "Ikinyarwanda"
+  },
+  {
+    "code": "ky",
+    "code_3": "kir",
+    "group": "Turkic",
+    "english_name": "Kirghiz, Kyrgyz",
+    "iso_name": "Кыргызча, Кыргыз тили"
+  },
+  {
+    "code": "kv",
+    "code_3": "kom",
+    "group": "Uralic",
+    "english_name": "Komi",
+    "iso_name": "коми кыв"
+  },
+  {
+    "code": "kg",
+    "code_3": "kon",
+    "group": "Niger–Congo",
+    "english_name": "Kongo",
+    "iso_name": "Kikongo"
+  },
+  {
+    "code": "ko",
+    "code_3": "kor",
+    "group": "Koreanic",
+    "english_name": "Korean",
+    "iso_name": "한국어"
+  },
+  {
+    "code": "ku",
+    "code_3": "kur",
+    "group": "Indo-European",
+    "english_name": "Kurdish",
+    "iso_name": "Kurdî, کوردی‎"
+  },
+  {
+    "code": "kj",
+    "code_3": "kua",
+    "group": "Niger–Congo",
+    "english_name": "Kuanyama, Kwanyama",
+    "iso_name": "Kuanyama"
+  },
+  {
+    "code": "la",
+    "code_3": "lat",
+    "group": "Indo-European",
+    "english_name": "Latin",
+    "iso_name": "latine, lingua latina"
+  },
+  {
+    "code": "lb",
+    "code_3": "ltz",
+    "group": "Indo-European",
+    "english_name": "Luxembourgish, Letzeburgesch",
+    "iso_name": "Lëtzebuergesch"
+  },
+  {
+    "code": "lg",
+    "code_3": "lug",
+    "group": "Niger–Congo",
+    "english_name": "Ganda",
+    "iso_name": "Luganda"
+  },
+  {
+    "code": "li",
+    "code_3": "lim",
+    "group": "Indo-European",
+    "english_name": "Limburgan, Limburger, Limburgish",
+    "iso_name": "Limburgs"
+  },
+  {
+    "code": "ln",
+    "code_3": "lin",
+    "group": "Niger–Congo",
+    "english_name": "Lingala",
+    "iso_name": "Lingála"
+  },
+  {
+    "code": "lo",
+    "code_3": "lao",
+    "group": "Tai–Kadai",
+    "english_name": "Lao",
+    "iso_name": "ພາສາລາວ"
+  },
+  {
+    "code": "lt",
+    "code_3": "lit",
+    "group": "Indo-European",
+    "english_name": "Lithuanian",
+    "iso_name": "lietuvių kalba"
+  },
+  {
+    "code": "lu",
+    "code_3": "lub",
+    "group": "Niger–Congo",
+    "english_name": "Luba-Katanga",
+    "iso_name": "Kiluba"
+  },
+  {
+    "code": "lv",
+    "code_3": "lav",
+    "group": "Indo-European",
+    "english_name": "Latvian",
+    "iso_name": "latviešu valoda"
+  },
+  {
+    "code": "gv",
+    "code_3": "glv",
+    "group": "Indo-European",
+    "english_name": "Manx",
+    "iso_name": "Gaelg, Gailck"
+  },
+  {
+    "code": "mk",
+    "code_3": "mkd",
+    "group": "Indo-European",
+    "english_name": "Macedonian",
+    "iso_name": "македонски јазик"
+  },
+  {
+    "code": "mg",
+    "code_3": "mlg",
+    "group": "Austronesian",
+    "english_name": "Malagasy",
+    "iso_name": "fiteny malagasy"
+  },
+  {
+    "code": "ms",
+    "code_3": "msa",
+    "group": "Austronesian",
+    "english_name": "Malay",
+    "iso_name": "Bahasa Melayu, بهاس ملايو‎"
+  },
+  {
+    "code": "ml",
+    "code_3": "mal",
+    "group": "Dravidian",
+    "english_name": "Malayalam",
+    "iso_name": "മലയാളം"
+  },
+  {
+    "code": "mt",
+    "code_3": "mlt",
+    "group": "Afro-Asiatic",
+    "english_name": "Maltese",
+    "iso_name": "Malti"
+  },
+  {
+    "code": "mi",
+    "code_3": "mri",
+    "group": "Austronesian",
+    "english_name": "Maori",
+    "iso_name": "te reo Māori"
+  },
+  {
+    "code": "mr",
+    "code_3": "mar",
+    "group": "Indo-European",
+    "english_name": "Marathi",
+    "iso_name": "मराठी"
+  },
+  {
+    "code": "mh",
+    "code_3": "mah",
+    "group": "Austronesian",
+    "english_name": "Marshallese",
+    "iso_name": "Kajin M̧ajeļ"
+  },
+  {
+    "code": "mn",
+    "code_3": "mon",
+    "group": "Mongolic",
+    "english_name": "Mongolian",
+    "iso_name": "Монгол хэл"
+  },
+  {
+    "code": "na",
+    "code_3": "nau",
+    "group": "Austronesian",
+    "english_name": "Nauru",
+    "iso_name": "Dorerin Naoero"
+  },
+  {
+    "code": "nv",
+    "code_3": "nav",
+    "group": "Dené–Yeniseian",
+    "english_name": "Navajo, Navaho",
+    "iso_name": "Diné bizaad"
+  },
+  {
+    "code": "nd",
+    "code_3": "nde",
+    "group": "Niger–Congo",
+    "english_name": "North Ndebele",
+    "iso_name": "isiNdebele"
+  },
+  {
+    "code": "ne",
+    "code_3": "nep",
+    "group": "Indo-European",
+    "english_name": "Nepali",
+    "iso_name": "नेपाली"
+  },
+  {
+    "code": "ng",
+    "code_3": "ndo",
+    "group": "Niger–Congo",
+    "english_name": "Ndonga",
+    "iso_name": "Owambo"
+  },
+  {
+    "code": "nb",
+    "code_3": "nob",
+    "group": "Indo-European",
+    "english_name": "Norwegian Bokmål",
+    "iso_name": "Norsk Bokmål"
+  },
+  {
+    "code": "nn",
+    "code_3": "nno",
+    "group": "Indo-European",
+    "english_name": "Norwegian Nynorsk",
+    "iso_name": "Norsk Nynorsk"
+  },
+  {
+    "code": "no",
+    "code_3": "nor",
+    "group": "Indo-European",
+    "english_name": "Norwegian",
+    "iso_name": "Norsk"
+  },
+  {
+    "code": "ii",
+    "code_3": "iii",
+    "group": "Sino-Tibetan",
+    "english_name": "Sichuan Yi, Nuosu",
+    "iso_name": "ꆈꌠ꒿ Nuosuhxop"
+  },
+  {
+    "code": "nr",
+    "code_3": "nbl",
+    "group": "Niger–Congo",
+    "english_name": "South Ndebele",
+    "iso_name": "isiNdebele"
+  },
+  {
+    "code": "oc",
+    "code_3": "oci",
+    "group": "Indo-European",
+    "english_name": "Occitan",
+    "iso_name": "occitan, lenga d'òc"
+  },
+  {
+    "code": "oj",
+    "code_3": "oji",
+    "group": "Algonquian",
+    "english_name": "Ojibwa",
+    "iso_name": "ᐊᓂᔑᓈᐯᒧᐎᓐ"
+  },
+  {
+    "code": "cu",
+    "code_3": "chu",
+    "group": "Indo-European",
+    "english_name": "Church Slavic, Old Slavonic, Church Slavonic, Old Bulgarian, Old Church Slavonic",
+    "iso_name": "ѩзыкъ словѣньскъ"
+  },
+  {
+    "code": "om",
+    "code_3": "orm",
+    "group": "Afro-Asiatic",
+    "english_name": "Oromo",
+    "iso_name": "Afaan Oromoo"
+  },
+  {
+    "code": "or",
+    "code_3": "ori",
+    "group": "Indo-European",
+    "english_name": "Oriya",
+    "iso_name": "ଓଡ଼ିଆ"
+  },
+  {
+    "code": "os",
+    "code_3": "oss",
+    "group": "Indo-European",
+    "english_name": "Ossetian, Ossetic",
+    "iso_name": "ирон æвзаг"
+  },
+  {
+    "code": "pa",
+    "code_3": "pan",
+    "group": "Indo-European",
+    "english_name": "Punjabi, Panjabi",
+    "iso_name": "ਪੰਜਾਬੀ, پنجابی‎"
+  },
+  {
+    "code": "pi",
+    "code_3": "pli",
+    "group": "Indo-European",
+    "english_name": "Pali",
+    "iso_name": "पालि, पाळि"
+  },
+  {
+    "code": "fa",
+    "code_3": "fas",
+    "group": "Indo-European",
+    "english_name": "Persian",
+    "iso_name": "فارسی"
+  },
+  {
+    "code": "pl",
+    "code_3": "pol",
+    "group": "Indo-European",
+    "english_name": "Polish",
+    "iso_name": "język polski, polszczyzna"
+  },
+  {
+    "code": "ps",
+    "code_3": "pus",
+    "group": "Indo-European",
+    "english_name": "Pashto, Pushto",
+    "iso_name": "پښتو"
+  },
+  {
+    "code": "pt",
+    "code_3": "por",
+    "group": "Indo-European",
+    "english_name": "Portuguese",
+    "iso_name": "Português"
+  },
+  {
+    "code": "qu",
+    "code_3": "que",
+    "group": "Quechuan",
+    "english_name": "Quechua",
+    "iso_name": "Runa Simi, Kichwa"
+  },
+  {
+    "code": "rm",
+    "code_3": "roh",
+    "group": "Indo-European",
+    "english_name": "Romansh",
+    "iso_name": "Rumantsch Grischun"
+  },
+  {
+    "code": "rn",
+    "code_3": "run",
+    "group": "Niger–Congo",
+    "english_name": "Rundi",
+    "iso_name": "Ikirundi"
+  },
+  {
+    "code": "ro",
+    "code_3": "ron",
+    "group": "Indo-European",
+    "english_name": "Romanian, Moldavian, Moldovan",
+    "iso_name": "Română"
+  },
+  {
+    "code": "ru",
+    "code_3": "rus",
+    "group": "Indo-European",
+    "english_name": "Russian",
+    "iso_name": "русский"
+  },
+  {
+    "code": "sa",
+    "code_3": "san",
+    "group": "Indo-European",
+    "english_name": "Sanskrit",
+    "iso_name": "संस्कृतम्"
+  },
+  {
+    "code": "sc",
+    "code_3": "srd",
+    "group": "Indo-European",
+    "english_name": "Sardinian",
+    "iso_name": "sardu"
+  },
+  {
+    "code": "sd",
+    "code_3": "snd",
+    "group": "Indo-European",
+    "english_name": "Sindhi",
+    "iso_name": "सिन्धी, سنڌي، سندھی‎"
+  },
+  {
+    "code": "se",
+    "code_3": "sme",
+    "group": "Uralic",
+    "english_name": "Northern Sami",
+    "iso_name": "Davvisámegiella"
+  },
+  {
+    "code": "sm",
+    "code_3": "smo",
+    "group": "Austronesian",
+    "english_name": "Samoan",
+    "iso_name": "gagana fa'a Samoa"
+  },
+  {
+    "code": "sg",
+    "code_3": "sag",
+    "group": "Creole",
+    "english_name": "Sango",
+    "iso_name": "yângâ tî sängö"
+  },
+  {
+    "code": "sr",
+    "code_3": "srp",
+    "group": "Indo-European",
+    "english_name": "Serbian",
+    "iso_name": "српски језик"
+  },
+  {
+    "code": "gd",
+    "code_3": "gla",
+    "group": "Indo-European",
+    "english_name": "Gaelic, Scottish Gaelic",
+    "iso_name": "Gàidhlig"
+  },
+  {
+    "code": "sn",
+    "code_3": "sna",
+    "group": "Niger–Congo",
+    "english_name": "Shona",
+    "iso_name": "chiShona"
+  },
+  {
+    "code": "si",
+    "code_3": "sin",
+    "group": "Indo-European",
+    "english_name": "Sinhala, Sinhalese",
+    "iso_name": "සිංහල"
+  },
+  {
+    "code": "sk",
+    "code_3": "slk",
+    "group": "Indo-European",
+    "english_name": "Slovak",
+    "iso_name": "Slovenčina, Slovenský Jazyk"
+  },
+  {
+    "code": "sl",
+    "code_3": "slv",
+    "group": "Indo-European",
+    "english_name": "Slovenian",
+    "iso_name": "Slovenski Jezik, Slovenščina"
+  },
+  {
+    "code": "so",
+    "code_3": "som",
+    "group": "Afro-Asiatic",
+    "english_name": "Somali",
+    "iso_name": "Soomaaliga, af Soomaali"
+  },
+  {
+    "code": "st",
+    "code_3": "sot",
+    "group": "Niger–Congo",
+    "english_name": "Southern Sotho",
+    "iso_name": "Sesotho"
+  },
+  {
+    "code": "es",
+    "code_3": "spa",
+    "group": "Indo-European",
+    "english_name": "Spanish, Castilian",
+    "iso_name": "Español"
+  },
+  {
+    "code": "su",
+    "code_3": "sun",
+    "group": "Austronesian",
+    "english_name": "Sundanese",
+    "iso_name": "Basa Sunda"
+  },
+  {
+    "code": "sw",
+    "code_3": "swa",
+    "group": "Niger–Congo",
+    "english_name": "Swahili",
+    "iso_name": "Kiswahili"
+  },
+  {
+    "code": "ss",
+    "code_3": "ssw",
+    "group": "Niger–Congo",
+    "english_name": "Swati",
+    "iso_name": "SiSwati"
+  },
+  {
+    "code": "sv",
+    "code_3": "swe",
+    "group": "Indo-European",
+    "english_name": "Swedish",
+    "iso_name": "Svenska"
+  },
+  {
+    "code": "ta",
+    "code_3": "tam",
+    "group": "Dravidian",
+    "english_name": "Tamil",
+    "iso_name": "தமிழ்"
+  },
+  {
+    "code": "te",
+    "code_3": "tel",
+    "group": "Dravidian",
+    "english_name": "Telugu",
+    "iso_name": "తెలుగు"
+  },
+  {
+    "code": "tg",
+    "code_3": "tgk",
+    "group": "Indo-European",
+    "english_name": "Tajik",
+    "iso_name": "тоҷикӣ, toçikī, تاجیکی‎"
+  },
+  {
+    "code": "th",
+    "code_3": "tha",
+    "group": "Tai–Kadai",
+    "english_name": "Thai",
+    "iso_name": "ไทย"
+  },
+  {
+    "code": "ti",
+    "code_3": "tir",
+    "group": "Afro-Asiatic",
+    "english_name": "Tigrinya",
+    "iso_name": "ትግርኛ"
+  },
+  {
+    "code": "bo",
+    "code_3": "bod",
+    "group": "Sino-Tibetan",
+    "english_name": "Tibetan",
+    "iso_name": "བོད་ཡིག"
+  },
+  {
+    "code": "tk",
+    "code_3": "tuk",
+    "group": "Turkic",
+    "english_name": "Turkmen",
+    "iso_name": "Türkmen, Түркмен"
+  },
+  {
+    "code": "tl",
+    "code_3": "tgl",
+    "group": "Austronesian",
+    "english_name": "Tagalog",
+    "iso_name": "Wikang Tagalog"
+  },
+  {
+    "code": "tn",
+    "code_3": "tsn",
+    "group": "Niger–Congo",
+    "english_name": "Tswana",
+    "iso_name": "Setswana"
+  },
+  {
+    "code": "to",
+    "code_3": "ton",
+    "group": "Austronesian",
+    "english_name": "Tonga (Tonga Islands)",
+    "iso_name": "Faka Tonga"
+  },
+  {
+    "code": "tr",
+    "code_3": "tur",
+    "group": "Turkic",
+    "english_name": "Turkish",
+    "iso_name": "Türkçe"
+  },
+  {
+    "code": "ts",
+    "code_3": "tso",
+    "group": "Niger–Congo",
+    "english_name": "Tsonga",
+    "iso_name": "Xitsonga"
+  },
+  {
+    "code": "tt",
+    "code_3": "tat",
+    "group": "Turkic",
+    "english_name": "Tatar",
+    "iso_name": "татар теле, tatar tele"
+  },
+  {
+    "code": "tw",
+    "code_3": "twi",
+    "group": "Niger–Congo",
+    "english_name": "Twi",
+    "iso_name": "Twi"
+  },
+  {
+    "code": "ty",
+    "code_3": "tah",
+    "group": "Austronesian",
+    "english_name": "Tahitian",
+    "iso_name": "Reo Tahiti"
+  },
+  {
+    "code": "ug",
+    "code_3": "uig",
+    "group": "Turkic",
+    "english_name": "Uighur, Uyghur",
+    "iso_name": "ئۇيغۇرچە‎, Uyghurche"
+  },
+  {
+    "code": "uk",
+    "code_3": "ukr",
+    "group": "Indo-European",
+    "english_name": "Ukrainian",
+    "iso_name": "Українська"
+  },
+  {
+    "code": "ur",
+    "code_3": "urd",
+    "group": "Indo-European",
+    "english_name": "Urdu",
+    "iso_name": "اردو"
+  },
+  {
+    "code": "uz",
+    "code_3": "uzb",
+    "group": "Turkic",
+    "english_name": "Uzbek",
+    "iso_name": "Oʻzbek, Ўзбек, أۇزبېك‎"
+  },
+  {
+    "code": "ve",
+    "code_3": "ven",
+    "group": "Niger–Congo",
+    "english_name": "Venda",
+    "iso_name": "Tshivenḓa"
+  },
+  {
+    "code": "vi",
+    "code_3": "vie",
+    "group": "Austroasiatic",
+    "english_name": "Vietnamese",
+    "iso_name": "Tiếng Việt"
+  },
+  {
+    "code": "vo",
+    "code_3": "vol",
+    "group": "Constructed",
+    "english_name": "Volapük",
+    "iso_name": "Volapük"
+  },
+  {
+    "code": "wa",
+    "code_3": "wln",
+    "group": "Indo-European",
+    "english_name": "Walloon",
+    "iso_name": "Walon"
+  },
+  {
+    "code": "cy",
+    "code_3": "cym",
+    "group": "Indo-European",
+    "english_name": "Welsh",
+    "iso_name": "Cymraeg"
+  },
+  {
+    "code": "wo",
+    "code_3": "wol",
+    "group": "Niger–Congo",
+    "english_name": "Wolof",
+    "iso_name": "Wollof"
+  },
+  {
+    "code": "fy",
+    "code_3": "fry",
+    "group": "Indo-European",
+    "english_name": "Western Frisian",
+    "iso_name": "Frysk"
+  },
+  {
+    "code": "xh",
+    "code_3": "xho",
+    "group": "Niger–Congo",
+    "english_name": "Xhosa",
+    "iso_name": "isiXhosa"
+  },
+  {
+    "code": "yi",
+    "code_3": "yid",
+    "group": "Indo-European",
+    "english_name": "Yiddish",
+    "iso_name": "ייִדיש"
+  },
+  {
+    "code": "yo",
+    "code_3": "yor",
+    "group": "Niger–Congo",
+    "english_name": "Yoruba",
+    "iso_name": "Yorùbá"
+  },
+  {
+    "code": "za",
+    "code_3": "zha",
+    "group": "Tai–Kadai",
+    "english_name": "Zhuang, Chuang",
+    "iso_name": "Saɯ cueŋƅ, Saw cuengh"
+  },
+  {
+    "code": "zu",
+    "code_3": "zul",
+    "group": "Niger–Congo",
+    "english_name": "Zulu",
+    "iso_name": "isiZulu"
+  }
+]
