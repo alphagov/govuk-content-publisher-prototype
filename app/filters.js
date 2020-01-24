@@ -7,6 +7,7 @@ const numeral = require('numeral');
 const TurndownService = require('turndown');
 
 const mimetypes = require('./data/mimetypes.json');
+const languages = require('./data/languages.json');
 
 module.exports = function (env) {
   /**
@@ -63,6 +64,22 @@ module.exports = function (env) {
   filters.numeral = function(number, format) {
    return numeral(number).format(format);
   }
+
+ /* ------------------------------------------------------------------
+  numeral filter for use in Nunjucks
+  example: {{ params.number | numeral("0,00.0") }}
+  outputs: 1,000.00
+ ------------------------------------------------------------------ */
+ filters.language = function(code, type = 'english_name') {
+   if (!code)
+     return null;
+
+   let language = languages.filter( (obj) =>
+     obj.code == code
+   )[0];
+
+   return language[type];
+ }
 
   /* ------------------------------------------------------------------
    document type filter for use in Nunjucks
