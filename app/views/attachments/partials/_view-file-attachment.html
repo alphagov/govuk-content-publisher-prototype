@@ -80,6 +80,14 @@
       value: {
         html: '<a class="govuk-link" href="' + attachment.order_url + '" target="_blank">' + attachment.order_url + '</a>'
       }
-    } if attachment.official_document != 'no'
+    } if attachment.official_document != 'no',
+    {
+      key: {
+        text: "Markdown code"
+      },
+      value: {
+        html: '[AttachmentLink: ' + (attachment.title | slugify) + '.pdf]<p class="govuk-body-s govuk-!-margin-top-5">Copy the markdown code and paste it into the text where you want the file link to appear.</p>'
+      }
+    }
   ]
 }) }}
