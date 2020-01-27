@@ -5,6 +5,13 @@
   <!-- enctype="multipart/form-data" -->
   <input type="hidden" name="document[attachment][type]" value="file">
 
+  {%- if attachment.file | length %}
+    <p class="govuk-body">
+      <span class="govuk-!-font-weight-bold">Current file</span><br>
+      <a class="govuk-link" href="#">{{ attachment.file }}</a>
+    </p>
+  {% endif -%}
+
   {{ govukFileUpload({
     id: "attachment-file",
     name: "document[attachment][file]",

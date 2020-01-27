@@ -5,6 +5,18 @@ const uuid = require('uuid/v1');
 
 const Attachments = require('../models/attachments');
 
+function slugify(text) {
+
+  if (!text)
+    return null;
+
+  return text.toLowerCase()
+          .replace(/[^\w\s-]/g, '') // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
+          .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
+          .replace(/^-+|-+$/g, ''); // remove leading, trailing -
+
+}
+
 // Display list of all attachments.
 exports.attachment_list = function(req, res) {
   res.render('../views/attachments/list', {
@@ -73,6 +85,10 @@ exports.attachment_create_post = function(req, res) {
   attachmentData.document_id = req.params.document_id;
   attachmentData.created_at = new Date();
   attachmentData.created_by = req.session.data.user.display_name;
+
+  if (req.session.data.document.attachment.type === 'file') {
+    attachmentData.file = slugify(attachmentData.title);
+  }
 
   if (req.session.data.document.attachment.type === 'file' || req.session.data.document.attachment.type == 'html') {
     attachmentData.order_url = "https://www.gov.uk/guidance/how-to-buy-printed-copies-of-official-documents";
@@ -178,8 +194,10 @@ exports.attachment_update_post = function(req, res) {
   }
 
   if (attachmentData.type === 'file') {
+    attachmentData.file = slugify(attachmentData.title);
     attachmentData.language = req.session.data.document.attachment.language;
   }
+
   //
   // if (attachmentData.type === 'file') {
   //   attachmentData.isbn = req.session.data.document.attachment.isbn;
