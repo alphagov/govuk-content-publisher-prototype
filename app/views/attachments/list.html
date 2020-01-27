@@ -61,14 +61,12 @@
             Attachments for ‘{{ data.document.title }}’
           </h1>
 
+          <p class="govuk-body">SOME USEFUL GUIDANCE HERE</p>
+
           {{ appButtonMenu({
             classes: 'button-menu-1',
             items: [
-              {
-                text: 'Add HTML attachment',
-                classes: 'govuk-button',
-                href: '/documents/' + data.document.content_id + '/attachments/create?type=html'
-              },
+
               {
                 text: 'Add file attachment',
                 classes: 'govuk-button',
@@ -82,16 +80,22 @@
             ]
           }) }}
 
+          <!-- {
+            text: 'Add HTML attachment',
+            classes: 'govuk-button',
+            href: '/documents/' + data.document.content_id + '/attachments/create?type=html'
+          }, -->
+
         </div>
       </div>
 
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
-          <h2 class="govuk-heading-m">All attachments</h2>
+          <h2 class="govuk-heading-m">Attachments</h2>
 
           {% if attachments | length %}
 
-            <p class="govuk-body">All attachments will appear on the document when it’s published.</p>
+            <p class="govuk-body govuk-!-margin-bottom-8">All attachments will appear on the document when it’s published.</p>
 
             {%- if attachments | length > 1 %}<div id="attachmentsList">{% endif -%}
 
@@ -100,8 +104,12 @@
               {%- call appAttachmentActions({
                 items: [
                   {
-                    text: 'Edit details',
+                    text: 'Edit file details',
                     href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/update'
+                  },
+                  {
+                    text: 'Edit publishing details',
+                    href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/metadata'
                   },
                   {
                     text: 'Download',
@@ -168,7 +176,7 @@
 
           {% else %}
 
-            <p class="govuk-body">There are no attachments yet. You’ll need to add attachments before you can publish this document.</p>
+            <p class="govuk-body">No attachments added to this document.</p>
 
           {% endif -%}
 

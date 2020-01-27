@@ -90,10 +90,6 @@ exports.attachment_create_post = function(req, res) {
     attachmentData.file = slugify(attachmentData.title);
   }
 
-  if (req.session.data.document.attachment.type === 'file' || req.session.data.document.attachment.type == 'html') {
-    attachmentData.order_url = "https://www.gov.uk/guidance/how-to-buy-printed-copies-of-official-documents";
-  }
-
   // create a JSON sting for the submitted data
   const fileData = JSON.stringify(attachmentData);
 
@@ -270,7 +266,6 @@ exports.attachment_update_metadata_post = function(req, res) {
   // console.log('Before', attachmentData);
 
   if (attachmentData.type === 'file' || attachmentData.type == 'html') {
-    attachmentData.order_url = "https://www.gov.uk/guidance/how-to-buy-printed-copies-of-official-documents";
 
     attachmentData.official_document = req.session.data.document.attachment.official_document;
 
@@ -303,6 +298,10 @@ exports.attachment_update_metadata_post = function(req, res) {
       attachmentData.unnumbered_act = '';
       attachmentData.hcpn = '';
       attachmentData.parliamentary_session = '';
+    }
+
+    if (attachmentData.official_document === 'yes_command_paper' || attachmentData.official_document === 'yes_house_of_commons_paper') {
+      attachmentData.order_url = "https://www.gov.uk/guidance/how-to-buy-printed-copies-of-official-documents";
     }
 
   }
