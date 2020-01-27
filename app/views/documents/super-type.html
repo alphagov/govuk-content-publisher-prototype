@@ -95,17 +95,6 @@
               "checked": checked('document_super_type', 'specialist_notices')
             },
             {
-              "value": "corporate_information",
-              "text": "Corporate information",
-              "label": {
-                "classes": "govuk-label--s"
-              },
-              "hint": {
-                "text": "Information about your organisation"
-              },
-              "checked": checked('document_super_type', 'corporate_information')
-            },
-            {
               "value": "not_sure",
               "text": "I’m not sure if this should be on GOV.UK",
               "label": {
@@ -118,6 +107,20 @@
             }
           ]
         }) }}
+
+        <!--
+        {
+          "value": "corporate_information",
+          "text": "Corporate information",
+          "label": {
+            "classes": "govuk-label--s"
+          },
+          "hint": {
+            "text": "Information about your organisation"
+          },
+          "checked": checked('document_super_type', 'corporate_information')
+        },
+        -->
 
         {{ govukButton({
           text: "Continue"
