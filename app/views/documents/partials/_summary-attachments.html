@@ -22,9 +22,9 @@
         </dt>
         <dd class="govuk-summary-list__value govuk-!-font-weight-bold">
           {{ attachment.title }}
-          {% if attachment.type == 'external' %}<p class="govuk-body">{{ attachment.url }}</p>{% endif -%}
+          {% if attachment.type == 'external' %}<p class="govuk-body-s">{{ attachment.url }}</p>{% endif -%}
           {% if attachment.type == 'file' %}
-          <p class="govuk-body">
+          <p class="govuk-body-s">
             {#{ govukTag({
               text: "Official"
             }) if attachment.official_document != 'no' }#}
@@ -40,7 +40,7 @@
             {% if attachment.hcpn -%}{% if attachment.cpn -%},{% endif %} HC {{ attachment.hcpn }} {{ attachment.parliamentary_session }}{% endif -%}
           </p> -->
           {% endif -%}
-          {% if attachment.type == 'html' %}<p class="govuk-body">{{ attachment.type | attachmentType }}</p>{% endif -%}
+          {% if attachment.type == 'html' %}<p class="govuk-body-s">{{ attachment.type | attachmentType }}</p>{% endif -%}
           <!-- <p class="govuk-body">{{ attachment.type | attachmentType }}</p> -->
         </dd>
         {%- if data.change == 'true' %}

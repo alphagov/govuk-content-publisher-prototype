@@ -58,7 +58,7 @@
 
                 <p class="govuk-body govuk-!-margin-bottom-1">
                   {%- if attachment.type == 'file' %}
-                    <a class="govuk-link" href="#">Download</a>
+                    <a class="govuk-link" href="#">Preview</a>
                   {% endif -%}
                   <a class="govuk-link app-link--destructive {{- ' app-link--right' if attachment.type == 'file' }}" href="/documents/{{ attachment.document_id }}/attachments/{{ attachment.content_id }}/delete">Delete attachment</a>
                 </p>
