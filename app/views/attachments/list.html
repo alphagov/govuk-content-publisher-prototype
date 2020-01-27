@@ -104,13 +104,13 @@
               {%- call appAttachmentActions({
                 items: [
                   {
-                    text: 'Edit file details',
+                    text: 'Edit link details' if attachment.type == 'external' else ('Edit file details' if attachment.type == 'file' else 'Edit details'),
                     href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/update'
                   },
                   {
                     text: 'Edit publishing details',
                     href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/metadata'
-                  },
+                  } if attachment.type != 'external',
                   {
                     text: 'Download',
                     href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/download'

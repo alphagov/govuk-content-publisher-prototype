@@ -43,12 +43,20 @@
     },
     {
       key: {
+        text: "Is this an official document?"
+      },
+      value: {
+        text: attachment.official_document | replace("_"," ") | title | replace("Yes","Yes,")
+      }
+    },
+    {
+      key: {
         text: "Command paper number"
       },
       value: {
         text: "Unnumbered paper" if attachment.unnumbered else attachment.cpn
       }
-    },
+    } if attachment.official_document == 'yes_command_paper',
     {
       key: {
         text: "House of Commons paper number"
@@ -56,7 +64,7 @@
       value: {
         text: "Unnumbered act" if attachment.unnumbered_act else attachment.hcpn
       }
-    },
+    } if attachment.official_document == 'yes_house_of_commons_paper',
     {
       key: {
         text: "Parliamentary session"
@@ -64,7 +72,7 @@
       value: {
         text: attachment.parliamentary_session
       }
-    },
+    } if attachment.official_document == 'yes_house_of_commons_paper',
     {
       key: {
         text: "Order URL"
@@ -72,6 +80,6 @@
       value: {
         html: '<a class="govuk-link" href="' + attachment.order_url + '" target="_blank">' + attachment.order_url + '</a>'
       }
-    }
+    } if attachment.official_document != 'no'
   ]
 }) }}
