@@ -142,7 +142,7 @@
                   },
                   href: ('/documents/' + attachment.document_id + '/attachments/' + attachment.content_id) if data.links != "hide",
                   metadata: {
-                    filename: 'attachment.pdf',
+                    filename: (attachment.title | slugify) + '.pdf',
                     fileSize: 1234560,
                     contentType: 'application/pdf',
                     pageCount: 25,

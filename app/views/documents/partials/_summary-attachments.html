@@ -25,6 +25,9 @@
           {% if attachment.type == 'external' %}<p class="govuk-body">{{ attachment.url }}</p>{% endif -%}
           {% if attachment.type == 'file' %}
           <p class="govuk-body">
+            {#{ govukTag({
+              text: "Official"
+            }) if attachment.official_document != 'no' }#}
             {%- if attachment.mimetype %}
               {{ attachment.mimetype | parseContentType if attachment.mimetype == 'application/pdf' else attachment.mimetype | parseContentType('title') }}
               {% if attachment.mimetype == 'application/pdf' %}, 2.56MB, 48 pages{% endif -%}
