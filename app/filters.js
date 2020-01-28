@@ -82,8 +82,8 @@ module.exports = function (env) {
       case 'fatality_notice': return 'Fatality notice';
       case 'foi_release': return 'FOI release';
       case 'form': return 'Form';
+      case 'guidance': return 'Guidance';
       case 'guidance_regulation': return 'Guidance and regulation';
-      case 'guidance': return 'Non-statutory guidance';
       case 'impact_assessment': return 'Impact assessment';
       case 'independent_report': return 'Independent report';
       case 'international_treaty': return 'International treaty';
@@ -92,6 +92,7 @@ module.exports = function (env) {
       case 'national_statistics': return 'National statistics';
       case 'news_communications': return 'News and communications';
       case 'news_story': return 'News story';
+      case 'non_statutory_guidance': return 'Non-statutory guidance';
       case 'not_sure': return 'I’m not sure if this should be on GOV.UK';
       case 'notice': return 'Notice';
       case 'official_statistics': return 'Official statistics';
