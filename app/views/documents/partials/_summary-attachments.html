@@ -24,26 +24,16 @@
           {{ attachment.title }}
           {% if attachment.type == 'external' %}<p class="govuk-body-s">{{ attachment.url }}</p>{% endif -%}
           {% if attachment.type == 'file' %}
-          <p class="govuk-body-s">
-            {#{ govukTag({
-              text: "Official"
-            }) if attachment.official_document != 'no' }#}
-            {%- if attachment.mimetype %}
-              {{ attachment.mimetype | parseContentType if attachment.mimetype == 'application/pdf' else attachment.mimetype | parseContentType('title') }}
-              {% if attachment.mimetype == 'application/pdf' %}, 2.56MB, 48 pages{% endif -%}
-            {% endif -%}
-          </p>
-          <!-- <p class="govuk-body">
-            {% if attachment.isbn -%}ISBN {{ attachment.isbn }}{% endif -%}
-            {% if attachment.urn -%}{% if attachment.isbn -%},{% endif %} {{ attachment.urn }}{% endif -%}
-            {% if attachment.cpn -%}{% if attachment.urn -%},{% endif %} CP {{ attachment.cpn }}{% endif -%}
-            {% if attachment.hcpn -%}{% if attachment.cpn -%},{% endif %} HC {{ attachment.hcpn }} {{ attachment.parliamentary_session }}{% endif -%}
-          </p> -->
+            <p class="govuk-body-s">
+              {%- if attachment.mimetype %}
+                {{ attachment.mimetype | parseContentType if attachment.mimetype == 'application/pdf' else attachment.mimetype | parseContentType('title') }}
+                {% if attachment.mimetype == 'application/pdf' %}, 2.56MB, 48 pages{% endif -%}
+              {% endif -%}
+            </p>
           {% endif -%}
           {% if attachment.type == 'html' %}<p class="govuk-body-s">{{ attachment.type | attachmentType }}</p>{% endif -%}
-          <!-- <p class="govuk-body">{{ attachment.type | attachmentType }}</p> -->
         </dd>
-        {%- if data.change == 'true' %}
+        <!-- {#%- if data.change == 'true' %}
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="/documents/{{ attachment.document_id }}/attachments/{{ attachment.content_id }}/update">
             Change<span class="govuk-visually-hidden"> {{ attachment.title }}</span>
@@ -54,7 +44,7 @@
             Delete<span class="govuk-visually-hidden"> {{ attachment.title }}</span>
           </a>
         </dd>
-        {% endif -%}
+        {% endif -%#} -->
       </div>
       {% endfor -%}
     </dl>
