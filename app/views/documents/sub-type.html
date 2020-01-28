@@ -84,7 +84,7 @@
               "checked": checked('document_sub_type', 'correspondence')
             } if data.document_type == "articles_correspondence",
             {
-              "value": "guidance",
+              "value": "non_statutory_guidance",
               "text": "Non-statutory guidance",
               "label": {
                 "classes": "govuk-label--s"
@@ -92,7 +92,7 @@
               "hint": {
                 "text": "Publications like manuals, handbooks and other documents that offer advice. Use for content produced as a standalone hard-copy publication. For web-original content use ‘detailed guide’."
               },
-              "checked": checked('document_sub_type', 'guidance')
+              "checked": checked('document_sub_type', 'non_statutory_guidance')
             } if data.document_type == "guidance",
             {
               "value": "statutory_guidance",
