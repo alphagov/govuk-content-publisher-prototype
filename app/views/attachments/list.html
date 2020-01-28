@@ -104,11 +104,11 @@
               {%- call appAttachmentActions({
                 items: [
                   {
-                    text: 'Edit link details' if attachment.type == 'external' else ('Edit file details' if attachment.type == 'file' else 'Edit details'),
+                    text: 'Edit link' if attachment.type == 'external' else ('Edit file' if attachment.type == 'file' else 'Edit details'),
                     href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/update'
                   },
                   {
-                    text: 'Edit publishing details',
+                    text: 'Edit details',
                     href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/metadata'
                   } if attachment.type != 'external',
                   {
@@ -128,7 +128,7 @@
                     heading: {
                       text: attachment.title if attachment.title | length else "Untitled attachment"
                     },
-                    href: ('/documents/' + attachment.document_id + '/attachments/' + attachment.content_id) if data.links != "hide"
+                    href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/preview'
                   }) %}
 
                     <p class="govuk-body-s">{{ attachment.url }}</p>
@@ -140,7 +140,7 @@
                   heading: {
                     text: attachment.title if attachment.title | length else "Untitled attachment"
                   },
-                  href: ('/documents/' + attachment.document_id + '/attachments/' + attachment.content_id) if data.links != "hide",
+                  href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/preview',
                   metadata: {
                     filename: (attachment.title | slugify) + '.pdf',
                     fileSize: 1234560,
@@ -154,7 +154,7 @@
                   heading: {
                     text: attachment.title if attachment.title | length else "Untitled attachment"
                   },
-                  href: ('/documents/' + attachment.document_id + '/attachments/' + attachment.content_id) if data.links != "hide",
+                  href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/preview',
                   metadata: {
                     contentType: 'text/html',
                     thumbnail: 'document'

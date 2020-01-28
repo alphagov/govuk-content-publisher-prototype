@@ -336,3 +336,8 @@ exports.attachment_update_metadata_post = function(req, res) {
   // TODO: show flash message (success/failure)
   res.redirect('/documents/' + req.params.document_id + '/attachments');
 };
+
+// Display attachment metadata form on GET.
+exports.attachment_preview = function(req, res) {
+  res.send('NOT IMPLEMENTED: attachment preview');  
+};
