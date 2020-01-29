@@ -313,17 +313,17 @@ exports.document_create_post = function(req, res) {
 
   documentData.document_status = 'draft';
 
-  // TODO: get political status of document creator's organisation
-  documentData.political = false;
-
-  // TODO: get current government
-  documentData.government = '';
-
   documentData.created_at = new Date();
   documentData.created_by = req.session.data.user.display_name;
 
   documentData.updated_at = documentData.created_at;
   documentData.updated_by = documentData.created_by;
+
+  // get political status of document creator's organisation
+  documentData.political = isPolitical(req.session.data.user.organisation);
+
+  // get current government
+  documentData.government = getGovernment(documentData.created_at);
 
   // create a JSON sting for the submitted data
   const documentFileData = JSON.stringify(documentData);
