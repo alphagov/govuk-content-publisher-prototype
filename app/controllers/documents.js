@@ -390,15 +390,15 @@ exports.document_delete_post = function(req, res) {
   // documents directory path
   const documentDirectoryPath = path.join(__dirname, '../data/documents/');
   const historyDirectoryPath = path.join(__dirname, '../data/history/');
-  // const attachmentDirectoryPath = path.join(__dirname, '../data/attachments/' + req.params.id);
 
   const fileName = req.params.id + '.json';
 
   fs.unlinkSync(documentDirectoryPath + fileName);
   fs.unlinkSync(historyDirectoryPath + fileName);
-  // fs.unlinkSync(attachmentsDirectoryPath);
 
   // TODO: delete attachments directory
+  // const attachmentDirectoryPath = path.join(__dirname, '../data/attachments/' + req.params.id);
+  // fs.rmdirSync(attachmentsDirectoryPath);
 
   // redirect the user back to the attachments page
   // TODO: show flash message (success/failure)
