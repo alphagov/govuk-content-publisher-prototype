@@ -288,20 +288,20 @@ exports.document_create_post = function(req, res) {
   // res.send('NOT IMPLEMENTED: Document create POST');
 
   // documents directory path
-  const directoryPath = path.join(__dirname, '../data/documents/');
+  const documentDirectoryPath = path.join(__dirname, '../data/documents/');
 
-  // check if document directory exists in attachment uploads directory
-  if (!fs.existsSync(directoryPath)) {
-    fs.mkdirSync(directoryPath);
+  // check if document directory exists
+  if (!fs.existsSync(documentDirectoryPath)) {
+    fs.mkdirSync(documentDirectoryPath);
   }
 
   // create a unique file name
   const content_id = uuid();
   const fileName = content_id + '.json';
 
-  const filePath = directoryPath + '/' + fileName;
+  const documentFilePath = documentDirectoryPath + '/' + fileName;
 
-  // attachment data
+  // document data
   let documentData = req.session.data.document;
   documentData.content_id = content_id;
 
@@ -322,11 +322,48 @@ exports.document_create_post = function(req, res) {
   documentData.created_at = new Date();
   documentData.created_by = req.session.data.user.display_name;
 
+  documentData.updated_at = documentData.created_at;
+  documentData.updated_by = documentData.created_by;
+
   // create a JSON sting for the submitted data
-  const fileData = JSON.stringify(documentData);
+  const documentFileData = JSON.stringify(documentData);
 
   // write the JSON data
-  fs.writeFileSync(filePath, fileData);
+  fs.writeFileSync(documentFilePath, documentFileData);
+
+  // ==========
+  // Document history
+  // ==========
+
+  // history directory path
+  const historyDirectoryPath = path.join(__dirname, '../data/history/');
+
+  // check if document history directory exists
+  if (!fs.existsSync(historyDirectoryPath)) {
+    fs.mkdirSync(historyDirectoryPath);
+  }
+
+  const historyFilePath = historyDirectoryPath + '/' + fileName;
+
+  // TODO: write history data
+  let historyArray = [];
+  let historyData = {};
+  historyData.id = documentData.content_id;
+  historyData.title = 'First created';
+  historyData.created_at = documentData.created_at;
+  historyData.created_by = documentData.created_by;
+
+  historyData.edition = {};
+  historyData.edition.title = '1st Edition';
+  historyData.edition.id = documentData.content_id;
+
+  historyArray.push(historyData);
+
+  // create a JSON sting for the submitted data
+  const historyFileData = JSON.stringify(historyArray);
+
+  // write the JSON data
+  fs.writeFileSync(historyFilePath, historyFileData);
 
   // redirect the user back to the attachments page
   // TODO: show flash message (success/failure)
