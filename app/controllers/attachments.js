@@ -339,5 +339,12 @@ exports.attachment_update_metadata_post = function(req, res) {
 
 // Display attachment metadata form on GET.
 exports.attachment_preview = function(req, res) {
-  res.send('NOT IMPLEMENTED: attachment preview');  
+  res.send('NOT IMPLEMENTED: attachment preview');
+  // res.sendFile(path.join(__dirname, '../data/attachments/attachment.pdf'));
+};
+
+// Display attachment metadata form on GET.
+exports.attachment_download = function(req, res) {
+  // res.send('NOT IMPLEMENTED: attachment download');
+  res.download(path.join(__dirname, '../data/attachments/attachment.pdf'));
 };

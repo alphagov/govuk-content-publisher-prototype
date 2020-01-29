@@ -137,11 +137,14 @@ router.post('/documents/:document_id/attachments/:attachment_id/update', checkIs
 // GET request to update an attachment's metadata.
 router.get('/documents/:document_id/attachments/:attachment_id/metadata', checkIsAuthenticated, attachment_controller.attachment_update_metadata_get);
 
-// POST request to update an attachment's metadat.
+// POST request to update an attachment's metadats.
 router.post('/documents/:document_id/attachments/:attachment_id/metadata', checkIsAuthenticated, attachment_controller.attachment_update_metadata_post);
 
-// GET request to update an attachment's metadata.
+// GET request to preview an attachment.
 router.get('/documents/:document_id/attachments/:attachment_id/preview', checkIsAuthenticated, attachment_controller.attachment_preview);
+
+// GET request to preview an attachment.
+router.get('/documents/:document_id/attachments/:attachment_id/download', checkIsAuthenticated, attachment_controller.attachment_download);
 
 // GET request for one attachment.
 router.get('/documents/:document_id/attachments/:attachment_id/', checkIsAuthenticated, attachment_controller.attachment_detail);
