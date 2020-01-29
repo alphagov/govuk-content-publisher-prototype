@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const uuid = require('uuid/v1');
 
 const organisations = require('../data/organisations.json');
 const governments = require('../data/governments.json');
@@ -267,7 +268,7 @@ exports.document_create_sub_type_get = function(req, res) {
 exports.document_create_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: Document create GET');
 
-  // TODO: redirect to sub-type if type option has children
+  console.log('document_create_get');
 
   let previous_page = '/documents/type';
   if (req.session.data.document_sub_type !== undefined) {
@@ -285,14 +286,53 @@ exports.document_create_get = function(req, res) {
 // Handle document create on POST.
 exports.document_create_post = function(req, res) {
   // res.send('NOT IMPLEMENTED: Document create POST');
-  // req.session.data.document.document_status = 'draft';
 
-  res.render('../views/documents/create', {
-    links: {
-      previous: '/documents/type',
-      next: '/documents/12345'
-    }
-  });
+  // documents directory path
+  const directoryPath = path.join(__dirname, '../data/documents/');
+
+  // check if document directory exists in attachment uploads directory
+  if (!fs.existsSync(directoryPath)) {
+    fs.mkdirSync(directoryPath);
+  }
+
+  // create a unique file name
+  const content_id = uuid();
+  const fileName = content_id + '.json';
+
+  const filePath = directoryPath + '/' + fileName;
+
+  // attachment data
+  let documentData = req.session.data.document;
+  documentData.content_id = content_id;
+
+  if (req.session.data.document_sub_type !== undefined) {
+    documentData.document_type = req.session.data.document_sub_type;
+  } else {
+    documentData.document_type = req.session.data.document_type;
+  }
+
+  documentData.document_status = 'draft';
+
+  // TODO: get political status of document creator's organisation
+  documentData.political = false;
+
+  // TODO: get current government
+  documentData.government = '';
+
+  documentData.created_at = new Date();
+  documentData.created_by = req.session.data.user.display_name;
+
+  // create a JSON sting for the submitted data
+  const fileData = JSON.stringify(documentData);
+
+  // write the JSON data
+  fs.writeFileSync(filePath, fileData);
+
+  // redirect the user back to the attachments page
+  // TODO: show flash message (success/failure)
+  delete req.session.data.document;
+  res.redirect('/documents/' + content_id);
+
 };
 
 // Display document delete form on GET.
