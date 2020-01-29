@@ -337,13 +337,20 @@ exports.attachment_update_metadata_post = function(req, res) {
   res.redirect('/documents/' + req.params.document_id + '/attachments');
 };
 
-// Display attachment metadata form on GET.
+// Preview attachment on GET.
 exports.attachment_preview = function(req, res) {
-  res.send('NOT IMPLEMENTED: attachment preview');
-  // res.sendFile(path.join(__dirname, '../data/attachments/attachment.pdf'));
+
+  let attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
+
+  if (attachmentData.type === 'file') {
+    res.sendFile(path.join(__dirname, '../data/attachments/attachment.pdf'));
+  } else {
+    res.send('NOT IMPLEMENTED: attachment preview');
+  }
+
 };
 
-// Display attachment metadata form on GET.
+// Download attachment on GET.
 exports.attachment_download = function(req, res) {
   // res.send('NOT IMPLEMENTED: attachment download');
   res.download(path.join(__dirname, '../data/attachments/attachment.pdf'));

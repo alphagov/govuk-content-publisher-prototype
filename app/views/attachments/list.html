@@ -113,7 +113,10 @@
                   } if attachment.type != 'external',
                   {
                     text: 'Download',
-                    href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/download'
+                    href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/download',
+                    attributes: {
+                      "download": "attachment.pdf"
+                    }
                   } if attachment.type == 'file',
                   {
                     text: 'Delete attachment',
