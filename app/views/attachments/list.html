@@ -61,14 +61,14 @@
             Attachments for ‘{{ data.document.title }}’
           </h1>
 
-          <p class="govuk-body">Add an accessible file attachment in an open format or add an external link to a document not published on GOV.UK.</p>
+          <p class="govuk-body">Publications have a summary page that must link to a file attachment or a document hosted on an external website.</p>
 
           {{ appButtonMenu({
             classes: 'button-menu-1',
             items: [
 
               {
-                text: 'Add file attachment',
+                text: 'Upload file attachment',
                 classes: 'govuk-button',
                 href: '/documents/' + data.document.content_id + '/attachments/create?type=file'
               },
@@ -95,7 +95,7 @@
 
           {% if attachments | length %}
 
-            <p class="govuk-body govuk-!-margin-bottom-8">All attachments will appear on the document when it’s published.</p>
+            <p class="govuk-body govuk-!-margin-bottom-8">Attachments will be listed on the document in this order.</p>
 
             {%- if attachments | length > 1 %}<div id="attachmentsList">{% endif -%}
 

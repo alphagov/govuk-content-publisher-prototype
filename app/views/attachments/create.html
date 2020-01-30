@@ -44,7 +44,7 @@
         <div class="govuk-grid-column-two-thirds">
 
           <h1 class="govuk-heading-l">
-            Add attachment to ‘{{ data.document.title }}’
+            Add {{ 'external link' if data.type == 'external' else 'attachment' }} to ‘{{ data.document.title }}’
           </h1>
 
         </div>
