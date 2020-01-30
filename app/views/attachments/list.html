@@ -104,7 +104,7 @@
               {%- call appAttachmentActions({
                 items: [
                   {
-                    text: 'Edit link' if attachment.type == 'external' else ('Edit file' if attachment.type == 'file' else 'Edit details'),
+                    text: 'Edit link' if attachment.type == 'external' else ('Edit file' if attachment.type == 'file' else 'Edit attachment'),
                     href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/update'
                   },
                   {
@@ -131,7 +131,8 @@
                     heading: {
                       text: attachment.title if attachment.title | length else "Untitled attachment"
                     },
-                    href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/preview'
+                    href: attachment.url,
+                    target: "_blank"
                   }) %}
 
                     <p class="govuk-body-s">{{ attachment.url }}</p>
@@ -144,6 +145,7 @@
                     text: attachment.title if attachment.title | length else "Untitled attachment"
                   },
                   href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/preview',
+                  target: "_blank",
                   metadata: {
                     filename: (attachment.title | slugify) + '.pdf',
                     fileSize: 1234560,
@@ -158,6 +160,7 @@
                     text: attachment.title if attachment.title | length else "Untitled attachment"
                   },
                   href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/preview',
+                  target: "_blank",
                   metadata: {
                     contentType: 'text/html',
                     thumbnail: 'document'
