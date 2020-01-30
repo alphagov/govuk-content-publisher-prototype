@@ -45,7 +45,7 @@
     }
   }) }}
 
-  {{ govukSelect({
+  {#{ govukSelect({
     id: "attachment-language",
     name: "document[attachment][language]",
     label: {
@@ -353,7 +353,7 @@
         "selected": true if attachment.language == 'vi'
       }
     ]
-  }) }}
+  }) }#}
 
   {{ govukButton({
     text: "Save and continue"

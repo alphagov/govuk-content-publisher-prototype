@@ -191,7 +191,7 @@ exports.attachment_update_post = function(req, res) {
 
   if (attachmentData.type === 'file') {
     attachmentData.file = slugify(attachmentData.title);
-    attachmentData.language = req.session.data.document.attachment.language;
+    // attachmentData.language = req.session.data.document.attachment.language;
   }
 
   //
