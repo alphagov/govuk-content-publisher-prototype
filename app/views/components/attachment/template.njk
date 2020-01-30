@@ -1,6 +1,6 @@
 <section class="app-c-attachment {{- ' ' + params.classes if params.classes }}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
   <div class="app-c-attachment__thumbnail">
-    <a class="govuk-link" target="_self" tabindex="-1" aria-hidden="true" href="{{ params.href }}">
+    <a class="govuk-link" target="{{ params.target if params.target else '_self' }}" tabindex="-1" aria-hidden="true" href="{{ params.href }}">
       {%- if params.metadata.thumbnail == 'document' %}
         <svg class="app-c-attachment__thumbnail-image" version="1.1" viewBox="0 0 99 140" width="99" height="140" aria-hidden="true">
           <path d="M12 12h75v27H12zM12 59h9v9h-9zM12 77h9v9h-9zM12 95h9v9h-9zM12 113h9v9h-9zM30 59h57v9H30zM30 77h39v9H30zM30 95h57v9H30zM30 113h48v9H30z" stroke-width="0"/>
@@ -21,7 +21,7 @@
   </div>
   <div class="app-c-attachment__details">
     <h{{ params.headingLevel | default(2) }} class="app-c-attachment__title {{- ' ' + params.heading.classes if params.heading.classes }}" {%- for attribute, value in params.heading.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
-      {%- if params.href | length %}<a class="govuk-link govuk-link--no-visited-state app-c-attachment__link" target="_self" href="{{ params.href }}">{% endif -%}
+      {%- if params.href | length %}<a class="govuk-link govuk-link--no-visited-state app-c-attachment__link" target="{{ params.target if params.target else '_self' }}" href="{{ params.href }}">{% endif -%}
         {{- params.heading.html | safe if params.heading.html else params.heading.text -}}
       {%- if params.href | length %}</a>{% endif -%}
     </h{{ params.headingLevel | default(2) }}>
