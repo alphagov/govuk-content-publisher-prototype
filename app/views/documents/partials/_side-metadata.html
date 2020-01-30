@@ -47,14 +47,14 @@
           text: 'Last updated by'
         },
         description: {
-          text: data.document.last_updated_by
+          text: data.document.last_updated_by if data.document.last_updated_by else data.document.updated_by
         }
       }, {
         title: {
           text: 'Created on'
         },
         description: {
-          text: data.document.first_published_at | govTime + ' on ' + data.document.first_published_at | govDate
+          text: (data.document.first_published_at | govTime + ' on ' + data.document.first_published_at | govDate) if data.document.first_published_at else (data.document.created_at | govTime + ' on ' + data.document.created_at | govDate)
         }
       }, {
         title: {
