@@ -3,6 +3,15 @@
    Based on https://github.com/alphagov/content-publisher/blob/master/app/assets/stylesheets/utilities/_overwrites.scss
    ========================================================================== */
 
+.app-o-template--modal {
+  height: 100%;
+}
+
+.app-o-template__body--modal {
+  background-color: govuk-colour("white");
+  height: 100%;
+}
+
 .app-c-textarea {
   max-width: 100%;
 }

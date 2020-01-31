@@ -80,17 +80,17 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
  touch-action: none;
 }
 
-.gem-o-template--modal {
+.app-o-template--modal {
  @include govuk-media-query($media-type: screen) {
    overflow-y: inherit;
  }
 }
 
-.gem-o-template__body--modal {
+.app-o-template__body--modal {
  overflow: hidden;
 }
 
-.gem-o-template__body--blur {
+.app-o-template__body--blur {
  .govuk-skip-link,
  .govuk-header,
  .govuk-phase-banner,
