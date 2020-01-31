@@ -35,7 +35,6 @@ function getUser(user_id) {
 
 function getUsersByOrganisation(org_id) {
   if (!org_id) return null
-  console.log(org_id);
   let result = [];
   result = users.filter(user => user.organisation === org_id);
   return result;
@@ -270,9 +269,6 @@ exports.document_create_sub_type_get = function(req, res) {
 // Display document create form on GET.
 exports.document_create_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: Document create GET');
-
-  console.log('document_create_get');
-
   let previous_page = '/documents/type';
   if (req.session.data.document_sub_type !== undefined) {
     previous_page = '/documents/sub-type';
@@ -495,7 +491,6 @@ exports.document_review_get = function(req, res) {
 
 exports.document_review_post = function(req, res) {
   // res.send('NOT IMPLEMENTED: Review document POST');
-  // console.log('document_review_post');
   req.session.data.document.document_status = 'submitted_for_review';
   res.redirect('/documents/' + req.params.id);
 };
