@@ -54,7 +54,7 @@
           text: 'Created on'
         },
         description: {
-          text: data.document.first_published_at | govTime + ' on ' + data.document.first_published_at | govDate
+          text: (data.document.first_published_at | govTime + ' on ' + data.document.first_published_at | govDate) if data.document.first_published_at else (data.document.created_at | govTime + ' on ' + data.document.created_at | govDate)
         }
       }, {
         title: {

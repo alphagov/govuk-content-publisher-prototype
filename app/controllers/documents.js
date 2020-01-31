@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs');
+const uuid = require('uuid/v1');
 
 const organisations = require('../data/organisations.json');
 const governments = require('../data/governments.json');
@@ -270,7 +271,7 @@ exports.document_create_sub_type_get = function(req, res) {
 exports.document_create_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: Document create GET');
 
-  // TODO: redirect to sub-type if type option has children
+  console.log('document_create_get');
 
   let previous_page = '/documents/type';
   if (req.session.data.document_sub_type !== undefined) {
@@ -288,14 +289,90 @@ exports.document_create_get = function(req, res) {
 // Handle document create on POST.
 exports.document_create_post = function(req, res) {
   // res.send('NOT IMPLEMENTED: Document create POST');
-  // req.session.data.document.document_status = 'draft';
 
-  res.render('../views/documents/create', {
-    links: {
-      previous: '/documents/type',
-      next: '/documents/12345'
-    }
-  });
+  // documents directory path
+  const documentDirectoryPath = path.join(__dirname, '../data/documents/');
+
+  // check if document directory exists
+  if (!fs.existsSync(documentDirectoryPath)) {
+    fs.mkdirSync(documentDirectoryPath);
+  }
+
+  // create a unique file name
+  const content_id = uuid();
+  const fileName = content_id + '.json';
+
+  const documentFilePath = documentDirectoryPath + '/' + fileName;
+
+  // document data
+  let documentData = req.session.data.document;
+  documentData.content_id = content_id;
+
+  if (req.session.data.document_sub_type !== undefined) {
+    documentData.document_type = req.session.data.document_sub_type;
+  } else {
+    documentData.document_type = req.session.data.document_type;
+  }
+
+  documentData.document_status = 'draft';
+
+  documentData.created_at = new Date();
+  documentData.created_by = req.session.data.user.display_name;
+
+  documentData.updated_at = documentData.created_at;
+  documentData.updated_by = documentData.created_by;
+
+  // get political status of document creator's organisation
+  documentData.political = isPolitical(req.session.data.user.organisation);
+
+  // get current government
+  documentData.government = getGovernment(documentData.created_at);
+
+  // create a JSON sting for the submitted data
+  const documentFileData = JSON.stringify(documentData);
+
+  // write the JSON data
+  fs.writeFileSync(documentFilePath, documentFileData);
+
+  // ==========
+  // Document history
+  // ==========
+
+  // history directory path
+  const historyDirectoryPath = path.join(__dirname, '../data/history/');
+
+  // check if document history directory exists
+  if (!fs.existsSync(historyDirectoryPath)) {
+    fs.mkdirSync(historyDirectoryPath);
+  }
+
+  const historyFilePath = historyDirectoryPath + '/' + fileName;
+
+  // TODO: write history data
+  let historyArray = [];
+  let historyData = {};
+  historyData.id = documentData.content_id;
+  historyData.title = 'First created';
+  historyData.created_at = documentData.created_at;
+  historyData.created_by = documentData.created_by;
+
+  historyData.edition = {};
+  historyData.edition.title = '1st Edition';
+  historyData.edition.id = documentData.content_id;
+
+  historyArray.push(historyData);
+
+  // create a JSON sting for the submitted data
+  const historyFileData = JSON.stringify(historyArray);
+
+  // write the JSON data
+  fs.writeFileSync(historyFilePath, historyFileData);
+
+  // redirect the user back to the attachments page
+  // TODO: show flash message (success/failure)
+  delete req.session.data.document;
+  res.redirect('/documents/' + content_id);
+
 };
 
 // Display document delete form on GET.
@@ -312,7 +389,22 @@ exports.document_delete_get = function(req, res) {
 // Handle document delete on POST.
 exports.document_delete_post = function(req, res) {
   // res.send('NOT IMPLEMENTED: Document delete POST');
-  req.session.data.document.document_status = 'deleted';
+
+  // documents directory path
+  const documentDirectoryPath = path.join(__dirname, '../data/documents/');
+  const historyDirectoryPath = path.join(__dirname, '../data/history/');
+
+  const fileName = req.params.id + '.json';
+
+  fs.unlinkSync(documentDirectoryPath + fileName);
+  fs.unlinkSync(historyDirectoryPath + fileName);
+
+  // TODO: delete attachments directory
+  // const attachmentDirectoryPath = path.join(__dirname, '../data/attachments/' + req.params.id);
+  // fs.rmdirSync(attachmentsDirectoryPath);
+
+  // redirect the user back to the attachments page
+  // TODO: show flash message (success/failure)
   res.redirect('/documents');
 };
 
