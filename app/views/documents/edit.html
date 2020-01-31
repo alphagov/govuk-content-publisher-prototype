@@ -10,24 +10,31 @@
 <script src="/public/javascripts/components/paste-html-to-markdown.js"></script>
 <script src="/public/javascripts/components/markdown-editor.js"></script>
 <script type="text/javascript">
-  var $element = $('#markdown-editor');
+  var $markdownEditor = $('#markdown-editor');
   var markdownEditor = new GOVUK.Modules.MarkdownEditor();
-  markdownEditor.start($element);
+  markdownEditor.start($markdownEditor);
 </script>
 
 <script src="/public/javascripts/components/contextual-guidance.js"></script>
 <script type="text/javascript">
-  var $element1 = $('#contextual-guidance-01');
+  var $guidanceTitle = $('#contextual-guidance-title');
   var contextualGuidance = new GOVUK.Modules.ContextualGuidance();
-  contextualGuidance.start($element1);
+  contextualGuidance.start($guidanceTitle);
 
-  var $element2 = $('#contextual-guidance-02');
+  var $guidanceSummary = $('#contextual-guidance-summary');
   var contextualGuidance = new GOVUK.Modules.ContextualGuidance();
-  contextualGuidance.start($element2);
+  contextualGuidance.start($guidanceSummary);
 
-  var $element3 = $('#contextual-guidance-03');
+  var $guidanceBody = $('#contextual-guidance-body');
   var contextualGuidance = new GOVUK.Modules.ContextualGuidance();
-  contextualGuidance.start($element3);
+  contextualGuidance.start($guidanceBody);
+</script>
+
+<script src="/public/javascripts/components/modal-dialogue.js"></script>
+<script type="text/javascript">
+  var $modalAttachments = $('#modal-attachments');
+  var modalDialogue = new GOVUK.Modules.ModalDialogue();
+  modalDialogue.start($modalAttachments);
 </script>
 {% endblock %}
 
@@ -57,7 +64,7 @@
       <form action="{{ links.save }}" accept-charset="UTF-8" method="post">
 
         {%- call appContextualGuidance({
-          id: 'contextual-guidance-01',
+          id: 'contextual-guidance-title',
           for: 'title',
           heading: {
             text: 'Writing a title'
@@ -89,7 +96,7 @@
         </div>
 
         {%- call appContextualGuidance({
-          id: 'contextual-guidance-02',
+          id: 'contextual-guidance-summary',
           for: 'summary',
           heading: {
             text: 'Writing a summary'
@@ -116,7 +123,7 @@
         {% endset %}
 
         {%- call appContextualGuidance({
-          id: 'contextual-guidance-03',
+          id: 'contextual-guidance-body',
           for: 'body',
           heading: {
             text: 'Writing content'
@@ -134,6 +141,25 @@
               text: "Body",
               classes: "govuk-!-font-weight-bold"
             },
+            insertMenu: appToolbarDropdown({
+              items: [
+                {
+                  element: "button",
+                  text: "Attachment",
+                  type: "button",
+                  name: "attachment",
+                  attributes: {
+                    "data-toggle": "modal",
+                    "data-target": "modal-attachments"
+                  }
+                }
+              ],
+              classes: "app-c-toolbar-dropdown--end",
+              attributes: {
+                "id": "toolbar-dropdown",
+                "data-module": "toolbar-dropdown"
+              }
+            }),
             textarea: {
               id: "body",
               name: "document[details][body]",
@@ -154,6 +180,11 @@
       </form>
 
     </div>
-</div>
+  </div>
+
+  {{ appModalDialogue({
+    id: 'modal-attachments',
+    html: '<iframe src="/documents/modals/attachments-list" class="app-iframe--reset"></iframe>'
+  }) }}
 
 {% endblock %}
