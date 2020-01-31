@@ -1,11 +1,12 @@
 const express = require('express');
-const passport = require('passport')
+const passport = require('passport');
 const router = express.Router();
 
 // Require controller modules.
 var authentication_controller = require('./controllers/authentication');
 var document_controller = require('./controllers/documents');
 var edition_controller = require('./controllers/editions');
+var attachment_controller = require('./controllers/attachments');
 
 function checkIsAuthenticated(req, res, next) {
   if (req.session.passport || req.session.data.user) {
@@ -16,7 +17,7 @@ function checkIsAuthenticated(req, res, next) {
   }
 }
 
-// GET catalog home page.
+// GET home page.
 router.get('/', checkIsAuthenticated, function(req, res) {
   delete req.session.data.username;
   delete req.session.data.password;
@@ -110,6 +111,48 @@ router.get('/documents/:id/remove', checkIsAuthenticated, document_controller.do
 // GET request for list of all Document items.
 router.get('/documents', checkIsAuthenticated, document_controller.document_list);
 
+
+/// --------------------------------------------------///
+// DOCUMENT ATTACHMENTS ROUTES //
+/// --------------------------------------------------///
+
+// GET request for creating an attachment. NOTE This must come before routes that display attachment (uses id).
+router.get('/documents/:document_id/attachments/create', checkIsAuthenticated, attachment_controller.attachment_create_get);
+
+// POST request for creating an attachment.
+router.post('/documents/:document_id/attachments/create', checkIsAuthenticated, attachment_controller.attachment_create_post);
+
+// GET request to delete an attachment.
+router.get('/documents/:document_id/attachments/:attachment_id/delete', checkIsAuthenticated, attachment_controller.attachment_delete_get);
+
+// POST request to delete an attachment.
+router.post('/documents/:document_id/attachments/:attachment_id/delete', checkIsAuthenticated, attachment_controller.attachment_delete_post);
+
+// GET request to update an attachment.
+router.get('/documents/:document_id/attachments/:attachment_id/update', checkIsAuthenticated, attachment_controller.attachment_update_get);
+
+// POST request to update an attachment.
+router.post('/documents/:document_id/attachments/:attachment_id/update', checkIsAuthenticated, attachment_controller.attachment_update_post);
+
+// GET request to update an attachment's metadata.
+router.get('/documents/:document_id/attachments/:attachment_id/metadata', checkIsAuthenticated, attachment_controller.attachment_update_metadata_get);
+
+// POST request to update an attachment's metadats.
+router.post('/documents/:document_id/attachments/:attachment_id/metadata', checkIsAuthenticated, attachment_controller.attachment_update_metadata_post);
+
+// GET request to preview an attachment.
+router.get('/documents/:document_id/attachments/:attachment_id/preview', checkIsAuthenticated, attachment_controller.attachment_preview);
+
+// GET request to preview an attachment.
+router.get('/documents/:document_id/attachments/:attachment_id/download', checkIsAuthenticated, attachment_controller.attachment_download);
+
+// GET request for one attachment.
+router.get('/documents/:document_id/attachments/:attachment_id/', checkIsAuthenticated, attachment_controller.attachment_detail);
+
+// GET request for list of all attachment items.
+router.get('/documents/:document_id/attachments', checkIsAuthenticated, attachment_controller.attachment_list);
+
+
 /// --------------------------------------------------///
 // DOCUMENT EDITION ROUTES //
 /// --------------------------------------------------///
@@ -137,6 +180,7 @@ router.get('/documents/:document_id/editions/:edition_id/', edition_controller.e
 
 // GET request for list of all document items.
 router.get('/documents/:document_id/editions', edition_controller.edition_list);
+
 
 /// --------------------------------------------------///
 // DOCUMENT REVISION ROUTES //

@@ -6,7 +6,8 @@ const organisations = require('../data/organisations.json');
 const governments = require('../data/governments.json');
 const users = require('../data/users.json');
 
-var Document = require('../models/documents');
+const Documents = require('../models/documents');
+const Attachments = require('../models/attachments');
 
 function paginate(array, page_size, page_number) {
   --page_number; // because pages logically start with 1, but technically with 0
@@ -60,7 +61,7 @@ exports.document_list = function(req, res) {
   let documents = fs.readdirSync(directoryPath,'utf8');
 
   // Only get JSON documents
-  documents = documents.filter( doc => doc.match(/.*\.(json)/ig))
+  documents = documents.filter( doc => doc.match(/.*\.(json)/ig));
 
   const docArray = [];
 
@@ -124,11 +125,13 @@ exports.document_summary_get = function(req, res) {
   else {
 
     res.render('../views/documents/summary', {
+      attachments: Attachments.findByDocumentId(req.params.id),
       links: {
         home: '/documents',
         summary: '/documents/' + req.params.id,
         history: '/documents/' + req.params.id + '/history',
         content: '/documents/' + req.params.id + '/content',
+        attachments: '/documents/' + req.params.id + '/attachments',
         images: '/documents/' + req.params.id + '/images',
         topics: '/documents/' + req.params.id + '/topics',
         tags: '/documents/' + req.params.id + '/tags',

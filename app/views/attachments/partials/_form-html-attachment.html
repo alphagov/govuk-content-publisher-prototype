@@ -1,0 +1,72 @@
+<form action="{{ links.save }}" accept-charset="UTF-8" method="post">
+  <input type="hidden" name="document[attachment][type]" value="html">
+
+  {%- call appContextualGuidance({
+    id: 'contextual-guidance-01',
+    for: 'title',
+    heading: {
+      text: 'Writing a title'
+    },
+    description: {
+      text: 'The title must make clear what the content offers users. Use the words your users do to help them find this. Avoid wordplay or teases.'
+    }
+  }) %}
+
+    {{ govukTextarea({
+      id: "title",
+      name: "document[attachment][title]",
+      label: {
+        text: "Title",
+        classes: "govuk-!-font-weight-bold"
+      },
+      rows: 2,
+      value: attachment.title if attachment.title
+    }) }}
+
+  {% endcall -%}
+
+  {% set bodyGuidanceHtml %}
+    {% include "./_guidance-body-text.html" %}
+  {% endset %}
+
+  {%- call appContextualGuidance({
+    id: 'contextual-guidance-02',
+    for: 'body',
+    heading: {
+      text: 'Writing content'
+    },
+    description: {
+      html: bodyGuidanceHtml
+    }
+  }) %}
+
+    {{ appMarkdownEditor({
+      attributes: {
+        id: "markdown-editor"
+      },
+      label: {
+        text: "Body",
+        classes: "govuk-!-font-weight-bold"
+      },
+      textarea: {
+        id: "body",
+        name: "document[attachment][body]",
+        rows: 20,
+        attributes: {
+          spellcheck: false
+        }
+      },
+      value: attachment.body if attachment.body
+    }) }}
+
+  {% endcall -%}
+
+  {{ govukButton({
+    text: "Save and continue"
+  }) }}
+
+</form>
+
+<p class="govuk-body">
+  <a class="govuk-link" href="{{ links.back }}">Cancel</a>
+</p>

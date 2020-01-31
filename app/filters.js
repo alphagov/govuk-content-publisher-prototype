@@ -6,6 +6,9 @@ const numeral = require('numeral');
 
 const TurndownService = require('turndown');
 
+const mimetypes = require('./data/mimetypes.json');
+const languages = require('./data/languages.json');
+
 module.exports = function (env) {
   /**
    * Instantiate object used to store the methods registered as a
@@ -62,6 +65,22 @@ module.exports = function (env) {
    return numeral(number).format(format);
   }
 
+ /* ------------------------------------------------------------------
+  language filter for use in Nunjucks
+  example: {{ "en" | language }}
+  outputs: English
+ ------------------------------------------------------------------ */
+ filters.language = function(code, type = 'english_name') {
+   if (!code)
+     return null;
+
+   let language = languages.filter( (obj) =>
+     obj.code == code
+   )[0];
+
+   return language[type];
+ }
+
   /* ------------------------------------------------------------------
    document type filter for use in Nunjucks
    example: {{ 'news_story' | documentType }}
@@ -110,6 +129,22 @@ module.exports = function (env) {
       case 'transparency_statistics': return 'Transparency and statistics';
       case 'transparency': return 'Transparency';
       case 'written_statement': return 'Written statement to parliament';
+      default: return type;
+    }
+
+  }
+
+  /* ------------------------------------------------------------------
+   attachment type filter for use in Nunjucks
+   example: {{ 'file' | attachmentType }}
+   outputs: "File attachment"
+  ------------------------------------------------------------------ */
+  filters.attachmentType = function(type) {
+
+    switch (type) {
+      case 'file': return 'File attachment';
+      case 'external': return 'External link';
+      case 'html': return 'HTML attachment';
       default: return type;
     }
 
@@ -175,6 +210,80 @@ module.exports = function (env) {
     let turndownService = new TurndownService();
 
     return turndownService.turndown(html);
+  }
+
+  /* ------------------------------------------------------------------
+   utility functions to determine file size
+  ------------------------------------------------------------------ */
+  filters.fileSizeFormat = function(input, binary) {
+  	let kwargs = getKwargs(arguments);
+  	binary = (kwargs.binary !== undefined) ? kwargs.binary : binary;
+
+  	let base = binary ? 1024 : 1000;
+  	let bytes = parseFloat(input);
+  	let units = [
+  		'Bytes',
+  		(binary ? 'KiB' : 'KB'),
+  		(binary ? 'MiB' : 'MB'),
+  		(binary ? 'GiB' : 'GB'),
+  		(binary ? 'TiB' : 'TB'),
+  		(binary ? 'PiB' : 'PB'),
+  		(binary ? 'EiB' : 'EB'),
+  		(binary ? 'ZiB' : 'ZB'),
+  		(binary ? 'YiB' : 'YB')
+  	];
+
+  	if (bytes === 1) {
+  		return '1 Byte';
+  	} else if (bytes < base) {
+  		return bytes + ' Bytes';
+  	} else {
+  		return units.reduce(function (match, unit, index) {
+  			let size = Math.pow(base, index);
+  			if (bytes >= size) {
+  				return (bytes/size).toFixed(1) + ' ' + unit;
+  			}
+  			return match;
+  		});
+  	}
+  }
+
+  function getKwargs(args) {
+  	let kwargs = [].pop.call(args);
+  	return (typeof kwargs === 'object' && kwargs.__keywords) ? kwargs : {};
+  }
+
+  /* ------------------------------------------------------------------
+    utility functions to determine document content type
+  ------------------------------------------------------------------ */
+  filters.parseContentType = function(type, attribute = 'abbreviation') {
+
+    if (!type)
+      return null;
+
+    let mimetype = mimetypes.filter( (obj) =>
+      obj.type == type
+    )[0];
+
+    return mimetype[attribute];
+
+  }
+
+  /* ------------------------------------------------------------------
+    utility function to slugify text in Nunjucks
+    example: {{ "This is some text" | slugify }}
+    outputs: this-is-some-text
+  ------------------------------------------------------------------ */
+  filters.slugify = function(text) {
+
+    if (!text)
+      return null;
+
+    return text.toLowerCase()
+            .replace(/[^\w\s-]/g, '') // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
+            .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
+            .replace(/^-+|-+$/g, ''); // remove leading, trailing -
+
   }
 
   /* ------------------------------------------------------------------

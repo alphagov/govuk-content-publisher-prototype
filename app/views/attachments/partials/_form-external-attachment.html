@@ -1,0 +1,53 @@
+<p class="govuk-body">Include a link if your document is hosted on an external website and users need to find it on GOV.UK.</p>
+
+<form action="{{ links.save }}" accept-charset="UTF-8" method="post">
+  <input type="hidden" name="document[attachment][type]" value="external">
+
+  {{ govukInput({
+    id: "attachment-title",
+    name: "document[attachment][title]",
+    label: {
+      text: "Attachment title",
+      classes: "govuk-!-font-weight-bold"
+    },
+    hint: {
+      text: "Use the full title of the document."
+    },
+    value: attachment.title if attachment.title,
+    attributes: {
+      "autocomplete": "off",
+      "autocapitalize": "off"
+    }
+  }) }}
+
+  {{ govukInput({
+    id: "attachment-url",
+    name: "document[attachment][url]",
+    label: {
+      text: "External page address",
+      classes: "govuk-!-font-weight-bold"
+    },
+    hint: {
+      text: "Include the whole URL (starting with http)."
+    },
+    value: attachment.url if attachment.url,
+    attributes: {
+      "autocomplete": "off",
+      "autocapitalize": "off"
+    }
+  }) }}
+
+  <!--
+    TODO: Validate URL
+    (?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!:,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[A-Z0-9+&@#\/%=~_|$])
+  -->
+
+  {{ govukButton({
+    text: "Save external link"
+  }) }}
+
+</form>
+
+<p class="govuk-body">
+  <a class="govuk-link" href="{{ links.back }}">Cancel</a>
+</p>

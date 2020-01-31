@@ -1,0 +1,366 @@
+<p class="govuk-body">All files must be accessible. Read <a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/guidance/how-to-publish-on-gov-uk/accessible-pdfs" target="_blank">full guidance on accessible attachment</a>.</p>
+<p class="govuk-body">Files must be uploaded in an <a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/guidance/content-design/planning-content#open-formats" target="_blank">open standards file format</a>. For example, .odt not .docx.</p>
+
+{{ govukInsetText({
+  text: "Attachments must be in English."
+}) }}
+
+<form action="{{ links.save }}" accept-charset="UTF-8" method="post">
+  <!-- enctype="multipart/form-data" -->
+  <input type="hidden" name="document[attachment][type]" value="file">
+
+  {%- if attachment.file | length %}
+    <p class="govuk-body">
+      <span class="govuk-!-font-weight-bold">Current attachment</span><br>
+      <a class="govuk-link" href="#">{{ attachment.file }}</a>
+    </p>
+  {% endif -%}
+
+  {{ govukFileUpload({
+    id: "attachment-file",
+    name: "document[attachment][file]",
+    label: {
+      text: "Choose a file",
+      classes: "govuk-!-font-weight-bold"
+    },
+    hint: {
+      text: "Upload a file to replace the current attachment."
+    } if attachment.file | length
+  }) }}
+
+  {{ govukInput({
+    id: "attachment-title",
+    name: "document[attachment][title]",
+    label: {
+      text: "Attachment title",
+      classes: "govuk-!-font-weight-bold"
+    },
+    hint: {
+      text: "Use the full title of the document."
+    },
+    value: attachment.title if attachment.title,
+    attributes: {
+      "autocomplete": "off",
+      "autocapitalize": "off"
+    }
+  }) }}
+
+  {#{ govukSelect({
+    id: "attachment-language",
+    name: "document[attachment][language]",
+    label: {
+      text: "Attachment language",
+      classes: "govuk-!-font-weight-bold"
+    },
+    hint: {
+      text: "Choose the language the attachment is written in."
+    },
+    classes: "govuk-!-width-one-half",
+    items: [
+      {
+        "value": "",
+        "text": "",
+        "selected": true if attachment.language == ''
+      },
+      {
+        "value": "en",
+        "text": "English",
+        "selected": true if attachment.language == 'en'
+      },
+      {
+        "value": "cy",
+        "text": "Welsh (Cymraeg)",
+        "selected": true if attachment.language == 'cy'
+      },
+      {
+        "value": "sq",
+        "text": "Albanian (Shqip)",
+        "selected": true if attachment.language == 'sq'
+      },
+      {
+        "value": "ar",
+        "text": "Arabic (العربية)",
+        "selected": true if attachment.language == 'ar'
+      },
+      {
+        "value": "hy",
+        "text": "Armenian (Հայերեն)",
+        "selected": true if attachment.language == 'hy'
+      },
+      {
+        "value": "az",
+        "text": "Azeri (Azərbaycanca)",
+        "selected": true if attachment.language == 'az'
+      },
+      {
+        "value": "bn",
+        "text": "Bangla (বাংলা)",
+        "selected": true if attachment.language == 'bn'
+      },
+      {
+        "value": "be",
+        "text": "Belarusian (Беларуская)",
+        "selected": true if attachment.language == 'be'
+      },
+      {
+        "value": "bg",
+        "text": "Bulgarian (български)",
+        "selected": true if attachment.language == 'bg'
+      },
+      {
+        "value": "zh-hk",
+        "text": "Cantonese (中文)",
+        "selected": true if attachment.language == 'zh-hk'
+      },
+      {
+        "value": "zh",
+        "text": "Chinese (中文)",
+        "selected": true if attachment.language == 'zh'
+      },
+      {
+        "value": "zh-tw",
+        "text": "Chinese, Traditional (中文)",
+        "selected": true if attachment.language == 'zh-tw'
+      },
+      {
+        "value": "dr",
+        "text": "Dari (دری)",
+        "selected": true if attachment.language == 'dr'
+      },
+      {
+        "value": "nl",
+        "text": "Dutch (Nederlands)",
+        "selected": true if attachment.language == 'nl'
+      },
+      {
+        "value": "et",
+        "text": "Estonian (Eesti)",
+        "selected": true if attachment.language == 'et'
+      },
+      {
+        "value": "fi",
+        "text": "Finish (Suomi)",
+        "selected": true if attachment.language == 'fi'
+      },
+      {
+        "value": "fr",
+        "text": "French (Français)",
+        "selected": true if attachment.language == 'fr'
+      },
+      {
+        "value": "ka",
+        "text": "Georgian (ქართული)",
+        "selected": true if attachment.language == 'ka'
+      },
+      {
+        "value": "de",
+        "text": "German (Deutsch)",
+        "selected": true if attachment.language == 'de'
+      },
+      {
+        "value": "el",
+        "text": "Greek (Ελληνικά)",
+        "selected": true if attachment.language == 'el'
+      },
+      {
+        "value": "he",
+        "text": "Hebrew (עברית)",
+        "selected": true if attachment.language == 'he'
+      },
+      {
+        "value": "hi",
+        "text": "Hindi (हिंदी)",
+        "selected": true if attachment.language == 'hi'
+      },
+      {
+        "value": "hu",
+        "text": "Hungarian (Magyar)",
+        "selected": true if attachment.language == 'hu'
+      },
+      {
+        "value": "is",
+        "text": "Icelandic (Íslensk)",
+        "selected": true if attachment.language == 'is'
+      },
+      {
+        "value": "id",
+        "text": "Indonesian (Bahasa Indonesia)",
+        "selected": true if attachment.language == 'id'
+      },
+      {
+        "value": "gd",
+        "text": "Irish (Gaeilge)",
+        "selected": true if attachment.language == 'gd'
+      },
+      {
+        "value": "it",
+        "text": "Italian (Italiano)",
+        "selected": true if attachment.language == 'it'
+      },
+      {
+        "value": "ja",
+        "text": "Japanese (日本語)",
+        "selected": true if attachment.language == 'ja'
+      },
+      {
+        "value": "kk",
+        "text": "Kazakh (Qazaq)",
+        "selected": true if attachment.language == 'kk'
+      },
+      {
+        "value": "ko",
+        "text": "Korean (한국어)",
+        "selected": true if attachment.language == 'ko'
+      },
+      {
+        "value": "lv",
+        "text": "Latvian (Latviešu)",
+        "selected": true if attachment.language == 'lv'
+      },
+      {
+        "value": "lt",
+        "text": "Lithuanian (Lietuvių)",
+        "selected": true if attachment.language == 'lt'
+      },
+      {
+        "value": "ms",
+        "text": "Malay (Bahasa Melayu)",
+        "selected": true if attachment.language == 'ms'
+      },
+      {
+        "value": "mt",
+        "text": "Maltese (Malti)",
+        "selected": true if attachment.language == 'mt'
+      },
+      {
+        "value": "no",
+        "text": "Norwegian (Norsk)",
+        "selected": true if attachment.language == 'no'
+      },
+      {
+        "value": "ps",
+        "text": "Pashto (پښتو)",
+        "selected": true if attachment.language == 'ps'
+      },
+      {
+        "value": "fa",
+        "text": "Persian (فارسی)",
+        "selected": true if attachment.language == 'fa'
+      },
+      {
+        "value": "pl",
+        "text": "Polish (Polski)",
+        "selected": true if attachment.language == 'pl'
+      },
+      {
+        "value": "pt",
+        "text": "Portuguese (Português)",
+        "selected": true if attachment.language == 'pt'
+      },
+      {
+        "value": "ro",
+        "text": "Romanian (Română)",
+        "selected": true if attachment.language == 'ro'
+      },
+      {
+        "value": "ru",
+        "text": "Russian (Русский)",
+        "selected": true if attachment.language == 'ru'
+      },
+      {
+        "value": "sr",
+        "text": "Serbian (Srpski)",
+        "selected": true if attachment.language == 'sr'
+      },
+      {
+        "value": "si",
+        "text": "Sinhala (සිංහල)",
+        "selected": true if attachment.language == 'si'
+      },
+      {
+        "value": "sk",
+        "text": "Slovak (Slovenčina)",
+        "selected": true if attachment.language == 'sk'
+      },
+      {
+        "value": "sl",
+        "text": "Slovenian (Slovenščina)",
+        "selected": true if attachment.language == 'sl'
+      },
+      {
+        "value": "so",
+        "text": "Somali (Soomaaliga)",
+        "selected": true if attachment.language == 'so'
+      },
+      {
+        "value": "es",
+        "text": "Spanish (Español)",
+        "selected": true if attachment.language == 'es'
+      },
+      {
+        "value": "es-419",
+        "text": "Spanish, Latin American (Español)",
+        "selected": true if attachment.language == 'es-419'
+      },
+      {
+        "value": "sw",
+        "text": "Swahili (Kiswahili)",
+        "selected": true if attachment.language == 'sw'
+      },
+      {
+        "value": "sv",
+        "text": "Swedish (Svensk)",
+        "selected": true if attachment.language == 'sv'
+      },
+      {
+        "value": "ta",
+        "text": "Tamil (தமிழ்)",
+        "selected": true if attachment.language == 'ta'
+      },
+      {
+        "value": "th",
+        "text": "Thai (ไทย)",
+        "selected": true if attachment.language == 'th'
+      },
+      {
+        "value": "tr",
+        "text": "Turkish (Türkçe)",
+        "selected": true if attachment.language == 'tr'
+      },
+      {
+        "value": "tk",
+        "text": "Turkmen (Türkmençe)",
+        "selected": true if attachment.language == 'tk'
+      },
+      {
+        "value": "uk",
+        "text": "Ukrainian (Українська)",
+        "selected": true if attachment.language == 'uk'
+      },
+      {
+        "value": "ur",
+        "text": "Urdu (اردو)",
+        "selected": true if attachment.language == 'ur'
+      },
+      {
+        "value": "uz",
+        "text": "Uzbeki (O'zbekcha)",
+        "selected": true if attachment.language == 'uz'
+      },
+      {
+        "value": "vi",
+        "text": "Vietnamese (Tiếng Việt)",
+        "selected": true if attachment.language == 'vi'
+      }
+    ]
+  }) }#}
+
+  {{ govukButton({
+    text: "Save and continue"
+  }) }}
+
+</form>
+
+<p class="govuk-body">
+  <a class="govuk-link" href="{{ links.back }}">Cancel</a>
+</p>

@@ -1,0 +1,307 @@
+[
+  {
+    "code": "en",
+    "iso_name": "English",
+    "english_name": "English"
+  },
+  {
+    "code": "ar",
+    "iso_name": "العربية",
+    "english_name": "Arabic"
+  },
+  {
+    "code": "az",
+    "iso_name": "Azərbaycanca",
+    "english_name": "Azeri"
+  },
+  {
+    "code": "be",
+    "iso_name": "Беларуская",
+    "english_name": "Belarusian"
+  },
+  {
+    "code": "bg",
+    "iso_name": "български",
+    "english_name": "Bulgarian"
+  },
+  {
+    "code": "bn",
+    "iso_name": "বাংলা",
+    "english_name": "Bangla"
+  },
+  {
+    "code": "cs",
+    "iso_name": "Česky",
+    "english_name": "Czech"
+  },
+  {
+    "code": "cy",
+    "iso_name": "Cymraeg",
+    "english_name": "Welsh"
+  },
+  {
+    "code": "da",
+    "iso_name": "Dansk",
+    "english_name": "Danish"
+  },
+  {
+    "code": "de",
+    "iso_name": "Deutsch",
+    "english_name": "German"
+  },
+  {
+    "code": "dr",
+    "iso_name": "دری",
+    "english_name": "Dari"
+  },
+  {
+    "code": "el",
+    "iso_name": "Ελληνικά",
+    "english_name": "Greek"
+  },
+  {
+    "code": "es",
+    "iso_name": "Español",
+    "english_name": "Spanish"
+  },
+  {
+    "code": "es-419",
+    "iso_name": "Español",
+    "english_name": "Latin American Spanish"
+  },
+  {
+    "code": "et",
+    "iso_name": "Eesti",
+    "english_name": "Estonian"
+  },
+  {
+    "code": "fa",
+    "iso_name": "فارسی",
+    "english_name": "Persian"
+  },
+  {
+    "code": "fi",
+    "iso_name": "Suomi",
+    "english_name": "Finish"
+  },
+  {
+    "code": "fr",
+    "iso_name": "Français",
+    "english_name": "French"
+  },
+  {
+    "code": "gd",
+    "iso_name": "Gaeilge",
+    "english_name": "Irish"
+  },
+  {
+    "code": "he",
+    "iso_name": "עברית",
+    "english_name": "Hebrew"
+  },
+  {
+    "code": "hi",
+    "iso_name": "हिंदी",
+    "english_name": "Hindi"
+  },
+  {
+    "code": "hr",
+    "iso_name": "Hrvatski",
+    "english_name": "Croatian"
+  },
+  {
+    "code": "hu",
+    "iso_name": "Magyar",
+    "english_name": "Hungarian"
+  },
+  {
+    "code": "hy",
+    "iso_name": "Հայերեն",
+    "english_name": "Armenian"
+  },
+  {
+    "code": "id",
+    "iso_name": "Bahasa Indonesia",
+    "english_name": "Indonesian"
+  },
+  {
+    "code": "is",
+    "iso_name": "Íslensk",
+    "english_name": "Icelandic"
+  },
+  {
+    "code": "it",
+    "iso_name": "Italiano",
+    "english_name": "Italian"
+  },
+  {
+    "code": "ja",
+    "iso_name": "日本語",
+    "english_name": "Japanese"
+  },
+  {
+    "code": "ka",
+    "iso_name": "ქართული",
+    "english_name": "Georgian"
+  },
+  {
+    "code": "kk",
+    "iso_name": "Qazaq",
+    "english_name": "Kazakh"
+  },
+  {
+    "code": "ko",
+    "iso_name": "한국어",
+    "english_name": "Korean"
+  },
+  {
+    "code": "lt",
+    "iso_name": "Lietuvių",
+    "english_name": "Lithuanian"
+  },
+  {
+    "code": "lv",
+    "iso_name": "Latviešu",
+    "english_name": "Latvian"
+  },
+  {
+    "code": "ms",
+    "iso_name": "Bahasa Melayu",
+    "english_name": "Malay"
+  },
+  {
+    "code": "mt",
+    "iso_name": "Malti",
+    "english_name": "Maltese"
+  },
+  {
+    "code": "nl",
+    "iso_name": "Nederlands",
+    "english_name": "Dutch"
+  },
+  {
+    "code": "no",
+    "iso_name": "Norsk",
+    "english_name": "Norwegian"
+  },
+  {
+    "code": "pl",
+    "iso_name": "Polski",
+    "english_name": "Polish"
+  },
+  {
+    "code": "ps",
+    "iso_name": "پښتو",
+    "english_name": "Pashto"
+  },
+  {
+    "code": "pt",
+    "iso_name": "Português",
+    "english_name": "Portuguese"
+  },
+  {
+    "code": "ro",
+    "iso_name": "Română",
+    "english_name": "Romanian"
+  },
+  {
+    "code": "ru",
+    "iso_name": "Русский",
+    "english_name": "Russian"
+  },
+  {
+    "code": "si",
+    "iso_name": "සිංහල",
+    "english_name": "Sinhala"
+  },
+  {
+    "code": "sk",
+    "iso_name": "Slovenčina",
+    "english_name": "Slovak"
+  },
+  {
+    "code": "sl",
+    "iso_name": "Slovenščina",
+    "english_name": "Slovenian"
+  },
+  {
+    "code": "so",
+    "iso_name": "Soomaaliga",
+    "english_name": "Somali"
+  },
+  {
+    "code": "sq",
+    "iso_name": "Shqip",
+    "english_name": "Albanian"
+  },
+  {
+    "code": "sr",
+    "iso_name": "Srpski",
+    "english_name": "Serbian"
+  },
+  {
+    "code": "sv",
+    "iso_name": "Svensk",
+    "english_name": "Swedish"
+  },
+  {
+    "code": "sw",
+    "iso_name": "Kiswahili",
+    "english_name": "Swahili"
+  },
+  {
+    "code": "ta",
+    "iso_name": "தமிழ்",
+    "english_name": "Tamil"
+  },
+  {
+    "code": "th",
+    "iso_name": "ไทย",
+    "english_name": "Thai"
+  },
+  {
+    "code": "tk",
+    "iso_name": "Türkmençe",
+    "english_name": "Turkmen"
+  },
+  {
+    "code": "tr",
+    "iso_name": "Türkçe",
+    "english_name": "Turkish"
+  },
+  {
+    "code": "uk",
+    "iso_name": "Українська",
+    "english_name": "Ukrainian"
+  },
+  {
+    "code": "ur",
+    "iso_name": "اردو",
+    "english_name": "Urdu"
+  },
+  {
+    "code": "uz",
+    "iso_name": "O'zbekcha",
+    "english_name": "Uzbeki"
+  },
+  {
+    "code": "vi",
+    "iso_name": "Tiếng Việt",
+    "english_name": "Vietnamese"
+  },
+  {
+    "code": "zh",
+    "iso_name": "中文",
+    "english_name": "Chinese"
+  },
+  {
+    "code": "zh-hk",
+    "iso_name": "中文",
+    "english_name": "Cantonese"
+  },
+  {
+    "code": "zh-tw",
+    "iso_name": "中文",
+    "english_name": "Traditional Chinese"
+  }
+]

@@ -1,0 +1,200 @@
+[
+  {
+    "extension": ".aac",
+    "abbreviation": "AAC",
+    "title": "AAC audio",
+    "type": "audio/aac"
+  },
+  {
+    "extension": ".csv",
+    "abbreviation": "CSV",
+    "title": "Comma Separated Values",
+    "type": "text/csv"
+  },
+  {
+    "extension": ".doc",
+    "abbreviation": "DOC",
+    "title": "Microsoft Word",
+    "type": "application/msword"
+  },
+  {
+    "extension": ".docx",
+    "abbreviation": "DOCX",
+    "title": "Microsoft Word (OpenXML)",
+    "type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+  },
+  {
+    "extension": ".epub",
+    "abbreviation": "EPUB",
+    "title": "Electronic publication (EPUB)",
+    "type": "application/epub+zip"
+  },
+  {
+    "extension": ".gif",
+    "abbreviation": "GIF",
+    "title": "Graphics Interchange Format (GIF)",
+    "type": "image/gif"
+  },
+  {
+    "extension": ".htm",
+    "abbreviation": "HTM",
+    "title": "HyperText Markup Language (HTML)",
+    "type": "text/htm"
+  },
+  {
+    "extension": ".html",
+    "abbreviation": "HTML",
+    "title": "HyperText Markup Language (HTML)",
+    "type": "text/html"
+  },
+  {
+    "extension": ".jpeg",
+    "abbreviation": "JPEG",
+    "title": "JPEG images",
+    "type": "image/jpeg"
+  },
+  {
+    "extension": ".jpg",
+    "abbreviation": "JPG",
+    "title": "JPEG images",
+    "type": "image/jpg"
+  },
+  {
+    "extension": ".json",
+    "abbreviation": "JSON",
+    "title": "JSON format",
+    "type": "application/json"
+  },
+  {
+    "extension": ".mp3",
+    "abbreviation": "MP3",
+    "title": "MP3 audio",
+    "type": "audio/mpeg"
+  },
+  {
+    "extension": ".mpeg",
+    "abbreviation": "MPEG",
+    "title": "MPEG Video",
+    "type": "video/mpeg"
+  },
+  {
+    "extension": ".odp",
+    "abbreviation": "ODP",
+    "title": "OpenDocument presentation document",
+    "type": "application/vnd.oasis.opendocument.presentation"
+  },
+  {
+    "extension": ".ods",
+    "abbreviation": "ODS",
+    "title": "OpenDocument spreadsheet document",
+    "type": "application/vnd.oasis.opendocument.spreadsheet"
+  },
+  {
+    "extension": ".odt",
+    "abbreviation": "ODT",
+    "title": "OpenDocument text document",
+    "type": "application/vnd.oasis.opendocument.text"
+  },
+  {
+    "extension": ".pdf",
+    "abbreviation": "PDF",
+    "title": "Portable Document Format (PDF)",
+    "type": "application/pdf"
+  },
+  {
+    "extension": ".png",
+    "abbreviation": "PNG",
+    "title": "Portable Network Graphics",
+    "type": "image/png"
+  },
+  {
+    "extension": ".ppt",
+    "abbreviation": "PPT",
+    "title": "Microsoft PowerPoint",
+    "type": "application/vnd.ms-powerpoint"
+  },
+  {
+    "extension": ".pptx",
+    "abbreviation": "PPTX",
+    "title": "Microsoft PowerPoint (OpenXML)",
+    "type": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+  },
+  {
+    "extension": ".rtf",
+    "abbreviation": "RTF",
+    "title": "Rich Text Format (RTF)",
+    "type": "application/rtf"
+  },
+  {
+    "extension": ".svg",
+    "abbreviation": "SVG",
+    "title": "Scalable Vector Graphics (SVG)",
+    "type": "image/svg+xml"
+  },
+  {
+    "extension": ".tiff",
+    "abbreviation": "TIFF",
+    "title": "Tagged Image File Format (TIFF)",
+    "type": "image/tiff"
+  },
+  {
+    "extension": ".txt",
+    "abbreviation": "TXT",
+    "title": "Text",
+    "type": "text/plain"
+  },
+  {
+    "extension": ".wav",
+    "abbreviation": "WAV",
+    "title": "Waveform Audio Format",
+    "type": "audio/wav"
+  },
+  {
+    "extension": ".weba",
+    "abbreviation": "WEBA",
+    "title": "WEBM audio",
+    "type": "audio/webm"
+  },
+  {
+    "extension": ".webm",
+    "abbreviation": "WEBM",
+    "title": "WEBM video",
+    "type": "video/webm"
+  },
+  {
+    "extension": ".webp",
+    "abbreviation": "WEBP",
+    "title": "WEBP image",
+    "type": "image/webp"
+  },
+  {
+    "extension": ".xhtml",
+    "abbreviation": "XHTML",
+    "title": "XHTML",
+    "type": "application/xhtml+xml"
+  },
+  {
+    "extension": ".xls",
+    "abbreviation": "XLS",
+    "title": "Microsoft Excel",
+    "type": "application/vnd.ms-excel"
+  },
+  {
+    "extension": ".xlsx",
+    "abbreviation": "XLSX",
+    "title": "Microsoft Excel (OpenXML)",
+    "type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+  },
+  {
+    "extension": ".xml",
+    "abbreviation": "XML",
+    "title": "XML",
+    "type": "application/xml"
+  },
+  {
+    "extension": ".zip",
+    "abbreviation": "ZIP",
+    "title": "ZIP archive",
+    "type": "application/zip"
+  }
+]

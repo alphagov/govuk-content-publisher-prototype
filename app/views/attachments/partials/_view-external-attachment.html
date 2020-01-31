@@ -1,0 +1,21 @@
+{{ govukSummaryList({
+  classes: 'govuk-summary-list--no-border',
+  rows: [
+    {
+      key: {
+        text: "Attachment title"
+      },
+      value: {
+        text: attachment.title
+      }
+    },
+    {
+      key: {
+        text: "External URL"
+      },
+      value: {
+        text: attachment.url
+      }
+    }
+  ]
+}) }}

@@ -1,0 +1,16 @@
+<div class="app-c-attachment-meta {{- ' ' + params.classes if params.classes }}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  {{- caller() if caller -}}
+  {%- if params.items | length %}
+  <ul class="app-c-attachment-meta__actions">
+    {% for item in params.items %}
+      {% if item.text | length or item.html | length %}
+      <li>
+        <a class="govuk-link {{- ' ' + item.classes if item.classes }}" href="{{ item.href }}" {%- for attribute, value in item.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+          {{- item.html | safe if item.html else item.text -}}
+        </a>
+      </li>
+      {% endif -%}
+    {% endfor -%}
+  </ul>
+  {% endif -%}
+</div>

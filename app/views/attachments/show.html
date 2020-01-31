@@ -1,0 +1,129 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block pageScripts %}
+
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: links.back
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">
+            <span class="govuk-caption-l">{{ attachment.type | upper + ' attachment' if attachment.type == 'html' else attachment.type | capitalize + ' attachment' }}</span>
+            {{ attachment.title if attachment.title | length else "Untitled attachment" }}
+          </h1>
+
+        </div>
+      </div>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          {%- if attachment.type == 'external' %}
+            {% include "./partials/_view-external-attachment.html" %}
+          {% endif -%}
+
+          {%- if attachment.type == 'file' %}
+            {% include "./partials/_view-file-attachment.html" %}
+          {% endif -%}
+
+          {%- if attachment.type == 'html' %}
+            {% include "./partials/_view-html-attachment.html" %}
+          {% endif -%}
+
+        </div>
+        <div class="govuk-grid-column-one-third">
+          <aside class="app-side__wrapper">
+            <div class="app-side">
+
+              <div class="app-side__actions">
+                <a class="app-c-button govuk-button" role="button" href="/documents/{{ attachment.document_id }}/attachments/{{ attachment.content_id }}/update">Edit details</a>
+
+                <p class="govuk-body govuk-!-margin-bottom-1">
+                  {%- if attachment.type == 'file' %}
+                    <a class="govuk-link" href="#">Preview</a>
+                  {% endif -%}
+                  <a class="govuk-link app-link--destructive {{- ' app-link--right' if attachment.type == 'file' }}" href="/documents/{{ attachment.document_id }}/attachments/{{ attachment.content_id }}/delete">Delete attachment</a>
+                </p>
+              </div>
+
+            </div>
+            <div class="app-side">
+              {{- appMetadata({
+                items: [{
+                    title: {
+                      text: 'Last updated on'
+                    },
+                    description: {
+                      text: attachment.updated_at | govTime + ' on ' + attachment.updated_at | govDate
+                    }
+                  } if attachment.updated_at | length,
+                  {
+                    title: {
+                      text: 'Last updated by'
+                    },
+                    description: {
+                      text: attachment.updated_by
+                    }
+                  } if attachment.updated_by | length,
+                  {
+                    title: {
+                      text: 'Created on'
+                    },
+                    description: {
+                      text: attachment.created_at | govTime + ' on ' + attachment.created_at | govDate
+                    }
+                  },
+                  {
+                    title: {
+                      text: 'Created by'
+                    },
+                    description: {
+                      text: attachment.created_by
+                    }
+                  }]
+              }) -}}
+            </div>
+          </aside>
+        </div>
+      </div>
+
+      {#{ appAttachmentActions({
+        items: [
+          {
+            text: 'Edit details',
+            href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/update'
+          },
+          {
+            text: 'Download',
+            href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/download'
+          } if attachment.type == 'file',
+          {
+            text: 'Delete attachment',
+            href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/delete',
+            classes: 'app-link--destructive'
+          }
+        ]
+      }) }#}
+
+    </div>
+  </div>
+
+{% endblock %}

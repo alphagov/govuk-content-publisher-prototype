@@ -1,0 +1,46 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block pageScripts %}
+
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: links.back
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">
+            Attachment details for ‘{{ attachment.title if attachment.title else (data.document.attachment.title if data.document.attachment.title else "Untitled attachment") }}’
+          </h1>
+
+          <p class="govuk-body">Include these details if the document contains them to help users find and identify the publication.</p>
+
+        </div>
+      </div>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          {% include "./partials/_form-attachment-metadata.html" %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

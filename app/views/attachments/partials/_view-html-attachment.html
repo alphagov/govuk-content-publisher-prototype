@@ -1,0 +1,21 @@
+{{ govukSummaryList({
+  classes: 'govuk-summary-list--no-border',
+  rows: [
+    {
+      key: {
+        text: "Title"
+      },
+      value: {
+        text: attachment.title
+      }
+    },
+    {
+      key: {
+        text: "Body"
+      },
+      value: {
+        text: attachment.body | truncate(500)
+      }
+    }
+  ]
+}) }}
