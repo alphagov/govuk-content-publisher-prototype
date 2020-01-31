@@ -273,35 +273,48 @@ exports.attachment_update_metadata_post = function(req, res) {
     attachmentData.urn = req.session.data.document.attachment.urn;
 
     if (attachmentData.official_document === 'yes_command_paper') {
+
+      attachmentData.cpn = req.session.data.document.attachment.cpn;
       attachmentData.unnumbered = req.session.data.document.attachment.unnumbered;
 
-      if (attachmentData.unnumbered === undefined) {
-        attachmentData.cpn = req.session.data.document.attachment.cpn;
-      } else {
-        attachmentData.cpn = '';
+      if (attachmentData.cpn.length || attachmentData.unnumbered === undefined) {
+        attachmentData.unnumbered = '';
       }
-    } else {
-      attachmentData.unnumbered = '';
-      attachmentData.cpn = '';
+
+      // clear the house of commons paper fields
+      attachmentData.hcpn = '';
+      attachmentData.parliamentary_session = '';
+      attachmentData.unnumbered_act = '';
+
     }
 
     if (attachmentData.official_document === 'yes_house_of_commons_paper') {
+
+      attachmentData.hcpn = req.session.data.document.attachment.hcpn;
       attachmentData.parliamentary_session = req.session.data.document.attachment.parliamentary_session;
       attachmentData.unnumbered_act = req.session.data.document.attachment.unnumbered_act;
 
-      if (attachmentData.unnumbered_act === undefined) {
-        attachmentData.hcpn = req.session.data.document.attachment.hcpn;
-      } else {
-        attachmentData.hcpn = '';
+      if (attachmentData.hcpn.length || attachmentData.unnumbered_act === undefined) {
+        attachmentData.unnumbered_act = '';
       }
-    } else {
-      attachmentData.unnumbered_act = '';
-      attachmentData.hcpn = '';
-      attachmentData.parliamentary_session = '';
+
+      // clear the command paper fields
+      attachmentData.cpn = '';
+      attachmentData.unnumbered = '';
+
     }
 
     if (attachmentData.official_document === 'yes_command_paper' || attachmentData.official_document === 'yes_house_of_commons_paper') {
       attachmentData.order_url = "https://www.gov.uk/guidance/how-to-buy-printed-copies-of-official-documents";
+    }
+
+    if (attachmentData.official_document === 'no') {
+      attachmentData.cpn = '';
+      attachmentData.unnumbered = '';
+      attachmentData.hcpn = '';
+      attachmentData.parliamentary_session = '';
+      attachmentData.unnumbered_act = '';
+      attachmentData.order_url = '';
     }
 
   }
