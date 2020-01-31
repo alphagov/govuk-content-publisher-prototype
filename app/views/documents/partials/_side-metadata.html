@@ -47,7 +47,7 @@
           text: 'Last updated by'
         },
         description: {
-          text: data.document.last_updated_by if data.document.last_updated_by | length else "Unknown"
+          text: data.document.last_updated_by if data.document.last_updated_by | length else (data.document.updated_by if data.document.updated_by | length else "Unknown")
         }
       }, {
         title: {
