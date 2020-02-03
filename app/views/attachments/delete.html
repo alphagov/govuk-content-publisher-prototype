@@ -13,7 +13,7 @@
 {% include "includes/phase-banner.html" %}
 {{ govukBackLink({
   text: "Back",
-  href: links.back
+  href: actions.back
 }) }}
 {% endblock %}
 
@@ -45,7 +45,7 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-full">
 
-          <form action="{{ links.save }}" method="post">
+          <form action="{{ actions.delete }}" method="post">
 
             {{ govukButton({
               text: "Yes, delete " + ('link' if attachment.type == 'external' else ('file' if attachment.type == 'file' else 'attachment')),
@@ -55,7 +55,7 @@
           </form>
 
           <p class="govuk-body">
-            <a class="govuk-link govuk-link--no-visited-state" href="{{ links.back }}">Cancel</a>
+            <a class="govuk-link govuk-link--no-visited-state" href="{{ actions.back }}">Cancel</a>
           </p>
 
         </div>

@@ -184,7 +184,7 @@
 
   {{ appModalDialogue({
     id: 'modal-attachments',
-    html: '<iframe src="/documents/modals/attachments-list" class="app-iframe--reset"></iframe>'
+    html: '<iframe src="/documents/' + data.document.content_id + '/attachments/modal/" class="app-iframe--reset" height="600px"></iframe>'
   }) }}
 
 {% endblock %}

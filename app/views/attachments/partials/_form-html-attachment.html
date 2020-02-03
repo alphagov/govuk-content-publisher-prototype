@@ -1,4 +1,4 @@
-<form action="{{ links.save }}" accept-charset="UTF-8" method="post">
+<form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
   <input type="hidden" name="document[attachment][type]" value="html">
 
   {%- call appContextualGuidance({
@@ -68,5 +68,5 @@
 </form>
 
 <p class="govuk-body">
-  <a class="govuk-link" href="{{ links.back }}">Cancel</a>
+  <a class="govuk-link" href="{{ actions.back }}">Cancel</a>
 </p>
