@@ -463,3 +463,13 @@ exports.attachment_download = function(req, res) {
   // res.send('NOT IMPLEMENTED: attachment download');
   res.download(path.join(__dirname, '../data/attachments/attachment.pdf'));
 };
+
+// Reorder attachments list on GET.
+exports.attachment_list_reorder_get = function(req, res) {
+  res.send('NOT IMPLEMENTED: attachment reorder GET');
+};
+
+// Reorder attachments list on POST.
+exports.attachment_list_reorder_post = function(req, res) {
+  res.send('NOT IMPLEMENTED: attachment reorder POST');
+};

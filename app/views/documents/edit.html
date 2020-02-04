@@ -30,6 +30,13 @@
   contextualGuidance.start($guidanceBody);
 </script>
 
+<script src="/public/javascripts/components/toolbar-dropdown.js"></script>
+<script type="text/javascript">
+  var $toolbarInsert = $('#toolbar-dropdown');
+  var toolbarDropdown = new GOVUK.Modules.ToolbarDropdown();
+  toolbarDropdown.start($toolbarInsert);
+</script>
+
 <script src="/public/javascripts/components/modal-dialogue.js"></script>
 <script type="text/javascript">
   var $modalAttachments = $('#modal-attachments');

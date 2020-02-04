@@ -14,7 +14,7 @@
     buttonText: 'Actions'
   });
 </script> -->
-{%- if attachments | length > 1 %}
+<!-- {#%- if attachments | length > 1 %}
 <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
 <script type="text/javascript">
 
@@ -38,7 +38,7 @@
     item.querySelector('.js-down').addEventListener("click", function () { sortableAttachments.moveItem(i, i+1) })
   });
 </script>
-{% endif -%}
+{% endif -%#} -->
 {% endblock %}
 
 {% block beforeContent %}
@@ -97,7 +97,7 @@
 
             <p class="govuk-body govuk-!-margin-bottom-8">Attachments will be listed on the document in this order.</p>
 
-            {%- if attachments | length > 1 %}<div id="attachmentsList">{% endif -%}
+            <!-- {#%- if attachments | length > 1 %}<div id="attachmentsList">{% endif -%#} -->
 
             {%- for attachment in attachments %}
 
@@ -167,18 +167,18 @@
                   }
                 }) if attachment.type == 'html' }}
 
-                {%- if attachments | length > 1 %}
+                <!-- {#%- if attachments | length > 1 %}
                   <div class="app-o-order-controls js-order-controls">
                     {%- if not loop.first %}<button class="govuk-button app-c-button--secondary-quiet js-up">Up</button>{% endif %}
                     {% if not loop.last %}<button class="govuk-button app-c-button--secondary-quiet js-down">Down</button>{% endif -%}
                   </div>
-                {% endif -%}
+                {% endif -%#} -->
 
               {% endcall -%}
 
             {% endfor -%}
 
-            {%- if attachments | length > 1 %}</div>{% endif -%}
+            <!-- {#%- if attachments | length > 1 %}</div>{% endif -%#} -->
 
           {% else %}
 

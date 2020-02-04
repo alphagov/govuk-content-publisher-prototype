@@ -162,6 +162,12 @@ router.get('/documents/:document_id/attachments/create', checkIsAuthenticated, a
 // POST request for creating an attachment.
 router.post('/documents/:document_id/attachments/create', checkIsAuthenticated, attachment_controller.attachment_create_post);
 
+// GET request for list of all attachment items.
+router.get('/documents/:document_id/attachments/reorder', checkIsAuthenticated, attachment_controller.attachment_list_reorder_get);
+
+// GET request for list of all attachment items.
+router.post('/documents/:document_id/attachments/reorder', checkIsAuthenticated, attachment_controller.attachment_list_reorder_post);
+
 // GET request to delete an attachment.
 router.get('/documents/:document_id/attachments/:attachment_id/delete', checkIsAuthenticated, attachment_controller.attachment_delete_get);
 
