@@ -49,7 +49,7 @@
 {% include "includes/phase-banner.html" %}
 {{ govukBackLink({
   text: "Back",
-  href: links.back
+  href: actions.back
 }) }}
 {% endblock %}
 
@@ -68,7 +68,7 @@
         </div>
       </div>
 
-      <form action="{{ links.save }}" accept-charset="UTF-8" method="post">
+      <form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
 
         {%- call appContextualGuidance({
           id: 'contextual-guidance-title',

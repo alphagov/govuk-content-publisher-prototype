@@ -42,7 +42,7 @@
 {% include "includes/phase-banner.html" %}
 {{ govukBackLink({
   text: "Back",
-  href: links.previous
+  href: actions.previous
 }) }}
 {% endblock %}
 
@@ -54,7 +54,7 @@
         New {{ (data.document_sub_type | documentType | lower) if data.document_sub_type else (data.document_type | documentType | lower | replace("foi","FOI")) }}
       </h1>
 
-      <form action="{{ links.next }}" method="post">
+      <form action="{{ actions.next }}" method="post">
 
         {%- call appContextualGuidance({
           id: 'contextual-guidance-title',

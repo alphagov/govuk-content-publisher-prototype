@@ -13,7 +13,7 @@
 {% include "includes/phase-banner.html" %}
 {{ govukBackLink({
   text: "Back",
-  href: links.summary
+  href: actions.summary
 }) }}
 {% endblock %}
 
@@ -36,11 +36,11 @@
         items: [
           {
             text: 'Document summary',
-            href: links.summary
+            href: actions.summary
           },
           {
             text: 'Document history',
-            href: links.history,
+            href: actions.history,
             active: true
           }
         ]

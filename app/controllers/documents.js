@@ -104,7 +104,9 @@ exports.document_list = function(req, res) {
     total_count: count,
     page_count: page_count,
     page_number: page,
-    links: {
+    actions: {
+      new: '/documents/super-type',
+      clear: '/documents?filters=&sort=',
       next: '/documents?page=' + next_page + '&sort=' + sort_order,
       previous: '/documents?page=' + prev_page + '&sort=' + sort_order
     }
@@ -125,7 +127,7 @@ exports.document_summary_get = function(req, res) {
 
     res.render('../views/documents/summary', {
       attachments: Attachments.findByDocumentId(req.params.id),
-      links: {
+      actions: {
         home: '/documents',
         summary: '/documents/' + req.params.id,
         history: '/documents/' + req.params.id + '/history',
@@ -138,9 +140,7 @@ exports.document_summary_get = function(req, res) {
           access: '/documents/' + req.params.id + '/access',
           back_date: '/documents/' + req.params.id + '/back-date',
           political: '/documents/' + req.params.id + '/political'
-        }
-      },
-      actions: {
+        },
         new_edition: '/documents/' + req.params.id + '/new',
         review: '/documents/' + req.params.id + '/review',
         approve: '/documents/' + req.params.id + '/approve',
@@ -197,7 +197,7 @@ exports.document_history_get = function(req, res) {
     total_count: count,
     page_count: page_count,
     page_number: page,
-    links: {
+    actions: {
       home: '/documents',
       summary: '/documents/' + req.params.id,
       history: '/documents/' + req.params.id + '/history',
@@ -225,7 +225,7 @@ exports.document_create_super_type_get = function(req, res) {
   delete req.session.data.document_type;
 
   res.render('../views/documents/super-type', {
-    links: {
+    actions: {
       previous: '/documents',
       next: '/documents/type'
     }
@@ -239,7 +239,7 @@ exports.document_create_type_get = function(req, res) {
   delete req.session.data.document_sub_type
 
   res.render('../views/documents/type', {
-    links: {
+    actions: {
       previous: '/documents/super-type',
       next: '/documents/sub-type'
     }
@@ -256,7 +256,7 @@ exports.document_create_sub_type_get = function(req, res) {
     res.redirect('/documents/create');
   } else {
     res.render('../views/documents/sub-type', {
-      links: {
+      actions: {
         previous: '/documents/type',
         next: '/documents/create'
       }
@@ -275,7 +275,7 @@ exports.document_create_get = function(req, res) {
   }
 
   res.render('../views/documents/create', {
-    links: {
+    actions: {
       previous: previous_page,
       next: '/documents/create'
     }
@@ -375,7 +375,7 @@ exports.document_create_post = function(req, res) {
 exports.document_delete_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: Document delete GET');
   res.render('../views/documents/delete', {
-    links: {
+    actions: {
       back: '/documents/' + req.params.id,
       save: '/documents/' + req.params.id + '/delete'
     }
@@ -409,7 +409,7 @@ exports.document_update_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: Document update GET');
   res.render('../views/documents/edit', {
     id: req.params.id,
-    links: {
+    actions: {
       back: '/documents/' + req.params.id,
       save: '/documents/' + req.params.id
     }
@@ -420,7 +420,7 @@ exports.document_update_get = function(req, res) {
 exports.document_update_post = function(req, res) {
   // res.send('NOT IMPLEMENTED: Document update POST');
   res.render('../views/documents/edit', {
-    links: {
+    actions: {
       back: '/documents/' + req.params.id,
       save: '/documents/' + req.params.id
     }
@@ -431,7 +431,7 @@ exports.document_update_post = function(req, res) {
 exports.document_political_update_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: Document update GET');
   res.render('../views/documents/political', {
-    links: {
+    actions: {
       back: '/documents/' + req.params.id,
       save: '/documents/' + req.params.id
     }
@@ -472,7 +472,7 @@ exports.document_tags_update_post = function(req, res) {
 exports.document_new_edition_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: New edition GET');
   res.render('../views/documents/new-edition', {
-    links: {
+    actions: {
       back: '/documents/' + req.params.id,
       save: '/documents/' + req.params.id + '/new'
     }
@@ -506,7 +506,7 @@ exports.document_approve_post = function(req, res) {
 exports.document_schedule_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: Schedule document GET');
   res.render('../views/documents/schedule', {
-    links: {
+    actions: {
       back: '/documents/' + req.params.id,
       save: '/documents/' + req.params.id
     }
@@ -520,7 +520,7 @@ exports.document_schedule_post = function(req, res) {
 exports.document_preview_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: Preview document GET');
   res.render('../views/documents/preview', {
-    links: {
+    actions: {
       back: '/documents/' + req.params.id
     }
   });
@@ -549,7 +549,7 @@ exports.document_delete_draft_post = function(req, res) {
 exports.document_withdraw_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: Withdraw document GET');
   res.render('../views/documents/withdraw', {
-    links: {
+    actions: {
       back: '/documents/' + req.params.id,
       save: '/documents/' + req.params.id
     }
@@ -563,7 +563,7 @@ exports.document_withdraw_post = function(req, res) {
 exports.document_undo_withdraw_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: Undo withdraw document GET');
   res.render('../views/documents/undo-withdraw', {
-    links: {
+    actions: {
       back: '/documents/' + req.params.id,
       save: '/documents/' + req.params.id
     }
@@ -577,7 +577,7 @@ exports.document_undo_withdraw_post = function(req, res) {
 exports.document_remove_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: Remove document GET');
   res.render('../views/documents/remove', {
-    links: {
+    actions: {
       back: '/documents/' + req.params.id,
       save: '/documents/' + req.params.id
     }
