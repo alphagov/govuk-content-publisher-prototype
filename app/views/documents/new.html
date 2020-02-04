@@ -175,9 +175,6 @@
     </div>
   </div>
 
-  {{ appModalDialogue({
-    id: 'modal-attachments',
-    html: '<iframe src="/attachments/modals/list" class="app-iframe--reset" height="600px"></iframe>'
-  }) }}
+  {% include "./partials/_modal-attachments.html" %}
 
 {% endblock %}

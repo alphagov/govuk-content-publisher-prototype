@@ -7,7 +7,7 @@
   <div class="govuk-grid-column-full">
 
     <h1 class="govuk-heading-l">
-      Add {{ 'external link' if data.type == 'external' else 'attachment' }} to ‘{{ data.document.title }}’
+      Add {{ 'external link' if data.type == 'external' else 'attachment' }} {{ 'to ‘' + data.document.title + '’' if data.document.title | length }}
     </h1>
 
     {%- if data.type == 'external' %}

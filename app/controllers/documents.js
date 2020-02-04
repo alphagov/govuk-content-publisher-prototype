@@ -437,7 +437,11 @@ exports.document_delete_post = function(req, res) {
 // Display document update form on GET.
 exports.document_update_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: Document update GET');
+
+  const documentData = Documents.findById(req.params.document_id);
+
   res.render('../views/documents/edit', {
+    document: documentData,
     id: req.params.document_id,
     actions: {
       back: '/documents/' + req.params.document_id,

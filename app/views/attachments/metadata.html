@@ -26,7 +26,7 @@
         <div class="govuk-grid-column-two-thirds">
 
           <h1 class="govuk-heading-l">
-            Attachment details for ‘{{ attachment.title if attachment.title else (data.document.attachment.title if data.document.attachment.title else "Untitled attachment") }}’
+            Attachment details for ‘{{ attachment.title if attachment.title | length else (data.document.attachment.title if data.document.attachment.title | length else "Untitled attachment") }}’
           </h1>
 
           <p class="govuk-body">Include these details if the document contains them to help users find and identify the publication.</p>
