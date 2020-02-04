@@ -10,15 +10,13 @@
         <div class="govuk-grid-column-two-thirds">
 
           <h1 class="govuk-heading-l">
-            Attachments for ‘{{ data.document.title }}’
+            Attachments {{ 'for ‘' + data.document.title + '’' if data.document.title | length }}
           </h1>
 
           <p class="govuk-body">Publications have a summary page that must link to a file attachment or a document hosted on an external website.</p>
 
           {{ appButtonMenu({
-            classes: 'button-menu-1',
             items: [
-
               {
                 text: 'Upload file attachment',
                 classes: 'govuk-button',

@@ -61,7 +61,7 @@
         New {{ (data.document_sub_type | documentType | lower) if data.document_sub_type else (data.document_type | documentType | lower | replace("foi","FOI")) }}
       </h1>
 
-      <form action="{{ actions.save }}" method="post">
+      <form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
 
         {%- call appContextualGuidance({
           id: 'contextual-guidance-title',
@@ -177,7 +177,7 @@
 
   {{ appModalDialogue({
     id: 'modal-attachments',
-    html: '<iframe src="/attachments/modals/list" class="app-iframe--reset"></iframe>'
+    html: '<iframe src="/attachments/modals/list" class="app-iframe--reset" height="600px"></iframe>'
   }) }}
 
 {% endblock %}

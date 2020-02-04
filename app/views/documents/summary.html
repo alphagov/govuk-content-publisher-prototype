@@ -6,12 +6,14 @@
 {% endblock %}
 
 {% block pageScripts %}
+{%- if data.document.document_status == 'submitted_for_review' %}
 <script src="/public/javascripts/components/copy-to-clipboard.js"></script>
 <script type="text/javascript">
   var $element = $('#review-url');
   var copyToClipboard = new GOVUK.Modules.CopyToClipboard();
   copyToClipboard.start($element);
 </script>
+{% endif -%}
 {% endblock %}
 
 {% block beforeContent %}
