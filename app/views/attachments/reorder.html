@@ -43,11 +43,47 @@
 
             <form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
 
-              {%- for attachment in attachments %}
+              <dl class="govuk-summary-list govuk-summary-list--no-border app-c-summary-list--number">
+                {%- for attachment in attachments %}
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      {{ loop.index }}
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      {{ attachment.title if attachment.title | length else "Untitled attachment" }}
+                      {% if attachment.type == 'external' %}<p class="govuk-body-s">{{ attachment.url }}</p>{% endif -%}
+                      {% if attachment.type == 'file' %}
+                        <p class="govuk-body-s">
+                          {%- if attachment.mimetype %}
+                            {{ attachment.mimetype | parseContentType if attachment.mimetype == 'application/pdf' else attachment.mimetype | parseContentType('title') }}
+                            {% if attachment.mimetype == 'application/pdf' %}, 2.56MB, 48 pages{% endif -%}
+                          {% endif -%}
+                        </p>
+                      {% endif -%}
+                      {% if attachment.type == 'html' %}<p class="govuk-body-s">{{ attachment.type | attachmentType }}</p>{% endif -%}
+                    </dd>
+                    <div class="app-o-order-controls js-order-controls">
+                      {% if not loop.first %}
+                      <dd class="govuk-summary-list__actions">
+                        <button class="govuk-button app-c-button--secondary-quiet js-up">Up</button>
+                      </dd>
+                      {% endif %}
+                      {% if not loop.last %}
+                      <dd class="govuk-summary-list__actions">
+                        <button class="govuk-button app-c-button--secondary-quiet js-down">Down</button>
+                      </dd>
+                      {% endif %}
+                    </div>
+                  </div>
+                {% endfor -%}
+              </dl>
+
+
+              <!-- {#%- for attachment in attachments %}
 
                 {%- call appAttachment({
                   heading: {
-                    text: loop.index + ' ' + attachment.title if attachment.title | length else "Untitled attachment"
+                    text: attachment.title if attachment.title | length else "Untitled attachment"
                   },
                   href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/preview',
                   target: "_blank",
@@ -71,7 +107,7 @@
                   <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
                 {% endif -%}
 
-              {% endfor -%}
+              {% endfor -%#} -->
 
               {{ govukButton({
                 text: "Save attachment order"
