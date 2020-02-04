@@ -35,38 +35,53 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds"> -->
 
-        {%- if attachments | length %}
+          {%- if attachments | length %}
 
-          <p class="govuk-body govuk-!-margin-bottom-8">Attachments will be listed on the document in this order.</p>
+            <p class="govuk-body govuk-!-margin-bottom-8">Attachments will be listed on the document in this order.</p>
 
             {%- if attachments | length > 1 %}<div id="attachmentsList">{% endif -%}
 
-            {%- for attachment in attachments %}
+            <form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
 
-              {%- call appAttachment({
-                heading: {
-                  text: loop.index + ' ' + attachment.title if attachment.title | length else "Untitled attachment"
-                },
-                href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/preview',
-                target: "_blank",
-                metadata: {
-                  contentType: 'application/pdf',
-                  thumbnail: 'document'
-                } if attachment.type == 'file'
-              }) %}
+              {%- for attachment in attachments %}
 
-                {%- if attachments | length > 1 %}
-                  <div class="app-o-order-controls js-order-controls">
-                    {%- if not loop.first %}<button class="govuk-button app-c-button--secondary-quiet js-up">Up</button>{% endif %}
-                    {% if not loop.last %}<button class="govuk-button app-c-button--secondary-quiet js-down">Down</button>{% endif -%}
-                  </div>
+                {%- call appAttachment({
+                  heading: {
+                    text: loop.index + ' ' + attachment.title if attachment.title | length else "Untitled attachment"
+                  },
+                  href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/preview',
+                  target: "_blank",
+                  metadata: {
+                    thumbnail: 'document'
+                  } if attachment.type == 'file'
+                }) %}
+
+                  {%- if attachments | length > 1 %}
+                    <div class="app-o-order-controls js-order-controls">
+                      {%- if not loop.first %}<button class="govuk-button app-c-button--secondary-quiet js-up">Up</button>{% endif %}
+                      {% if not loop.last %}<button class="govuk-button app-c-button--secondary-quiet js-down">Down</button>{% endif -%}
+                    </div>
+                  {% endif -%}
+
+                {% endcall -%}
+
+                {%- if loop.last %}
+                  <hr class="govuk-section-break govuk-section-break--l">
+                {% else %}
+                  <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
                 {% endif -%}
 
-              {% endcall -%}
+              {% endfor -%}
 
-              <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+              {{ govukButton({
+                text: "Save attachment order"
+              }) }}
 
-            {% endfor -%}
+            </form>
+
+            <p class="govuk-body">
+              <a class="govuk-link" href="{{ actions.back }}">Cancel</a>
+            </p>
 
             {%- if attachments | length > 1 %}</div>{% endif -%}
 
