@@ -34,7 +34,8 @@ exports.attachment_list = function(req, res) {
       actions: {
         back: '/documents/' + req.params.document_id,
         add_file: '/documents/' + req.params.document_id + '/attachments/create?type=file',
-        add_external: '/documents/' + req.params.document_id + '/attachments/create?type=external'
+        add_external: '/documents/' + req.params.document_id + '/attachments/create?type=external',
+        reorder: '/documents/' + req.params.document_id + '/attachments/reorder'
       }
     });
   }
@@ -466,7 +467,14 @@ exports.attachment_download = function(req, res) {
 
 // Reorder attachments list on GET.
 exports.attachment_list_reorder_get = function(req, res) {
-  res.send('NOT IMPLEMENTED: attachment reorder GET');
+  // res.send('NOT IMPLEMENTED: attachment reorder GET');
+  res.render('../views/attachments/reorder', {
+    attachments: Attachments.findByDocumentId(req.params.document_id),
+    actions: {
+      back: '/documents/' + req.params.document_id + '/attachments',
+      save: '/documents/' + req.params.document_id + '/attachments/reorder'
+    }
+  });
 };
 
 // Reorder attachments list on POST.
