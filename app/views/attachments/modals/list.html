@@ -54,6 +54,10 @@
               {%- call appAttachmentActions({
                 items: [
                   {
+                    text: 'Insert link' + (' to file' if attachment.type == 'file' else (' to attachment'  if attachment.type == 'html')),
+                    href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/modal/update'
+                  },
+                  {
                     text: 'Edit' + (' link' if attachment.type == 'external' else (' file' if attachment.type == 'file' else ' attachment')),
                     href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/modal/update'
                   },
