@@ -11,9 +11,17 @@ exports.find = function() {
 
 };
 
-exports.findById = function() {
+exports.findById = function(document_id) {
 
+  // documents directory path
+  const directoryPath = path.join(__dirname, '../data/documents/');
 
+  const filePath = directoryPath + '/' + document_id + '.json';
+
+  let rawdata = fs.readFileSync(filePath);
+  let documentData = JSON.parse(rawdata);
+
+  return documentData;
 
 };
 

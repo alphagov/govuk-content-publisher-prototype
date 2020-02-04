@@ -115,44 +115,44 @@ exports.document_list = function(req, res) {
 
 // Display summary page for a specific document.
 exports.document_summary_get = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Document summary: ' + req.params.id);
+  // res.send('NOT IMPLEMENTED: Document summary: ' + req.params.document_id);
 
-  if (!req.session.data.document || (req.session.data.document.content_id != req.params.id)) {
+  if (!req.session.data.document || (req.session.data.document.content_id != req.params.document_id)) {
 
     // HACK: load the correct data from the session
-    res.redirect('/documents/' + req.params.id + '/load')
+    res.redirect('/documents/' + req.params.document_id + '/load')
 
   }
   else {
 
     res.render('../views/documents/summary', {
-      attachments: Attachments.findByDocumentId(req.params.id),
+      attachments: Attachments.findByDocumentId(req.params.document_id),
       actions: {
         home: '/documents',
-        summary: '/documents/' + req.params.id,
-        history: '/documents/' + req.params.id + '/history',
-        content: '/documents/' + req.params.id + '/content',
-        attachments: '/documents/' + req.params.id + '/attachments',
-        images: '/documents/' + req.params.id + '/images',
-        topics: '/documents/' + req.params.id + '/topics',
-        tags: '/documents/' + req.params.id + '/tags',
+        summary: '/documents/' + req.params.document_id,
+        history: '/documents/' + req.params.document_id + '/history',
+        content: '/documents/' + req.params.document_id + '/content',
+        attachments: '/documents/' + req.params.document_id + '/attachments',
+        images: '/documents/' + req.params.document_id + '/images',
+        topics: '/documents/' + req.params.document_id + '/topics',
+        tags: '/documents/' + req.params.document_id + '/tags',
         settings: {
-          access: '/documents/' + req.params.id + '/access',
-          back_date: '/documents/' + req.params.id + '/back-date',
-          political: '/documents/' + req.params.id + '/political'
+          access: '/documents/' + req.params.document_id + '/access',
+          back_date: '/documents/' + req.params.document_id + '/back-date',
+          political: '/documents/' + req.params.document_id + '/political'
         },
-        new_edition: '/documents/' + req.params.id + '/new',
-        review: '/documents/' + req.params.id + '/review',
-        approve: '/documents/' + req.params.id + '/approve',
-        schedule: '/documents/' + req.params.id + '/schedule',
-        preview: '/documents/' + req.params.id + '/preview',
-        publish: '/documents/' + req.params.id + '/publish',
-        delete_draft: '/documents/' + req.params.id + '/delete',
-        withdraw: '/documents/' + req.params.id + '/withdraw',
-        undo_withdraw: '/documents/' + req.params.id + '/undo-withdraw',
-        remove: '/documents/' + req.params.id + '/remove'
+        new_edition: '/documents/' + req.params.document_id + '/new',
+        review: '/documents/' + req.params.document_id + '/review',
+        approve: '/documents/' + req.params.document_id + '/approve',
+        schedule: '/documents/' + req.params.document_id + '/schedule',
+        preview: '/documents/' + req.params.document_id + '/preview',
+        publish: '/documents/' + req.params.document_id + '/publish',
+        delete_draft: '/documents/' + req.params.document_id + '/delete',
+        withdraw: '/documents/' + req.params.document_id + '/withdraw',
+        undo_withdraw: '/documents/' + req.params.document_id + '/undo-withdraw',
+        remove: '/documents/' + req.params.document_id + '/remove'
       },
-      id: req.params.id
+      id: req.params.document_id
     });
 
   }
@@ -161,12 +161,12 @@ exports.document_summary_get = function(req, res) {
 
 // Display summary page for a specific document.
 exports.document_history_get = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Document history: ' + req.params.id);
+  // res.send('NOT IMPLEMENTED: Document history: ' + req.params.document_id);
 
   let historyData = [];
   let historyArray = [];
 
-  let rawdata = fs.readFileSync('./app/data/history/' + req.params.id + '.json');
+  let rawdata = fs.readFileSync('./app/data/history/' + req.params.document_id + '.json');
   historyData = JSON.parse(rawdata);
 
   historyData.sort((a,b) => new Date(b.created_at) - new Date(a.created_at));
@@ -199,23 +199,23 @@ exports.document_history_get = function(req, res) {
     page_number: page,
     actions: {
       home: '/documents',
-      summary: '/documents/' + req.params.id,
-      history: '/documents/' + req.params.id + '/history',
-      next: '/documents/' + req.params.id + '/history?page=' + next_page,
-      previous: '/documents/' + req.params.id + '/history?page=' + prev_page
+      summary: '/documents/' + req.params.document_id,
+      history: '/documents/' + req.params.document_id + '/history',
+      next: '/documents/' + req.params.document_id + '/history?page=' + next_page,
+      previous: '/documents/' + req.params.document_id + '/history?page=' + prev_page
     },
-    id: req.params.id
+    id: req.params.document_id
   });
 
 };
 
 exports.document_load = function(req, res) {
-  let rawdata = fs.readFileSync('./app/data/documents/' + req.params.id + '.json');
+  let rawdata = fs.readFileSync('./app/data/documents/' + req.params.document_id + '.json');
   let docdata = JSON.parse(rawdata);
 
   req.session.data.document = docdata;
 
-  res.redirect('/documents/' + req.params.id)
+  res.redirect('/documents/' + req.params.document_id)
 }
 
 // Display document create super type form on GET.
@@ -263,28 +263,9 @@ exports.document_create_sub_type_get = function(req, res) {
     });
   }
 
-
 };
 
-// Display document create form on GET.
 exports.document_create_get = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Document create GET');
-  let previous_page = '/documents/type';
-  if (req.session.data.document_sub_type !== undefined) {
-    previous_page = '/documents/sub-type';
-  }
-
-  res.render('../views/documents/create', {
-    actions: {
-      previous: previous_page,
-      next: '/documents/create'
-    }
-  });
-};
-
-// Handle document create on POST.
-exports.document_create_post = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Document create POST');
 
   // documents directory path
   const documentDirectoryPath = path.join(__dirname, '../data/documents/');
@@ -301,7 +282,8 @@ exports.document_create_post = function(req, res) {
   const documentFilePath = documentDirectoryPath + '/' + fileName;
 
   // document data
-  let documentData = req.session.data.document;
+  // let documentData = req.session.data.document;
+  let documentData = {};
   documentData.content_id = content_id;
 
   if (req.session.data.document_sub_type !== undefined) {
@@ -315,8 +297,8 @@ exports.document_create_post = function(req, res) {
   documentData.created_at = new Date();
   documentData.created_by = req.session.data.user.display_name;
 
-  documentData.updated_at = documentData.created_at;
-  documentData.updated_by = documentData.created_by;
+  // documentData.updated_at = documentData.created_at;
+  // documentData.updated_by = documentData.created_by;
 
   // get political status of document creator's organisation
   documentData.political = isPolitical(req.session.data.user.organisation);
@@ -367,7 +349,55 @@ exports.document_create_post = function(req, res) {
   // redirect the user back to the attachments page
   // TODO: show flash message (success/failure)
   delete req.session.data.document;
-  res.redirect('/documents/' + content_id);
+  res.redirect('/documents/' + content_id + '/new');
+
+}
+
+// Display document create form on GET.
+exports.document_new_get = function(req, res) {
+
+  const documentData = Documents.findById(req.params.document_id);
+
+  let previous_page = '/documents/type';
+  if (req.session.data.document_sub_type !== undefined) {
+    previous_page = '/documents/sub-type';
+  }
+
+  res.render('../views/documents/new', {
+    document: documentData,
+    actions: {
+      back: previous_page,
+      save: '/documents/' + documentData.content_id + '/new'
+    }
+  });
+
+};
+
+// Handle document create on POST.
+exports.document_new_post = function(req, res) {
+
+  const documentData = Documents.findById(req.params.document_id);
+
+  documentData.title = req.session.data.document.title;
+  documentData.description = req.session.data.document.description;
+  documentData.details = {};
+  documentData.details.body = req.session.data.document.details.body;
+
+  documentData.updated_at = new Date();
+  documentData.updated_by = req.session.data.user.display_name;
+
+  // documents directory path
+  const documentDirectoryPath = path.join(__dirname, '../data/documents/');
+
+  const documentFilePath = documentDirectoryPath + '/' + documentData.content_id + '.json';
+
+  // create a JSON sting for the submitted data
+  const documentFileData = JSON.stringify(documentData);
+
+  // write the JSON data
+  fs.writeFileSync(documentFilePath, documentFileData);
+
+  res.redirect('/documents/' + documentData.content_id);
 
 };
 
@@ -376,8 +406,8 @@ exports.document_delete_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: Document delete GET');
   res.render('../views/documents/delete', {
     actions: {
-      back: '/documents/' + req.params.id,
-      save: '/documents/' + req.params.id + '/delete'
+      back: '/documents/' + req.params.document_id,
+      save: '/documents/' + req.params.document_id + '/delete'
     }
   });
 };
@@ -390,13 +420,13 @@ exports.document_delete_post = function(req, res) {
   const documentDirectoryPath = path.join(__dirname, '../data/documents/');
   const historyDirectoryPath = path.join(__dirname, '../data/history/');
 
-  const fileName = req.params.id + '.json';
+  const fileName = req.params.document_id + '.json';
 
   fs.unlinkSync(documentDirectoryPath + fileName);
   fs.unlinkSync(historyDirectoryPath + fileName);
 
   // TODO: delete attachments directory
-  // const attachmentDirectoryPath = path.join(__dirname, '../data/attachments/' + req.params.id);
+  // const attachmentDirectoryPath = path.join(__dirname, '../data/attachments/' + req.params.document_id);
   // fs.rmdirSync(attachmentsDirectoryPath);
 
   // redirect the user back to the attachments page
@@ -408,10 +438,10 @@ exports.document_delete_post = function(req, res) {
 exports.document_update_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: Document update GET');
   res.render('../views/documents/edit', {
-    id: req.params.id,
+    id: req.params.document_id,
     actions: {
-      back: '/documents/' + req.params.id,
-      save: '/documents/' + req.params.id
+      back: '/documents/' + req.params.document_id,
+      save: '/documents/' + req.params.document_id
     }
   });
 };
@@ -421,8 +451,8 @@ exports.document_update_post = function(req, res) {
   // res.send('NOT IMPLEMENTED: Document update POST');
   res.render('../views/documents/edit', {
     actions: {
-      back: '/documents/' + req.params.id,
-      save: '/documents/' + req.params.id
+      back: '/documents/' + req.params.document_id,
+      save: '/documents/' + req.params.document_id
     }
   });
 };
@@ -432,8 +462,8 @@ exports.document_political_update_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: Document update GET');
   res.render('../views/documents/political', {
     actions: {
-      back: '/documents/' + req.params.id,
-      save: '/documents/' + req.params.id
+      back: '/documents/' + req.params.document_id,
+      save: '/documents/' + req.params.document_id
     }
   });
 };
@@ -473,8 +503,8 @@ exports.document_new_edition_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: New edition GET');
   res.render('../views/documents/new-edition', {
     actions: {
-      back: '/documents/' + req.params.id,
-      save: '/documents/' + req.params.id + '/new'
+      back: '/documents/' + req.params.document_id,
+      save: '/documents/' + req.params.document_id + '/new'
     }
   });
 };
@@ -482,7 +512,7 @@ exports.document_new_edition_get = function(req, res) {
 exports.document_new_edition_post = function(req, res) {
   // res.send('NOT IMPLEMENTED: New edition POST');
   req.session.data.document.document_status = 'draft';
-  res.redirect('/documents/' + req.params.id);
+  res.redirect('/documents/' + req.params.document_id);
 };
 
 exports.document_review_get = function(req, res) {
@@ -492,7 +522,7 @@ exports.document_review_get = function(req, res) {
 exports.document_review_post = function(req, res) {
   // res.send('NOT IMPLEMENTED: Review document POST');
   req.session.data.document.document_status = 'submitted_for_review';
-  res.redirect('/documents/' + req.params.id);
+  res.redirect('/documents/' + req.params.document_id);
 };
 
 exports.document_approve_get = function(req, res) {
@@ -507,8 +537,8 @@ exports.document_schedule_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: Schedule document GET');
   res.render('../views/documents/schedule', {
     actions: {
-      back: '/documents/' + req.params.id,
-      save: '/documents/' + req.params.id
+      back: '/documents/' + req.params.document_id,
+      save: '/documents/' + req.params.document_id
     }
   });
 };
@@ -521,7 +551,7 @@ exports.document_preview_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: Preview document GET');
   res.render('../views/documents/preview', {
     actions: {
-      back: '/documents/' + req.params.id
+      back: '/documents/' + req.params.document_id
     }
   });
 };
@@ -550,8 +580,8 @@ exports.document_withdraw_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: Withdraw document GET');
   res.render('../views/documents/withdraw', {
     actions: {
-      back: '/documents/' + req.params.id,
-      save: '/documents/' + req.params.id
+      back: '/documents/' + req.params.document_id,
+      save: '/documents/' + req.params.document_id
     }
   });
 };
@@ -564,8 +594,8 @@ exports.document_undo_withdraw_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: Undo withdraw document GET');
   res.render('../views/documents/undo-withdraw', {
     actions: {
-      back: '/documents/' + req.params.id,
-      save: '/documents/' + req.params.id
+      back: '/documents/' + req.params.document_id,
+      save: '/documents/' + req.params.document_id
     }
   });
 };
@@ -578,8 +608,8 @@ exports.document_remove_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: Remove document GET');
   res.render('../views/documents/remove', {
     actions: {
-      back: '/documents/' + req.params.id,
-      save: '/documents/' + req.params.id
+      back: '/documents/' + req.params.document_id,
+      save: '/documents/' + req.params.document_id
     }
   });
 };
