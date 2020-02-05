@@ -150,7 +150,8 @@ exports.document_summary_get = function(req, res) {
         delete_draft: '/documents/' + req.params.id + '/delete',
         withdraw: '/documents/' + req.params.id + '/withdraw',
         undo_withdraw: '/documents/' + req.params.id + '/undo-withdraw',
-        remove: '/documents/' + req.params.id + '/remove'
+        remove: '/documents/' + req.params.id + '/remove',
+        change_note: '/documents/' + req.params.id + '/change-note'
       },
       id: req.params.id
     });
@@ -586,4 +587,22 @@ exports.document_remove_get = function(req, res) {
 
 exports.document_remove_post = function(req, res) {
   res.send('NOT IMPLEMENTED: Remove document POST');
+};
+
+exports.document_change_note_get = function(req, res) {
+  // res.send('NOT IMPLEMENTED: Document change note GET');
+  res.render('../views/documents/change-note', {
+    actions: {
+      back: '/documents/' + req.params.document_id,
+      save: '/documents/' + req.params.document_id + '/change-note'
+    }
+  });
+};
+
+exports.document_change_note_post = function(req, res) {
+  // res.send('NOT IMPLEMENTED: Document change note post');
+  if (req.session.data.document.revision.change_note_option === 'no') {
+    req.session.data.document.revision.change_note = '';
+  }
+  res.redirect('/documents/' + req.params.document_id);
 };
