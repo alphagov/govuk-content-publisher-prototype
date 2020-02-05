@@ -4,12 +4,14 @@
    ========================================================================== */
 
 .app-o-template--modal {
+  background-color: govuk-colour("white");
   height: 100%;
 }
 
 .app-o-template__body--modal {
   background-color: govuk-colour("white");
   height: 100%;
+  overflow: auto;
 }
 
 .app-c-textarea {
