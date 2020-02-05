@@ -1,0 +1,105 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/components/contextual-guidance.js"></script>
+<script type="text/javascript">
+  var $element1 = $('#contextual-guidance-change-note');
+  var contextualGuidance = new GOVUK.Modules.ContextualGuidance();
+  contextualGuidance.start($element1);
+</script>
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: actions.back
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">
+            Add a change note for ‘{{ data.document.title }}’
+          </h1>
+
+        </div>
+      </div>
+
+      <form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
+
+        {%- call appContextualGuidance({
+          id: 'contextual-guidance-change-note',
+          for: 'revision-change-note',
+          heading: {
+            text: 'Writing change notes'
+          },
+          description: {
+            html: '<p class="govuk-body">Describe the change for users. Include or refer to any new or updated information. This change note will be published on the page and emailed to subscribers. The ‘last updated’ date will change.</p><p class="govuk-body"><a class="govuk-link" href="#">Full guidance on change notes</a></p>'
+          },
+          classes: 'govuk-!-margin-top-4'
+        }) %}
+
+
+          {{ govukRadios({
+            idPrefix: "revision-change-note-option",
+            name: "document[revision][change_note_option]",
+            fieldset: {
+              legend: {
+                text: "Is the content change significant to users?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            items: [
+              {
+                value: "yes",
+                text: "Yes – information has been added or updated",
+                checked: true if data.document.revision.change_note_option == 'yes',
+                conditional: {
+                  html: govukTextarea({
+                    id: "revision-change-note",
+                    name: "document[revision][change_note]",
+                    label: {
+                      text: "Public change note",
+                      classes: "govuk-!-font-weight-bold"
+                    },
+                    value: data.document.revision.change_note
+                  })
+                }
+              },
+              {
+                value: "no",
+                text: "No – it's a minor style update",
+                checked: true if data.document.revision.change_note_option == 'no'
+              }
+            ]
+          }) }}
+
+        {% endcall -%}
+
+        {{ govukButton({
+          text: "Save"
+        }) }}
+
+      </form>
+
+      <p class="govuk-body">
+        <a class="govuk-link govuk-link--no-visited-state" href="{{ actions.back }}">Cancel</a>
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}

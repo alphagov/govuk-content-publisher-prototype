@@ -1,0 +1,38 @@
+{% call appSummaryList({
+  classes: 'govuk-summary-list--no-border',
+  heading: {
+    text: "Change note"
+  },
+  actions: [
+    {
+      href: actions.change_note,
+      text: "Change",
+      visuallyHiddenText: "notes",
+      classes: "app-c-summary-list__edit-section-link"
+    }
+  ] if data.document.document_status != 'published',
+  rows: [
+    {
+      key: {
+        text: "Type"
+      },
+      value: {
+        text: data.document.revision.change_note_option | capitalize + (', there’s a change to the published information.' if data.document.revision.change_note_option == 'yes' else (', there’s no change to the published information. For example, spelling corrections.' if data.document.revision.change_note_option == 'no'))
+      }
+    },
+    {
+      key: {
+        text: "Summary"
+      },
+      value: {
+        text: data.document.revision.change_note
+      }
+    }
+  ] if data.document.revision.change_note_option | length
+}) %}
+
+  {%- if not data.document.revision.change_note_option | length %}
+    <p class="govuk-body">No change notes for this document.</p>
+  {% endif -%}
+
+{% endcall -%}

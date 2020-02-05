@@ -1,0 +1,17 @@
+{% call appSummaryList({
+  heading: {
+    text: "Topics"
+  },
+  actions: [
+    {
+      href: links.topics,
+      text: "Change",
+      visuallyHiddenText: "topics",
+      classes: "app-c-summary-list__edit-section-link"
+    }
+  ] if data.document.document_status != 'published'
+}) %}
+
+  <p class="govuk-body">No topics specified for this document.</p>
+
+{% endcall -%}
