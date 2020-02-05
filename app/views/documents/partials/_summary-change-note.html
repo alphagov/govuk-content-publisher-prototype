@@ -10,29 +10,17 @@
       visuallyHiddenText: "notes",
       classes: "app-c-summary-list__edit-section-link"
     }
-  ] if data.document.document_status != 'published',
-  rows: [
-    {
-      key: {
-        text: "Type"
-      },
-      value: {
-        text: data.document.revision.change_note_option | capitalize + (', there’s a change to the published information.' if data.document.revision.change_note_option == 'yes' else (', there’s no change to the published information. For example, spelling corrections.' if data.document.revision.change_note_option == 'no'))
-      }
-    },
-    {
-      key: {
-        text: "Summary"
-      },
-      value: {
-        text: data.document.revision.change_note
-      }
-    } if data.document.revision.change_note | length
-  ] if data.document.revision.change_note_option | length
+  ] if data.document.document_status != 'published'
 }) %}
 
   {%- if not data.document.revision.change_note_option | length %}
-    <p class="govuk-body">No change notes for this document.</p>
+    <p class="govuk-body">No change notes for this edition.</p>
+  {% else %}
+    {%- if data.document.revision.change_note_option == 'yes' %}
+      <p class="govuk-body">{{ data.document.revision.change_note }}</p>
+    {% else %}
+      <p class="govuk-body">No change to the published information.</p>
+    {% endif -%}
   {% endif -%}
 
 {% endcall -%}
