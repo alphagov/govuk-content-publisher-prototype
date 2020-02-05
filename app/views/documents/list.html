@@ -34,30 +34,17 @@
 
           <form action="/documents" method="get">
 
-            {{ govukInput({
-              id: "title_or_url",
-              name: "filters[title_or_url]",
-              label: {
-                text: "Title or URL",
-                classes: "govuk-label--s"
-              },
-              attributes: {
-                autocomplete: off,
-                autocapitalize: off,
-                spellcheck: false
-              },
-              value: data.filters.title_or_url if data.filters.title_or_url
-            }) }}
+            {% include "./partials/_filter-title-or-url.html" %}
 
-            {% include "./partials/_organisation-select.html" %}
+            {% include "./partials/_filter-organisation-select.html" %}
 
-            {% include "./partials/_document-type.html" %}
+            {% include "./partials/_filter-document-type.html" %}
 
-            {% include "./partials/_publication-status.html" %}
+            {% include "./partials/_filter-publication-status.html" %}
 
-            {% include "./partials/_political-status.html" %}
+            {% include "./partials/_filter-political-status.html" %}
 
-            {% include "./partials/_history-mode-status.html" %}
+            {% include "./partials/_filter-history-mode-status.html" %}
 
             {{ govukButton({
               text: "Filter"
