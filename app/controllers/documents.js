@@ -250,7 +250,7 @@ exports.document_create_type_get = function(req, res) {
 exports.document_create_sub_type_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: Document create GET');
 
-  const types = ['statement_to_parliament','articles_correspondence','guidance'];
+  const types = ['statement_to_parliament','articles_correspondence','guidance','statistics'];
 
   if (types.indexOf(req.session.data.document_type) === -1) {
     res.redirect('/documents/create');

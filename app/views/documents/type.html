@@ -139,6 +139,17 @@
               "checked": checked('document_type', 'notice')
             } if data.document_super_type == "specialist_notices",
             {
+              "value": "specialist_notice",
+              "text": "Specialist notice",
+              "label": {
+                "classes": "govuk-label--s"
+              },
+              "hint": {
+                "text": "Notices published in Specialist Publisher."
+              },
+              "checked": checked('document_type', 'specialist_notice')
+            } if data.document_super_type == "specialist_notices",
+            {
               "value": "guidance",
               "text": "Guidance",
               "label": {
@@ -183,26 +194,15 @@
               "checked": checked('document_type', 'map')
             } if data.document_super_type == "guidance_regulation",
             {
-              "value": "official_statistics",
-              "text": "Official statistics",
+              "value": "statistics",
+              "text": "Statistics",
               "label": {
                 "classes": "govuk-label--s"
               },
               "hint": {
-                "text": "Statistics governed by the UK Statistics Authority and produced by members of the Government Statistical Service."
+                "text": "HINT TEXT REQUIRED"
               },
-              "checked": checked('document_type', 'official_statistics')
-            } if data.document_super_type == "transparency_statistics",
-            {
-              "value": "national_statistics",
-              "text": "National statistics",
-              "label": {
-                "classes": "govuk-label--s"
-              },
-              "hint": {
-                "text": "Official Statistics that have been produced in accordance with the Code of Practice for Official Statistics, which is indicated using the National Statistics quality mark."
-              },
-              "checked": checked('document_type', 'national_statistics')
+              "checked": checked('document_type', 'statistics')
             } if data.document_super_type == "transparency_statistics",
             {
               "value": "independent_report",
@@ -258,28 +258,6 @@
                 "text": "Research reports, surveys, analyses and evaluations."
               },
               "checked": checked('document_type', 'research_analysis')
-            } if data.document_super_type == "transparency_statistics",
-            {
-              "value": "statistics_announcement",
-              "text": "Statistics announcement",
-              "label": {
-                "classes": "govuk-label--s"
-              },
-              "hint": {
-                "text": "An announcement of national and official statistics releases to comply with the Code of Practice for Official Statistics."
-              },
-              "checked": checked('document_type', 'statistics_announcement')
-            } if data.document_super_type == "transparency_statistics",
-            {
-              "value": "statistical_dataset",
-              "text": "Statistical dataset",
-              "label": {
-                "classes": "govuk-label--s"
-              },
-              "hint": {
-                "text": "Data you publish monthly or more often without analysis (ie raw data)."
-              },
-              "checked": checked('document_type', 'statistical_dataset')
             } if data.document_super_type == "transparency_statistics",
             {
               "value": "international_treaty",
