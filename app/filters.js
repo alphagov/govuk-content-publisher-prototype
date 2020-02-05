@@ -121,12 +121,13 @@ module.exports = function (env) {
       case 'press_release': return 'Press release';
       case 'regulation': return 'Regulation';
       case 'research_analysis': return 'Research and analysis';
+      case 'specialist_notices': return 'Specialist notices';
       case 'speech': return 'Speech';
       case 'statement_to_parliament': return 'Statement to Parliament';
       case 'statistics_announcement': return 'Statistics announcement';
       case 'statistical_dataset': return 'Statistical dataset';
       case 'statutory_guidance': return 'Statutory guidance';
-      case 'transparency_statistics': return 'Transparency and statistics';
+      case 'transparency_statistics': return 'Transparency, statistics and reports';
       case 'transparency': return 'Transparency';
       case 'written_statement': return 'Written statement to parliament';
       default: return type;
