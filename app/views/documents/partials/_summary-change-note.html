@@ -13,11 +13,11 @@
   ] if data.document.document_status != 'published'
 }) %}
 
-  {%- if not data.document.revision.change_note_option | length %}
+  {%- if not data.document.edition.change_note_option | length %}
     <p class="govuk-body">No change notes for this edition.</p>
   {% else %}
-    {%- if data.document.revision.change_note_option == 'yes' %}
-      <p class="govuk-body">{{ data.document.revision.change_note }}</p>
+    {%- if data.document.edition.change_note_option == 'yes' %}
+      <p class="govuk-body">{{ data.document.edition.change_note }}</p>
     {% else %}
       <p class="govuk-body">No change to the published information.</p>
     {% endif -%}

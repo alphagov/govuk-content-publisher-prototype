@@ -41,7 +41,7 @@
 
         {%- call appContextualGuidance({
           id: 'contextual-guidance-change-note',
-          for: 'revision-change-note',
+          for: 'edition-change-note',
           heading: {
             text: 'Writing change notes'
           },
@@ -53,8 +53,8 @@
 
 
           {{ govukRadios({
-            idPrefix: "revision-change-note-option",
-            name: "document[revision][change_note_option]",
+            idPrefix: "edition-change-note-option",
+            name: "document[edition][change_note_option]",
             fieldset: {
               legend: {
                 text: "Is the content change significant to users?",
@@ -66,23 +66,23 @@
               {
                 value: "yes",
                 text: "Yes – information has been added or updated",
-                checked: true if data.document.revision.change_note_option == 'yes',
+                checked: true if data.document.edition.change_note_option == 'yes',
                 conditional: {
                   html: govukTextarea({
-                    id: "revision-change-note",
-                    name: "document[revision][change_note]",
+                    id: "edition-change-note",
+                    name: "document[edition][change_note]",
                     label: {
                       text: "Public change note",
                       classes: "govuk-!-font-weight-bold"
                     },
-                    value: data.document.revision.change_note
+                    value: data.document.edition.change_note
                   })
                 }
               },
               {
                 value: "no",
                 text: "No – it's a minor style update",
-                checked: true if data.document.revision.change_note_option == 'no'
+                checked: true if data.document.edition.change_note_option == 'no'
               }
             ]
           }) }}
