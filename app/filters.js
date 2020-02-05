@@ -106,7 +106,8 @@ module.exports = function (env) {
       case 'impact_assessment': return 'Impact assessment';
       case 'independent_report': return 'Independent report';
       case 'international_treaty': return 'International treaty';
-      case 'manuals': return 'Manuals';
+      case 'mainstream_guide': return 'Mainstream guide';
+      case 'manual': return 'Manual';
       case 'map': return 'Map';
       case 'national_statistics': return 'National statistics';
       case 'news_communications': return 'News and communications';
@@ -121,9 +122,11 @@ module.exports = function (env) {
       case 'press_release': return 'Press release';
       case 'regulation': return 'Regulation';
       case 'research_analysis': return 'Research and analysis';
+      case 'specialist_notice': return 'Specialist notice';
       case 'specialist_notices': return 'Specialist notices';
       case 'speech': return 'Speech';
       case 'statement_to_parliament': return 'Statement to Parliament';
+      case 'statistics': return 'Statistics';
       case 'statistics_announcement': return 'Statistics announcement';
       case 'statistical_dataset': return 'Statistical dataset';
       case 'statutory_guidance': return 'Statutory guidance';
