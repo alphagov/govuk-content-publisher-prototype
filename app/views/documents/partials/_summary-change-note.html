@@ -27,7 +27,7 @@
       value: {
         text: data.document.revision.change_note
       }
-    }
+    } if data.document.revision.change_note | length
   ] if data.document.revision.change_note_option | length
 }) %}
 
