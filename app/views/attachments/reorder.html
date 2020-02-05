@@ -29,21 +29,21 @@
             Reorder attachments for ‘{{ data.document.title }}’
           </h1>
 
-        <!-- </div>
-      </div>
+          <p class="govuk-body govuk-!-margin-bottom-8">You can drag and drop to change the order of attachments or use the links to move them up or down the list, then save the changes.</p>
 
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds"> -->
+          </div>
+        </div>
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
 
           {%- if attachments | length %}
-
-            <p class="govuk-body govuk-!-margin-bottom-8">Attachments will be listed on the document in this order.</p>
 
             {%- if attachments | length > 1 %}<div id="attachmentsList">{% endif -%}
 
             <form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
 
-              <dl class="govuk-summary-list govuk-summary-list--no-border app-c-summary-list--number">
+              <dl class="govuk-summary-list app-c-summary-list--number"><!--  govuk-summary-list--no-border -->
                 {%- for attachment in attachments %}
                   <div class="govuk-summary-list__row">
                     <dt class="govuk-summary-list__key">
@@ -63,16 +63,16 @@
                       {% if attachment.type == 'html' %}<p class="govuk-body-s">{{ attachment.type | attachmentType }}</p>{% endif -%}
                     </dd>
                     <div class="app-o-order-controls js-order-controls">
-                      {% if not loop.first %}
-                      <dd class="govuk-summary-list__actions">
+                      <dd class="govuk-summary-list__actions" style="width:120px">
+                        {%- if not loop.first %}
                         <button class="govuk-button app-c-button--secondary-quiet js-up">Up</button>
+                        {% endif -%}
                       </dd>
-                      {% endif %}
-                      {% if not loop.last %}
-                      <dd class="govuk-summary-list__actions">
-                        <button class="govuk-button app-c-button--secondary-quiet js-down">Down</button>
+                      <dd class="govuk-summary-list__actions" style="width:120px">
+                        {%- if not loop.last %}
+                          <button class="govuk-button app-c-button--secondary-quiet js-down">Down</button>
+                        {% endif -%}
                       </dd>
-                      {% endif %}
                     </div>
                   </div>
                 {% endfor -%}
