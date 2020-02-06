@@ -133,6 +133,7 @@ exports.document_summary_get = function(req, res) {
         history: '/documents/' + req.params.document_id + '/history',
         content: '/documents/' + req.params.document_id + '/content',
         attachments: '/documents/' + req.params.document_id + '/attachments',
+        reorder_attachments: '/documents/' + req.params.document_id + '/attachments/reorder',
         images: '/documents/' + req.params.document_id + '/images',
         topics: '/documents/' + req.params.document_id + '/topics',
         tags: '/documents/' + req.params.document_id + '/tags',
