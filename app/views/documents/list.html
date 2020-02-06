@@ -23,7 +23,7 @@
         <div class="govuk-grid-column-one-third app-grid-column--align-right">
           {{ govukButton({
             text: "Create new document",
-            href: "/documents/super-type"
+            href: actions.new
           }) }}
         </div>
 
@@ -53,7 +53,7 @@
           </form>
 
           <p class="govuk-body">
-            <a class="govuk-link govuk-link--no-visited-state" href="/documents?filters=&sort=">Clear all filters</a>
+            <a class="govuk-link govuk-link--no-visited-state" href="{{ actions.clear }}">Clear all filters</a>
           </p>
 
           <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--l">

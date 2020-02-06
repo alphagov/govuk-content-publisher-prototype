@@ -106,7 +106,8 @@ module.exports = function (env) {
       case 'impact_assessment': return 'Impact assessment';
       case 'independent_report': return 'Independent report';
       case 'international_treaty': return 'International treaty';
-      case 'manuals': return 'Manuals';
+      case 'mainstream_guide': return 'Mainstream guide';
+      case 'manual': return 'Manual';
       case 'map': return 'Map';
       case 'national_statistics': return 'National statistics';
       case 'news_communications': return 'News and communications';
@@ -121,12 +122,15 @@ module.exports = function (env) {
       case 'press_release': return 'Press release';
       case 'regulation': return 'Regulation';
       case 'research_analysis': return 'Research and analysis';
+      case 'specialist_notice': return 'Specialist notice';
+      case 'specialist_notices': return 'Specialist notices';
       case 'speech': return 'Speech';
       case 'statement_to_parliament': return 'Statement to Parliament';
+      case 'statistics': return 'Statistics';
       case 'statistics_announcement': return 'Statistics announcement';
       case 'statistical_dataset': return 'Statistical dataset';
       case 'statutory_guidance': return 'Statutory guidance';
-      case 'transparency_statistics': return 'Transparency and statistics';
+      case 'transparency_statistics': return 'Transparency, statistics and reports';
       case 'transparency': return 'Transparency';
       case 'written_statement': return 'Written statement to parliament';
       default: return type;
@@ -285,6 +289,22 @@ module.exports = function (env) {
             .replace(/^-+|-+$/g, ''); // remove leading, trailing -
 
   }
+
+  /* ------------------------------------------------------------------
+    utility function to test validity of URL
+    example: {{ "http://www.google.com" | isValidUrl }}
+    outputs: 
+  ------------------------------------------------------------------ */
+  filters.isValidUrl = function(str) {
+    var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+      '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+      '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+      '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+    return !!pattern.test(str);
+  }
+
 
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app

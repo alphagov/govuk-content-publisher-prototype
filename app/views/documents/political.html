@@ -9,7 +9,7 @@
 {% include "includes/phase-banner.html" %}
 {{ govukBackLink({
   text: "Back",
-  href: links.back
+  href: actions.back
 }) }}
 {% endblock %}
 
@@ -20,7 +20,7 @@
 
       {%- if data.user.role in ['admin','manager'] %}
 
-        <form action="{{ links.save }}" method="post">
+        <form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
 
           {{ govukRadios({
             idPrefix: "political",

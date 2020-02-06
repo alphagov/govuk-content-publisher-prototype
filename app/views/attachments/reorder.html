@@ -1,0 +1,136 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block pageScripts %}
+
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: actions.back
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">
+            Reorder attachments for ‘{{ data.document.title }}’
+          </h1>
+
+          <p class="govuk-body govuk-!-margin-bottom-8">You can drag and drop to change the order of attachments or use the links to move them up or down the list, then save the changes.</p>
+
+          </div>
+        </div>
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+
+          {%- if attachments | length %}
+
+            {%- if attachments | length > 1 %}<div id="attachmentsList">{% endif -%}
+
+            <form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
+
+              <dl class="govuk-summary-list app-c-summary-list--number"><!--  govuk-summary-list--no-border -->
+                {%- for attachment in attachments %}
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      {{ loop.index }}
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      {{ attachment.title if attachment.title | length else "Untitled attachment" }}
+                      {% if attachment.type == 'external' %}<p class="govuk-body-s">{{ attachment.url }}</p>{% endif -%}
+                      {% if attachment.type == 'file' %}
+                        <p class="govuk-body-s">
+                          {%- if attachment.mimetype %}
+                            {{ attachment.mimetype | parseContentType if attachment.mimetype == 'application/pdf' else attachment.mimetype | parseContentType('title') }}
+                            {% if attachment.mimetype == 'application/pdf' %}, 2.56MB, 48 pages{% endif -%}
+                          {% endif -%}
+                        </p>
+                      {% endif -%}
+                      {% if attachment.type == 'html' %}<p class="govuk-body-s">{{ attachment.type | attachmentType }}</p>{% endif -%}
+                    </dd>
+                    <div class="app-o-order-controls js-order-controls">
+                      <dd class="govuk-summary-list__actions" style="width:120px">
+                        {%- if not loop.first %}
+                        <button class="govuk-button app-c-button--secondary-quiet js-up">Up</button>
+                        {% endif -%}
+                      </dd>
+                      <dd class="govuk-summary-list__actions" style="width:120px">
+                        {%- if not loop.last %}
+                          <button class="govuk-button app-c-button--secondary-quiet js-down">Down</button>
+                        {% endif -%}
+                      </dd>
+                    </div>
+                  </div>
+                {% endfor -%}
+              </dl>
+
+
+              <!-- {#%- for attachment in attachments %}
+
+                {%- call appAttachment({
+                  heading: {
+                    text: attachment.title if attachment.title | length else "Untitled attachment"
+                  },
+                  href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/preview',
+                  target: "_blank",
+                  metadata: {
+                    thumbnail: 'document'
+                  } if attachment.type == 'file'
+                }) %}
+
+                  {%- if attachments | length > 1 %}
+                    <div class="app-o-order-controls js-order-controls">
+                      {%- if not loop.first %}<button class="govuk-button app-c-button--secondary-quiet js-up">Up</button>{% endif %}
+                      {% if not loop.last %}<button class="govuk-button app-c-button--secondary-quiet js-down">Down</button>{% endif -%}
+                    </div>
+                  {% endif -%}
+
+                {% endcall -%}
+
+                {%- if loop.last %}
+                  <hr class="govuk-section-break govuk-section-break--l">
+                {% else %}
+                  <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+                {% endif -%}
+
+              {% endfor -%#} -->
+
+              {{ govukButton({
+                text: "Save attachment order"
+              }) }}
+
+            </form>
+
+            <p class="govuk-body">
+              <a class="govuk-link" href="{{ actions.back }}">Cancel</a>
+            </p>
+
+            {%- if attachments | length > 1 %}</div>{% endif -%}
+
+          {% else %}
+
+            <p class="govuk-body">No attachments added to this document.</p>
+
+          {% endif -%}
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}

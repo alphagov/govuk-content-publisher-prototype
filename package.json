@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": "^10.0.0"
+    "node": "12.15.0"
   },
   "scripts": {
     "start": "node start.js",
@@ -62,7 +62,7 @@
   "devDependencies": {
     "glob": "^7.1.4",
     "jest": "^24.0.1",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "standard": "^12.0.1",
     "supertest": "^3.0.0"
   }

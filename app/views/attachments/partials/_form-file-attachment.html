@@ -5,7 +5,7 @@
   text: "Attachments must be in English."
 }) }}
 
-<form action="{{ links.save }}" accept-charset="UTF-8" method="post">
+<form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
   <!-- enctype="multipart/form-data" -->
   <input type="hidden" name="document[attachment][type]" value="file">
 
@@ -362,5 +362,5 @@
 </form>
 
 <p class="govuk-body">
-  <a class="govuk-link" href="{{ links.back }}">Cancel</a>
+  <a class="govuk-link" href="{{ actions.back }}">Cancel</a>
 </p>

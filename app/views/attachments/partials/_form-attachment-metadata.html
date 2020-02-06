@@ -1,4 +1,4 @@
-<form action="{{ links.save }}" accept-charset="UTF-8" method="post">
+<form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
 
   {{ govukInput({
     id: "attachment-isbn",
@@ -243,7 +243,7 @@
       }
     },
     hint: {
-      html: 'Check if your document contains ‘presented to Parliament’ or ‘presented to the House of Commons’. Published official documents appear in the <a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/official-documents" target="_blank">official documents finder on GOV.UK</a>.'
+      html: 'Check if your document contains ‘presented to Parliament’ or ‘presented to the House of Commons’. Official documents appear in a <a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/official-documents" target="_blank">finder on GOV.UK</a>.'
     },
     items: [
       {
@@ -282,5 +282,5 @@
 </form>
 
 <p class="govuk-body">
-  <a class="govuk-link" href="{{ links.back }}">Cancel</a>
+  <a class="govuk-link" href="{{ actions.back }}">Cancel</a>
 </p>

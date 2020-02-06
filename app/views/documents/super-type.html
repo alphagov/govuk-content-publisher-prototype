@@ -9,7 +9,7 @@
 {% include "includes/phase-banner.html" %}
 {{ govukBackLink({
   text: "Back",
-  href: links.previous
+  href: actions.previous
 }) }}
 {% endblock %}
 
@@ -26,7 +26,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="" action="{{ links.next }}" method="get">
+      <form action="{{ actions.next }}" accept-charset="UTF-8" method="get">
 
         {{ govukRadios({
           idPrefix: "document_super_type",
@@ -63,7 +63,7 @@
             },
             {
               "value": "transparency_statistics",
-              "text": "Transparency and statistics",
+              "text": "Transparency, statistics and reports",
               "label": {
                 "classes": "govuk-label--s"
               },

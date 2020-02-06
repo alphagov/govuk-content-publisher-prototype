@@ -1,6 +1,6 @@
 <p class="govuk-body">Include a link if your document is hosted on an external website and users need to find it on GOV.UK.</p>
 
-<form action="{{ links.save }}" accept-charset="UTF-8" method="post">
+<form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
   <input type="hidden" name="document[attachment][type]" value="external">
 
   {{ govukInput({
@@ -49,5 +49,5 @@
 </form>
 
 <p class="govuk-body">
-  <a class="govuk-link" href="{{ links.back }}">Cancel</a>
+  <a class="govuk-link" href="{{ actions.back }}">Cancel</a>
 </p>
