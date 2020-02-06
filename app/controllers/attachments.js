@@ -217,7 +217,7 @@ exports.attachment_update_get = function(req, res) {
   };
 
   if (req.path.indexOf('/modal/') !== -1) {
-    res.render('../views/attachments/modal/edit', {
+    res.render('../views/attachments/modals/edit', {
       id: req.params.attachment_id,
       attachment: Attachments.findById(req.params.document_id, req.params.attachment_id),
       file: fileMetadata,

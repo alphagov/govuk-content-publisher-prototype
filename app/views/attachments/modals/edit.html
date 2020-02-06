@@ -11,11 +11,11 @@
     </h1>
 
     {%- if attachment.type == 'external' %}
-      {% include "./partials/_form-external-attachment.html" %}
+      {% include "../partials/_form-external-attachment.html" %}
     {% endif -%}
 
     {%- if attachment.type == 'file' %}
-      {% include "./partials/_form-file-attachment.html" %}
+      {% include "../partials/_form-file-attachment.html" %}
     {% endif -%}
 
   </div>
