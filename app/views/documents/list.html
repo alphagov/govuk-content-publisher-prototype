@@ -105,7 +105,7 @@
                     }) -}}
                   </td>
                   <td class="govuk-table__cell">
-                    {{ document.document_status | documentStatus }}
+                    {{ document.document_status | documentStatus if document.document_status | length else "Unknown" }}
                   </td>
                   <td class="govuk-table__cell">
                     {{ document.updated_at | govDate if document.updated_at }}
