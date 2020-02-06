@@ -1,6 +1,6 @@
 {%- set organisationsHtml %}
 <ul class="govuk-list">
-{% for organisation in data.document.links.organisations %}
+{% for organisation in document.links.organisations %}
   <li>{{ organisation.title }}</li>
 {% endfor %}
 </ul>
@@ -8,7 +8,7 @@
 
 {%- set primaryOrganisationHtml %}
 <ul class="govuk-list">
-{% for organisation in data.document.links.primary_publishing_organisation %}
+{% for organisation in document.links.primary_publishing_organisation %}
   <li>{{ organisation.title }}</li>
 {% endfor %}
 </ul>
@@ -30,7 +30,7 @@
             visuallyHiddenText: "tags"
           }
         ]
-      } if data.document.document_status != 'published'
+      } if document.document_status != 'published'
     },
     {
       key: {

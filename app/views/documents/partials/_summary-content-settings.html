@@ -18,7 +18,7 @@
             visuallyHiddenText: "access details"
           }
         ]
-      } if data.document.document_status != 'published'
+      } if document.document_status != 'published'
     },
     {
       key: {
@@ -35,14 +35,14 @@
             visuallyHiddenText: "backdate"
           }
         ]
-      } if data.document.document_status != 'published'
+      } if document.document_status != 'published'
     },
     {
       key: {
         text: "Gets history mode"
       },
       value: {
-        text: "Yes" if data.document.political else "No"
+        text: "Yes" if document.political else "No"
       },
       actions: {
         items: [
@@ -52,7 +52,7 @@
             visuallyHiddenText: "political content status"
           }
         ]
-      } if data.document.document_status != 'published'
+      } if document.document_status != 'published'
     }
   ]
 }) }}

@@ -9,15 +9,15 @@
       visuallyHiddenText: "Lead image",
       classes: "app-c-summary-list__edit-section-link"
     }
-  ] if data.document.document_status != 'published'
+  ] if document.document_status != 'published'
 }) %}
 
-  {%- if data.document.details.image.url.length %}
+  {%- if document.details.image.url.length %}
 
     <div class="app-c-image-meta">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-one-third">
-          <img class="app-c-image-meta__image" src="/public/images/dummy-image.png" width="200" alt="{{ data.document.details.image.alt_text }}">
+          <img class="app-c-image-meta__image" src="/public/images/dummy-image.png" width="200" alt="{{ document.details.image.alt_text }}">
         </div>
         <div class="govuk-grid-column-two-thirds">
           {{ appMetadata({
@@ -27,7 +27,7 @@
                   text: "Alt text:"
                 },
                 description: {
-                  text: data.document.details.image.alt_text
+                  text: document.details.image.alt_text
                 }
               },
               {
@@ -35,7 +35,7 @@
                   text: "Caption:"
                 },
                 description: {
-                  text: data.document.details.image.caption
+                  text: document.details.image.caption
                 }
               },
               {
@@ -43,7 +43,7 @@
                   text: "Credit:"
                 },
                 description: {
-                  text: data.document.details.image.credit
+                  text: document.details.image.credit
                 }
               }
             ]

@@ -14,14 +14,14 @@
             visuallyHiddenText: "content"
           }
         ]
-      } if data.document.document_status != 'published'
+      } if document.document_status != 'published'
     },
     {
       key: {
         text: "Title"
       },
       value: {
-        text: data.document.title
+        text: document.title
       }
     },
     {
@@ -29,7 +29,7 @@
         text: "Summary"
       },
       value: {
-        text: data.document.description
+        text: document.description
       }
     },
     {
@@ -37,7 +37,7 @@
         text: "Body"
       },
       value: {
-        html: data.document.details.body | toMarkdown | truncate(200)
+        html: document.details.body | toMarkdown | truncate(200)
       }
     }
   ]

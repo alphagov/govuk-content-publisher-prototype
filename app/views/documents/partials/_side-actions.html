@@ -38,7 +38,11 @@
 
     {% else %}
 
-      <a class="app-c-button govuk-button" role="button" href="{{ actions.new_edition }}">Create new edition</a>
+      <form class="app-side__form" action="{{ actions.new_edition }}" accept-charset="UTF-8" method="post">
+        <button class="app-c-button govuk-button" type="submit">Create new edition</button>
+      </form>
+
+      <!-- <a class="app-c-button govuk-button" role="button" href="{{ actions.new_edition }}">Create new edition</a> -->
 
       <a class="govuk-link govuk-link--no-visited-state" href="{{ actions.withdraw }}">Withdraw</a>
       <a class="govuk-link app-link--destructive app-link--right" href="{{ actions.remove }}">Remove</a>
@@ -51,7 +55,11 @@
       <button class="app-c-button govuk-button" type="submit">Approve</button>
     </form>
 
-    <a class="app-c-button govuk-button app-c-button--secondary" role="button" href="{{ actions.new_edition }}">Create new edition</a>
+    <form class="app-side__form" action="{{ actions.new_edition }}" accept-charset="UTF-8" method="post">
+      <button class="app-c-button govuk-button app-c-button--secondary" type="submit">Create new edition</button>
+    </form>
+
+    <!-- <a class="app-c-button govuk-button app-c-button--secondary" role="button" href="{{ actions.new_edition }}">Create new edition</a> -->
 
     <a class="govuk-link govuk-link--no-visited-state" href="{{ actions.withdraw }}">Withdraw</a>
     <a class="govuk-link app-link--destructive app-link--right" href="{{ actions.remove }}">Remove</a>

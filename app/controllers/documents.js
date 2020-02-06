@@ -126,6 +126,7 @@ exports.document_summary_get = function(req, res) {
   else {
 
     res.render('../views/documents/summary', {
+      document: Documents.findById(req.params.document_id),
       attachments: Attachments.findByDocumentId(req.params.document_id),
       actions: {
         home: '/documents',
@@ -151,7 +152,8 @@ exports.document_summary_get = function(req, res) {
         delete_draft: '/documents/' + req.params.document_id + '/delete',
         withdraw: '/documents/' + req.params.document_id + '/withdraw',
         undo_withdraw: '/documents/' + req.params.document_id + '/undo-withdraw',
-        remove: '/documents/' + req.params.document_id + '/remove'
+        remove: '/documents/' + req.params.document_id + '/remove',
+        change_note: '/documents/' + req.params.document_id + '/change-note'
       },
       id: req.params.document_id
     });
@@ -446,7 +448,7 @@ exports.document_update_get = function(req, res) {
     id: req.params.document_id,
     actions: {
       back: '/documents/' + req.params.document_id,
-      save: '/documents/' + req.params.document_id
+      save: '/documents/' + req.params.document_id + '/update'
     }
   });
 };
@@ -454,12 +456,26 @@ exports.document_update_get = function(req, res) {
 // Handle document update on POST.
 exports.document_update_post = function(req, res) {
   // res.send('NOT IMPLEMENTED: Document update POST');
-  res.render('../views/documents/edit', {
-    actions: {
-      back: '/documents/' + req.params.document_id,
-      save: '/documents/' + req.params.document_id
-    }
-  });
+
+  let documentData = Documents.findById(req.params.document_id);
+
+  documentData.title = req.session.data.document.title;
+  documentData.description = req.session.data.document.description;
+  documentData.details = {};
+  documentData.details.body = req.session.data.document.details.body;
+
+  // documents directory path
+  const documentDirectoryPath = path.join(__dirname, '../data/documents/');
+
+  const documentFilePath = documentDirectoryPath + '/' + documentData.content_id + '.json';
+
+  // create a JSON sting for the submitted data
+  const documentFileData = JSON.stringify(documentData);
+
+  // write the JSON data
+  fs.writeFileSync(documentFilePath, documentFileData);
+
+  res.redirect('/documents/' + req.params.document_id);
 };
 
 // Display document political update form on GET.
@@ -515,12 +531,25 @@ exports.document_new_edition_get = function(req, res) {
 };
 
 exports.document_new_edition_post = function(req, res) {
-  // res.send('NOT IMPLEMENTED: New edition POST');
-  req.session.data.document.document_status = 'draft';
+  let documentData = Documents.findById(req.params.document_id);
 
-  // TODO: read
+  documentData.document_status = 'draft';
+  documentData.edition = {};
+  documentData.edition.change_note_option = '';
+  documentData.edition.change_note = '';
 
-  res.redirect('/documents/' + req.params.document_id);
+  // documents directory path
+  const documentDirectoryPath = path.join(__dirname, '../data/documents/');
+
+  const documentFilePath = documentDirectoryPath + '/' + documentData.content_id + '.json';
+
+  // create a JSON sting for the submitted data
+  const documentFileData = JSON.stringify(documentData);
+
+  // write the JSON data
+  fs.writeFileSync(documentFilePath, documentFileData);
+
+  res.redirect('/documents/' + req.params.document_id + '/content');
 };
 
 exports.document_review_get = function(req, res) {
@@ -627,8 +656,11 @@ exports.document_remove_post = function(req, res) {
 };
 
 exports.document_change_note_get = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Document change note GET');
+
+  const documentData = Documents.findById(req.params.document_id);
+
   res.render('../views/documents/change-note', {
+    document: documentData,
     actions: {
       back: '/documents/' + req.params.document_id,
       save: '/documents/' + req.params.document_id + '/change-note'
@@ -641,8 +673,24 @@ exports.document_change_note_post = function(req, res) {
 
   let documentData = Documents.findById(req.params.document_id);
 
-  if (req.session.data.document.edition.change_note_option === 'no') {
-    req.session.data.document.edition.change_note = '';
+  documentData.edition = {};
+  documentData.edition.change_note_option = req.session.data.document.edition.change_note_option;
+  if (req.session.data.document.edition.change_note_option === 'yes') {
+    documentData.edition.change_note = req.session.data.document.edition.change_note;
+  } else {
+    documentData.edition.change_note = '';
   }
+
+  // documents directory path
+  const documentDirectoryPath = path.join(__dirname, '../data/documents/');
+
+  const documentFilePath = documentDirectoryPath + '/' + documentData.content_id + '.json';
+
+  // create a JSON sting for the submitted data
+  const documentFileData = JSON.stringify(documentData);
+
+  // write the JSON data
+  fs.writeFileSync(documentFilePath, documentFileData);
+
   res.redirect('/documents/' + req.params.document_id);
 };

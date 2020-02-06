@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block pageScripts %}
-{%- if data.document.document_status == 'submitted_for_review' %}
+{%- if document.document_status == 'submitted_for_review' %}
 <script src="/public/javascripts/components/copy-to-clipboard.js"></script>
 <script type="text/javascript">
   var $element = $('#review-url');
@@ -32,8 +32,8 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
           <h1 class="govuk-heading-l">
-            <span class="govuk-caption-l">{{ data.document.document_type | documentType }}</span>
-            {{ data.document.title if data.document.title else "Untitled document" }}
+            <span class="govuk-caption-l">{{ document.document_type | documentType }}</span>
+            {{ document.title if document.title else "Untitled document" }}
           </h1>
         </div>
       </div>
@@ -56,19 +56,19 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
-          {%- if not data.document.revision.change_note_option | length %}
+          {%- if document.edition and (not document.edition.change_note_option | length) %}
             {% include "./partials/_banner-change-note.html" %}
           {% endif -%}
 
-          {% if data.document.political == true and data.document.government.current == false %} <!-- data.document.document_status == 'published' and  -->
+          {% if document.political == true and document.government.current == false %} <!-- document.document_status == 'published' and  -->
             {% include "./partials/_banner-political.html" %}
           {% endif %}
 
-          {% if data.document.withdrawn_notice | length %}
+          {% if document.withdrawn_notice | length %}
             {% include "./partials/_banner-withdrawn.html" %}
           {% endif %}
 
-          {%- if data.document.document_status == 'submitted_for_review'%}
+          {%- if document.document_status == 'submitted_for_review'%}
             {% include "./partials/_banner-review.html" %}
           {% endif -%}
 
@@ -120,7 +120,7 @@
 
           <aside class="app-side__wrapper">
 
-            {% if data.document.document_status == 'scheduled' %}
+            {% if document.document_status == 'scheduled' %}
               {% include "./partials/_side-notice-scheduled.html" %}
             {% endif %}
 

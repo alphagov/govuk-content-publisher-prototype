@@ -77,6 +77,7 @@ router.get('/documents/:document_id/load', checkIsAuthenticated, document_contro
 
 
 router.get('/documents/:document_id/content', checkIsAuthenticated, document_controller.document_update_get);
+
 router.post('/documents/:document_id/content', checkIsAuthenticated, document_controller.document_update_post);
 
 router.get('/documents/:document_id/images', checkIsAuthenticated, document_controller.document_images_update_get);
