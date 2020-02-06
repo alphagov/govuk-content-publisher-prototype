@@ -15,7 +15,7 @@
       visuallyHiddenText: "attachments",
       classes: "app-c-summary-list__edit-section-link"
     } if attachments | length > 1
-  ] if data.document.document_status != 'published'
+  ] if document.document_status != 'published'
 }) %}
 
   {%- if attachments | length %}

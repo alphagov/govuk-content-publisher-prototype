@@ -77,7 +77,6 @@ router.get('/documents/:document_id/load', checkIsAuthenticated, document_contro
 
 
 router.get('/documents/:document_id/content', checkIsAuthenticated, document_controller.document_update_get);
-
 router.post('/documents/:document_id/content', checkIsAuthenticated, document_controller.document_update_post);
 
 router.get('/documents/:document_id/images', checkIsAuthenticated, document_controller.document_images_update_get);
@@ -89,17 +88,19 @@ router.get('/documents/:document_id/tags', checkIsAuthenticated, document_contro
 router.get('/documents/:document_id/political', checkIsAuthenticated, document_controller.document_political_update_get);
 
 router.get('/documents/:document_id/new-edition', checkIsAuthenticated, document_controller.document_new_edition_get);
-
 router.post('/documents/:document_id/new-edition', checkIsAuthenticated, document_controller.document_new_edition_post);
 
 router.get('/documents/:document_id/review', checkIsAuthenticated, document_controller.document_review_get);
-
 router.post('/documents/:document_id/review', checkIsAuthenticated, document_controller.document_review_post);
 
 
 router.get('/documents/:document_id/approve', checkIsAuthenticated, document_controller.document_approve_get);
 
 router.get('/documents/:document_id/schedule', checkIsAuthenticated, document_controller.document_schedule_get);
+router.post('/documents/:document_id/schedule', checkIsAuthenticated, document_controller.document_schedule_post);
+
+router.get('/documents/:document_id/stop-schedule', checkIsAuthenticated, document_controller.document_stop_schedule_get);
+router.post('/documents/:document_id/stop-schedule', checkIsAuthenticated, document_controller.document_stop_schedule_post);
 
 router.get('/documents/:document_id/preview', checkIsAuthenticated, document_controller.document_preview_get);
 
@@ -114,7 +115,6 @@ router.get('/documents/:document_id/undo-withdraw', checkIsAuthenticated, docume
 router.get('/documents/:document_id/remove', checkIsAuthenticated, document_controller.document_remove_get);
 
 router.get('/documents/:document_id/change-note', checkIsAuthenticated, document_controller.document_change_note_get);
-
 router.post('/documents/:document_id/change-note', checkIsAuthenticated, document_controller.document_change_note_post);
 
 // GET request for list of all Document items.
