@@ -142,7 +142,7 @@ exports.document_summary_get = function(req, res) {
           back_date: '/documents/' + req.params.document_id + '/back-date',
           political: '/documents/' + req.params.document_id + '/political'
         },
-        new_edition: '/documents/' + req.params.document_id + '/new',
+        new_edition: '/documents/' + req.params.document_id + '/new-edition',
         review: '/documents/' + req.params.document_id + '/review',
         approve: '/documents/' + req.params.document_id + '/approve',
         schedule: '/documents/' + req.params.document_id + '/schedule',
@@ -509,7 +509,7 @@ exports.document_new_edition_get = function(req, res) {
   res.render('../views/documents/new-edition', {
     actions: {
       back: '/documents/' + req.params.document_id,
-      save: '/documents/' + req.params.document_id + '/new'
+      save: '/documents/' + req.params.document_id + '/new-edition'
     }
   });
 };
@@ -517,6 +517,9 @@ exports.document_new_edition_get = function(req, res) {
 exports.document_new_edition_post = function(req, res) {
   // res.send('NOT IMPLEMENTED: New edition POST');
   req.session.data.document.document_status = 'draft';
+
+  // TODO: read
+
   res.redirect('/documents/' + req.params.document_id);
 };
 
