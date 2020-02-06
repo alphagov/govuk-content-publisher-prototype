@@ -30,6 +30,7 @@ $app-c-images-path: '/public/assets/images/';
 @import "components/markdown-editor";
 @import "components/markdown-guidance";
 @import "components/metadata";
+@import "components/modal-dialogue";
 @import "components/notice";
 @import "components/previous-next-navigation";
 @import "components/side-navigation";
@@ -59,4 +60,11 @@ $app-c-images-path: '/public/assets/images/';
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
 .app-tag--prototype {
   background-color: govuk-colour('red');
+}
+
+.app-iframe--reset {
+  border: 0px;
+  width: 100%;
+  height: 600px;
+  overflow: scroll;
 }

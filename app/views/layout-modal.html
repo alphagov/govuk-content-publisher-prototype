@@ -3,6 +3,9 @@
 
 {% extends "govuk/template.njk" %}
 
+{% set htmlClasses = "app-o-template--modal" %}
+{% set bodyClasses = "app-o-template__body--modal" %}
+
 {% from "govuk/components/accordion/macro.njk"        import govukAccordion %}
 {% from "govuk/components/back-link/macro.njk"        import govukBackLink %}
 {% from "govuk/components/breadcrumbs/macro.njk"      import govukBreadcrumbs %}
@@ -55,59 +58,9 @@
   {% include "includes/head.html" %}
 {% endblock %}
 
-{% block pageTitle %}
-  GOV.UK Content Publisher prototype
-{% endblock %}
-
 {% block header %}
-  {% include "includes/cookie-banner.html" %}
-  {{ appHeader({
-    serviceName: {
-      text: serviceName
-    },
-    environment: environment,
-    navigation: {
-      label: 'Primary navigation',
-      items: [{
-        text: 'Switch app',
-        href: '#'
-      },
-      {
-        text: data['user']['display_name'],
-        href: '#'
-      },
-      {
-        text: 'Sign out',
-        href: '/sign-out'
-      }] if (data['user'] | length)
-    }
-  }) }}
+
 {% endblock %}
-
-{% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
-
-{% if useAutoStoreData %}
-  {% block footer %}
-    {{ govukFooter({
-      meta: {
-        items: [
-          {
-            href: "/changelog/",
-            text: "Changelog"
-          },
-          {
-            href: "/components/",
-            text: "Components"
-          },
-          {
-            href: "/prototype-admin/clear-data",
-            text: "Clear data"
-          }
-        ]
-      }
-    }) }}
-  {% endblock %}
-{% endif %}
 
 {% block bodyEnd %}
   {% block scripts %}
@@ -115,4 +68,8 @@
     {% block pageScripts %}{% endblock %}
   {% endblock %}
   <!-- {{ data | dump | safe }} -->
+{% endblock %}
+
+{% block footer %}
+
 {% endblock %}

@@ -14,7 +14,7 @@
   {% include "./_banner-withdrawn.html" %}
 {% endif %}
 
-{%- if data.document.document_status == 'submitted_for_review'%}
+{%- if data.document.document_status == 'submitted_for_review' %}
   {% include "./_banner-review.html" %}
 {% endif -%}
 
@@ -38,7 +38,7 @@
       actions: {
         items: [
           {
-            href: links.content,
+            href: actions.content,
             text: "Change",
             visuallyHiddenText: "content"
           }
@@ -84,7 +84,7 @@
   },
   actions: [
     {
-      href: links.images,
+      href: actions.images,
       text: "Change",
       visuallyHiddenText: "Lead image",
       classes: "app-c-summary-list__edit-section-link"
@@ -148,7 +148,7 @@
   },
   actions: [
     {
-      href: links.topics,
+      href: actions.topics,
       text: "Change",
       visuallyHiddenText: "topics",
       classes: "app-c-summary-list__edit-section-link"
@@ -164,7 +164,7 @@
 
 {%- set organisationsHtml %}
 <ul class="govuk-list">
-{% for organisation in data.document.links.organisations %}
+{% for organisation in data.document.actions.organisations %}
   <li>{{ organisation.title }}</li>
 {% endfor %}
 </ul>
@@ -172,7 +172,7 @@
 
 {%- set primaryOrganisationHtml %}
 <ul class="govuk-list">
-{% for organisation in data.document.links.primary_publishing_organisation %}
+{% for organisation in data.document.actions.primary_publishing_organisation %}
   <li>{{ organisation.title }}</li>
 {% endfor %}
 </ul>
@@ -189,7 +189,7 @@
       actions: {
         items: [
           {
-            href: links.tags,
+            href: actions.tags,
             text: "Change",
             visuallyHiddenText: "tags"
           }
@@ -256,7 +256,7 @@
       actions: {
         items: [
           {
-            href: links.settings.access,
+            href: actions.settings.access,
             text: "Change",
             visuallyHiddenText: "access details"
           }
@@ -273,7 +273,7 @@
       actions: {
         items: [
           {
-            href: links.settings.back_date,
+            href: actions.settings.back_date,
             text: "Change",
             visuallyHiddenText: "backdate"
           }
@@ -290,7 +290,7 @@
       actions: {
         items: [
           {
-            href: links.settings.political,
+            href: actions.settings.political,
             text: "Change",
             visuallyHiddenText: "political content status"
           }

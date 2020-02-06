@@ -4,13 +4,28 @@
   },
   actions: [
     {
-      href: links.attachments,
+      href: actions.attachments,
       text: "Change",
+      visuallyHiddenText: "attachments",
+      classes: "app-c-summary-list__edit-section-link"
+    },
+    {
+      href: actions.reorder_attachments,
+      text: "Reorder",
       visuallyHiddenText: "attachments",
       classes: "app-c-summary-list__edit-section-link"
     }
   ] if data.document.document_status != 'published'
 }) %}
+
+<!-- ,
+{
+  href: actions.reorder,
+  text: "Reorder",
+  visuallyHiddenText: "attachments",
+  classes: "app-c-summary-list__edit-section-link"
+} -->
+
 
   {%- if attachments | length %}
 
@@ -20,7 +35,7 @@
         <dt class="govuk-summary-list__key">
           {{ loop.index }}
         </dt>
-        <dd class="govuk-summary-list__value govuk-!-font-weight-bold">
+        <dd class="govuk-summary-list__value">
           {{ attachment.title }}
           {% if attachment.type == 'external' %}<p class="govuk-body-s">{{ attachment.url }}</p>{% endif -%}
           {% if attachment.type == 'file' %}
