@@ -601,6 +601,9 @@ exports.document_change_note_get = function(req, res) {
 
 exports.document_change_note_post = function(req, res) {
   // res.send('NOT IMPLEMENTED: Document change note post');
+
+  let documentData = Documents.findById(req.params.document_id);
+
   if (req.session.data.document.edition.change_note_option === 'no') {
     req.session.data.document.edition.change_note = '';
   }
