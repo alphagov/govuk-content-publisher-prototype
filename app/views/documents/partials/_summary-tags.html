@@ -1,0 +1,76 @@
+{%- set organisationsHtml %}
+<ul class="govuk-list">
+{% for organisation in document.links.organisations %}
+  <li>{{ organisation.title }}</li>
+{% endfor %}
+</ul>
+{% endset -%}
+
+{%- set primaryOrganisationHtml %}
+<ul class="govuk-list">
+{% for organisation in document.links.primary_publishing_organisation %}
+  <li>{{ organisation.title }}</li>
+{% endfor %}
+</ul>
+{% endset -%}
+
+{{ govukSummaryList({
+  classes: 'govuk-summary-list--no-border',
+  rows: [
+    {
+      key: {
+        text: "Tags",
+        classes: "govuk-heading-m"
+      },
+      actions: {
+        items: [
+          {
+            href: actions.tags,
+            text: "Change",
+            visuallyHiddenText: "tags"
+          }
+        ]
+      } if document.document_status != 'published'
+    },
+    {
+      key: {
+        text: "Primary organisation"
+      },
+      value: {
+        html: primaryOrganisationHtml
+      }
+    },
+    {
+      key: {
+        text: "Organisations"
+      },
+      value: {
+        html: organisationsHtml
+      }
+    },
+    {
+      key: {
+        text: "Ministers and government appointments"
+      },
+      value: {
+        html: "None"
+      }
+    },
+    {
+      key: {
+        text: "Topical events"
+      },
+      value: {
+        html: "None"
+      }
+    },
+    {
+      key: {
+        text: "World locations"
+      },
+      value: {
+        html: "None"
+      }
+    }
+  ]
+}) }}

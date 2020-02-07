@@ -1,6 +1,6 @@
 <div class="app-side__actions">
 
-  {%- if data.document.document_status == 'draft' -%}
+  {%- if document.document_status == 'draft' -%}
 
     <form class="app-side__form" action="{{ actions.review }}" accept-charset="UTF-8" method="post">
       <button class="app-c-button govuk-button" type="submit">
@@ -17,7 +17,7 @@
 
     <a class="govuk-link app-link--destructive" href="{{ actions.delete_draft }}">Delete draft</a>
 
-  {%- elif data.document.document_status == 'submitted_for_review' -%}
+  {%- elif document.document_status == 'submitted_for_review' -%}
 
     <a class="app-c-button govuk-button" role="button" data-gtm="publish" href="{{ actions.publish }}">Publish</a>
 
@@ -26,60 +26,64 @@
     <a class="govuk-link app-link--destructive" href="{{ actions.delete_draft }}">Delete draft</a>
     <a class="govuk-link govuk-link--no-visited-state app-link--right" href="{{ actions.schedule }}">Schedule</a>
 
-  {%- elif data.document.document_status == 'scheduled' -%}
+  {%- elif document.document_status == 'scheduled' -%}
 
     <a class="app-c-button govuk-button" role="button" href="{{ actions.preview }}">Preview</a>
 
-  {%- elif data.document.document_status == 'published' -%}
+  {%- elif document.document_status == 'published' -%}
 
-    {%- if data.document.withdrawn_notice | length %}
+    {%- if document.withdrawn_notice | length %}
 
       <a class="app-c-button govuk-button" role="button" href="{{ actions.undo_withdraw }}">Undo withdrawal</a>
 
     {% else %}
 
-      <a class="app-c-button govuk-button" role="button" href="{{ actions.new_edition }}">Create new edition</a>
+      <form class="app-side__form" action="{{ actions.new_edition }}" accept-charset="UTF-8" method="post">
+        <button class="app-c-button govuk-button" type="submit">Create new edition</button>
+      </form>
 
       <a class="govuk-link govuk-link--no-visited-state" href="{{ actions.withdraw }}">Withdraw</a>
       <a class="govuk-link app-link--destructive app-link--right" href="{{ actions.remove }}">Remove</a>
 
     {% endif -%}
 
-  {%- elif data.document.document_status == 'published_but_needs_2i' -%}
+  {%- elif document.document_status == 'published_but_needs_2i' -%}
 
     <form class="app-side__form" action="{{ actions.approve }}" accept-charset="UTF-8" method="post">
       <button class="app-c-button govuk-button" type="submit">Approve</button>
     </form>
 
-    <a class="app-c-button govuk-button app-c-button--secondary" role="button" href="{{ actions.new_edition }}">Create new edition</a>
+    <form class="app-side__form" action="{{ actions.new_edition }}" accept-charset="UTF-8" method="post">
+      <button class="app-c-button govuk-button app-c-button--secondary" type="submit">Create new edition</button>
+    </form>
 
     <a class="govuk-link govuk-link--no-visited-state" href="{{ actions.withdraw }}">Withdraw</a>
     <a class="govuk-link app-link--destructive app-link--right" href="{{ actions.remove }}">Remove</a>
 
-  {%- elif data.document.document_status == 'withdrawn' -%}
+  {%- elif document.document_status == 'withdrawn' -%}
 
     <a class="app-c-button govuk-button" role="button" href="{{ actions.undo_withdraw }}">Undo withdrawal</a>
 
-  {%- elif data.document.document_status == 'removed' -%}
+  {%- elif document.document_status == 'removed' -%}
 
   <!-- TODO:  -->
 
-  {%- elif data.document.document_status == 'failed_to_publish' -%}
+  {%- elif document.document_status == 'failed_to_publish' -%}
 
   <!-- TODO:  -->
 
   {%- endif -%}
 
-  {%- if data.document.document_status not in ['draft','submitted_for_review','scheduled'] %}
+  {%- if document.document_status not in ['draft','submitted_for_review','scheduled'] %}
 
     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
     <ul class="govuk-list govuk-!-margin-0">
       <li>
-        <a class="govuk-link govuk-link--no-visited-state" href="{{ data.document.base_path | absoluteUrl }}">View on GOV.UK</a>
+        <a class="govuk-link govuk-link--no-visited-state" href="{{ document.base_path | absoluteUrl }}">View on GOV.UK</a>
       </li>
       <li>
-        <a target="_blank" class="govuk-link govuk-link--no-visited-state" href="{{ data.document.base_path | absoluteUrl('https://content-data.publishing.service.gov.uk/metrics')}}">View data about this page</a>
+        <a target="_blank" class="govuk-link govuk-link--no-visited-state" href="{{ document.base_path | absoluteUrl('https://content-data.publishing.service.gov.uk/metrics')}}">View data about this page</a>
       </li>
     </ul>
 

@@ -1,8 +1,8 @@
 {{ appNotice({
   heading: {
-    text: 'This news story was withdrawn on ' + data.document.withdrawn_notice.withdrawn_at | govDate
+    text: 'This news story was withdrawn on ' + document.withdrawn_notice.withdrawn_at | govDate
   },
   description: {
-    text: data.document.withdrawn_notice.explanation | stripHtml
+    text: document.withdrawn_notice.explanation | stripHtml
   }
 }) }}

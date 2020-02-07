@@ -1,0 +1,61 @@
+{% call appSummaryList({
+  heading: {
+    text: "Lead image"
+  },
+  actions: [
+    {
+      href: actions.images,
+      text: "Change",
+      visuallyHiddenText: "Lead image",
+      classes: "app-c-summary-list__edit-section-link"
+    }
+  ] if document.document_status != 'published'
+}) %}
+
+  {%- if document.details.image.url.length %}
+
+    <div class="app-c-image-meta">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+          <img class="app-c-image-meta__image" src="/public/images/dummy-image.png" width="200" alt="{{ document.details.image.alt_text }}">
+        </div>
+        <div class="govuk-grid-column-two-thirds">
+          {{ appMetadata({
+            items: [
+              {
+                title: {
+                  text: "Alt text:"
+                },
+                description: {
+                  text: document.details.image.alt_text
+                }
+              },
+              {
+                title: {
+                  text: "Caption:"
+                },
+                description: {
+                  text: document.details.image.caption
+                }
+              },
+              {
+                title: {
+                  text: "Credit:"
+                },
+                description: {
+                  text: document.details.image.credit
+                }
+              }
+            ]
+          }) }}
+        </div>
+      </div>
+    </div>
+
+  {% else %}
+
+    <p class="govuk-body">No image selected. The default image for your department will be used.</p>
+
+  {% endif -%}
+
+{% endcall -%}

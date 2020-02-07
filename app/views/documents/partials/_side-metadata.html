@@ -1,4 +1,4 @@
-{%- if data.document.withdrawn_notice | length %}
+{%- if document.withdrawn_notice | length %}
 
   {{ appMetadata({
     items: [{
@@ -13,7 +13,7 @@
           text: 'Withdrawn on'
         },
         description: {
-          text: data.document.withdrawn_notice.withdrawn_at | govTime + ' on ' + data.document.withdrawn_notice.withdrawn_at | govDate
+          text: document.withdrawn_notice.withdrawn_at | govTime + ' on ' + document.withdrawn_notice.withdrawn_at | govDate
         }
       }, {
         title: {
@@ -33,35 +33,35 @@
           text: 'Status'
         },
         description: {
-          text: data.document.document_status | documentStatus if data.document.document_status else "Unknown"
+          text: document.document_status | documentStatus if document.document_status else "Unknown"
         }
       }, {
         title: {
           text: 'Last updated on'
         },
         description: {
-          text: data.document.updated_at | govTime + ' on ' + data.document.updated_at | govDate
+          text: document.updated_at | govTime + ' on ' + document.updated_at | govDate
         }
       }, {
         title: {
           text: 'Last updated by'
         },
         description: {
-          text: data.document.last_updated_by if data.document.last_updated_by | length else (data.document.updated_by if data.document.updated_by | length else "Unknown")
+          text: document.last_updated_by if document.last_updated_by | length else (data.document.updated_by if document.updated_by | length else "Unknown")
         }
       }, {
         title: {
           text: 'Created on'
         },
         description: {
-          text: (data.document.first_published_at | govTime + ' on ' + data.document.first_published_at | govDate) if data.document.first_published_at else (data.document.created_at | govTime + ' on ' + data.document.created_at | govDate)
+          text: (data.document.first_published_at | govTime + ' on ' + document.first_published_at | govDate) if document.first_published_at else (data.document.created_at | govTime + ' on ' + document.created_at | govDate)
         }
       }, {
         title: {
           text: 'Created by'
         },
         description: {
-          text: data.document.created_by if data.document.created_by | length else "Unknown"
+          text: document.created_by if document.created_by | length else "Unknown"
         }
       }]
   }) }}

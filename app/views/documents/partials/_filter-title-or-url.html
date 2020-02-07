@@ -1,0 +1,14 @@
+{{ govukInput({
+  id: "title_or_url",
+  name: "filters[title_or_url]",
+  label: {
+    text: "Title or URL",
+    classes: "govuk-label--s"
+  },
+  attributes: {
+    autocomplete: off,
+    autocapitalize: off,
+    spellcheck: false
+  },
+  value: data.filters.title_or_url if data.filters.title_or_url
+}) }}

@@ -1,0 +1,58 @@
+<h3 class="govuk-heading-m">Content settings</h3>
+
+{{ appSummaryList({
+  classes: 'govuk-summary-list--no-border',
+  rows: [
+    {
+      key: {
+        text: "Access limiting"
+      },
+      value: {
+        text: "None"
+      },
+      actions: {
+        items: [
+          {
+            href: actions.settings.access,
+            text: "Change",
+            visuallyHiddenText: "access details"
+          }
+        ]
+      } if document.document_status != 'published'
+    },
+    {
+      key: {
+        text: "Backdate"
+      },
+      value: {
+        text: "No date"
+      },
+      actions: {
+        items: [
+          {
+            href: actions.settings.back_date,
+            text: "Change",
+            visuallyHiddenText: "backdate"
+          }
+        ]
+      } if document.document_status != 'published'
+    },
+    {
+      key: {
+        text: "Gets history mode"
+      },
+      value: {
+        text: "Yes" if document.political else "No"
+      },
+      actions: {
+        items: [
+          {
+            href: actions.settings.political,
+            text: "Change",
+            visuallyHiddenText: "political content status"
+          }
+        ]
+      } if document.document_status != 'published'
+    }
+  ]
+}) }}

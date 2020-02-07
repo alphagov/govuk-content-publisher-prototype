@@ -1,6 +1,6 @@
 {%- set scheduledHtml %}
 <p class="govuk-body govuk-!-margin-bottom-1">
-  Scheduled to publish at {{ data.document.publishing_scheduled_at | govTime }} on {{ data.document.publishing_scheduled_at | govDate }}
+  Scheduled to publish at {{ document.publishing_scheduled_at | govTime }} on {{ document.publishing_scheduled_at | govDate }}
 </p>
 <ul class="govuk-list govuk-!-margin-0">
   <li>

@@ -14,18 +14,9 @@
       text: "Reorder",
       visuallyHiddenText: "attachments",
       classes: "app-c-summary-list__edit-section-link"
-    }
-  ] if data.document.document_status != 'published'
+    } if attachments | length > 1
+  ] if document.document_status != 'published'
 }) %}
-
-<!-- ,
-{
-  href: actions.reorder,
-  text: "Reorder",
-  visuallyHiddenText: "attachments",
-  classes: "app-c-summary-list__edit-section-link"
-} -->
-
 
   {%- if attachments | length %}
 
@@ -48,18 +39,6 @@
           {% endif -%}
           {% if attachment.type == 'html' %}<p class="govuk-body-s">{{ attachment.type | attachmentType }}</p>{% endif -%}
         </dd>
-        <!-- {#%- if data.change == 'true' %}
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="/documents/{{ attachment.document_id }}/attachments/{{ attachment.content_id }}/update">
-            Change<span class="govuk-visually-hidden"> {{ attachment.title }}</span>
-          </a>
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link app-link--destructive" href="/documents/{{ attachment.document_id }}/attachments/{{ attachment.content_id }}/delete">
-            Delete<span class="govuk-visually-hidden"> {{ attachment.title }}</span>
-          </a>
-        </dd>
-        {% endif -%#} -->
       </div>
       {% endfor -%}
     </dl>

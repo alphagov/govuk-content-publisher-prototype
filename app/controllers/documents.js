@@ -126,6 +126,7 @@ exports.document_summary_get = function(req, res) {
   else {
 
     res.render('../views/documents/summary', {
+      document: Documents.findById(req.params.document_id),
       attachments: Attachments.findByDocumentId(req.params.document_id),
       actions: {
         home: '/documents',
@@ -142,7 +143,7 @@ exports.document_summary_get = function(req, res) {
           back_date: '/documents/' + req.params.document_id + '/back-date',
           political: '/documents/' + req.params.document_id + '/political'
         },
-        new_edition: '/documents/' + req.params.document_id + '/new',
+        new_edition: '/documents/' + req.params.document_id + '/new-edition',
         review: '/documents/' + req.params.document_id + '/review',
         approve: '/documents/' + req.params.document_id + '/approve',
         schedule: '/documents/' + req.params.document_id + '/schedule',
@@ -151,7 +152,8 @@ exports.document_summary_get = function(req, res) {
         delete_draft: '/documents/' + req.params.document_id + '/delete',
         withdraw: '/documents/' + req.params.document_id + '/withdraw',
         undo_withdraw: '/documents/' + req.params.document_id + '/undo-withdraw',
-        remove: '/documents/' + req.params.document_id + '/remove'
+        remove: '/documents/' + req.params.document_id + '/remove',
+        change_note: '/documents/' + req.params.document_id + '/change-note'
       },
       id: req.params.document_id
     });
@@ -446,7 +448,7 @@ exports.document_update_get = function(req, res) {
     id: req.params.document_id,
     actions: {
       back: '/documents/' + req.params.document_id,
-      save: '/documents/' + req.params.document_id
+      save: '/documents/' + req.params.document_id + '/update'
     }
   });
 };
@@ -454,12 +456,26 @@ exports.document_update_get = function(req, res) {
 // Handle document update on POST.
 exports.document_update_post = function(req, res) {
   // res.send('NOT IMPLEMENTED: Document update POST');
-  res.render('../views/documents/edit', {
-    actions: {
-      back: '/documents/' + req.params.document_id,
-      save: '/documents/' + req.params.document_id
-    }
-  });
+
+  let documentData = Documents.findById(req.params.document_id);
+
+  documentData.title = req.session.data.document.title;
+  documentData.description = req.session.data.document.description;
+  documentData.details = {};
+  documentData.details.body = req.session.data.document.details.body;
+
+  // documents directory path
+  const documentDirectoryPath = path.join(__dirname, '../data/documents/');
+
+  const documentFilePath = documentDirectoryPath + '/' + documentData.content_id + '.json';
+
+  // create a JSON sting for the submitted data
+  const documentFileData = JSON.stringify(documentData);
+
+  // write the JSON data
+  fs.writeFileSync(documentFilePath, documentFileData);
+
+  res.redirect('/documents/' + req.params.document_id);
 };
 
 // Display document political update form on GET.
@@ -509,15 +525,31 @@ exports.document_new_edition_get = function(req, res) {
   res.render('../views/documents/new-edition', {
     actions: {
       back: '/documents/' + req.params.document_id,
-      save: '/documents/' + req.params.document_id + '/new'
+      save: '/documents/' + req.params.document_id + '/new-edition'
     }
   });
 };
 
 exports.document_new_edition_post = function(req, res) {
-  // res.send('NOT IMPLEMENTED: New edition POST');
-  req.session.data.document.document_status = 'draft';
-  res.redirect('/documents/' + req.params.document_id);
+  let documentData = Documents.findById(req.params.document_id);
+
+  documentData.document_status = 'draft';
+  documentData.edition = {};
+  documentData.edition.change_note_option = '';
+  documentData.edition.change_note = '';
+
+  // documents directory path
+  const documentDirectoryPath = path.join(__dirname, '../data/documents/');
+
+  const documentFilePath = documentDirectoryPath + '/' + documentData.content_id + '.json';
+
+  // create a JSON sting for the submitted data
+  const documentFileData = JSON.stringify(documentData);
+
+  // write the JSON data
+  fs.writeFileSync(documentFilePath, documentFileData);
+
+  res.redirect('/documents/' + req.params.document_id + '/content');
 };
 
 exports.document_review_get = function(req, res) {
@@ -525,8 +557,22 @@ exports.document_review_get = function(req, res) {
 };
 
 exports.document_review_post = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Review document POST');
-  req.session.data.document.document_status = 'submitted_for_review';
+
+  let documentData = Documents.findById(req.params.document_id);
+
+  documentData.document_status = 'submitted_for_review';
+
+  // documents directory path
+  const documentDirectoryPath = path.join(__dirname, '../data/documents/');
+
+  const documentFilePath = documentDirectoryPath + '/' + documentData.content_id + '.json';
+
+  // create a JSON sting for the submitted data
+  const documentFileData = JSON.stringify(documentData);
+
+  // write the JSON data
+  fs.writeFileSync(documentFilePath, documentFileData);
+
   res.redirect('/documents/' + req.params.document_id);
 };
 
@@ -535,7 +581,9 @@ exports.document_approve_get = function(req, res) {
 };
 
 exports.document_approve_post = function(req, res) {
-  res.send('NOT IMPLEMENTED: Approve document POST');
+  // res.send('NOT IMPLEMENTED: Approve document POST');
+
+  res.redirect('/documents/' + req.params.document_id);
 };
 
 exports.document_schedule_get = function(req, res) {
@@ -543,13 +591,31 @@ exports.document_schedule_get = function(req, res) {
   res.render('../views/documents/schedule', {
     actions: {
       back: '/documents/' + req.params.document_id,
-      save: '/documents/' + req.params.document_id
+      save: '/documents/' + req.params.document_id + '/schedule'
     }
   });
 };
 
 exports.document_schedule_post = function(req, res) {
-  res.send('NOT IMPLEMENTED: Schedule document POST');
+  // res.send('NOT IMPLEMENTED: Schedule document POST');
+
+  res.redirect('/documents/' + req.params.document_id);
+};
+
+exports.document_stop_schedule_get = function(req, res) {
+  res.send('NOT IMPLEMENTED: Stop schedule document GET');
+  // res.render('../views/documents/schedule', {
+  //   actions: {
+  //     back: '/documents/' + req.params.document_id,
+  //     save: '/documents/' + req.params.document_id + '/schedule'
+  //   }
+  // });
+};
+
+exports.document_stop_schedule_post = function(req, res) {
+  res.send('NOT IMPLEMENTED: Stop schedule document POST');
+
+  // res.redirect('/documents/' + req.params.document_id);
 };
 
 exports.document_preview_get = function(req, res) {
@@ -562,7 +628,9 @@ exports.document_preview_get = function(req, res) {
 };
 
 exports.document_preview_post = function(req, res) {
-  res.send('NOT IMPLEMENTED: Preview document POST');
+  // res.send('NOT IMPLEMENTED: Preview document POST');
+
+  res.redirect('/documents/' + req.params.document_id);
 };
 
 exports.document_publish_get = function(req, res) {
@@ -574,11 +642,19 @@ exports.document_publish_post = function(req, res) {
 };
 
 exports.document_delete_draft_get = function(req, res) {
-  res.send('NOT IMPLEMENTED: Delete draft document GET');
+  // res.send('NOT IMPLEMENTED: Delete draft document GET');
+  res.render('../views/documents/delete', {
+    actions: {
+      back: '/documents/' + req.params.document_id,
+      save: '/documents/' + req.params.document_id + '/delete'
+    }
+  });
 };
 
 exports.document_delete_draft_post = function(req, res) {
-  res.send('NOT IMPLEMENTED: Delete draft document POST');
+  // res.send('NOT IMPLEMENTED: Delete draft document POST');
+
+  res.redirect('/documents');
 };
 
 exports.document_withdraw_get = function(req, res) {
@@ -586,13 +662,15 @@ exports.document_withdraw_get = function(req, res) {
   res.render('../views/documents/withdraw', {
     actions: {
       back: '/documents/' + req.params.document_id,
-      save: '/documents/' + req.params.document_id
+      save: '/documents/' + req.params.document_id + '/withdraw'
     }
   });
 };
 
 exports.document_withdraw_post = function(req, res) {
-  res.send('NOT IMPLEMENTED: Withdraw document POST');
+  // res.send('NOT IMPLEMENTED: Withdraw document POST');
+
+  res.redirect('/documents/' + req.params.document_id);
 };
 
 exports.document_undo_withdraw_get = function(req, res) {
@@ -600,13 +678,15 @@ exports.document_undo_withdraw_get = function(req, res) {
   res.render('../views/documents/undo-withdraw', {
     actions: {
       back: '/documents/' + req.params.document_id,
-      save: '/documents/' + req.params.document_id
+      save: '/documents/' + req.params.document_id + '/undo-withdraw'
     }
   });
 };
 
 exports.document_undo_withdraw_post = function(req, res) {
-  res.send('NOT IMPLEMENTED: Undo withdraw document POST');
+  // res.send('NOT IMPLEMENTED: Undo withdraw document POST');
+
+  res.redirect('/documents/' + req.params.document_id);
 };
 
 exports.document_remove_get = function(req, res) {
@@ -614,11 +694,53 @@ exports.document_remove_get = function(req, res) {
   res.render('../views/documents/remove', {
     actions: {
       back: '/documents/' + req.params.document_id,
-      save: '/documents/' + req.params.document_id
+      save: '/documents/' + req.params.document_id + '/remove'
     }
   });
 };
 
 exports.document_remove_post = function(req, res) {
-  res.send('NOT IMPLEMENTED: Remove document POST');
+  // res.send('NOT IMPLEMENTED: Remove document POST');
+
+  res.redirect('/documents');
+};
+
+exports.document_change_note_get = function(req, res) {
+
+  const documentData = Documents.findById(req.params.document_id);
+
+  res.render('../views/documents/change-note', {
+    document: documentData,
+    actions: {
+      back: '/documents/' + req.params.document_id,
+      save: '/documents/' + req.params.document_id + '/change-note'
+    }
+  });
+};
+
+exports.document_change_note_post = function(req, res) {
+  // res.send('NOT IMPLEMENTED: Document change note post');
+
+  let documentData = Documents.findById(req.params.document_id);
+
+  documentData.edition = {};
+  documentData.edition.change_note_option = req.session.data.document.edition.change_note_option;
+  if (req.session.data.document.edition.change_note_option === 'yes') {
+    documentData.edition.change_note = req.session.data.document.edition.change_note;
+  } else {
+    documentData.edition.change_note = '';
+  }
+
+  // documents directory path
+  const documentDirectoryPath = path.join(__dirname, '../data/documents/');
+
+  const documentFilePath = documentDirectoryPath + '/' + documentData.content_id + '.json';
+
+  // create a JSON sting for the submitted data
+  const documentFileData = JSON.stringify(documentData);
+
+  // write the JSON data
+  fs.writeFileSync(documentFilePath, documentFileData);
+
+  res.redirect('/documents/' + req.params.document_id);
 };

@@ -1,0 +1,8 @@
+{{ appInsetPrompt({
+  title: {
+    text: 'To publish this document you need to'
+  },
+  description: {
+    html: '<a class="govuk-link" href="' + actions.change_note + '">Enter a change note</a>'
+  }
+}) if document.document_status != 'published' }}

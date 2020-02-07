@@ -18,9 +18,9 @@
     <h{{ params.heading.headingLevel | default(3) }} class="{{ params.heading.classes | default('govuk-heading-m') }}">
       {{- params.heading.html | safe if params.heading.html else params.heading.text -}}
     </h{{ params.heading.headingLevel | default(3) }}>
-    {%- if params.actions %}
+    {%- if params.actions | length %}
       <ul class="govuk-summary-list__actions-list">
-        {% for action in params.actions %}
+        {%- for action in params.actions %}
           <li class="govuk-summary-list__actions-list-item">
             {{- _actionLink(action) -}}
           </li>
@@ -40,7 +40,7 @@
           </dd>
           {%- if row.actions.items.length %}
             <dd class="govuk-summary-list__actions {{- ' ' + row.actions.classes if row.actions.classes }}">
-              {%- if row.actions.items.length == 1 %}
+              {%- if row.actions.items | length == 1 %}
                 {{- _actionLink(row.actions.items[0]) -}}
               {% else %}
                 <ul class="govuk-summary-list__actions-list">

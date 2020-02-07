@@ -1,0 +1,44 @@
+{{ govukSummaryList({
+  classes: 'govuk-summary-list--no-border',
+  rows: [
+    {
+      key: {
+        text: "Content",
+        classes: "govuk-heading-m"
+      },
+      actions: {
+        items: [
+          {
+            href: actions.content,
+            text: "Change",
+            visuallyHiddenText: "content"
+          }
+        ]
+      } if document.document_status != 'published'
+    },
+    {
+      key: {
+        text: "Title"
+      },
+      value: {
+        text: document.title
+      }
+    },
+    {
+      key: {
+        text: "Summary"
+      },
+      value: {
+        text: document.description
+      }
+    },
+    {
+      key: {
+        text: "Body"
+      },
+      value: {
+        html: document.details.body | toMarkdown | truncate(200)
+      }
+    }
+  ]
+}) }}
