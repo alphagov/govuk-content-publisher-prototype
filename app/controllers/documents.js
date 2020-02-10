@@ -670,11 +670,41 @@ exports.document_preview_post = function(req, res) {
 };
 
 exports.document_publish_get = function(req, res) {
-  res.send('NOT IMPLEMENTED: Publish document GET');
+  // res.send('NOT IMPLEMENTED: Publish document GET');
+
+  const documentData = Documents.findById(req.params.document_id);
+
+  res.render('../views/documents/publish', {
+    document: documentData,
+    actions: {
+      back: '/documents/' + req.params.document_id,
+      save: '/documents/' + req.params.document_id + '/publish'
+    }
+  });
 };
 
 exports.document_publish_post = function(req, res) {
-  res.send('NOT IMPLEMENTED: Publish document POST');
+  // res.send('NOT IMPLEMENTED: Publish document POST');
+
+  let documentData = Documents.findById(req.params.document_id);
+
+  documentData.document_status = req.session.data.document.document_status;
+
+  documentData.updated_at = new Date();
+  documentData.updated_by = req.session.data.user.display_name;
+
+  // documents directory path
+  const documentDirectoryPath = path.join(__dirname, '../data/documents/');
+
+  const documentFilePath = documentDirectoryPath + '/' + documentData.content_id + '.json';
+
+  // create a JSON sting for the submitted data
+  const documentFileData = JSON.stringify(documentData);
+
+  // write the JSON data
+  fs.writeFileSync(documentFilePath, documentFileData);
+
+  res.redirect('/documents/' + req.params.document_id);
 };
 
 exports.document_delete_draft_get = function(req, res) {
