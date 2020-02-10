@@ -27,7 +27,7 @@
             name: "document[political]",
             fieldset: {
               legend: {
-                text: "Do you want to tag this " + (data.document.document_type | documentType | lower) + " to history mode?",
+                text: "Do you want to tag this " + (document.document_type | documentType | lower) + " to history mode?",
                 isPageHeading: true,
                 classes: "govuk-fieldset__legend--l"
               }
@@ -58,7 +58,7 @@
       {% else %}
 
         <h1 class="govuk-heading-l">
-          Change the history mode tag for ‘{{ data.document.title }}’
+          Change the history mode tag for ‘{{ document.title }}’
         </h1>
 
         <p class="govuk-body">Only a managing editor can change the political status of a page. You do not have permission to do this.</p>

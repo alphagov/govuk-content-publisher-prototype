@@ -86,6 +86,7 @@ router.get('/documents/:document_id/topics', checkIsAuthenticated, document_cont
 router.get('/documents/:document_id/tags', checkIsAuthenticated, document_controller.document_tags_update_get);
 
 router.get('/documents/:document_id/political', checkIsAuthenticated, document_controller.document_political_update_get);
+router.post('/documents/:document_id/political', checkIsAuthenticated, document_controller.document_political_update_post);
 
 router.get('/documents/:document_id/new-edition', checkIsAuthenticated, document_controller.document_new_edition_get);
 router.post('/documents/:document_id/new-edition', checkIsAuthenticated, document_controller.document_new_edition_post);
