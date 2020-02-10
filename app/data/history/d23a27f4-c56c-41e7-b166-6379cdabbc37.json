@@ -1,0 +1,32 @@
+[
+  {
+    "id": "16771b0d-f136-43d0-ae8d-7e699248a105",
+    "title": "New edition",
+    "created_at": "2020-01-25T16:25:00.000Z",
+    "created_by": "Alison Hargreaves",
+    "edition": {
+      "title": "1st edition",
+      "id": "d23a27f4-c56c-41e7-b166-6379cdabbc37"
+    }
+  },
+  {
+    "id": "a123c310-8895-445b-9462-d78514b4bb9e",
+    "title": "Content added",
+    "created_at": "2020-01-25T16:26:00.000Z",
+    "created_by": "Alison Hargreaves",
+    "edition": {
+      "title": "1st edition",
+      "id": "d23a27f4-c56c-41e7-b166-6379cdabbc37"
+    }
+  },
+  {
+    "id": "618b9684-b1e9-49ef-90de-f98b46a9a92d",
+    "title": "Attachments added",
+    "created_at": "2020-02-10T16:46:00.000Z",
+    "created_by": "Simon Whatley",
+    "edition": {
+      "title": "1st edition",
+      "id": "d23a27f4-c56c-41e7-b166-6379cdabbc37"
+    }
+  }
+]
