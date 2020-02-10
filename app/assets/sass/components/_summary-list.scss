@@ -19,6 +19,18 @@
   }
 }
 
+.app-c-summary-list__row:first-of-type {
+  button:first-of-type {
+    visibility: hidden;
+  }
+}
+
+.app-c-summary-list__row:last-of-type {
+  button:last-of-type {
+    visibility: hidden;
+  }
+}
+
 .govuk-summary-list__actions-list {
   position: absolute;
   top: 0;

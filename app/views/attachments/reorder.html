@@ -58,17 +58,9 @@
                       {% endif -%}
                       {% if attachment.type == 'html' %}<p class="govuk-body-s">{{ attachment.type | attachmentType }}</p>{% endif -%}
                     </dd>
-                    <div class="app-o-order-controls js-order-controls">
-                      <dd class="govuk-summary-list__actions" style="width:120px">
-                        {%- if not loop.first %}
-                        <button class="govuk-button app-c-button--secondary-quiet js-up">Up</button>
-                        {% endif -%}
-                      </dd>
-                      <dd class="govuk-summary-list__actions" style="width:120px">
-                        {%- if not loop.last %}
-                          <button class="govuk-button app-c-button--secondary-quiet js-down">Down</button>
-                        {% endif -%}
-                      </dd>
+                    <div class="govuk-summary-list__actions app-o-order-controls js-order-controls">
+                      <button class="govuk-button app-c-button--secondary-quiet js-up">Up</button>
+                      <button class="govuk-button app-c-button--secondary-quiet js-down">Down</button>
                     </div>
                   </div>
                 {% endfor -%}
