@@ -464,6 +464,9 @@ exports.document_update_post = function(req, res) {
   documentData.details = {};
   documentData.details.body = req.session.data.document.details.body;
 
+  documentData.updated_at = new Date();
+  documentData.updated_by = req.session.data.user.display_name;
+
   // documents directory path
   const documentDirectoryPath = path.join(__dirname, '../data/documents/');
 
@@ -481,12 +484,39 @@ exports.document_update_post = function(req, res) {
 // Display document political update form on GET.
 exports.document_political_update_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: Document update GET');
+  const documentData = Documents.findById(req.params.document_id);
+
   res.render('../views/documents/political', {
+    document: documentData,
     actions: {
       back: '/documents/' + req.params.document_id,
-      save: '/documents/' + req.params.document_id
+      save: '/documents/' + req.params.document_id + '/political'
     }
   });
+};
+
+exports.document_political_update_post = function(req, res) {
+  // res.send('NOT IMPLEMENTED: Document update GET');
+
+  let documentData = Documents.findById(req.params.document_id);
+
+  documentData.political = req.session.data.document.political;
+
+  documentData.updated_at = new Date();
+  documentData.updated_by = req.session.data.user.display_name;
+
+  // documents directory path
+  const documentDirectoryPath = path.join(__dirname, '../data/documents/');
+
+  const documentFilePath = documentDirectoryPath + '/' + documentData.content_id + '.json';
+
+  // create a JSON sting for the submitted data
+  const documentFileData = JSON.stringify(documentData);
+
+  // write the JSON data
+  fs.writeFileSync(documentFilePath, documentFileData);
+
+  res.redirect('/documents/' + req.params.document_id);
 };
 
 // Display document images update form on GET.
@@ -538,6 +568,9 @@ exports.document_new_edition_post = function(req, res) {
   documentData.edition.change_note_option = '';
   documentData.edition.change_note = '';
 
+  documentData.updated_at = new Date();
+  documentData.updated_by = req.session.data.user.display_name;
+
   // documents directory path
   const documentDirectoryPath = path.join(__dirname, '../data/documents/');
 
@@ -561,6 +594,9 @@ exports.document_review_post = function(req, res) {
   let documentData = Documents.findById(req.params.document_id);
 
   documentData.document_status = 'submitted_for_review';
+
+  documentData.updated_at = new Date();
+  documentData.updated_by = req.session.data.user.display_name;
 
   // documents directory path
   const documentDirectoryPath = path.join(__dirname, '../data/documents/');
@@ -730,6 +766,9 @@ exports.document_change_note_post = function(req, res) {
   } else {
     documentData.edition.change_note = '';
   }
+
+  documentData.updated_at = new Date();
+  documentData.updated_by = req.session.data.user.display_name;
 
   // documents directory path
   const documentDirectoryPath = path.join(__dirname, '../data/documents/');

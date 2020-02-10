@@ -42,7 +42,7 @@
         text: "Gets history mode"
       },
       value: {
-        text: "Yes" if document.political else "No"
+        text: "Yes" if document.political in ["true","yes"] else "No"
       },
       actions: {
         items: [
