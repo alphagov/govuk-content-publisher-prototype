@@ -29,3 +29,19 @@
 .app-c-summary__block {
   @include govuk-responsive-margin(6, "bottom");
 }
+
+.app-c-summary-list__row {
+  cursor: move;
+}
+
+.app-c-summary-list__row--chosen {
+  background-color: govuk-colour("light-grey");
+  outline: 2px dotted $govuk-border-colour;
+  border-color: transparent;
+}
+
+.app-c-summary-list__row--drag {
+  background-color: govuk-colour("white");
+  border-color: transparent;
+  padding: govuk-spacing(2);
+}
