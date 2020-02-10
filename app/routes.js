@@ -106,6 +106,7 @@ router.post('/documents/:document_id/stop-schedule', checkIsAuthenticated, docum
 router.get('/documents/:document_id/preview', checkIsAuthenticated, document_controller.document_preview_get);
 
 router.get('/documents/:document_id/publish', checkIsAuthenticated, document_controller.document_publish_get);
+router.post('/documents/:document_id/publish', checkIsAuthenticated, document_controller.document_publish_post);
 
 router.get('/documents/:document_id/delete', checkIsAuthenticated, document_controller.document_delete_draft_get);
 

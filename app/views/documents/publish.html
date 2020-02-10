@@ -1,0 +1,64 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block pageScripts %}
+
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: actions.back
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
+
+            {{ govukRadios({
+              idPrefix: "document-status",
+              name: "document[document_status]",
+              fieldset: {
+                legend: {
+                  text: 'Publish ‘' + document.title + '’',
+                  isPageHeading: true,
+                  classes: "govuk-fieldset__legend--l"
+                }
+              },
+              items: [
+                {
+                  value: "published",
+                  text: "This content has been reviewed and approved for publication"
+                },
+                {
+                  value: "published_but_needs_2i",
+                  text: "This content needs to be published urgently, but should be reviewed as soon as possible"
+                }
+              ]
+            }) }}
+
+            {{ govukButton({
+              text: "Publish"
+            }) }}
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock %}
