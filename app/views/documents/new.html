@@ -57,120 +57,130 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-      <h1 class="govuk-heading-l">
-        New {{ (data.document_sub_type | documentType | lower) if data.document_sub_type else (data.document_type | documentType | lower | replace("foi","FOI")) }}
-      </h1>
 
-      <form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
+      {%- if data.document_type in ["case_study","statement_to_parliament","speech","consultation","fatality_notice","specialist_notice"] or data.document_sub_type in ["authored_article","manual","detailed_guide","mainstream_guide","statistics_announcement","statistical_dataset"] %}
 
-        {%- call appContextualGuidance({
-          id: 'contextual-guidance-title',
-          for: 'title',
-          heading: {
-            text: 'Writing a title'
-          },
-          description: {
-            text: 'The title must make clear what the content offers users. Use the words your users do to help them find this. Avoid wordplay or teases.'
-          }
-        }) %}
+        <p class="govuk-body">Nothing to see here</p>
 
-          {{ govukTextarea({
-            id: "title",
-            name: "document[title]",
-            label: {
-              text: "Title",
-              classes: "govuk-!-font-weight-bold"
+      {% else %}
+
+
+        <h1 class="govuk-heading-l">
+          New {{ (data.document_sub_type | documentType | lower) if data.document_sub_type else (data.document_type | documentType | lower | replace("foi","FOI")) }}
+        </h1>
+
+        <form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
+
+          {%- call appContextualGuidance({
+            id: 'contextual-guidance-title',
+            for: 'title',
+            heading: {
+              text: 'Writing a title'
             },
-            rows: 2
-          }) }}
-
-        {% endcall -%}
-
-        {{ appUrlPreview({
-
-        }) }}
-
-        {%- call appContextualGuidance({
-          id: 'contextual-guidance-summary',
-          for: 'summary',
-          heading: {
-            text: 'Writing a summary'
-          },
-          description: {
-            text: 'The summary explains the main point of the content and it should end with a full stop. Keep it short, possibly under 160 characters, and avoid repeating the first line of the body.'
-          }
-        }) %}
-
-          {{ govukTextarea({
-            id: "summary",
-            name: "document[description]",
-            label: {
-              text: "Summary",
-              classes: "govuk-!-font-weight-bold"
+            description: {
+              text: 'The title must make clear what the content offers users. Use the words your users do to help them find this. Avoid wordplay or teases.'
             }
+          }) %}
+
+            {{ govukTextarea({
+              id: "title",
+              name: "document[title]",
+              label: {
+                text: "Title",
+                classes: "govuk-!-font-weight-bold"
+              },
+              rows: 2
+            }) }}
+
+          {% endcall -%}
+
+          {{ appUrlPreview({
+
           }) }}
 
-        {% endcall -%}
-
-        {% set bodyGuidanceHtml %}
-          {% include "./partials/_guidance-body-text.html" %}
-        {% endset %}
-
-        {%- call appContextualGuidance({
-          id: 'contextual-guidance-body',
-          for: 'body',
-          heading: {
-            text: 'Writing content'
-          },
-          description: {
-            html: bodyGuidanceHtml
-          }
-        }) %}
-
-          {{ appMarkdownEditor({
-            attributes: {
-              id: "markdown-editor"
+          {%- call appContextualGuidance({
+            id: 'contextual-guidance-summary',
+            for: 'summary',
+            heading: {
+              text: 'Writing a summary'
             },
-            label: {
-              text: "Body",
-              classes: "govuk-!-font-weight-bold"
+            description: {
+              text: 'The summary explains the main point of the content and it should end with a full stop. Keep it short, possibly under 160 characters, and avoid repeating the first line of the body.'
+            }
+          }) %}
+
+            {{ govukTextarea({
+              id: "summary",
+              name: "document[description]",
+              label: {
+                text: "Summary",
+                classes: "govuk-!-font-weight-bold"
+              }
+            }) }}
+
+          {% endcall -%}
+
+          {% set bodyGuidanceHtml %}
+            {% include "./partials/_guidance-body-text.html" %}
+          {% endset %}
+
+          {%- call appContextualGuidance({
+            id: 'contextual-guidance-body',
+            for: 'body',
+            heading: {
+              text: 'Writing content'
             },
-            insertMenu: appToolbarDropdown({
-              items: [
-                {
-                  element: "button",
-                  text: "Attachment",
-                  type: "button",
-                  name: "attachment",
-                  attributes: {
-                    "data-toggle": "modal",
-                    "data-target": "modal-attachments"
+            description: {
+              html: bodyGuidanceHtml
+            }
+          }) %}
+
+            {{ appMarkdownEditor({
+              attributes: {
+                id: "markdown-editor"
+              },
+              label: {
+                text: "Body",
+                classes: "govuk-!-font-weight-bold"
+              },
+              insertMenu: appToolbarDropdown({
+                items: [
+                  {
+                    element: "button",
+                    text: "Attachment",
+                    type: "button",
+                    name: "attachment",
+                    attributes: {
+                      "data-toggle": "modal",
+                      "data-target": "modal-attachments"
+                    }
                   }
+                ],
+                classes: "app-c-toolbar-dropdown--end",
+                attributes: {
+                  "id": "toolbar-dropdown",
+                  "data-module": "toolbar-dropdown"
                 }
-              ],
-              classes: "app-c-toolbar-dropdown--end",
-              attributes: {
-                "id": "toolbar-dropdown",
-                "data-module": "toolbar-dropdown"
+              }),
+              textarea: {
+                id: "body",
+                name: "document[details][body]",
+                rows: 20,
+                attributes: {
+                  spellcheck: false
+                }
               }
-            }),
-            textarea: {
-              id: "body",
-              name: "document[details][body]",
-              rows: 20,
-              attributes: {
-                spellcheck: false
-              }
-            }
+            }) }}
+
+          {% endcall -%}
+
+          {{ govukButton({
+            text: "Save"
           }) }}
 
-        {% endcall -%}
+        </form>
 
-        {{ govukButton({
-          text: "Save"
-        }) }}
-
-      </form>
+      {% endif -%}
 
     </div>
   </div>
