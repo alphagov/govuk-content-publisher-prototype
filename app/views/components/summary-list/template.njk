@@ -21,9 +21,11 @@
     {%- if params.actions | length %}
       <ul class="govuk-summary-list__actions-list">
         {%- for action in params.actions %}
+          {%- if action.text %}
           <li class="govuk-summary-list__actions-list-item">
             {{- _actionLink(action) -}}
           </li>
+          {% endif -%}
         {% endfor -%}
       </ul>
     {% endif -%}
