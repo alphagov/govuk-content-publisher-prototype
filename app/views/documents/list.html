@@ -99,7 +99,7 @@
                         },
                         metadata: {
                           document_type: document.document_type | documentType,
-                          last_edited_by: document.last_updated_by
+                          last_edited_by: document.updated_by if document.updated_by else (document.last_updated_by if document.last_updated_by else "Unknown")
                         }
                       }]
                     }) -}}
