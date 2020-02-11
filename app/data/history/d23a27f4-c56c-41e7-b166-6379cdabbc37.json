@@ -1,8 +1,8 @@
 [
   {
     "id": "16771b0d-f136-43d0-ae8d-7e699248a105",
-    "title": "New edition",
-    "created_at": "2020-01-25T16:25:00.000Z",
+    "title": "First created",
+    "created_at": "2017-07-16T16:25:00.000Z",
     "created_by": "Alison Hargreaves",
     "edition": {
       "title": "1st edition",
@@ -11,8 +11,8 @@
   },
   {
     "id": "a123c310-8895-445b-9462-d78514b4bb9e",
-    "title": "Content added",
-    "created_at": "2020-01-25T16:26:00.000Z",
+    "title": "Attachment uploaded",
+    "created_at": "2017-07-16T16:26:00.000Z",
     "created_by": "Alison Hargreaves",
     "edition": {
       "title": "1st edition",
@@ -21,12 +21,103 @@
   },
   {
     "id": "618b9684-b1e9-49ef-90de-f98b46a9a92d",
-    "title": "Attachments added",
-    "created_at": "2020-02-10T16:46:00.000Z",
+    "title": "Attachment uploaded",
+    "created_at": "2017-07-16T16:46:00.000Z",
     "created_by": "Simon Whatley",
     "edition": {
       "title": "1st edition",
       "id": "d23a27f4-c56c-41e7-b166-6379cdabbc37"
     }
+  },
+  {
+    "id": "5bff0c07-c20a-4d7d-bf02-eddaa6d06c44",
+    "title": "Published with review",
+    "created_at": "2017-07-16T16:51:00.000Z",
+    "created_by": "Simon Whatley",
+    "edition": {
+      "title": "1st edition",
+      "id": "d23a27f4-c56c-41e7-b166-6379cdabbc37"
+    }
+  },
+  {
+    "id": "5efa0b21-8a87-489d-9b31-985738044f05",
+    "title": "New edition",
+    "created_at": "2019-02-15T10:23:00.000Z",
+    "created_by": "Andrew Harsant",
+    "edition": {
+      "title": "2nd edition",
+      "id": "e88ad84c-086b-4850-8b1d-ec189385e220"
+    }
+  },
+  {
+    "id": "139c376f-509f-4613-9434-843b3cbdf2a1",
+    "title": "Document updated",
+    "created_at": "2019-02-15T17:14:00.000Z",
+    "created_by": "Andrew Harsant",
+    "edition": {
+      "title": "2nd edition",
+      "id": "e88ad84c-086b-4850-8b1d-ec189385e220"
+    }
+  },
+  {
+    "id": "ef738748-69fa-4c2f-b3a7-322041bcdc22",
+    "title": "Published with review",
+    "created_at": "2019-02-15T17:36:00.000Z",
+    "created_by": "Andrew Harsant",
+    "edition": {
+      "title": "2nd edition",
+      "id": "e88ad84c-086b-4850-8b1d-ec189385e220"
+    }
+  },
+  {
+    "id": "9b8d4ba9-ac06-4497-a91c-7105d473b9b0",
+    "title": "New edition",
+    "created_at": "2019-09-04T09:42:00.000Z",
+    "created_by": "Lynn Hill",
+    "edition": {
+      "title": "3rd edition",
+      "id": "66069037-08ad-4364-91ef-ad240dfc2ed0"
+    }
+  },
+  {
+    "id": "f559856a-de11-4911-b290-0c8e849f4480",
+    "title": "Document updated",
+    "created_at": "2019-09-04T10:02:00.000Z",
+    "created_by": "Lynn Hill",
+    "edition": {
+      "title": "3rd edition",
+      "id": "66069037-08ad-4364-91ef-ad240dfc2ed0"
+    }
+  },
+  {
+    "id": "b287a449-9a02-4e2e-a937-479c2776aa5d",
+    "title": "Attachment uploaded",
+    "created_at": "2019-09-04T10:05:00.000Z",
+    "created_by": "Lynn Hill",
+    "edition": {
+      "title": "3rd edition",
+      "id": "66069037-08ad-4364-91ef-ad240dfc2ed0"
+    }
+  },
+  {
+    "id": "c7249b48-92a0-4307-b011-b6a891e6bc0f",
+    "title": "Published without review",
+    "created_at": "2019-09-04T12:36:00.000Z",
+    "created_by": "Lynn Hill",
+    "edition": {
+      "title": "3rd edition",
+      "id": "66069037-08ad-4364-91ef-ad240dfc2ed0"
+    }
+  },
+  {
+    "id": "90a863f1-218f-412d-92f6-19761cdef4ce",
+    "title": "Approved for publication",
+    "created_at": "2019-09-05T09:36:00.000Z",
+    "created_by": "Chris Sharma",
+    "edition": {
+      "title": "3rd edition",
+      "id": "66069037-08ad-4364-91ef-ad240dfc2ed0"
+    }
   }
+
 ]
