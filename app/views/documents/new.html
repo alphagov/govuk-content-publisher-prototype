@@ -60,7 +60,7 @@
 
       {%- if data.document_type in ["case_study","statement_to_parliament","speech","consultation","fatality_notice","specialist_notice"] or data.document_sub_type in ["authored_article","manual","detailed_guide","mainstream_guide","statistics_announcement","statistical_dataset"] %}
 
-        <p class="govuk-body">Nothing to see here</p>
+        <p class="govuk-body">The document type ‘{{ (data.document_sub_type | documentType | lower) if data.document_sub_type else (data.document_type | documentType | lower) }}’ is not available yet in Content Publisher.</p>
 
       {% else %}
 
