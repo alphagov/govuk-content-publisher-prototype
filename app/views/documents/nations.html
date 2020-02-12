@@ -25,8 +25,8 @@
       <form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
 
         {{ govukCheckboxes({
-          idPrefix: "document-nations",
-          name: "document[nations]",
+          idPrefix: "national-applicability",
+          name: "document[details][national_applicability]",
           fieldset: {
             legend: {
               text: "Excluded nations for ‘" + document.title + "’",
@@ -43,8 +43,8 @@
               text: "England",
               conditional: {
                 html: govukInput({
-                  id: "",
-                  name: "",
+                  id: "national-applicability-england",
+                  name: "document[details][national_applicability][england][alternative_url]",
                   label: {
                     text: "Alternative page address",
                     classes: "govuk-!-font-weight-bold"
@@ -52,17 +52,18 @@
                   hint: {
                     text: "Include the whole URL (starting with http)."
                   },
-                  value: ""
+                  value: document.details.national_applicability.england.alternative_url if document.details.national_applicability.england.alternative_url
                 })
-              }
+              },
+              checked: true if document['details']['national_applicability']['england']['applicable'] == false
             },
             {
-              value: "nortern_ireland",
+              value: "northern_ireland",
               text: "Northern Ireland",
               conditional: {
                 html: govukInput({
-                  id: "",
-                  name: "",
+                  id: "national-applicability-northern-ireland",
+                  name: "document[details][national_applicability][northern_ireland][alternative_url]",
                   label: {
                     text: "Alternative page address",
                     classes: "govuk-!-font-weight-bold"
@@ -70,17 +71,18 @@
                   hint: {
                     text: "Include the whole URL (starting with http)."
                   },
-                  value: ""
+                  value: document.details.national_applicability.northern_ireland.alternative_url if document.details.national_applicability.northern_ireland.alternative_url
                 })
-              }
+              },
+              checked: true if document['details']['national_applicability']['northern_ireland']['applicable'] == false
             },
             {
               value: "scotland",
               text: "Scotland",
               conditional: {
                 html: govukInput({
-                  id: "",
-                  name: "",
+                  id: "national-applicability-scotland",
+                  name: "document[details][national_applicability][scotland][alternative_url]",
                   label: {
                     text: "Alternative page address",
                     classes: "govuk-!-font-weight-bold"
@@ -88,17 +90,18 @@
                   hint: {
                     text: "Include the whole URL (starting with http)."
                   },
-                  value: ""
+                  value: document.details.national_applicability.scotland.alternative_url if document.details.national_applicability.scotland.alternative_url
                 })
-              }
+              },
+              checked: true if document['details']['national_applicability']['scotland']['applicable'] == false
             },
             {
               value: "wales",
               text: "Wales",
               conditional: {
                 html: govukInput({
-                  id: "",
-                  name: "",
+                  id: "national-applicability-wales",
+                  name: "document[details][national_applicability][wales][alternative_url]",
                   label: {
                     text: "Alternative page address",
                     classes: "govuk-!-font-weight-bold"
@@ -106,9 +109,10 @@
                   hint: {
                     text: "Include the whole URL (starting with http)."
                   },
-                  value: ""
+                  value: document.details.national_applicability.wales.alternative_url if document.details.national_applicability.wales.alternative_url
                 })
-              }
+              },
+              checked: true if document['details']['national_applicability']['wales']['applicable'] == false
             }
           ]
         }) }}
