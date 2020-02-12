@@ -141,7 +141,8 @@ exports.document_summary_get = function(req, res) {
         settings: {
           access: '/documents/' + req.params.document_id + '/access',
           back_date: '/documents/' + req.params.document_id + '/back-date',
-          political: '/documents/' + req.params.document_id + '/political'
+          political: '/documents/' + req.params.document_id + '/political',
+          nations: '/documents/' + req.params.document_id + '/nations'
         },
         new_edition: '/documents/' + req.params.document_id + '/new-edition',
         review: '/documents/' + req.params.document_id + '/review',
@@ -796,6 +797,43 @@ exports.document_change_note_post = function(req, res) {
   } else {
     documentData.edition.change_note = '';
   }
+
+  documentData.updated_at = new Date();
+  documentData.updated_by = req.session.data.user.display_name;
+
+  // documents directory path
+  const documentDirectoryPath = path.join(__dirname, '../data/documents/');
+
+  const documentFilePath = documentDirectoryPath + '/' + documentData.content_id + '.json';
+
+  // create a JSON sting for the submitted data
+  const documentFileData = JSON.stringify(documentData);
+
+  // write the JSON data
+  fs.writeFileSync(documentFilePath, documentFileData);
+
+  res.redirect('/documents/' + req.params.document_id);
+};
+
+exports.document_nations_get = function(req, res) {
+
+  const documentData = Documents.findById(req.params.document_id);
+
+  res.render('../views/documents/nations', {
+    document: documentData,
+    actions: {
+      back: '/documents/' + req.params.document_id,
+      save: '/documents/' + req.params.document_id + '/nations'
+    }
+  });
+};
+
+exports.document_nations_post = function(req, res) {
+  // res.send('NOT IMPLEMENTED: Document change note post');
+
+  let documentData = Documents.findById(req.params.document_id);
+
+
 
   documentData.updated_at = new Date();
   documentData.updated_by = req.session.data.user.display_name;

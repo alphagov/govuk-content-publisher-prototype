@@ -39,6 +39,23 @@
     },
     {
       key: {
+        text: "Excluded nations"
+      },
+      value: {
+        text: ""
+      },
+      actions: {
+        items: [
+          {
+            href: actions.settings.nations,
+            text: "Change",
+            visuallyHiddenText: "excluded nations"
+          }
+        ]
+      } if document.document_status != 'published'
+    },
+    {
+      key: {
         text: "Gets history mode"
       },
       value: {
