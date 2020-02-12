@@ -29,13 +29,13 @@
           name: "document[details][national_applicability]",
           fieldset: {
             legend: {
-              text: "Excluded nations for ‘" + document.title + "’",
+              text: "Nations not covered by ‘" + document.title + "’",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
           },
           hint: {
-            text: ""
+            text: "Tick UK nations where this information does not apply."
           },
           items: [
             {
@@ -50,7 +50,7 @@
                     classes: "govuk-!-font-weight-bold"
                   },
                   hint: {
-                    text: "Include the whole URL (starting with http)."
+                    text: "Give a URL for users in England if there is one. Include the whole URL (starting with http)."
                   },
                   value: document.details.national_applicability.england.alternative_url if document.details.national_applicability.england.alternative_url
                 })
@@ -69,7 +69,7 @@
                     classes: "govuk-!-font-weight-bold"
                   },
                   hint: {
-                    text: "Include the whole URL (starting with http)."
+                    text: "Give a URL for users in Northern Ireland if there is one. Include the whole URL (starting with http)."
                   },
                   value: document.details.national_applicability.northern_ireland.alternative_url if document.details.national_applicability.northern_ireland.alternative_url
                 })
@@ -88,7 +88,7 @@
                     classes: "govuk-!-font-weight-bold"
                   },
                   hint: {
-                    text: "Include the whole URL (starting with http)."
+                    text: "Give a URL for users in Scotland if there is one. Include the whole URL (starting with http)."
                   },
                   value: document.details.national_applicability.scotland.alternative_url if document.details.national_applicability.scotland.alternative_url
                 })
@@ -107,7 +107,7 @@
                     classes: "govuk-!-font-weight-bold"
                   },
                   hint: {
-                    text: "Include the whole URL (starting with http)."
+                    text: "Give a URL for users in Wales if there is one. Include the whole URL (starting with http)."
                   },
                   value: document.details.national_applicability.wales.alternative_url if document.details.national_applicability.wales.alternative_url
                 })
