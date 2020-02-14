@@ -117,49 +117,38 @@ exports.document_list = function(req, res) {
 exports.document_summary_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: Document summary: ' + req.params.document_id);
 
-  if (!req.session.data.document || (req.session.data.document.content_id != req.params.document_id)) {
-
-    // HACK: load the correct data from the session
-    res.redirect('/documents/' + req.params.document_id + '/load')
-
-  }
-  else {
-
-    res.render('../views/documents/summary', {
-      document: Documents.findById(req.params.document_id),
-      attachments: Attachments.findByDocumentId(req.params.document_id),
-      actions: {
-        home: '/documents',
-        summary: '/documents/' + req.params.document_id,
-        history: '/documents/' + req.params.document_id + '/history',
-        content: '/documents/' + req.params.document_id + '/content',
-        attachments: '/documents/' + req.params.document_id + '/attachments',
-        reorder_attachments: '/documents/' + req.params.document_id + '/attachments/reorder',
-        images: '/documents/' + req.params.document_id + '/images',
-        topics: '/documents/' + req.params.document_id + '/topics',
-        tags: '/documents/' + req.params.document_id + '/tags',
-        settings: {
-          access: '/documents/' + req.params.document_id + '/access',
-          back_date: '/documents/' + req.params.document_id + '/back-date',
-          political: '/documents/' + req.params.document_id + '/political',
-          nations: '/documents/' + req.params.document_id + '/nations'
-        },
-        new_edition: '/documents/' + req.params.document_id + '/new-edition',
-        review: '/documents/' + req.params.document_id + '/review',
-        approve: '/documents/' + req.params.document_id + '/approve',
-        schedule: '/documents/' + req.params.document_id + '/schedule',
-        preview: '/documents/' + req.params.document_id + '/preview',
-        publish: '/documents/' + req.params.document_id + '/publish',
-        delete_draft: '/documents/' + req.params.document_id + '/delete',
-        withdraw: '/documents/' + req.params.document_id + '/withdraw',
-        undo_withdraw: '/documents/' + req.params.document_id + '/undo-withdraw',
-        remove: '/documents/' + req.params.document_id + '/remove',
-        change_note: '/documents/' + req.params.document_id + '/change-note'
+  res.render('../views/documents/summary', {
+    document: Documents.findById(req.params.document_id),
+    attachments: Attachments.findByDocumentId(req.params.document_id),
+    actions: {
+      home: '/documents',
+      summary: '/documents/' + req.params.document_id,
+      history: '/documents/' + req.params.document_id + '/history',
+      content: '/documents/' + req.params.document_id + '/content',
+      attachments: '/documents/' + req.params.document_id + '/attachments',
+      reorder_attachments: '/documents/' + req.params.document_id + '/attachments/reorder',
+      images: '/documents/' + req.params.document_id + '/images',
+      topics: '/documents/' + req.params.document_id + '/topics',
+      tags: '/documents/' + req.params.document_id + '/tags',
+      settings: {
+        access: '/documents/' + req.params.document_id + '/access',
+        back_date: '/documents/' + req.params.document_id + '/back-date',
+        political: '/documents/' + req.params.document_id + '/political',
+        nations: '/documents/' + req.params.document_id + '/nations'
       },
-      id: req.params.document_id
-    });
-
-  }
+      new_edition: '/documents/' + req.params.document_id + '/new-edition',
+      review: '/documents/' + req.params.document_id + '/review',
+      approve: '/documents/' + req.params.document_id + '/approve',
+      schedule: '/documents/' + req.params.document_id + '/schedule',
+      preview: '/documents/' + req.params.document_id + '/preview',
+      publish: '/documents/' + req.params.document_id + '/publish',
+      delete_draft: '/documents/' + req.params.document_id + '/delete',
+      withdraw: '/documents/' + req.params.document_id + '/withdraw',
+      undo_withdraw: '/documents/' + req.params.document_id + '/undo-withdraw',
+      remove: '/documents/' + req.params.document_id + '/remove',
+      change_note: '/documents/' + req.params.document_id + '/change-note'
+    }
+  });
 
 };
 
@@ -167,10 +156,31 @@ exports.document_summary_get = function(req, res) {
 exports.document_history_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: Document history: ' + req.params.document_id);
 
-  let historyData = [];
-  let historyArray = [];
+  const directoryPath = path.join(__dirname, '../data/history/');;
+  const filePath = directoryPath + req.params.document_id + '.json';
 
-  let rawdata = fs.readFileSync('./app/data/history/' + req.params.document_id + '.json');
+  const documentData = Documents.findById(req.params.document_id);
+
+  let historyArray = [];
+  let historyData = {};
+
+  // Dummy data
+  historyData.id = req.params.document_id;
+  historyData.title = 'First created';
+  historyData.created_at = documentData.first_published_at;
+  historyData.created_by = req.session.data.user.display_name;
+  historyData.edition = {};
+  historyData.edition.id = uuid();
+  historyData.edition.title = '1st edition';
+
+  historyArray.push(historyData);
+
+  // check if document directory exists
+  if (!fs.existsSync(filePath)) {
+    fs.writeFileSync(filePath,JSON.stringify(historyArray));
+  }
+
+  let rawdata = fs.readFileSync(filePath);
   historyData = JSON.parse(rawdata);
 
   historyData.sort((a,b) => new Date(b.created_at) - new Date(a.created_at));
@@ -197,6 +207,7 @@ exports.document_history_get = function(req, res) {
   historyArray = paginate(historyData, limit, page);
 
   res.render('../views/documents/history', {
+    document: documentData,
     history: historyArray,
     total_count: count,
     page_count: page_count,
@@ -213,6 +224,7 @@ exports.document_history_get = function(req, res) {
 
 };
 
+// TODO: get rid of document_load
 exports.document_load = function(req, res) {
   let rawdata = fs.readFileSync('./app/data/documents/' + req.params.document_id + '.json');
   let docdata = JSON.parse(rawdata);
@@ -829,11 +841,42 @@ exports.document_nations_get = function(req, res) {
 };
 
 exports.document_nations_post = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Document change note post');
 
   let documentData = Documents.findById(req.params.document_id);
 
+  documentData.details.national_applicability = {};
 
+  const nations = ["england","northern_ireland","scotland","wales"];
+
+  console.log(req.session.data.document.details.national_applicability.nations);
+
+  nations.forEach((nation) => {
+
+    documentData.details.national_applicability[nation] = {};
+
+    // TODO: title case and remove underscore
+    documentData.details.national_applicability[nation].label = nation.replace(/_+/g, " ");
+
+    // if the user hasn't checked the checkbox, the nation is applicable
+    if (req.session.data.document.details.national_applicability.nations === undefined || req.session.data.document.details.national_applicability.nations.indexOf(nation) === -1) {
+
+      documentData.details.national_applicability[nation].applicable = true;
+
+      documentData.details.national_applicability[nation].alternative_url = '';
+
+    } else {
+
+      documentData.details.national_applicability[nation].applicable = false;
+
+      if (req.session.data.document.details.national_applicability[nation].alternative_url.length) {
+        documentData.details.national_applicability[nation].alternative_url = req.session.data.document.details.national_applicability[nation].alternative_url;
+      } else {
+        documentData.details.national_applicability[nation].alternative_url = '';
+      }
+
+    }
+
+  });
 
   documentData.updated_at = new Date();
   documentData.updated_by = req.session.data.user.display_name;
