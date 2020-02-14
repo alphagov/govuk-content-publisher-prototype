@@ -26,7 +26,7 @@
 
         {{ govukCheckboxes({
           idPrefix: "national-applicability",
-          name: "document[details][national_applicability]",
+          name: "document[details][national_applicability][nations]",
           fieldset: {
             legend: {
               text: "Nations not covered by ‘" + document.title + "’",
@@ -124,7 +124,7 @@
       </form>
 
       <p class="govuk-body">
-        <a class="govuk-link govuk-link--no-visited-state" href="{{ links.back }}">Cancel</a>
+        <a class="govuk-link govuk-link--no-visited-state" href="{{ actions.back }}">Cancel</a>
       </p>
 
     </div>

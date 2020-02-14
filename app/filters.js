@@ -293,7 +293,7 @@ module.exports = function (env) {
   /* ------------------------------------------------------------------
     utility function to test validity of URL
     example: {{ "http://www.google.com" | isValidUrl }}
-    outputs: 
+    outputs:
   ------------------------------------------------------------------ */
   filters.isValidUrl = function(str) {
     var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
@@ -303,6 +303,23 @@ module.exports = function (env) {
       '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
       '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
     return !!pattern.test(str);
+  }
+
+  /* ------------------------------------------------------------------
+    utility function to return a list from array
+    example: {{ ["England","Scotland","Wales"] | arrayToList }}
+    outputs: England, Scotland and Wales
+  ------------------------------------------------------------------ */
+  filters.arrayToList = function(array, join = ', ', final = ' and ') {
+    var arr = array.slice(0);
+
+    var last = arr.pop();
+
+    if (array.length > 1) {
+      return arr.join(join) + final + last;
+    }
+
+    return last;
   }
 
 

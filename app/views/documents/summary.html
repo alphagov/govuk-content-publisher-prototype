@@ -64,6 +64,10 @@
             {% include "./partials/_banner-political.html" %}
           {% endif %}
 
+          {%- if document.details.national_applicability | length %}
+            {% include "./partials/_banner-excluded-nations.html" %}
+          {% endif -%}
+
           {% if document.withdrawn_notice | length %}
             {% include "./partials/_banner-withdrawn.html" %}
           {% endif %}
