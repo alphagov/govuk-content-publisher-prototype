@@ -88,6 +88,9 @@ module.exports = function (env) {
   ------------------------------------------------------------------ */
   filters.documentType = function(type) {
 
+    if (!type)
+      return type;
+
     switch (type) {
       case 'articles_correspondence': return 'Articles and correspondence';
       case 'authored_article': return 'Authored article';
@@ -135,6 +138,24 @@ module.exports = function (env) {
       case 'written_statement': return 'Written statement to parliament';
       default: return type;
     }
+
+  }
+
+
+  filters.isPluralDocumentType = function(type) {
+
+    if (!type)
+      return false;
+
+    let plural = false;
+
+    const pluralDocumentTypes = ['national_statistics','official_statistics'];
+
+    if (pluralDocumentTypes.indexOf(type) !== -1) {
+      plural = true;
+    }
+
+    return plural;
 
   }
 

@@ -35,7 +35,7 @@
             }
           },
           hint: {
-            text: "Tick UK nations where this information does not apply."
+            text: "Tick the UK nations where" + (" these " if document.document_type | isPluralDocumentType else " this ") + (document.document_type | documentType | lower | replace("foi","FOI") ) + (" do " if document.document_type | isPluralDocumentType else " does ") + "not apply."
           },
           items: [
             {
