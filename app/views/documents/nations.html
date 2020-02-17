@@ -52,6 +52,10 @@
                   hint: {
                     text: "Give a URL for users in England if there is one. Include the whole URL (starting with http)."
                   },
+                  attributes: {
+                    autocomplete: "off",
+                    spellcheck: false
+                  },
                   value: document.details.national_applicability.england.alternative_url if document.details.national_applicability.england.alternative_url
                 })
               },
@@ -67,6 +71,10 @@
                   label: {
                     text: "Alternative page address",
                     classes: "govuk-!-font-weight-bold"
+                  },
+                  attributes: {
+                    autocomplete: "off",
+                    spellcheck: false
                   },
                   hint: {
                     text: "Give a URL for users in Northern Ireland if there is one. Include the whole URL (starting with http)."
@@ -86,6 +94,10 @@
                   label: {
                     text: "Alternative page address",
                     classes: "govuk-!-font-weight-bold"
+                  },
+                  attributes: {
+                    autocomplete: "off",
+                    spellcheck: false
                   },
                   hint: {
                     text: "Give a URL for users in Scotland if there is one. Include the whole URL (starting with http)."
