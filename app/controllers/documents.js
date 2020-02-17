@@ -848,8 +848,6 @@ exports.document_nations_post = function(req, res) {
 
   const nations = ["england","northern_ireland","scotland","wales"];
 
-  console.log(req.session.data.document.details.national_applicability.nations);
-
   nations.forEach((nation) => {
 
     documentData.details.national_applicability[nation] = {};
