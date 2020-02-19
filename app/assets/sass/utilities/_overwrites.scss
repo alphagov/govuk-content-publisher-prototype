@@ -129,3 +129,16 @@
     width: 25%;
   }
 }
+
+.app-c-summary-list--sortable {
+  .govuk-summary-list__key {
+    width: 10%;
+  }
+  .govuk-summary-list__value {
+    width: 50%;
+    font-weight: bold;
+  }
+  .govuk-summary-list__actions {
+    width: 40%;
+  }
+}
