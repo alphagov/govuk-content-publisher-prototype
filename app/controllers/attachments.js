@@ -125,6 +125,20 @@ exports.attachment_create_post = function(req, res) {
   // write the JSON data
   fs.writeFileSync(filePath, fileData);
 
+  // append the new file path to the index.js
+  let index
+  try {
+    index = fs.readFileSync(directoryPath + '/index.json');
+  } catch (err) {
+    // no index file
+  }
+  if (index) {
+    attachmentsOrder = JSON.parse(index)
+    attachmentsOrder.push(fileName)
+    const indexFileData = JSON.stringify(attachmentsOrder);
+    fs.writeFileSync(directoryPath + '/index.json', indexFileData);
+  }
+
   // redirect the user back to the attachments page
   // TODO: show flash message (success/failure)
   if (req.session.data.document.attachment.type === 'external') {
@@ -184,6 +198,26 @@ exports.attachment_delete_post = function(req, res) {
   const directoryPath = path.join(__dirname, '../data/attachments/', req.params.document_id);
 
   fs.unlinkSync(directoryPath + '/' + req.params.attachment_id + '.json');
+
+  // append the new file path to the index.js
+  let index
+  try {
+    index = fs.readFileSync(directoryPath + '/index.json');
+  } catch (err) {
+    // no index file
+  }
+  if (index) {
+    attachmentsOrder = JSON.parse(index)
+
+    const i = attachmentsOrder.indexOf(req.params.attachment_id + '.json');
+    if (i > -1) {
+      attachmentsOrder.splice(i, 1);
+    }
+
+    const indexFileData = JSON.stringify(attachmentsOrder);
+    fs.writeFileSync(directoryPath + '/index.json', indexFileData);
+  }
+
 
   // redirect the user back to the attachments page
   // TODO: show flash message (success/failure)
@@ -294,6 +328,20 @@ exports.attachment_update_post = function(req, res) {
 
   // write the JSON data
   fs.writeFileSync(filePath, fileData);
+
+  // append the new file path to the index.js
+  let index
+  try {
+    index = fs.readFileSync(directoryPath + '/index.json');
+  } catch (err) {
+    // no index file
+  }
+  if (index) {
+    attachmentsOrder = JSON.parse(index)
+    attachmentsOrder.push(req.params.attachment_id + '.json')
+    const indexFileData = JSON.stringify(attachmentsOrder);
+    fs.writeFileSync(directoryPath + '/index.json', indexFileData);
+  }
 
   let modalRoute = '';
   if (req.path.indexOf('/modal/') !== -1) {
@@ -433,6 +481,20 @@ exports.attachment_update_metadata_post = function(req, res) {
   // write the JSON data
   fs.writeFileSync(filePath, fileData);
 
+  // append the new file path to the index.js
+  let index
+  try {
+    index = fs.readFileSync(directoryPath + '/index.json');
+  } catch (err) {
+    // no index file
+  }
+  if (index) {
+    attachmentsOrder = JSON.parse(index)
+    attachmentsOrder.push(req.params.attachment_id + '.json')
+    const indexFileData = JSON.stringify(attachmentsOrder);
+    fs.writeFileSync(directoryPath + '/index.json', indexFileData);
+  }
+
   // delete the attachment data we no longer need
   delete req.session.data.document.attachment;
 
@@ -479,5 +541,17 @@ exports.attachment_list_reorder_get = function(req, res) {
 
 // Reorder attachments list on POST.
 exports.attachment_list_reorder_post = function(req, res) {
-  res.send('NOT IMPLEMENTED: attachment reorder POST');
+  const attachmentsOrder = req.session.data.attachments_order
+
+  const directoryPath = path.join(__dirname, '../data/attachments/', req.params.document_id);
+
+  const filePath = directoryPath + '/index.json';
+  // create a JSON sting for the submitted data
+  const fileData = JSON.stringify(attachmentsOrder);
+
+  // write the JSON data
+  fs.writeFileSync(filePath, fileData);
+
+  // redirect the user back to the document page
+  res.redirect('/documents/' + req.params.document_id);
 };
