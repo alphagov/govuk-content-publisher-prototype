@@ -59,9 +59,9 @@
                       {% if attachment.type == 'html' %}<p class="govuk-body-s">{{ attachment.type | attachmentType }}</p>{% endif -%}
                     </dd>
                     <div class="govuk-summary-list__actions app-o-order-controls js-order-controls">
+                      <input name="attachments_order[]" type="hidden" value="{{ attachment.content_id }}.json">
                       <button class="govuk-button app-c-button--secondary-quiet js-up">Up</button>
                       <button class="govuk-button app-c-button--secondary-quiet js-down">Down</button>
-                      <input name="attachments_order[]" type="hidden" value="{{ attachment.content_id }}.json"/>
                     </div>
                   </div>
                 {% endfor -%}
