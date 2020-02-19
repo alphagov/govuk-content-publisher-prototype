@@ -141,24 +141,11 @@ exports.attachment_create_post = function(req, res) {
 
   // redirect the user back to the attachments page
   // TODO: show flash message (success/failure)
-  if (req.session.data.document.attachment.type === 'external') {
-    // delete the attachment data we no longer need
-    delete req.session.data.document.attachment;
 
-    if (req.path.indexOf('/modal/') !== -1) {
-      res.redirect('/documents/' + req.params.document_id + '/attachments/modal/');
-    } else {
-      res.redirect('/documents/' + req.params.document_id + '/attachments');
-    }
-
+  if (req.path.indexOf('/modal/') !== -1) {
+    res.redirect('/documents/' + req.params.document_id + '/attachments/' + attachmentData.content_id + '/modal/metadata');
   } else {
-
-    if (req.path.indexOf('/modal/') !== -1) {
-      res.redirect('/documents/' + req.params.document_id + '/attachments/' + attachmentData.content_id + '/modal/metadata');
-    } else {
-      res.redirect('/documents/' + req.params.document_id + '/attachments/' + attachmentData.content_id + '/metadata');
-    }
-
+    res.redirect('/documents/' + req.params.document_id + '/attachments/' + attachmentData.content_id + '/metadata');
   }
 
 };
@@ -218,7 +205,6 @@ exports.attachment_delete_post = function(req, res) {
     fs.writeFileSync(directoryPath + '/index.json', indexFileData);
   }
 
-
   // redirect the user back to the attachments page
   // TODO: show flash message (success/failure)
   if (req.path.indexOf('/modal/') !== -1) {
@@ -232,14 +218,6 @@ exports.attachment_delete_post = function(req, res) {
 // Display attachment update form on GET.
 exports.attachment_update_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: attachment update GET');
-
-  // attachment uploads directory path
-  // const directoryPath = path.join(__dirname, '../data/attachments/', req.params.document_id);
-  //
-  // const filePath = directoryPath + '/' + req.params.attachment_id + '.json';
-  //
-  // let rawdata = fs.readFileSync(filePath);
-  // let attachmentData = JSON.parse(rawdata);
 
   // HACK this is to mock the details of a file
   let fileMetadata = {
@@ -284,7 +262,6 @@ exports.attachment_update_post = function(req, res) {
   let rawdata = fs.readFileSync(filePath);
   let attachmentData = JSON.parse(rawdata);
 
-  // attachment data
   attachmentData.title = req.session.data.document.attachment.title;
 
   if (attachmentData.type === 'external') {
@@ -293,32 +270,7 @@ exports.attachment_update_post = function(req, res) {
 
   if (attachmentData.type === 'file') {
     attachmentData.file = slugify(attachmentData.title);
-    // attachmentData.language = req.session.data.document.attachment.language;
   }
-
-  //
-  // if (attachmentData.type === 'file') {
-  //   attachmentData.isbn = req.session.data.document.attachment.isbn;
-  //   attachmentData.urn = req.session.data.document.attachment.urn;
-  //
-  //   // TODO: work out the hierarchy of CPN and unnumbered
-  //   attachmentData.cpn = req.session.data.document.attachment.cpn;
-  //   attachmentData.unnumbered = req.session.data.document.attachment.unnumbered;
-  //
-  //   // TODO: work out the hierarchy of HCPN and unnumbered act
-  //   attachmentData.hcpn = req.session.data.document.attachment.hcpn;
-  //   attachmentData.unnumbered_act = req.session.data.document.attachment.unnumbered_act;
-  //
-  //   attachmentData.parliamentary_session = req.session.data.document.attachment.parliamentary_session;
-  // }
-  //
-  // if (attachmentData.type === 'html') {
-  //   attachmentData.body = req.session.data.document.attachment.body;
-  // }
-  //
-  // if (attachmentData.type === 'file' || attachmentData.type == 'html') {
-  //   attachmentData.order_url = "https://www.gov.uk/guidance/how-to-buy-printed-copies-of-official-documents";
-  // }
 
   attachmentData.updated_at = new Date();
   attachmentData.updated_by = req.session.data.user.display_name;
@@ -329,20 +281,6 @@ exports.attachment_update_post = function(req, res) {
   // write the JSON data
   fs.writeFileSync(filePath, fileData);
 
-  // append the new file path to the index.js
-  let index
-  try {
-    index = fs.readFileSync(directoryPath + '/index.json');
-  } catch (err) {
-    // no index file
-  }
-  if (index) {
-    attachmentsOrder = JSON.parse(index)
-    attachmentsOrder.push(req.params.attachment_id + '.json')
-    const indexFileData = JSON.stringify(attachmentsOrder);
-    fs.writeFileSync(directoryPath + '/index.json', indexFileData);
-  }
-
   let modalRoute = '';
   if (req.path.indexOf('/modal/') !== -1) {
     modalRoute = '/modal';
@@ -350,22 +288,11 @@ exports.attachment_update_post = function(req, res) {
 
   // redirect the user back to the attachments page
   // TODO: show flash message (success/failure)
-  if (attachmentData.type === 'external') {
 
-    if (req.path.indexOf('/modal/') !== -1) {
-      res.redirect('/documents/' + req.params.document_id + '/attachments/modal/');
-    } else {
-      res.redirect('/documents/' + req.params.document_id + '/attachments');
-    }
-
+  if (req.path.indexOf('/modal/') !== -1) {
+    res.redirect('/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/modal/metadata');
   } else {
-
-    if (req.path.indexOf('/modal/') !== -1) {
-      res.redirect('/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/modal/metadata');
-    } else {
-      res.redirect('/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/metadata');
-    }
-
+    res.redirect('/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/metadata');
   }
 
 };
@@ -402,60 +329,55 @@ exports.attachment_update_metadata_post = function(req, res) {
   // Get attachment data
   let attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
 
-  // console.log('Before', attachmentData);
+  // Update attachment data
+  attachmentData.official_document = req.session.data.document.attachment.official_document;
 
-  if (attachmentData.type === 'file' || attachmentData.type == 'html') {
+  attachmentData.isbn = req.session.data.document.attachment.isbn;
+  attachmentData.urn = req.session.data.document.attachment.urn;
 
-    attachmentData.official_document = req.session.data.document.attachment.official_document;
+  if (attachmentData.official_document === 'yes_command_paper') {
 
-    attachmentData.isbn = req.session.data.document.attachment.isbn;
-    attachmentData.urn = req.session.data.document.attachment.urn;
+    attachmentData.cpn = req.session.data.document.attachment.cpn;
+    attachmentData.unnumbered = req.session.data.document.attachment.unnumbered;
 
-    if (attachmentData.official_document === 'yes_command_paper') {
-
-      attachmentData.cpn = req.session.data.document.attachment.cpn;
-      attachmentData.unnumbered = req.session.data.document.attachment.unnumbered;
-
-      if (attachmentData.cpn.length || attachmentData.unnumbered === undefined) {
-        attachmentData.unnumbered = '';
-      }
-
-      // clear the house of commons paper fields
-      attachmentData.hcpn = '';
-      attachmentData.parliamentary_session = '';
-      attachmentData.unnumbered_act = '';
-
-    }
-
-    if (attachmentData.official_document === 'yes_house_of_commons_paper') {
-
-      attachmentData.hcpn = req.session.data.document.attachment.hcpn;
-      attachmentData.parliamentary_session = req.session.data.document.attachment.parliamentary_session;
-      attachmentData.unnumbered_act = req.session.data.document.attachment.unnumbered_act;
-
-      if (attachmentData.hcpn.length || attachmentData.unnumbered_act === undefined) {
-        attachmentData.unnumbered_act = '';
-      }
-
-      // clear the command paper fields
-      attachmentData.cpn = '';
+    if (attachmentData.cpn.length || attachmentData.unnumbered === undefined) {
       attachmentData.unnumbered = '';
-
     }
 
-    if (attachmentData.official_document === 'yes_command_paper' || attachmentData.official_document === 'yes_house_of_commons_paper') {
-      attachmentData.order_url = "https://www.gov.uk/guidance/how-to-buy-printed-copies-of-official-documents";
-    }
+    // clear the house of commons paper fields
+    attachmentData.hcpn = '';
+    attachmentData.parliamentary_session = '';
+    attachmentData.unnumbered_act = '';
 
-    if (attachmentData.official_document === 'no') {
-      attachmentData.cpn = '';
-      attachmentData.unnumbered = '';
-      attachmentData.hcpn = '';
-      attachmentData.parliamentary_session = '';
+  }
+
+  if (attachmentData.official_document === 'yes_house_of_commons_paper') {
+
+    attachmentData.hcpn = req.session.data.document.attachment.hcpn;
+    attachmentData.parliamentary_session = req.session.data.document.attachment.parliamentary_session;
+    attachmentData.unnumbered_act = req.session.data.document.attachment.unnumbered_act;
+
+    if (attachmentData.hcpn.length || attachmentData.unnumbered_act === undefined) {
       attachmentData.unnumbered_act = '';
-      attachmentData.order_url = '';
     }
 
+    // clear the command paper fields
+    attachmentData.cpn = '';
+    attachmentData.unnumbered = '';
+
+  }
+
+  if (attachmentData.official_document === 'yes_command_paper' || attachmentData.official_document === 'yes_house_of_commons_paper') {
+    attachmentData.order_url = "https://www.gov.uk/guidance/how-to-buy-printed-copies-of-official-documents";
+  }
+
+  if (attachmentData.official_document === 'no') {
+    attachmentData.cpn = '';
+    attachmentData.unnumbered = '';
+    attachmentData.hcpn = '';
+    attachmentData.parliamentary_session = '';
+    attachmentData.unnumbered_act = '';
+    attachmentData.order_url = '';
   }
 
   if (attachmentData.type === 'html') {
@@ -469,8 +391,6 @@ exports.attachment_update_metadata_post = function(req, res) {
   attachmentData.updated_at = new Date();
   attachmentData.updated_by = req.session.data.user.display_name;
 
-  // console.log('After', attachmentData);
-
   // attachment uploads directory path
   const directoryPath = path.join(__dirname, '../data/attachments/', req.params.document_id);
 
@@ -480,20 +400,6 @@ exports.attachment_update_metadata_post = function(req, res) {
 
   // write the JSON data
   fs.writeFileSync(filePath, fileData);
-
-  // append the new file path to the index.js
-  let index
-  try {
-    index = fs.readFileSync(directoryPath + '/index.json');
-  } catch (err) {
-    // no index file
-  }
-  if (index) {
-    attachmentsOrder = JSON.parse(index)
-    attachmentsOrder.push(req.params.attachment_id + '.json')
-    const indexFileData = JSON.stringify(attachmentsOrder);
-    fs.writeFileSync(directoryPath + '/index.json', indexFileData);
-  }
 
   // delete the attachment data we no longer need
   delete req.session.data.document.attachment;
