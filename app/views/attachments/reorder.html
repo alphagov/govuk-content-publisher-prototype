@@ -38,14 +38,10 @@
           <div class="govuk-grid-column-full">
 
           {%- if attachments | length %}
-
-            {%- if attachments | length > 1 %}<div id="attachmentsList">{% endif -%}
-
             <form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
-
-              <dl class="govuk-summary-list app-c-summary-list--number"><!--  govuk-summary-list--no-border -->
+              <dl {%- if attachments | length > 1 %} id="attachmentsList"{% endif -%} class="govuk-summary-list app-c-summary-list--sortable">
                 {%- for attachment in attachments %}
-                  <div class="govuk-summary-list__row">
+                  <div class="govuk-summary-list__row app-c-summary-list__row">
                     <dt class="govuk-summary-list__key">
                       {{ loop.index }}
                     </dt>
@@ -62,17 +58,10 @@
                       {% endif -%}
                       {% if attachment.type == 'html' %}<p class="govuk-body-s">{{ attachment.type | attachmentType }}</p>{% endif -%}
                     </dd>
-                    <div class="app-o-order-controls js-order-controls">
-                      <dd class="govuk-summary-list__actions" style="width:120px">
-                        {%- if not loop.first %}
-                        <button class="govuk-button app-c-button--secondary-quiet js-up">Up</button>
-                        {% endif -%}
-                      </dd>
-                      <dd class="govuk-summary-list__actions" style="width:120px">
-                        {%- if not loop.last %}
-                          <button class="govuk-button app-c-button--secondary-quiet js-down">Down</button>
-                        {% endif -%}
-                      </dd>
+                    <div class="govuk-summary-list__actions app-o-order-controls js-order-controls">
+                      <input name="attachments_order[]" type="hidden" value="{{ attachment.content_id }}.json">
+                      <button class="govuk-button app-c-button--secondary-quiet js-up">Up</button>
+                      <button class="govuk-button app-c-button--secondary-quiet js-down">Down</button>
                     </div>
                   </div>
                 {% endfor -%}
@@ -118,8 +107,6 @@
             <p class="govuk-body">
               <a class="govuk-link" href="{{ actions.back }}">Cancel</a>
             </p>
-
-            {%- if attachments | length > 1 %}</div>{% endif -%}
 
           {% else %}
 

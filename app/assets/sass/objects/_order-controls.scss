@@ -1,9 +1,13 @@
 .app-o-order-controls {
-  // position: absolute;
-  // right: -200px;
-  top: 0;
+  vertical-align: middle;
 
   .govuk-button {
     width: 80px;
+    margin-bottom: 0;
+    margin-right: govuk-spacing(7);
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 }

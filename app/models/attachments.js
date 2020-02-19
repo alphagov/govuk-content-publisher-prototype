@@ -44,9 +44,22 @@ exports.findByDocumentId = function(document_id) {
     fs.mkdirSync(directoryPath);
   }
 
-  let attachments = fs.readdirSync(directoryPath,'utf8');
-  // Only get JSON documents
-  attachments = attachments.filter( doc => doc.match(/.*\.(json)/ig));
+  let attachments = []
+  let index
+
+  try {
+    index = fs.readFileSync(directoryPath + '/index.json');
+  } catch (err) {
+    // no index file
+  }
+
+  if (index) {
+    attachments = JSON.parse(index)
+  } else {
+    attachments = fs.readdirSync(directoryPath,'utf8');
+    // Only get JSON documents
+    attachments = attachments.filter( doc => doc.match(/.*\.(json)/ig));
+  }
 
   const attachmentArray = [];
 

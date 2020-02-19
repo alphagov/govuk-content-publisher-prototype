@@ -123,6 +123,7 @@ module.exports = function (env) {
       case 'policy_consultation': return 'Policy or consultation';
       case 'policy_paper': return 'Policy paper';
       case 'press_release': return 'Press release';
+      case 'promotional_material': return 'Promotional material';
       case 'regulation': return 'Regulation';
       case 'research_analysis': return 'Research and analysis';
       case 'specialist_notice': return 'Specialist notice';

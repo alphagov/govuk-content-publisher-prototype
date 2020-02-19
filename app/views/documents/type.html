@@ -233,7 +233,7 @@
                 "classes": "govuk-label--s"
               },
               "hint": {
-                "text": "Publications about the organisation as public entity, for example, annual reports, business plans and accounts."
+                "text": "Publications about the organisation as a public entity, for example, annual reports, business plans and accounts."
               },
               "checked": checked('document_type', 'corporate_report')
             } if data.document_super_type == "transparency_statistics",
@@ -269,6 +269,17 @@
                 "text": "Treaties and memorandums of understanding between the UK and other nations."
               },
               "checked": checked('document_type', 'international_treaty')
+            } if data.document_super_type == "transparency_statistics",
+            {
+              "value": "promotional_material",
+              "text": "Promotional material",
+              "label": {
+                "classes": "govuk-label--s"
+              },
+              "hint": {
+                "text": "Leaflets, posters, factsheets and marketing materials."
+              },
+              "checked": checked('document_type', 'promotional_material')
             } if data.document_super_type == "transparency_statistics",
             {
               "value": "policy_paper",
