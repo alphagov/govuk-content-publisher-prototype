@@ -56,6 +56,10 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
+          {%- if document.document_status == 'submitted_for_review'%}
+            {% include "./partials/_banner-review.html" %}
+          {% endif -%}
+
           {%- if document.edition and (not document.edition.change_note_option | length) %}
             {% include "./partials/_banner-change-note.html" %}
           {% endif -%}
@@ -64,20 +68,16 @@
             {% include "./partials/_banner-political.html" %}
           {% endif %}
 
+          {% if document.withdrawn_notice | length %}
+            {% include "./partials/_banner-withdrawn.html" %}
+          {% endif %}
+
           {%- if document.details.national_applicability | length
             and (document.details.national_applicability.england.applicable == false
             or document.details.national_applicability.northern_ireland.applicable == false
             or document.details.national_applicability.scotland.applicable == false
             or document.details.national_applicability.wales.applicable == false) %}
             {% include "./partials/_banner-excluded-nations.html" %}
-          {% endif -%}
-
-          {% if document.withdrawn_notice | length %}
-            {% include "./partials/_banner-withdrawn.html" %}
-          {% endif %}
-
-          {%- if document.document_status == 'submitted_for_review'%}
-            {% include "./partials/_banner-review.html" %}
           {% endif -%}
 
           <!-- {#%- set descriptionHtml %}

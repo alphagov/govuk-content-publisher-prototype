@@ -18,4 +18,4 @@
   description: {
     text: 'Applies to: ' + (appliesArray | arrayToList) + (' (see guidance for ' + (excludesArray | arrayToList) + ')' if excludesArray | length)
   }
-}) }}
+}) if appliesArray | length }}
