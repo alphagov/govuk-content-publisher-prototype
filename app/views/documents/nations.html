@@ -22,7 +22,26 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
+      <!-- <h1 class="govuk-heading-l">
+        Nations not covered by ‘{{ document.title }}’
+      </h1>
+
+      <p class="govuk-body">
+        Tick the UK nations where {{ 'these' if document.document_type | isPluralDocumentType else 'this' }} {{ document.document_type | documentType | lower | replace("foi","FOI") }}  {{ 'do' if document.document_type | isPluralDocumentType else 'does' }} not apply.
+      </p> -->
+
       <form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
+
+<!-- fieldset: {
+  legend: {
+    text: "Nations not covered by ‘" + document.title + "’",
+    isPageHeading: true,
+    classes: "govuk-fieldset__legend--l"
+  }
+},
+hint: {
+  text: "Tick the UK nations where" + (" these " if document.document_type | isPluralDocumentType else " this ") + (document.document_type | documentType | lower | replace("foi","FOI") ) + (" do " if document.document_type | isPluralDocumentType else " does ") + "not apply."
+}, -->
 
         {{ govukCheckboxes({
           idPrefix: "national-applicability",
@@ -127,6 +146,14 @@
               checked: true if document['details']['national_applicability']['wales']['applicable'] == false
             }
           ]
+        }) }}
+
+        <p class="govuk-body">The following notice will be displayed to the public.</p>
+
+        {{ appInsetPrompt({
+          description: {
+            text: "Applies to: England, Scotland and Wales (see publication for Northern Ireland)"
+          }
         }) }}
 
         {{ govukButton({
