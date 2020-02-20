@@ -770,7 +770,10 @@ exports.document_undo_withdraw_post = function(req, res) {
 
 exports.document_remove_get = function(req, res) {
   // res.send('NOT IMPLEMENTED: Remove document GET');
+  const documentData = Documents.findById(req.params.document_id);
+
   res.render('../views/documents/remove', {
+    document: documentData,
     actions: {
       back: '/documents/' + req.params.document_id,
       save: '/documents/' + req.params.document_id + '/remove'
