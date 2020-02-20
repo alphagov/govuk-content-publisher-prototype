@@ -80,22 +80,7 @@
             {% include "./partials/_banner-excluded-nations.html" %}
           {% endif -%}
 
-          <!-- {#%- set descriptionHtml %}
-          <ul class="govuk-list app-c-inset-prompt__list">
-            <li><a class="govuk-link govuk-link--no-visited-state" href="/documents/6cc2a1e9-1461-4975-9b04-8bb1d4ddad7b:en/edit#summary">Enter a summary</a></li>
-            <li><a class="govuk-link govuk-link--no-visited-state" href="/documents/6cc2a1e9-1461-4975-9b04-8bb1d4ddad7b:en/edit#body">Enter a body</a></li>
-            <li><a class="govuk-link govuk-link--no-visited-state" href="/documents/6cc2a1e9-1461-4975-9b04-8bb1d4ddad7b:en/topics">Add a topic</a></li>
-          </ul>
-          {% endset -%#}
-
-          {#{ appInsetPrompt({
-            title: {
-              text: 'To publish this document you need to'
-            },
-            description: {
-              html: descriptionHtml
-            }
-          }) }#} -->
+          {#% include "./partials/_banner-required-fields.html" %#}
 
           {% include "./partials/_summary-content.html" %}
 

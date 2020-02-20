@@ -1,0 +1,25 @@
+{%- set descriptionHtml %}
+<ul class="govuk-list app-c-inset-prompt__list">
+  {%- if not document.title | length %}
+    <li><a class="govuk-link govuk-link--no-visited-state" href="/documents/{{ document.content_id }}/content">Enter a title</a></li>
+  {% endif -%}
+  {%- if not document.description | length %}
+    <li><a class="govuk-link govuk-link--no-visited-state" href="/documents/{{ document.content_id }}/content">Enter a summary</a></li>
+  {% endif -%}
+  {%- if not document.details.body | length %}
+    <li><a class="govuk-link govuk-link--no-visited-state" href="/documents/{{ document.content_id }}/content">Enter a body</a></li>
+  {% endif -%}
+  {%- if not document.topics | length %}
+    <li><a class="govuk-link govuk-link--no-visited-state" href="/documents/{{ document.content_id }}/topics">Add a topic</a></li>
+  {% endif -%}
+</ul>
+{% endset -%}
+
+{{ appInsetPrompt({
+  title: {
+    text: 'To publish this document you need to'
+  },
+  description: {
+    html: descriptionHtml
+  }
+}) }}
