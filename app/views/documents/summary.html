@@ -72,13 +72,13 @@
             {% include "./partials/_banner-withdrawn.html" %}
           {% endif %}
 
-          {%- if document.details.national_applicability | length
+          {#%- if document.details.national_applicability | length
             and (document.details.national_applicability.england.applicable == false
             or document.details.national_applicability.northern_ireland.applicable == false
             or document.details.national_applicability.scotland.applicable == false
             or document.details.national_applicability.wales.applicable == false) %}
             {% include "./partials/_banner-excluded-nations.html" %}
-          {% endif -%}
+          {% endif -%#}
 
           {#% include "./partials/_banner-required-fields.html" %#}
 
