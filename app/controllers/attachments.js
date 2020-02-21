@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require('fs');
 // const multer = require('multer');
 const uuid = require('uuid/v1');
+const flash = require('connect-flash');
 
 const Attachments = require('../models/attachments');
 
@@ -20,6 +21,10 @@ function slugify(text) {
 // Display list of all attachments.
 exports.attachment_list = function(req, res) {
 
+  let flash = req.flash();
+
+  console.log(flash);
+
   if (req.path.indexOf('/modal/') !== -1) {
     res.render('../views/attachments/modals/list', {
       attachments: Attachments.findByDocumentId(req.params.document_id),
@@ -31,6 +36,7 @@ exports.attachment_list = function(req, res) {
   } else {
     res.render('../views/attachments/list', {
       attachments: Attachments.findByDocumentId(req.params.document_id),
+      message: flash,
       actions: {
         back: '/documents/' + req.params.document_id,
         add_file: '/documents/' + req.params.document_id + '/attachments/create?type=file',
@@ -139,9 +145,10 @@ exports.attachment_create_post = function(req, res) {
     fs.writeFileSync(directoryPath + '/index.json', indexFileData);
   }
 
-  // redirect the user back to the attachments page
-  // TODO: show flash message (success/failure)
+  // show flash message (success/failure)
+  req.flash('success', 'Attachment created.');
 
+  // redirect the user back to the attachments page
   if (req.path.indexOf('/modal/') !== -1) {
     res.redirect('/documents/' + req.params.document_id + '/attachments/' + attachmentData.content_id + '/modal/metadata');
   } else {
@@ -205,8 +212,10 @@ exports.attachment_delete_post = function(req, res) {
     fs.writeFileSync(directoryPath + '/index.json', indexFileData);
   }
 
+  // show flash message (success/failure)
+  req.flash('success', 'Attachment deleted.');
+
   // redirect the user back to the attachments page
-  // TODO: show flash message (success/failure)
   if (req.path.indexOf('/modal/') !== -1) {
     res.redirect('/documents/' + req.params.document_id + '/attachments/modal/');
   } else {
@@ -286,9 +295,10 @@ exports.attachment_update_post = function(req, res) {
     modalRoute = '/modal';
   }
 
-  // redirect the user back to the attachments page
-  // TODO: show flash message (success/failure)
+  // show flash message (success/failure)
+  req.flash('success', 'Attachment updated.');
 
+  // redirect the user back to the attachments page
   if (req.path.indexOf('/modal/') !== -1) {
     res.redirect('/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/modal/metadata');
   } else {
@@ -404,8 +414,10 @@ exports.attachment_update_metadata_post = function(req, res) {
   // delete the attachment data we no longer need
   delete req.session.data.document.attachment;
 
+  // show flash message (success/failure)
+  req.flash('success', 'Attachment updated.');
+
   // redirect the user back to the attachments page
-  // TODO: show flash message (success/failure)
   if (req.path.indexOf('/modal/') !== -1) {
     res.redirect('/documents/' + req.params.document_id + '/attachments/modal/');
   } else {
