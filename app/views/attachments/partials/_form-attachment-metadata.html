@@ -54,7 +54,7 @@
         classes: "govuk-!-font-weight-bold"
       },
       hint: {
-        text: "Include its number or tick ‘unnumbered’ if this document is a command paper that was laid in Parliament."
+        html: 'Include the command paper number or tick ‘unnumbered’. This document will show in the <a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/official-documents" target="_blank">official document finder</a>.'
       },
       value: attachment.cpn if attachment.cpn,
       classes: "govuk-!-width-one-half",
@@ -90,7 +90,7 @@
         classes: "govuk-!-font-weight-bold"
       },
       hint: {
-        text: "Include its number or tick ‘unnumbered act paper’ if this document is a House of Commons paper that was laid in Parliament."
+        html: 'Include the House of Commons number or tick ‘unnumbered act paper’. This document will show in the <a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/official-documents" target="_blank">official document finder</a>.'
       },
       value: attachment.hcpn if attachment.hcpn,
       classes: "govuk-!-width-one-half",
@@ -247,7 +247,7 @@
       }
     },
     hint: {
-      html: 'Check if your document contains ‘presented to Parliament’ or ‘presented to the House of Commons’. Official documents appear in a <a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/official-documents" target="_blank">finder on GOV.UK</a>.'
+      html: '‘Official documents’ have been laid in Parliament. Check if your document contains ‘presented to Parliament’.'
     },
     items: [
       {
@@ -268,7 +268,7 @@
       },
       {
         value: "no",
-        text: "No, this is not an official document",
+        text: "No, this document has not been laid in Parliament",
         checked: true if attachment.official_document == "no"
       }
     ]
