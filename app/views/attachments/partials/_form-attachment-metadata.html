@@ -1,49 +1,5 @@
 <form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
 
-  {{ govukInput({
-    id: "attachment-isbn",
-    name: "document[attachment][isbn]",
-    label: {
-      text: "ISBN",
-      classes: "govuk-!-font-weight-bold"
-    },
-    hint: {
-      text: "Add the International Standard Book Number (ISBN) if there is one."
-    },
-    value: attachment.isbn if attachment.isbn,
-    classes: "govuk-!-width-one-half",
-    attributes: {
-      "autocomplete": "off",
-      "autocapitalize": "off"
-    }
-  }) }}
-
-  <!--
-    TODO: validate ISBN
-    https://en.wikipedia.org/wiki/International_Standard_Book_Number
-    https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s13.html
-
-    ^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$
-  -->
-
-  {{ govukInput({
-    id: "attachment-urn",
-    name: "document[attachment][urn]",
-    label: {
-      text: "Unique reference",
-      classes: "govuk-!-font-weight-bold"
-    },
-    hint: {
-      text: "Add your organisation’s own reference if it has one."
-    },
-    value: attachment.urn if attachment.urn,
-    classes: "govuk-!-width-one-half",
-    attributes: {
-      "autocomplete": "off",
-      "autocapitalize": "off"
-    }
-  }) }}
-
   {%- set command_paper_html %}
 
     {{ govukInput({
@@ -272,6 +228,50 @@
         checked: true if attachment.official_document == "no"
       }
     ]
+  }) }}
+
+  {{ govukInput({
+    id: "attachment-isbn",
+    name: "document[attachment][isbn]",
+    label: {
+      text: "ISBN",
+      classes: "govuk-!-font-weight-bold"
+    },
+    hint: {
+      text: "Add the International Standard Book Number (ISBN) if there is one."
+    },
+    value: attachment.isbn if attachment.isbn,
+    classes: "govuk-!-width-one-half",
+    attributes: {
+      "autocomplete": "off",
+      "autocapitalize": "off"
+    }
+  }) }}
+
+  <!--
+    TODO: validate ISBN
+    https://en.wikipedia.org/wiki/International_Standard_Book_Number
+    https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s13.html
+
+    ^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$
+  -->
+
+  {{ govukInput({
+    id: "attachment-urn",
+    name: "document[attachment][urn]",
+    label: {
+      text: "Unique reference",
+      classes: "govuk-!-font-weight-bold"
+    },
+    hint: {
+      text: "Add your organisation’s own reference if it has one."
+    },
+    value: attachment.urn if attachment.urn,
+    classes: "govuk-!-width-one-half",
+    attributes: {
+      "autocomplete": "off",
+      "autocapitalize": "off"
+    }
   }) }}
 
   {{ govukButton({
