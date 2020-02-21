@@ -28,6 +28,7 @@ exports.attachment_list = function(req, res) {
   if (req.path.indexOf('/modal/') !== -1) {
     res.render('../views/attachments/modals/list', {
       attachments: Attachments.findByDocumentId(req.params.document_id),
+      message: flash,
       actions: {
         add_file: '/documents/' + req.params.document_id + '/attachments/modal/create?type=file',
         add_external: '/documents/' + req.params.document_id + '/attachments/modal/create?type=external'
