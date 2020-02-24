@@ -79,7 +79,7 @@ exports.attachment_create_post = function(req, res) {
   const attachmentData = Attachments.save(req.params.document_id, req.session.data);
 
   // show flash message (success/failure)
-  req.flash('success', 'Attachment created.');
+  // req.flash('success', 'Attachment created');
 
   // redirect the user back to the attachments page
   res.redirect('/documents/' + req.params.document_id + '/attachments/' + attachmentData.content_id + '/add-details');
@@ -105,7 +105,7 @@ exports.attachment_update_post = function(req, res) {
   Attachments.findByIdAndUpdate(req.params.document_id, req.params.attachment_id, req.session.data);
 
   // show flash message (success/failure)
-  req.flash('success', 'Attachment updated.');
+  req.flash('success', 'Attachment updated');
 
   // redirect the user back to the attachments page
   res.redirect('/documents/' + req.params.document_id + '/attachments');
@@ -137,7 +137,7 @@ exports.attachment_create_metadata_post = function(req, res) {
   delete req.session.data.document.attachment;
 
   // show flash message (success/failure)
-  req.flash('success', 'Attachment details created.');
+  req.flash('success', 'Attachment added');
 
   // redirect the user back to the attachments page
   res.redirect('/documents/' + req.params.document_id + '/attachments');
@@ -169,7 +169,7 @@ exports.attachment_update_metadata_post = function(req, res) {
   delete req.session.data.document.attachment;
 
   // show flash message (success/failure)
-  req.flash('success', 'Attachment updated.');
+  req.flash('success', 'Attachment details updated');
 
   // redirect the user back to the attachments page
   res.redirect('/documents/' + req.params.document_id + '/attachments');
@@ -196,7 +196,7 @@ exports.attachment_delete_post = function(req, res) {
   Attachments.findByIdAndDelete(req.params.document_id, req.params.attachment_id);
 
   // show flash message (success/failure)
-  req.flash('success', 'Attachment deleted.');
+  req.flash('success', 'Attachment deleted');
 
   // redirect the user back to the attachments page
   res.redirect('/documents/' + req.params.document_id + '/attachments');
@@ -253,7 +253,7 @@ exports.attachment_list_reorder_post = function(req, res) {
   fs.writeFileSync(filePath, fileData);
 
   // show flash message (success/failure)
-  req.flash('success', 'Attachments reordered.');
+  req.flash('success', 'Attachments reordered');
 
   // redirect the user back to the document page
   res.redirect('/documents/' + req.params.document_id + '/attachments');
