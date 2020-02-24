@@ -118,7 +118,7 @@ exports.attachment_create_metadata_get = function(req, res) {
   // Get attachment data
   let attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
 
-  res.render('../views/attachments/metadata', {
+  res.render('../views/attachments/create-details', {
     attachment: attachmentData,
     actions: {
       back: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/update',
@@ -150,7 +150,7 @@ exports.attachment_update_metadata_get = function(req, res) {
   // Get attachment data
   let attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
 
-  res.render('../views/attachments/metadata', {
+  res.render('../views/attachments/update-details', {
     attachment: attachmentData,
     actions: {
       back: '/documents/' + req.params.document_id + '/attachments',

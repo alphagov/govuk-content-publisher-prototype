@@ -1,6 +1,6 @@
 <p class="govuk-body">Include a link if your document is hosted on an external website and users need to find it on GOV.UK.</p>
 
-<form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
+<!-- <form action="{{ actions.save }}" accept-charset="UTF-8" method="post"> -->
   <input type="hidden" name="document[attachment][type]" value="external">
 
   {{ govukInput({
@@ -42,12 +42,12 @@
     (?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!:,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[A-Z0-9+&@#\/%=~_|$])
   -->
 
-  {{ govukButton({
+  {#{ govukButton({
     text: "Save and continue"
-  }) }}
+  }) }#}
 
-</form>
+<!-- </form>
 
 <p class="govuk-body">
   <a class="govuk-link" href="{{ actions.back }}">Cancel</a>
-</p>
+</p> -->
