@@ -191,11 +191,17 @@ router.get('/documents/:document_id/attachments/:attachment_id/update', checkIsA
 // POST request to update an attachment.
 router.post('/documents/:document_id/attachments/:attachment_id/update', checkIsAuthenticated, attachment_controller.attachment_update_post);
 
-// GET request to update an attachment's metadata.
-router.get('/documents/:document_id/attachments/:attachment_id/metadata', checkIsAuthenticated, attachment_controller.attachment_update_metadata_get);
+// GET request to add an attachment's metadata.
+router.get('/documents/:document_id/attachments/:attachment_id/add-details', checkIsAuthenticated, attachment_controller.attachment_create_metadata_get);
 
-// POST request to update an attachment's metadats.
-router.post('/documents/:document_id/attachments/:attachment_id/metadata', checkIsAuthenticated, attachment_controller.attachment_update_metadata_post);
+// POST request to add an attachment's metadata.
+router.post('/documents/:document_id/attachments/:attachment_id/add-details', checkIsAuthenticated, attachment_controller.attachment_create_metadata_post);
+
+// GET request to update an attachment's metadata.
+router.get('/documents/:document_id/attachments/:attachment_id/update-details', checkIsAuthenticated, attachment_controller.attachment_update_metadata_get);
+
+// POST request to update an attachment's metadata.
+router.post('/documents/:document_id/attachments/:attachment_id/update-details', checkIsAuthenticated, attachment_controller.attachment_update_metadata_post);
 
 // GET request to preview an attachment.
 router.get('/documents/:document_id/attachments/:attachment_id/preview', checkIsAuthenticated, attachment_controller.attachment_preview);

@@ -1,9 +1,69 @@
 const path = require('path');
 const fs = require('fs');
+const uuid = require('uuid/v1');
+
+function slugify(text) {
+
+  if (!text)
+    return null;
+
+  return text.toLowerCase()
+          .replace(/[^\w\s-]/g, '') // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
+          .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
+          .replace(/^-+|-+$/g, ''); // remove leading, trailing -
+
+}
 
 // https://www.callicoder.com/node-js-express-mongodb-restful-crud-api-tutorial/
 
-exports.save = function() {
+exports.save = function(document_id, data) {
+
+  // attachment uploads directory path
+  const directoryPath = path.join(__dirname, '../data/attachments/', document_id);
+
+  // check if document directory exists in attachment uploads directory
+  if (!fs.existsSync(directoryPath)) {
+    fs.mkdirSync(directoryPath);
+  }
+
+  // create a unique file name
+  const content_id = uuid();
+  const fileName = content_id + '.json';
+
+  const filePath = directoryPath + '/' + fileName;
+
+  // attachment data
+  let attachmentData = data.document.attachment;
+  attachmentData.content_id = content_id;
+  attachmentData.document_id = document_id;
+  attachmentData.created_at = new Date();
+  attachmentData.created_by = data.user.display_name;
+
+  if (data.document.attachment.type === 'file') {
+    attachmentData.file = slugify(attachmentData.title);
+  }
+
+  // create a JSON sting for the submitted data
+  const fileData = JSON.stringify(attachmentData);
+
+  // write the JSON data
+  fs.writeFileSync(filePath, fileData);
+
+  // append the new file path to the index.js
+  let index
+  try {
+    index = fs.readFileSync(directoryPath + '/index.json');
+  } catch (err) {
+    // no index file
+  }
+  if (index) {
+    attachmentsOrder = JSON.parse(index)
+    attachmentsOrder.push(fileName)
+    const indexFileData = JSON.stringify(attachmentsOrder);
+    fs.writeFileSync(directoryPath + '/index.json', indexFileData);
+  }
+
+  return attachmentData;
 
 };
 
@@ -25,11 +85,138 @@ exports.findById = function(document_id, attachment_id) {
 
 };
 
-exports.findByIdAndUpdate = function(attachment_id) {
+exports.findByIdAndUpdate = function(document_id, attachment_id, data) {
+
+  // Get attachment data
+  let attachmentData = this.findById(document_id, attachment_id);
+
+  attachmentData.title = data.document.attachment.title;
+
+  if (attachmentData.type === 'external') {
+    attachmentData.url = data.document.attachment.url;
+  }
+
+  if (attachmentData.type === 'file') {
+    attachmentData.file = slugify(attachmentData.title);
+  }
+
+  attachmentData.updated_at = new Date();
+  attachmentData.updated_by = data.user.display_name;
+
+  // attachment uploads directory path
+  const directoryPath = path.join(__dirname, '../data/attachments/', document_id);
+
+  const filePath = directoryPath + '/' + attachment_id + '.json';
+  // create a JSON sting for the submitted data
+  const fileData = JSON.stringify(attachmentData);
+
+  // write the JSON data
+  fs.writeFileSync(filePath, fileData);
 
 };
 
-exports.findByIdAndDelete = function(attachment_id) {
+exports.findByIdAndUpdateDetails = function(document_id, attachment_id, data) {
+
+  // Get attachment data
+  let attachmentData = this.findById(document_id, attachment_id);
+
+  // Update attachment data
+  attachmentData.official_document = data.document.attachment.official_document;
+
+  attachmentData.isbn = data.document.attachment.isbn;
+  attachmentData.urn = data.document.attachment.urn;
+
+  if (attachmentData.official_document === 'yes_command_paper') {
+
+    attachmentData.cpn = data.document.attachment.cpn;
+    attachmentData.unnumbered = data.document.attachment.unnumbered;
+
+    if (attachmentData.cpn.length || attachmentData.unnumbered === undefined) {
+      attachmentData.unnumbered = '';
+    }
+
+    // clear the house of commons paper fields
+    attachmentData.hcpn = '';
+    attachmentData.parliamentary_session = '';
+    attachmentData.unnumbered_act = '';
+
+  }
+
+  if (attachmentData.official_document === 'yes_house_of_commons_paper') {
+
+    attachmentData.hcpn = data.document.attachment.hcpn;
+    attachmentData.parliamentary_session = data.document.attachment.parliamentary_session;
+    attachmentData.unnumbered_act = data.document.attachment.unnumbered_act;
+
+    if (attachmentData.hcpn.length || attachmentData.unnumbered_act === undefined) {
+      attachmentData.unnumbered_act = '';
+    }
+
+    // clear the command paper fields
+    attachmentData.cpn = '';
+    attachmentData.unnumbered = '';
+
+  }
+
+  if (attachmentData.official_document === 'yes_command_paper' || attachmentData.official_document === 'yes_house_of_commons_paper') {
+    attachmentData.order_url = "https://www.gov.uk/guidance/how-to-buy-printed-copies-of-official-documents";
+  }
+
+  if (attachmentData.official_document === 'no') {
+    attachmentData.cpn = '';
+    attachmentData.unnumbered = '';
+    attachmentData.hcpn = '';
+    attachmentData.parliamentary_session = '';
+    attachmentData.unnumbered_act = '';
+    attachmentData.order_url = '';
+  }
+
+  if (attachmentData.type === 'html') {
+    attachmentData.body = data.document.attachment.body;
+  }
+
+  attachmentData.updated_at = new Date();
+  attachmentData.updated_by = data.user.display_name;
+
+  // attachment uploads directory path
+  const directoryPath = path.join(__dirname, '../data/attachments/', document_id);
+
+  const filePath = directoryPath + '/' + attachment_id + '.json';
+  // create a JSON sting for the submitted data
+  const fileData = JSON.stringify(attachmentData);
+
+  // write the JSON data
+  fs.writeFileSync(filePath, fileData);
+
+};
+
+exports.findByIdAndDelete = function(document_id, attachment_id) {
+
+  // attachment uploads directory path
+  const directoryPath = path.join(__dirname, '../data/attachments/', document_id);
+
+  const filePath = directoryPath + '/' + attachment_id + '.json';
+
+  fs.unlinkSync(filePath);
+
+  // append the new file path to the index.js
+  let index
+  try {
+    index = fs.readFileSync(directoryPath + '/index.json');
+  } catch (err) {
+    // no index file
+  }
+  if (index) {
+    attachmentsOrder = JSON.parse(index)
+
+    const i = attachmentsOrder.indexOf(attachment_id + '.json');
+    if (i > -1) {
+      attachmentsOrder.splice(i, 1);
+    }
+
+    const indexFileData = JSON.stringify(attachmentsOrder);
+    fs.writeFileSync(directoryPath + '/index.json', indexFileData);
+  }
 
 };
 
