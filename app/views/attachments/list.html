@@ -87,7 +87,7 @@
               {%- call appAttachmentActions({
                 items: [
                   {
-                    text: 'Edit attachment',
+                    text: 'Edit ' + ('link' if attachment.type == 'external' else 'attachment'),
                     href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/update'
                   },
                   {
@@ -102,11 +102,11 @@
                     }
                   } if attachment.type == 'file',
                   {
-                    text: 'Delete attachment',
+                    text: 'Delete ' + ('link' if attachment.type == 'external' else 'attachment'),
                     href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/delete',
                     classes: 'app-link--destructive'
                   }
-                ] if data.actions != "hide"
+                ]
               }) %}
 
                 {%- if attachment.type == 'external' %}

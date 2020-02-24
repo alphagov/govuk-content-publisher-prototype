@@ -6,19 +6,6 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-      {%- if message.success | length %}
-        {{ appSuccessAlert({
-          description: {
-            html: message.success
-          },
-          attributes: {
-            "data-module": "initial-focus",
-            "role": "alert",
-            "tabindex": "-1"
-          }
-        }) }}
-      {% endif -%}
-
       <div class="govuk-grid-row govuk-!-margin-bottom-8">
         <div class="govuk-grid-column-two-thirds">
 
@@ -26,72 +13,20 @@
             Attachments {{ 'for ‘' + data.document.title + '’' if data.document.title | length }}
           </h1>
 
-          <p class="govuk-body">Publications have a summary page that must link to a file attachment or a document hosted on an external website.</p>
-
-          {#{ appButtonMenu({
-            items: [
-              {
-                text: 'Upload file attachment',
-                classes: 'govuk-button',
-                href: actions.add_file
-              },
-              {
-                text: 'Add external link',
-                classes: 'govuk-button',
-                href: actions.add_external
-              }
-            ]
-          }) }#}
-
-          <!-- {
-            text: 'Add HTML attachment',
-            classes: 'govuk-button',
-            href: '/documents/' + data.document.content_id + '/attachments/create?type=html'
-          }, -->
-
-        </div>
-      </div>
-
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-two-thirds">
-          <h2 class="govuk-heading-m">Attachments</h2>
-
           {% if attachments | length %}
 
-            <p class="govuk-body govuk-!-margin-bottom-8">Attachments will be listed on the document in this order.</p>
+            <p class="govuk-body govuk-!-margin-bottom-8">You can add a link to one of these attachments in the body of the document.</p>
 
             {%- for attachment in attachments %}
 
               {%- call appAttachmentActions({
                 items: [
                   {
-                    text: 'Insert link attachment',
+                    text: 'Insert attachment as link',
                     href: '#'
                   }
                 ]
               }) %}
-
-              <!-- ,
-              {
-                text: 'Edit' + (' link' if attachment.type == 'external' else (' file' if attachment.type == 'file' else ' attachment')),
-                href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/modal/update'
-              },
-              {
-                text: 'Edit details',
-                href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/modal/metadata'
-              } if attachment.type != 'external',
-              {
-                text: 'Download',
-                href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/modal/download',
-                attributes: {
-                  "download": "attachment.pdf"
-                }
-              } if attachment.type == 'file',
-              {
-                text: 'Delete' + (' link' if attachment.type == 'external' else (' file' if attachment.type == 'file' else ' attachment')),
-                href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/modal/delete',
-                classes: 'app-link--destructive'
-              } -->
 
                 {%- if attachment.type == 'external' %}
                   {%- call appAttachment({
@@ -140,7 +75,8 @@
 
           {% else %}
 
-            <p class="govuk-body">No attachments added to this document.</p>
+            <p class="govuk-body">No attachments have been added to this document. You can only insert an attachment that has already been added.</p>
+            <p class="govuk-body">To add an attachment, save your changes and go to the attachments section.</p>
 
           {% endif -%}
 
