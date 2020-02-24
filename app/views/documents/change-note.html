@@ -31,13 +31,22 @@
         <div class="govuk-grid-column-two-thirds">
 
           <h1 class="govuk-heading-l">
-            Add a change note for ‘{{ data.document.title }}’
+            Add a change note for ‘{{ document.title }}’
           </h1>
 
         </div>
       </div>
 
       <form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
+
+        {%- set changeNote %}
+          {% if document.document_type in ["corporate_report","decision","guidance","independent_report","international_treaty","national_statistics","notice","official_statistics","policy_paper","research_analysis","statutory_guidance","transparency_statistics"] %}
+            <p class="govuk-body">Describe the change for users. You must let users know if you’ve changed an official document. Include or refer to any new or updated information. This change note will be published on the page and emailed to subscribers. The ‘last updated’ date will change.</p>
+          {% else %}
+            <p class="govuk-body">Describe the change for users. Include or refer to any new or updated information. This change note will be published on the page and emailed to subscribers. The ‘last updated’ date will change.</p>
+          {% endif -%}
+          <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/guidance/content-design/writing-for-gov-uk#change-notes" target="_blank">Full guidance on change notes</a></p>
+        {% endset -%}
 
         {%- call appContextualGuidance({
           id: 'contextual-guidance-change-note',
@@ -46,7 +55,7 @@
             text: 'Writing change notes'
           },
           description: {
-            html: '<p class="govuk-body">Describe the change for users. Include or refer to any new or updated information. This change note will be published on the page and emailed to subscribers. The ‘last updated’ date will change.</p><p class="govuk-body"><a class="govuk-link" href="#">Full guidance on change notes</a></p>'
+            html: changeNote
           },
           classes: 'govuk-!-margin-top-4'
         }) %}
