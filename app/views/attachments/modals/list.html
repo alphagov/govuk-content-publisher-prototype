@@ -28,7 +28,7 @@
 
           <p class="govuk-body">Publications have a summary page that must link to a file attachment or a document hosted on an external website.</p>
 
-          {{ appButtonMenu({
+          {#{ appButtonMenu({
             items: [
               {
                 text: 'Upload file attachment',
@@ -41,7 +41,7 @@
                 href: actions.add_external
               }
             ]
-          }) }}
+          }) }#}
 
           <!-- {
             text: 'Add HTML attachment',
@@ -65,31 +65,33 @@
               {%- call appAttachmentActions({
                 items: [
                   {
-                    text: 'Insert link' + (' to file' if attachment.type == 'file' else (' to attachment'  if attachment.type == 'html')),
+                    text: 'Insert link attachment',
                     href: '#'
-                  },
-                  {
-                    text: 'Edit' + (' link' if attachment.type == 'external' else (' file' if attachment.type == 'file' else ' attachment')),
-                    href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/modal/update'
-                  },
-                  {
-                    text: 'Edit details',
-                    href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/modal/metadata'
-                  } if attachment.type != 'external',
-                  {
-                    text: 'Download',
-                    href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/modal/download',
-                    attributes: {
-                      "download": "attachment.pdf"
-                    }
-                  } if attachment.type == 'file',
-                  {
-                    text: 'Delete' + (' link' if attachment.type == 'external' else (' file' if attachment.type == 'file' else ' attachment')),
-                    href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/modal/delete',
-                    classes: 'app-link--destructive'
                   }
-                ] if data.actions != "hide"
+                ]
               }) %}
+
+              <!-- ,
+              {
+                text: 'Edit' + (' link' if attachment.type == 'external' else (' file' if attachment.type == 'file' else ' attachment')),
+                href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/modal/update'
+              },
+              {
+                text: 'Edit details',
+                href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/modal/metadata'
+              } if attachment.type != 'external',
+              {
+                text: 'Download',
+                href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/modal/download',
+                attributes: {
+                  "download": "attachment.pdf"
+                }
+              } if attachment.type == 'file',
+              {
+                text: 'Delete' + (' link' if attachment.type == 'external' else (' file' if attachment.type == 'file' else ' attachment')),
+                href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/modal/delete',
+                classes: 'app-link--destructive'
+              } -->
 
                 {%- if attachment.type == 'external' %}
                   {%- call appAttachment({

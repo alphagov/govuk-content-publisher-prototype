@@ -88,23 +88,6 @@ exports.attachment_create_post = function(req, res) {
 
 // Display attachment update form on GET.
 exports.attachment_update_get = function(req, res) {
-  // res.send('NOT IMPLEMENTED: attachment update GET');
-
-  console.log(req.headers.referer);
-
-  // let saveLink = '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/update';
-  // if(req.headers.referer.indexOf('/add-details') !== -1) {
-  //   saveLink = '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/update?next=details'
-  // }
-
-  // HACK this is to mock the details of a file
-  // let fileMetadata = {
-  //   filename: 'attachment.pdf',
-  //   fileSize: 1234560,
-  //   contentType: 'application/pdf',
-  //   pageCount: 25,
-  //   thumbnail: 'document'
-  // };
 
   res.render('../views/attachments/edit', {
     attachment: Attachments.findById(req.params.document_id, req.params.attachment_id),
@@ -241,11 +224,16 @@ exports.attachment_download = function(req, res) {
 
 // Reorder attachments list on GET.
 exports.attachment_list_reorder_get = function(req, res) {
-  // res.send('NOT IMPLEMENTED: attachment reorder GET');
+
+  let backLink = '/documents/' + req.params.document_id + '/attachments';
+  if (!req.headers.referer.includes(backLink)) {
+    backLink = '/documents/' + req.params.document_id;
+  }
+
   res.render('../views/attachments/reorder', {
     attachments: Attachments.findByDocumentId(req.params.document_id),
     actions: {
-      back: '/documents/' + req.params.document_id + '/attachments',
+      back: backLink,
       save: '/documents/' + req.params.document_id + '/attachments/reorder'
     }
   });
@@ -264,6 +252,9 @@ exports.attachment_list_reorder_post = function(req, res) {
   // write the JSON data
   fs.writeFileSync(filePath, fileData);
 
+  // show flash message (success/failure)
+  req.flash('success', 'Attachments reordered.');
+
   // redirect the user back to the document page
-  res.redirect('/documents/' + req.params.document_id);
+  res.redirect('/documents/' + req.params.document_id + '/attachments');
 };

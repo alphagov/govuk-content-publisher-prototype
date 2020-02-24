@@ -87,7 +87,7 @@
               {%- call appAttachmentActions({
                 items: [
                   {
-                    text: 'Edit' + (' link' if attachment.type == 'external' else (' file' if attachment.type == 'file' else ' attachment')),
+                    text: 'Edit attachment',
                     href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/update'
                   },
                   {
@@ -102,7 +102,7 @@
                     }
                   } if attachment.type == 'file',
                   {
-                    text: 'Delete' + (' link' if attachment.type == 'external' else (' file' if attachment.type == 'file' else ' attachment')),
+                    text: 'Delete attachment',
                     href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/delete',
                     classes: 'app-link--destructive'
                   }
