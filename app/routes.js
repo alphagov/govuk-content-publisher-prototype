@@ -119,6 +119,9 @@ router.get('/documents/:document_id/remove', checkIsAuthenticated, document_cont
 router.get('/documents/:document_id/change-note', checkIsAuthenticated, document_controller.document_change_note_get);
 router.post('/documents/:document_id/change-note', checkIsAuthenticated, document_controller.document_change_note_post);
 
+router.get('/documents/:document_id/nations', checkIsAuthenticated, document_controller.document_nations_get);
+router.post('/documents/:document_id/nations', checkIsAuthenticated, document_controller.document_nations_post);
+
 // GET request for list of all Document items.
 router.get('/documents', checkIsAuthenticated, document_controller.document_list);
 

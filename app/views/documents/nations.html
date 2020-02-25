@@ -1,0 +1,172 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block pageScripts %}
+
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: actions.back
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <!-- <h1 class="govuk-heading-l">
+        Nations not covered by ‘{{ document.title }}’
+      </h1>
+
+      <p class="govuk-body">
+        Tick the UK nations where {{ 'these' if document.document_type | isPluralDocumentType else 'this' }} {{ document.document_type | documentType | lower | replace("foi","FOI") }}  {{ 'do' if document.document_type | isPluralDocumentType else 'does' }} not apply.
+      </p> -->
+
+      <form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
+
+<!-- fieldset: {
+  legend: {
+    text: "Nations not covered by ‘" + document.title + "’",
+    isPageHeading: true,
+    classes: "govuk-fieldset__legend--l"
+  }
+},
+hint: {
+  text: "Tick the UK nations where" + (" these " if document.document_type | isPluralDocumentType else " this ") + (document.document_type | documentType | lower | replace("foi","FOI") ) + (" do " if document.document_type | isPluralDocumentType else " does ") + "not apply."
+}, -->
+
+        {{ govukCheckboxes({
+          idPrefix: "national-applicability",
+          name: "document[details][national_applicability][nations]",
+          fieldset: {
+            legend: {
+              text: "Nations not covered by ‘" + document.title + "’",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "Tick the UK nations where" + (" these " if document.document_type | isPluralDocumentType else " this ") + (document.document_type | documentType | lower | replace("foi","FOI") ) + (" do " if document.document_type | isPluralDocumentType else " does ") + "not apply."
+          },
+          items: [
+            {
+              value: "england",
+              text: "England",
+              conditional: {
+                html: govukInput({
+                  id: "national-applicability-england",
+                  name: "document[details][national_applicability][england][alternative_url]",
+                  label: {
+                    text: "Alternative page address",
+                    classes: "govuk-!-font-weight-bold"
+                  },
+                  hint: {
+                    text: "Give a URL for users in England if there is one. Include the whole URL (starting with http)."
+                  },
+                  attributes: {
+                    autocomplete: "off",
+                    spellcheck: false
+                  },
+                  value: document.details.national_applicability.england.alternative_url if document.details.national_applicability.england.alternative_url
+                })
+              },
+              checked: true if document['details']['national_applicability']['england']['applicable'] == false
+            },
+            {
+              value: "northern_ireland",
+              text: "Northern Ireland",
+              conditional: {
+                html: govukInput({
+                  id: "national-applicability-northern-ireland",
+                  name: "document[details][national_applicability][northern_ireland][alternative_url]",
+                  label: {
+                    text: "Alternative page address",
+                    classes: "govuk-!-font-weight-bold"
+                  },
+                  attributes: {
+                    autocomplete: "off",
+                    spellcheck: false
+                  },
+                  hint: {
+                    text: "Give a URL for users in Northern Ireland if there is one. Include the whole URL (starting with http)."
+                  },
+                  value: document.details.national_applicability.northern_ireland.alternative_url if document.details.national_applicability.northern_ireland.alternative_url
+                })
+              },
+              checked: true if document['details']['national_applicability']['northern_ireland']['applicable'] == false
+            },
+            {
+              value: "scotland",
+              text: "Scotland",
+              conditional: {
+                html: govukInput({
+                  id: "national-applicability-scotland",
+                  name: "document[details][national_applicability][scotland][alternative_url]",
+                  label: {
+                    text: "Alternative page address",
+                    classes: "govuk-!-font-weight-bold"
+                  },
+                  attributes: {
+                    autocomplete: "off",
+                    spellcheck: false
+                  },
+                  hint: {
+                    text: "Give a URL for users in Scotland if there is one. Include the whole URL (starting with http)."
+                  },
+                  value: document.details.national_applicability.scotland.alternative_url if document.details.national_applicability.scotland.alternative_url
+                })
+              },
+              checked: true if document['details']['national_applicability']['scotland']['applicable'] == false
+            },
+            {
+              value: "wales",
+              text: "Wales",
+              conditional: {
+                html: govukInput({
+                  id: "national-applicability-wales",
+                  name: "document[details][national_applicability][wales][alternative_url]",
+                  label: {
+                    text: "Alternative page address",
+                    classes: "govuk-!-font-weight-bold"
+                  },
+                  hint: {
+                    text: "Give a URL for users in Wales if there is one. Include the whole URL (starting with http)."
+                  },
+                  value: document.details.national_applicability.wales.alternative_url if document.details.national_applicability.wales.alternative_url
+                })
+              },
+              checked: true if document['details']['national_applicability']['wales']['applicable'] == false
+            }
+          ]
+        }) }}
+
+        <p class="govuk-body">The following notice will be displayed to the public.</p>
+
+        {{ appInsetPrompt({
+          description: {
+            text: "Applies to: England, Scotland and Wales (see publication for Northern Ireland)"
+          }
+        }) }}
+
+        {{ govukButton({
+          text: "Save"
+        }) }}
+
+      </form>
+
+      <p class="govuk-body">
+        <a class="govuk-link govuk-link--no-visited-state" href="{{ actions.back }}">Cancel</a>
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}

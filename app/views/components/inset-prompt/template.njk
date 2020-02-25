@@ -1,7 +1,9 @@
 <div class="app-c-inset-prompt {{- ' app-c-inset-prompt--error' if params.error }} {{- ' ' + params.classes if params.classes }}" {%- for attribute, value in params.attributes %} {{attribute}}="{{value}}"{% endfor %}>
-  <h{{ params.title.headingLevel | default(3) }} class="app-c-inset-prompt__title {{- ' ' + params.title.classes if params.classes }}" {%- for attribute, value in params.title.attributes %} {{attribute}}="{{value}}"{% endfor %}>
-    {{- params.title.html | safe if params.title.html else params.title.text -}}
-  </h{{ params.title.headingLevel | default(3) }}>
+  {%- if params.title.html | length or params.title.text | length %}
+    <h{{ params.title.headingLevel | default(3) }} class="app-c-inset-prompt__title {{- ' ' + params.title.classes if params.classes }}" {%- for attribute, value in params.title.attributes %} {{attribute}}="{{value}}"{% endfor %}>
+      {{- params.title.html | safe if params.title.html else params.title.text -}}
+    </h{{ params.title.headingLevel | default(3) }}>
+  {% endif -%}
   <div class="app-c-inset-prompt__body {{- ' ' + params.description.classes if params.description.classes }}" {%- for attribute, value in params.description.attributes %} {{attribute}}="{{value}}"{% endfor %}>
     {%- if params.description %}
       {{- params.description.html | safe if params.description.html else params.description.text -}}

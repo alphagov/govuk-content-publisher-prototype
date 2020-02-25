@@ -1,0 +1,21 @@
+{% set nations = ["england","northern_ireland","scotland","wales"] %}
+
+{% set appliesArray = [] %}
+{%- for nation in nations %}
+  {%- if document.details.national_applicability[nation].applicable == true %}
+    <!-- {{ appliesArray.push((nation | replace("_"," ") | title)) }} -->
+  {% endif -%}
+{% endfor -%}
+
+{% set excludesArray = [] %}
+{%- for nation in nations %}
+  {%- if document.details.national_applicability[nation].applicable == false and document.details.national_applicability[nation].alternative_url | length %}
+    <!-- {{ excludesArray.push((nation | replace("_"," ") | title)) }} -->
+  {% endif -%}
+{% endfor -%}
+
+{{ appNotice({
+  description: {
+    text: 'Applies to: ' + (appliesArray | arrayToList) + (' (see publication for ' + (excludesArray | arrayToList) + ')' if excludesArray | length)
+  }
+}) if appliesArray | length }}

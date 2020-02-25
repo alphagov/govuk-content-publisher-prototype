@@ -56,6 +56,10 @@
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
+          {%- if document.document_status == 'submitted_for_review'%}
+            {% include "./partials/_banner-review.html" %}
+          {% endif -%}
+
           {%- if document.edition and (not document.edition.change_note_option | length) %}
             {% include "./partials/_banner-change-note.html" %}
           {% endif -%}
@@ -68,26 +72,15 @@
             {% include "./partials/_banner-withdrawn.html" %}
           {% endif %}
 
-          {%- if document.document_status == 'submitted_for_review'%}
-            {% include "./partials/_banner-review.html" %}
-          {% endif -%}
+          {#%- if document.details.national_applicability | length
+            and (document.details.national_applicability.england.applicable == false
+            or document.details.national_applicability.northern_ireland.applicable == false
+            or document.details.national_applicability.scotland.applicable == false
+            or document.details.national_applicability.wales.applicable == false) %}
+            {% include "./partials/_banner-excluded-nations.html" %}
+          {% endif -%#}
 
-          <!-- {#%- set descriptionHtml %}
-          <ul class="govuk-list app-c-inset-prompt__list">
-            <li><a class="govuk-link govuk-link--no-visited-state" href="/documents/6cc2a1e9-1461-4975-9b04-8bb1d4ddad7b:en/edit#summary">Enter a summary</a></li>
-            <li><a class="govuk-link govuk-link--no-visited-state" href="/documents/6cc2a1e9-1461-4975-9b04-8bb1d4ddad7b:en/edit#body">Enter a body</a></li>
-            <li><a class="govuk-link govuk-link--no-visited-state" href="/documents/6cc2a1e9-1461-4975-9b04-8bb1d4ddad7b:en/topics">Add a topic</a></li>
-          </ul>
-          {% endset -%#}
-
-          {#{ appInsetPrompt({
-            title: {
-              text: 'To publish this document you need to'
-            },
-            description: {
-              html: descriptionHtml
-            }
-          }) }#} -->
+          {#% include "./partials/_banner-required-fields.html" %#}
 
           {% include "./partials/_summary-content.html" %}
 
