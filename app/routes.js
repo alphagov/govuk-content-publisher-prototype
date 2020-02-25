@@ -127,37 +127,37 @@ router.get('/documents', checkIsAuthenticated, document_controller.document_list
 /// --------------------------------------------------///
 
 // GET request for creating an attachment. NOTE This must come before routes that display attachment (uses id).
-router.get('/documents/:document_id/attachments/modal/create', checkIsAuthenticated, attachment_controller.attachment_create_get);
+// router.get('/documents/:document_id/attachments/modal/create', checkIsAuthenticated, attachment_controller.attachment_create_get);
 
 // POST request for creating an attachment.
-router.post('/documents/:document_id/attachments/modal/create', checkIsAuthenticated, attachment_controller.attachment_create_post);
+// router.post('/documents/:document_id/attachments/modal/create', checkIsAuthenticated, attachment_controller.attachment_create_post);
 
 // GET request to delete an attachment.
-router.get('/documents/:document_id/attachments/:attachment_id/modal/delete', checkIsAuthenticated, attachment_controller.attachment_delete_get);
+// router.get('/documents/:document_id/attachments/:attachment_id/modal/delete', checkIsAuthenticated, attachment_controller.attachment_delete_get);
 
 // POST request to delete an attachment.
-router.post('/documents/:document_id/attachments/:attachment_id/modal/delete', checkIsAuthenticated, attachment_controller.attachment_delete_post);
+// router.post('/documents/:document_id/attachments/:attachment_id/modal/delete', checkIsAuthenticated, attachment_controller.attachment_delete_post);
 
 // GET request to update an attachment.
-router.get('/documents/:document_id/attachments/:attachment_id/modal/update', checkIsAuthenticated, attachment_controller.attachment_update_get);
+// router.get('/documents/:document_id/attachments/:attachment_id/modal/update', checkIsAuthenticated, attachment_controller.attachment_update_get);
 
 // POST request to update an attachment.
-router.post('/documents/:document_id/attachments/:attachment_id/modal/update', checkIsAuthenticated, attachment_controller.attachment_update_post);
+// router.post('/documents/:document_id/attachments/:attachment_id/modal/update', checkIsAuthenticated, attachment_controller.attachment_update_post);
 
 // GET request to update an attachment's metadata.
-router.get('/documents/:document_id/attachments/:attachment_id/modal/metadata', checkIsAuthenticated, attachment_controller.attachment_update_metadata_get);
+// router.get('/documents/:document_id/attachments/:attachment_id/modal/metadata', checkIsAuthenticated, attachment_controller.attachment_update_metadata_get);
 
 // POST request to update an attachment's metadats.
-router.post('/documents/:document_id/attachments/:attachment_id/modal/metadata', checkIsAuthenticated, attachment_controller.attachment_update_metadata_post);
+// router.post('/documents/:document_id/attachments/:attachment_id/modal/metadata', checkIsAuthenticated, attachment_controller.attachment_update_metadata_post);
 
 // GET request to preview an attachment.
 router.get('/documents/:document_id/attachments/:attachment_id/modal/preview', checkIsAuthenticated, attachment_controller.attachment_preview);
 
 // GET request to preview an attachment.
-router.get('/documents/:document_id/attachments/:attachment_id/modal/download', checkIsAuthenticated, attachment_controller.attachment_download);
+// router.get('/documents/:document_id/attachments/:attachment_id/modal/download', checkIsAuthenticated, attachment_controller.attachment_download);
 
 // GET request for one attachment.
-router.get('/documents/:document_id/attachments/:attachment_id/modal/', checkIsAuthenticated, attachment_controller.attachment_detail);
+// router.get('/documents/:document_id/attachments/:attachment_id/modal/', checkIsAuthenticated, attachment_controller.attachment_detail);
 
 // GET request for list of all attachment items.
 router.get('/documents/:document_id/attachments/modal/', checkIsAuthenticated, attachment_controller.attachment_list);
@@ -191,11 +191,17 @@ router.get('/documents/:document_id/attachments/:attachment_id/update', checkIsA
 // POST request to update an attachment.
 router.post('/documents/:document_id/attachments/:attachment_id/update', checkIsAuthenticated, attachment_controller.attachment_update_post);
 
-// GET request to update an attachment's metadata.
-router.get('/documents/:document_id/attachments/:attachment_id/metadata', checkIsAuthenticated, attachment_controller.attachment_update_metadata_get);
+// GET request to add an attachment's metadata.
+router.get('/documents/:document_id/attachments/:attachment_id/add-details', checkIsAuthenticated, attachment_controller.attachment_create_metadata_get);
 
-// POST request to update an attachment's metadats.
-router.post('/documents/:document_id/attachments/:attachment_id/metadata', checkIsAuthenticated, attachment_controller.attachment_update_metadata_post);
+// POST request to add an attachment's metadata.
+router.post('/documents/:document_id/attachments/:attachment_id/add-details', checkIsAuthenticated, attachment_controller.attachment_create_metadata_post);
+
+// GET request to update an attachment's metadata.
+router.get('/documents/:document_id/attachments/:attachment_id/update-details', checkIsAuthenticated, attachment_controller.attachment_update_metadata_get);
+
+// POST request to update an attachment's metadata.
+router.post('/documents/:document_id/attachments/:attachment_id/update-details', checkIsAuthenticated, attachment_controller.attachment_update_metadata_post);
 
 // GET request to preview an attachment.
 router.get('/documents/:document_id/attachments/:attachment_id/preview', checkIsAuthenticated, attachment_controller.attachment_preview);

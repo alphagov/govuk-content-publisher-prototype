@@ -1,0 +1,16 @@
+<div class="app-c-success-alert" {{- ' ' + params.classes if params.classes }} {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  {%- if params.heading | length %}
+    <h{{ params.headingLevel | default(2) }}  class="app-c-success-summary__title {{- ' ' + params.heading.classes if params.heading.classes }}">
+      {{- params.heading.html | safe if params.heading.html else params.heading.text -}}
+    </h{{ params.headingLevel | default(2) }} >
+  {% endif -%}
+  {%- if not params.heading | length %}
+    <p class="app-c-success-alert__message">
+      {{- params.description.html | safe if params.description.html else params.description.text -}}
+    </p>
+  {% else %}
+    <div class="app-c-success-summary__body {{- ' ' + params.description.classes if params.description.classes }}">
+      {{- params.description.html | safe if params.description.html else params.description.text -}}
+    </div>
+  {% endif -%}
+</div>

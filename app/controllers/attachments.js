@@ -1,28 +1,23 @@
 const path = require('path');
 const fs = require('fs');
 // const multer = require('multer');
-const uuid = require('uuid/v1');
+const flash = require('connect-flash');
 
 const Attachments = require('../models/attachments');
-
-function slugify(text) {
-
-  if (!text)
-    return null;
-
-  return text.toLowerCase()
-          .replace(/[^\w\s-]/g, '') // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
-          .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
-          .replace(/^-+|-+$/g, ''); // remove leading, trailing -
-
-}
 
 // Display list of all attachments.
 exports.attachment_list = function(req, res) {
 
+  // console.log(req.headers.referer);
+
+  let flash = req.flash();
+
+  // console.log(flash);
+
   if (req.path.indexOf('/modal/') !== -1) {
     res.render('../views/attachments/modals/list', {
       attachments: Attachments.findByDocumentId(req.params.document_id),
+      message: flash,
       actions: {
         add_file: '/documents/' + req.params.document_id + '/attachments/modal/create?type=file',
         add_external: '/documents/' + req.params.document_id + '/attachments/modal/create?type=external'
@@ -31,6 +26,7 @@ exports.attachment_list = function(req, res) {
   } else {
     res.render('../views/attachments/list', {
       attachments: Attachments.findByDocumentId(req.params.document_id),
+      message: flash,
       actions: {
         back: '/documents/' + req.params.document_id,
         add_file: '/documents/' + req.params.document_id + '/attachments/create?type=file',
@@ -57,34 +53,21 @@ exports.attachment_detail = function(req, res) {
 
 // Display attachment create form on GET.
 exports.attachment_create_get = function(req, res) {
+
   const types = ['html','file','external'];
 
   if (types.indexOf(req.query.type) === -1) {
 
-    if (req.path.indexOf('/modal/') !== -1) {
-      res.redirect('/documents/' + req.params.document_id + '/attachments/modal/');
-    } else {
-      res.redirect('/documents/' + req.params.document_id + '/attachments');
-    }
-
+    res.redirect('/documents/' + req.params.document_id + '/attachments');
 
   } else {
 
-    if (req.path.indexOf('/modal/') !== -1) {
-      res.render('../views/attachments/modals/create', {
-        actions: {
-          back: '/documents/' + req.params.document_id + '/attachments/modal/',
-          save: '/documents/' + req.params.document_id + '/attachments/modal/create'
-        }
-      });
-    } else {
-      res.render('../views/attachments/create', {
-        actions: {
-          back: '/documents/' + req.params.document_id + '/attachments',
-          save: '/documents/' + req.params.document_id + '/attachments/create'
-        }
-      });
-    }
+    res.render('../views/attachments/create', {
+      actions: {
+        back: '/documents/' + req.params.document_id + '/attachments',
+        save: '/documents/' + req.params.document_id + '/attachments/create'
+      }
+    });
 
   }
 
@@ -92,208 +75,72 @@ exports.attachment_create_get = function(req, res) {
 
 // Handle attachment create on POST.
 exports.attachment_create_post = function(req, res) {
-  // res.send('NOT IMPLEMENTED: attachment create POST');
 
-  // attachment uploads directory path
-  const directoryPath = path.join(__dirname, '../data/attachments/', req.params.document_id);
+  const attachmentData = Attachments.save(req.params.document_id, req.session.data);
 
-  // check if document directory exists in attachment uploads directory
-  if (!fs.existsSync(directoryPath)) {
-    fs.mkdirSync(directoryPath);
-  }
-
-  // create a unique file name
-  const content_id = uuid();
-  const fileName = content_id + '.json';
-
-  const filePath = directoryPath + '/' + fileName;
-
-  // attachment data
-  let attachmentData = req.session.data.document.attachment;
-  attachmentData.content_id = content_id;
-  attachmentData.document_id = req.params.document_id;
-  attachmentData.created_at = new Date();
-  attachmentData.created_by = req.session.data.user.display_name;
-
-  if (req.session.data.document.attachment.type === 'file') {
-    attachmentData.file = slugify(attachmentData.title);
-  }
-
-  // create a JSON sting for the submitted data
-  const fileData = JSON.stringify(attachmentData);
-
-  // write the JSON data
-  fs.writeFileSync(filePath, fileData);
-
-  // append the new file path to the index.js
-  let index
-  try {
-    index = fs.readFileSync(directoryPath + '/index.json');
-  } catch (err) {
-    // no index file
-  }
-  if (index) {
-    attachmentsOrder = JSON.parse(index)
-    attachmentsOrder.push(fileName)
-    const indexFileData = JSON.stringify(attachmentsOrder);
-    fs.writeFileSync(directoryPath + '/index.json', indexFileData);
-  }
+  // show flash message (success/failure)
+  // req.flash('success', 'Attachment created');
 
   // redirect the user back to the attachments page
-  // TODO: show flash message (success/failure)
-
-  if (req.path.indexOf('/modal/') !== -1) {
-    res.redirect('/documents/' + req.params.document_id + '/attachments/' + attachmentData.content_id + '/modal/metadata');
-  } else {
-    res.redirect('/documents/' + req.params.document_id + '/attachments/' + attachmentData.content_id + '/metadata');
-  }
-
-};
-
-// Display attachment delete form on GET.
-exports.attachment_delete_get = function(req, res) {
-  // res.send('NOT IMPLEMENTED: attachment delete GET');
-  // Show deletion secondary confirmation page
-
-  if (req.path.indexOf('/modal/') !== -1) {
-    res.render('../views/attachments/modals/delete', {
-      id: req.params.attachment_id,
-      attachment: Attachments.findById(req.params.document_id, req.params.attachment_id),
-      actions: {
-        back: '/documents/' + req.params.document_id + '/attachments/modal/',
-        delete: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/modal/delete'
-      }
-    });
-  } else {
-    res.render('../views/attachments/delete', {
-      id: req.params.attachment_id,
-      attachment: Attachments.findById(req.params.document_id, req.params.attachment_id),
-      actions: {
-        back: '/documents/' + req.params.document_id + '/attachments',
-        delete: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/delete'
-      }
-    });
-  }
-
-};
-
-// Handle attachment delete on POST.
-exports.attachment_delete_post = function(req, res) {
-  // res.send('NOT IMPLEMENTED: attachment delete POST');
-
-  // attachment uploads directory path
-  const directoryPath = path.join(__dirname, '../data/attachments/', req.params.document_id);
-
-  fs.unlinkSync(directoryPath + '/' + req.params.attachment_id + '.json');
-
-  // append the new file path to the index.js
-  let index
-  try {
-    index = fs.readFileSync(directoryPath + '/index.json');
-  } catch (err) {
-    // no index file
-  }
-  if (index) {
-    attachmentsOrder = JSON.parse(index)
-
-    const i = attachmentsOrder.indexOf(req.params.attachment_id + '.json');
-    if (i > -1) {
-      attachmentsOrder.splice(i, 1);
-    }
-
-    const indexFileData = JSON.stringify(attachmentsOrder);
-    fs.writeFileSync(directoryPath + '/index.json', indexFileData);
-  }
-
-  // redirect the user back to the attachments page
-  // TODO: show flash message (success/failure)
-  if (req.path.indexOf('/modal/') !== -1) {
-    res.redirect('/documents/' + req.params.document_id + '/attachments/modal/');
-  } else {
-    res.redirect('/documents/' + req.params.document_id + '/attachments');
-  }
+  res.redirect('/documents/' + req.params.document_id + '/attachments/' + attachmentData.content_id + '/add-details');
 
 };
 
 // Display attachment update form on GET.
 exports.attachment_update_get = function(req, res) {
-  // res.send('NOT IMPLEMENTED: attachment update GET');
 
-  // HACK this is to mock the details of a file
-  let fileMetadata = {
-    filename: 'attachment.pdf',
-    fileSize: 1234560,
-    contentType: 'application/pdf',
-    pageCount: 25,
-    thumbnail: 'document'
-  };
-
-  if (req.path.indexOf('/modal/') !== -1) {
-    res.render('../views/attachments/modals/edit', {
-      id: req.params.attachment_id,
-      attachment: Attachments.findById(req.params.document_id, req.params.attachment_id),
-      file: fileMetadata,
-      actions: {
-        back: '/documents/' + req.params.document_id + '/attachments/modal/',
-        save: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/modal/update'
-      }
-    });
-  } else {
-    res.render('../views/attachments/edit', {
-      id: req.params.attachment_id,
-      attachment: Attachments.findById(req.params.document_id, req.params.attachment_id),
-      file: fileMetadata,
-      actions: {
-        back: '/documents/' + req.params.document_id + '/attachments',
-        save: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/update'
-      }
-    });
-  }
+  res.render('../views/attachments/edit', {
+    attachment: Attachments.findById(req.params.document_id, req.params.attachment_id),
+    actions: {
+      back: '/documents/' + req.params.document_id + '/attachments',
+      save: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/update'
+    }
+  });
 
 };
 
 // Handle attachment update on POST.
 exports.attachment_update_post = function(req, res) {
-  // attachment uploads directory path
-  const directoryPath = path.join(__dirname, '../data/attachments/', req.params.document_id);
 
-  const filePath = directoryPath + '/' + req.params.attachment_id + '.json';
+  Attachments.findByIdAndUpdate(req.params.document_id, req.params.attachment_id, req.session.data);
 
-  let rawdata = fs.readFileSync(filePath);
-  let attachmentData = JSON.parse(rawdata);
-
-  attachmentData.title = req.session.data.document.attachment.title;
-
-  if (attachmentData.type === 'external') {
-    attachmentData.url = req.session.data.document.attachment.url;
-  }
-
-  if (attachmentData.type === 'file') {
-    attachmentData.file = slugify(attachmentData.title);
-  }
-
-  attachmentData.updated_at = new Date();
-  attachmentData.updated_by = req.session.data.user.display_name;
-
-  // create a JSON sting for the submitted data
-  const fileData = JSON.stringify(attachmentData);
-
-  // write the JSON data
-  fs.writeFileSync(filePath, fileData);
-
-  let modalRoute = '';
-  if (req.path.indexOf('/modal/') !== -1) {
-    modalRoute = '/modal';
-  }
+  // show flash message (success/failure)
+  req.flash('success', 'Attachment updated');
 
   // redirect the user back to the attachments page
-  // TODO: show flash message (success/failure)
+  res.redirect('/documents/' + req.params.document_id + '/attachments');
 
-  if (req.path.indexOf('/modal/') !== -1) {
-    res.redirect('/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/modal/metadata');
-  } else {
-    res.redirect('/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/metadata');
-  }
+};
+
+// Display attachment metadata form on GET.
+exports.attachment_create_metadata_get = function(req, res) {
+
+  // Get attachment data
+  let attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
+
+  res.render('../views/attachments/create-details', {
+    attachment: attachmentData,
+    actions: {
+      back: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/update',
+      save: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/add-details'
+    }
+  });
+
+};
+
+// Display attachment metadata form on GET.
+exports.attachment_create_metadata_post = function(req, res) {
+
+  Attachments.findByIdAndUpdateDetails(req.params.document_id, req.params.attachment_id, req.session.data);
+
+  // delete the attachment data we no longer need
+  delete req.session.data.document.attachment;
+
+  // show flash message (success/failure)
+  req.flash('success', 'Attachment added');
+
+  // redirect the user back to the attachments page
+  res.redirect('/documents/' + req.params.document_id + '/attachments');
 
 };
 
@@ -303,114 +150,56 @@ exports.attachment_update_metadata_get = function(req, res) {
   // Get attachment data
   let attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
 
-  if (req.path.indexOf('/modal/') !== -1) {
-    res.render('../views/attachments/modals/metadata', {
-      attachment: attachmentData,
-      actions: {
-        back: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/modal/update',
-        save: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/modal/metadata'
-      }
-    });
-  } else {
-    res.render('../views/attachments/metadata', {
-      attachment: attachmentData,
-      actions: {
-        back: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/update',
-        save: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/metadata'
-      }
-    });
-  }
+  res.render('../views/attachments/update-details', {
+    attachment: attachmentData,
+    actions: {
+      back: '/documents/' + req.params.document_id + '/attachments',
+      save: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/update-details'
+    }
+  });
 
 };
 
 // Handle attachment metadata update on POST.
 exports.attachment_update_metadata_post = function(req, res) {
 
-  // Get attachment data
-  let attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
-
-  // Update attachment data
-  attachmentData.official_document = req.session.data.document.attachment.official_document;
-
-  attachmentData.isbn = req.session.data.document.attachment.isbn;
-  attachmentData.urn = req.session.data.document.attachment.urn;
-
-  if (attachmentData.official_document === 'yes_command_paper') {
-
-    attachmentData.cpn = req.session.data.document.attachment.cpn;
-    attachmentData.unnumbered = req.session.data.document.attachment.unnumbered;
-
-    if (attachmentData.cpn.length || attachmentData.unnumbered === undefined) {
-      attachmentData.unnumbered = '';
-    }
-
-    // clear the house of commons paper fields
-    attachmentData.hcpn = '';
-    attachmentData.parliamentary_session = '';
-    attachmentData.unnumbered_act = '';
-
-  }
-
-  if (attachmentData.official_document === 'yes_house_of_commons_paper') {
-
-    attachmentData.hcpn = req.session.data.document.attachment.hcpn;
-    attachmentData.parliamentary_session = req.session.data.document.attachment.parliamentary_session;
-    attachmentData.unnumbered_act = req.session.data.document.attachment.unnumbered_act;
-
-    if (attachmentData.hcpn.length || attachmentData.unnumbered_act === undefined) {
-      attachmentData.unnumbered_act = '';
-    }
-
-    // clear the command paper fields
-    attachmentData.cpn = '';
-    attachmentData.unnumbered = '';
-
-  }
-
-  if (attachmentData.official_document === 'yes_command_paper' || attachmentData.official_document === 'yes_house_of_commons_paper') {
-    attachmentData.order_url = "https://www.gov.uk/guidance/how-to-buy-printed-copies-of-official-documents";
-  }
-
-  if (attachmentData.official_document === 'no') {
-    attachmentData.cpn = '';
-    attachmentData.unnumbered = '';
-    attachmentData.hcpn = '';
-    attachmentData.parliamentary_session = '';
-    attachmentData.unnumbered_act = '';
-    attachmentData.order_url = '';
-  }
-
-  if (attachmentData.type === 'html') {
-    attachmentData.body = req.session.data.document.attachment.body;
-  }
-
-  // if (attachmentData.type === 'file' || attachmentData.type == 'html') {
-  //   attachmentData.order_url = "https://www.gov.uk/guidance/how-to-buy-printed-copies-of-official-documents";
-  // }
-
-  attachmentData.updated_at = new Date();
-  attachmentData.updated_by = req.session.data.user.display_name;
-
-  // attachment uploads directory path
-  const directoryPath = path.join(__dirname, '../data/attachments/', req.params.document_id);
-
-  const filePath = directoryPath + '/' + req.params.attachment_id + '.json';
-  // create a JSON sting for the submitted data
-  const fileData = JSON.stringify(attachmentData);
-
-  // write the JSON data
-  fs.writeFileSync(filePath, fileData);
+  Attachments.findByIdAndUpdateDetails(req.params.document_id, req.params.attachment_id, req.session.data);
 
   // delete the attachment data we no longer need
   delete req.session.data.document.attachment;
 
+  // show flash message (success/failure)
+  req.flash('success', 'Attachment details updated');
+
   // redirect the user back to the attachments page
-  // TODO: show flash message (success/failure)
-  if (req.path.indexOf('/modal/') !== -1) {
-    res.redirect('/documents/' + req.params.document_id + '/attachments/modal/');
-  } else {
-    res.redirect('/documents/' + req.params.document_id + '/attachments');
-  }
+  res.redirect('/documents/' + req.params.document_id + '/attachments');
+
+};
+
+// Display attachment delete form on GET.
+exports.attachment_delete_get = function(req, res) {
+
+  res.render('../views/attachments/delete', {
+    id: req.params.attachment_id,
+    attachment: Attachments.findById(req.params.document_id, req.params.attachment_id),
+    actions: {
+      back: '/documents/' + req.params.document_id + '/attachments',
+      delete: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/delete'
+    }
+  });
+
+};
+
+// Handle attachment delete on POST.
+exports.attachment_delete_post = function(req, res) {
+
+  Attachments.findByIdAndDelete(req.params.document_id, req.params.attachment_id);
+
+  // show flash message (success/failure)
+  req.flash('success', 'Attachment deleted');
+
+  // redirect the user back to the attachments page
+  res.redirect('/documents/' + req.params.document_id + '/attachments');
 
 };
 
@@ -435,11 +224,16 @@ exports.attachment_download = function(req, res) {
 
 // Reorder attachments list on GET.
 exports.attachment_list_reorder_get = function(req, res) {
-  // res.send('NOT IMPLEMENTED: attachment reorder GET');
+
+  let backLink = '/documents/' + req.params.document_id + '/attachments';
+  if (!req.headers.referer.includes(backLink)) {
+    backLink = '/documents/' + req.params.document_id;
+  }
+
   res.render('../views/attachments/reorder', {
     attachments: Attachments.findByDocumentId(req.params.document_id),
     actions: {
-      back: '/documents/' + req.params.document_id + '/attachments',
+      back: backLink,
       save: '/documents/' + req.params.document_id + '/attachments/reorder'
     }
   });
@@ -458,6 +252,9 @@ exports.attachment_list_reorder_post = function(req, res) {
   // write the JSON data
   fs.writeFileSync(filePath, fileData);
 
+  // show flash message (success/failure)
+  req.flash('success', 'Attachments reordered');
+
   // redirect the user back to the document page
-  res.redirect('/documents/' + req.params.document_id);
+  res.redirect('/documents/' + req.params.document_id + '/attachments');
 };
