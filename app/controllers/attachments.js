@@ -64,7 +64,10 @@ exports.attachment_create_get = function(req, res) {
 
   } else {
 
+    const documentData = Documents.findById(req.params.document_id);
+
     res.render('../views/attachments/create', {
+      document: documentData,
       actions: {
         back: '/documents/' + req.params.document_id + '/attachments',
         save: '/documents/' + req.params.document_id + '/attachments/create'
