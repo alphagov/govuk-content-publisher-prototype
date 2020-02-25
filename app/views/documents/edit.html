@@ -62,7 +62,7 @@
         <div class="govuk-grid-column-two-thirds">
 
           <h1 class="govuk-heading-l">
-            Edit ‘{{ data.document.title }}’
+            Edit ‘{{ document.title }}’
           </h1>
 
         </div>
@@ -89,7 +89,7 @@
               classes: "govuk-!-font-weight-bold"
             },
             rows: 2,
-            value: data.document.title
+            value: document.title
           }) }}
 
         {% endcall -%}
@@ -97,7 +97,7 @@
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-two-thirds">
           {{ appUrlPreview({
-            path: data.document.base_path
+            path: document.base_path
           }) }}
           </div>
         </div>
@@ -120,7 +120,7 @@
               text: "Summary",
               classes: "govuk-!-font-weight-bold"
             },
-            value: data.document.description
+            value: document.description
           }) }}
 
         {% endcall -%}
@@ -175,7 +175,7 @@
                 spellcheck: false
               }
             },
-            value: data.document.details.body | toMarkdown
+            value: document.details.body | toMarkdown
           }) }}
 
         {% endcall -%}

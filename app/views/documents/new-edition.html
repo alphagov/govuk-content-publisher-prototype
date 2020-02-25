@@ -52,13 +52,13 @@
         <div class="govuk-grid-column-two-thirds">
 
           <h1 class="govuk-heading-l">
-            Create a new edition for ‘{{ data.document.title }}’
+            Create a new edition for ‘{{ document.title }}’
           </h1>
 
         </div>
       </div>
 
-      {% if data.user.role != 'admin' and data.document.document_status == 'published' and data.document.political == true and data.document.government.current == false %}
+      {% if data.user.role != 'admin' and document.document_status == 'published' and document.political == true and document.government.current == false %}
 
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-two-thirds">
@@ -95,7 +95,7 @@
                 classes: "govuk-!-font-weight-bold"
               },
               rows: 2,
-              value: data.document.title
+              value: document.title
             }) }}
 
           {% endcall -%}
@@ -126,7 +126,7 @@
                 text: "Summary",
                 classes: "govuk-!-font-weight-bold"
               },
-              value: data.document.description
+              value: document.description
             }) }}
 
           {% endcall -%}
@@ -162,7 +162,7 @@
                   spellcheck: false
                 }
               },
-              value: data.document.details.body | toMarkdown
+              value: document.details.body | toMarkdown
             }) }}
 
           {% endcall -%}

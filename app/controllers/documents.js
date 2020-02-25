@@ -115,8 +115,6 @@ exports.document_list = function(req, res) {
 
 // Display summary page for a specific document.
 exports.document_summary_get = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Document summary: ' + req.params.document_id);
-
   res.render('../views/documents/summary', {
     document: Documents.findById(req.params.document_id),
     attachments: Attachments.findByDocumentId(req.params.document_id),
@@ -236,8 +234,6 @@ exports.document_load = function(req, res) {
 
 // Display document create super type form on GET.
 exports.document_create_super_type_get = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Document create GET');
-
   delete req.session.data.document_type;
 
   res.render('../views/documents/super-type', {
@@ -250,8 +246,6 @@ exports.document_create_super_type_get = function(req, res) {
 
 // Display document create type form on GET.
 exports.document_create_type_get = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Document create GET');
-
   delete req.session.data.document_sub_type
 
   res.render('../views/documents/type', {
@@ -264,8 +258,6 @@ exports.document_create_type_get = function(req, res) {
 
 // Display document create sub type form on GET.
 exports.document_create_sub_type_get = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Document create GET');
-
   const types = ['statement_to_parliament','articles_correspondence','guidance','statistics'];
 
   if (types.indexOf(req.session.data.document_type) === -1) {
@@ -278,7 +270,6 @@ exports.document_create_sub_type_get = function(req, res) {
       }
     });
   }
-
 };
 
 exports.document_create_get = function(req, res) {
@@ -371,7 +362,6 @@ exports.document_create_get = function(req, res) {
 
 // Display document create form on GET.
 exports.document_new_get = function(req, res) {
-
   const documentData = Documents.findById(req.params.document_id);
 
   let previous_page = '/documents/type';
@@ -419,8 +409,10 @@ exports.document_new_post = function(req, res) {
 
 // Display document delete form on GET.
 exports.document_delete_get = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Document delete GET');
+  const documentData = Documents.findById(req.params.document_id);
+
   res.render('../views/documents/delete', {
+    document: documentData,
     actions: {
       back: '/documents/' + req.params.document_id,
       save: '/documents/' + req.params.document_id + '/delete'
@@ -452,13 +444,10 @@ exports.document_delete_post = function(req, res) {
 
 // Display document update form on GET.
 exports.document_update_get = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Document update GET');
-
   const documentData = Documents.findById(req.params.document_id);
 
   res.render('../views/documents/edit', {
     document: documentData,
-    id: req.params.document_id,
     actions: {
       back: '/documents/' + req.params.document_id,
       save: '/documents/' + req.params.document_id + '/update'
@@ -496,7 +485,6 @@ exports.document_update_post = function(req, res) {
 
 // Display document political update form on GET.
 exports.document_political_update_get = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Document update GET');
   const documentData = Documents.findById(req.params.document_id);
 
   res.render('../views/documents/political', {
@@ -564,8 +552,10 @@ exports.document_tags_update_post = function(req, res) {
 
 
 exports.document_new_edition_get = function(req, res) {
-  // res.send('NOT IMPLEMENTED: New edition GET');
+  const documentData = Documents.findById(req.params.document_id);
+
   res.render('../views/documents/new-edition', {
+    document: documentData,
     actions: {
       back: '/documents/' + req.params.document_id,
       save: '/documents/' + req.params.document_id + '/new-edition'
@@ -636,8 +626,10 @@ exports.document_approve_post = function(req, res) {
 };
 
 exports.document_schedule_get = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Schedule document GET');
+  const documentData = Documents.findById(req.params.document_id);
+
   res.render('../views/documents/schedule', {
+    document: documentData,
     actions: {
       back: '/documents/' + req.params.document_id,
       save: '/documents/' + req.params.document_id + '/schedule'
@@ -668,8 +660,10 @@ exports.document_stop_schedule_post = function(req, res) {
 };
 
 exports.document_preview_get = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Preview document GET');
+  const documentData = Documents.findById(req.params.document_id);
+
   res.render('../views/documents/preview', {
+    document: documentData,
     actions: {
       back: '/documents/' + req.params.document_id
     }
@@ -683,8 +677,6 @@ exports.document_preview_post = function(req, res) {
 };
 
 exports.document_publish_get = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Publish document GET');
-
   const documentData = Documents.findById(req.params.document_id);
 
   res.render('../views/documents/publish', {
@@ -697,8 +689,6 @@ exports.document_publish_get = function(req, res) {
 };
 
 exports.document_publish_post = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Publish document POST');
-
   let documentData = Documents.findById(req.params.document_id);
 
   documentData.document_status = req.session.data.document.document_status;
@@ -721,8 +711,10 @@ exports.document_publish_post = function(req, res) {
 };
 
 exports.document_delete_draft_get = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Delete draft document GET');
+  const documentData = Documents.findById(req.params.document_id);
+
   res.render('../views/documents/delete', {
+    document: documentData,
     actions: {
       back: '/documents/' + req.params.document_id,
       save: '/documents/' + req.params.document_id + '/delete'
@@ -737,8 +729,10 @@ exports.document_delete_draft_post = function(req, res) {
 };
 
 exports.document_withdraw_get = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Withdraw document GET');
+  const documentData = Documents.findById(req.params.document_id);
+
   res.render('../views/documents/withdraw', {
+    document: documentData,
     actions: {
       back: '/documents/' + req.params.document_id,
       save: '/documents/' + req.params.document_id + '/withdraw'
@@ -753,8 +747,10 @@ exports.document_withdraw_post = function(req, res) {
 };
 
 exports.document_undo_withdraw_get = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Undo withdraw document GET');
+  const documentData = Documents.findById(req.params.document_id);
+
   res.render('../views/documents/undo-withdraw', {
+    document: documentData,
     actions: {
       back: '/documents/' + req.params.document_id,
       save: '/documents/' + req.params.document_id + '/undo-withdraw'
@@ -769,7 +765,6 @@ exports.document_undo_withdraw_post = function(req, res) {
 };
 
 exports.document_remove_get = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Remove document GET');
   const documentData = Documents.findById(req.params.document_id);
 
   res.render('../views/documents/remove', {
@@ -788,7 +783,6 @@ exports.document_remove_post = function(req, res) {
 };
 
 exports.document_change_note_get = function(req, res) {
-
   const documentData = Documents.findById(req.params.document_id);
 
   res.render('../views/documents/change-note', {
@@ -801,8 +795,6 @@ exports.document_change_note_get = function(req, res) {
 };
 
 exports.document_change_note_post = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Document change note post');
-
   let documentData = Documents.findById(req.params.document_id);
 
   documentData.edition = {};
@@ -831,7 +823,6 @@ exports.document_change_note_post = function(req, res) {
 };
 
 exports.document_nations_get = function(req, res) {
-
   const documentData = Documents.findById(req.params.document_id);
 
   res.render('../views/documents/nations', {
@@ -844,7 +835,6 @@ exports.document_nations_get = function(req, res) {
 };
 
 exports.document_nations_post = function(req, res) {
-
   let documentData = Documents.findById(req.params.document_id);
 
   documentData.details.national_applicability = {};

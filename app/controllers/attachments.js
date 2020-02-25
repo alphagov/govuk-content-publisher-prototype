@@ -3,6 +3,7 @@ const fs = require('fs');
 // const multer = require('multer');
 const flash = require('connect-flash');
 
+const Documents = require('../models/documents');
 const Attachments = require('../models/attachments');
 
 // Display list of all attachments.
@@ -16,6 +17,7 @@ exports.attachment_list = function(req, res) {
 
   if (req.path.indexOf('/modal/') !== -1) {
     res.render('../views/attachments/modals/list', {
+      document: Documents.findById(req.params.document_id),
       attachments: Attachments.findByDocumentId(req.params.document_id),
       message: flash,
       actions: {
@@ -25,6 +27,7 @@ exports.attachment_list = function(req, res) {
     });
   } else {
     res.render('../views/attachments/list', {
+      document: Documents.findById(req.params.document_id),
       attachments: Attachments.findByDocumentId(req.params.document_id),
       message: flash,
       actions: {

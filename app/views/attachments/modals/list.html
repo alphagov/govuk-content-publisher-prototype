@@ -10,7 +10,7 @@
         <div class="govuk-grid-column-two-thirds">
 
           <h1 class="govuk-heading-l">
-            Attachments {{ 'for ‘' + data.document.title + '’' if data.document.title | length }}
+            Attachments {{ 'for ‘' + document.title + '’' if document.title | length }}
           </h1>
 
           {% if attachments | length %}
