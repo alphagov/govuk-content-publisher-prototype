@@ -1,10 +1,10 @@
 <h3 class="govuk-heading-m">Content settings</h3>
 
 {%- set nationsHtml %}
-{%- if document.details.national_applicability.england.applicable and
+{%- if not document.details.national_applicability | length or (document.details.national_applicability.england.applicable and
   document.details.national_applicability.northern_ireland.applicable and
   document.details.national_applicability.scotland.applicable and
-  document.details.national_applicability.wales.applicable %}
+  document.details.national_applicability.wales.applicable) %}
   <p class="govuk-body">All nations covered</p>
 {% else %}
   <ul class="govuk-list">
