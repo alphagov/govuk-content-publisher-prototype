@@ -31,7 +31,7 @@
         <div class="govuk-grid-column-two-thirds">
 
           <h1 class="govuk-heading-l">
-            Preview ‘{{ data.document.title }}’
+            Preview ‘{{ document.title }}’
           </h1>
 
           {{ govukDetails({
@@ -44,7 +44,7 @@
                 label: {
                   text: 'Send this link to someone so they can see a preview of how the document will appear on GOV.UK. No password is needed.'
                 },
-                value: data.document.base_path | absoluteUrl('https://draft.integration.publishing.service.gov.uk'),
+                value: document.base_path | absoluteUrl('https://draft.integration.publishing.service.gov.uk'),
                 attributes: {
                   readonly: 'readonly'
                 }
