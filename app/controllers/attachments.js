@@ -9,17 +9,16 @@ const Attachments = require('../models/attachments');
 // Display list of all attachments.
 exports.attachment_list = function(req, res) {
 
-  // console.log(req.headers.referer);
+  const documentData = Documents.findById(req.params.document_id);
+  const attachmentData = Attachments.findByDocumentId(req.params.document_id);
 
-  let flash = req.flash();
-
-  // console.log(flash);
+  let flashMessage = req.flash();
 
   if (req.path.indexOf('/modal/') !== -1) {
     res.render('../views/attachments/modals/list', {
-      document: Documents.findById(req.params.document_id),
-      attachments: Attachments.findByDocumentId(req.params.document_id),
-      message: flash,
+      document: documentData,
+      attachments: attachmentData,
+      message: flashMessage,
       actions: {
         add_file: '/documents/' + req.params.document_id + '/attachments/modal/create?type=file',
         add_external: '/documents/' + req.params.document_id + '/attachments/modal/create?type=external'
@@ -27,9 +26,9 @@ exports.attachment_list = function(req, res) {
     });
   } else {
     res.render('../views/attachments/list', {
-      document: Documents.findById(req.params.document_id),
-      attachments: Attachments.findByDocumentId(req.params.document_id),
-      message: flash,
+      document: documentData,
+      attachments: attachmentData,
+      message: flashMessage,
       actions: {
         back: '/documents/' + req.params.document_id,
         add_file: '/documents/' + req.params.document_id + '/attachments/create?type=file',
@@ -81,7 +80,7 @@ exports.attachment_create_post = function(req, res) {
 
   const attachmentData = Attachments.save(req.params.document_id, req.session.data);
 
-  // show flash message (success/failure)
+  // set flash message (success/failure)
   // req.flash('success', 'Attachment created');
 
   // redirect the user back to the attachments page
@@ -92,8 +91,10 @@ exports.attachment_create_post = function(req, res) {
 // Display attachment update form on GET.
 exports.attachment_update_get = function(req, res) {
 
+  const attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
+
   res.render('../views/attachments/edit', {
-    attachment: Attachments.findById(req.params.document_id, req.params.attachment_id),
+    attachment: attachmentData,
     actions: {
       back: '/documents/' + req.params.document_id + '/attachments',
       save: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/update'
@@ -107,7 +108,7 @@ exports.attachment_update_post = function(req, res) {
 
   Attachments.findByIdAndUpdate(req.params.document_id, req.params.attachment_id, req.session.data);
 
-  // show flash message (success/failure)
+  // set flash message (success/failure)
   req.flash('success', 'Attachment updated');
 
   // redirect the user back to the attachments page
@@ -119,7 +120,7 @@ exports.attachment_update_post = function(req, res) {
 exports.attachment_create_metadata_get = function(req, res) {
 
   // Get attachment data
-  let attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
+  const attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
 
   res.render('../views/attachments/create-details', {
     attachment: attachmentData,
@@ -139,7 +140,7 @@ exports.attachment_create_metadata_post = function(req, res) {
   // delete the attachment data we no longer need
   delete req.session.data.document.attachment;
 
-  // show flash message (success/failure)
+  // set flash message (success/failure)
   req.flash('success', 'Attachment added');
 
   // redirect the user back to the attachments page
@@ -151,7 +152,7 @@ exports.attachment_create_metadata_post = function(req, res) {
 exports.attachment_update_metadata_get = function(req, res) {
 
   // Get attachment data
-  let attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
+  const attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
 
   res.render('../views/attachments/update-details', {
     attachment: attachmentData,
@@ -171,7 +172,7 @@ exports.attachment_update_metadata_post = function(req, res) {
   // delete the attachment data we no longer need
   delete req.session.data.document.attachment;
 
-  // show flash message (success/failure)
+  // set flash message (success/failure)
   req.flash('success', 'Attachment details updated');
 
   // redirect the user back to the attachments page
@@ -182,9 +183,10 @@ exports.attachment_update_metadata_post = function(req, res) {
 // Display attachment delete form on GET.
 exports.attachment_delete_get = function(req, res) {
 
+  const attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
+
   res.render('../views/attachments/delete', {
-    id: req.params.attachment_id,
-    attachment: Attachments.findById(req.params.document_id, req.params.attachment_id),
+    attachment: attachmentData,
     actions: {
       back: '/documents/' + req.params.document_id + '/attachments',
       delete: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/delete'
@@ -198,7 +200,7 @@ exports.attachment_delete_post = function(req, res) {
 
   Attachments.findByIdAndDelete(req.params.document_id, req.params.attachment_id);
 
-  // show flash message (success/failure)
+  // set flash message (success/failure)
   req.flash('success', 'Attachment deleted');
 
   // redirect the user back to the attachments page
@@ -209,7 +211,7 @@ exports.attachment_delete_post = function(req, res) {
 // Preview attachment on GET.
 exports.attachment_preview = function(req, res) {
 
-  let attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
+  const attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
 
   if (attachmentData.type === 'file') {
     res.sendFile(path.join(__dirname, '../data/attachments/attachment.pdf'));
@@ -228,13 +230,17 @@ exports.attachment_download = function(req, res) {
 // Reorder attachments list on GET.
 exports.attachment_list_reorder_get = function(req, res) {
 
+  const documentData = Documents.findById(req.params.document_id);
+  const attachmentData = Attachments.findByDocumentId(req.params.document_id);
+
   let backLink = '/documents/' + req.params.document_id + '/attachments';
   if (!req.headers.referer.includes(backLink)) {
     backLink = '/documents/' + req.params.document_id;
   }
 
   res.render('../views/attachments/reorder', {
-    attachments: Attachments.findByDocumentId(req.params.document_id),
+    document: documentData,
+    attachments: attachmentData,
     actions: {
       back: backLink,
       save: '/documents/' + req.params.document_id + '/attachments/reorder'
@@ -255,7 +261,7 @@ exports.attachment_list_reorder_post = function(req, res) {
   // write the JSON data
   fs.writeFileSync(filePath, fileData);
 
-  // show flash message (success/failure)
+  // set flash message (success/failure)
   req.flash('success', 'Attachments reordered');
 
   // redirect the user back to the document page
