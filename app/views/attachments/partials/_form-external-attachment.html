@@ -1,5 +1,10 @@
 <p class="govuk-body">Include a link if your document is hosted on an external website and users need to find it on GOV.UK.</p>
 
+{{ govukDetails({
+  summaryText: "Adding a link to a GOV.UK page",
+  text: "You can add a link to a GOV.UK page to the list of attachments if it’s a part of this publication. If the GOV.UK content is not part of this publication but it’s relevant to users for background information, include a link in the body of the content instead of in the list of attachments. Go to the content editing page to do this."
+}) }}
+
 <!-- <form action="{{ actions.save }}" accept-charset="UTF-8" method="post"> -->
   <input type="hidden" name="document[attachment][type]" value="external">
 
