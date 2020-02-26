@@ -100,6 +100,11 @@ exports.findByIdAndUpdate = function(document_id, attachment_id, data) {
     attachmentData.file = slugify(attachmentData.title);
   }
 
+  if (attachmentData.type === 'html') {
+    attachmentData.unnumbered_headings = data.document.attachment.unnumbered_headings;
+    attachmentData.body = data.document.attachment.body;
+  }
+
   attachmentData.updated_at = new Date();
   attachmentData.updated_by = data.user.display_name;
 

@@ -48,6 +48,55 @@
       text: "Body",
       classes: "govuk-!-font-weight-bold"
     },
+    insertMenu: appToolbarDropdown({
+      items: [
+        {
+          element: "button",
+          text: "Attachment",
+          type: "button",
+          name: "attachment",
+          attributes: {
+            "data-toggle": "modal",
+            "data-target": "modal-attachments"
+          }
+        },
+        {
+          element: "button",
+          text: "Contact",
+          type: "button",
+          name: "contact",
+          attributes: {
+            "data-toggle": "modal",
+            "data-target": "modal-contact"
+          }
+        },
+        {
+          element: "button",
+          text: "Image",
+          type: "button",
+          name: "image",
+          attributes: {
+            "data-toggle": "modal",
+            "data-target": "modal-image"
+          }
+        },
+        {
+          element: "button",
+          text: "Video",
+          type: "button",
+          name: "video",
+          attributes: {
+            "data-toggle": "modal",
+            "data-target": "modal-video"
+          }
+        }
+      ],
+      classes: "app-c-toolbar-dropdown--end",
+      attributes: {
+        "id": "toolbar-dropdown",
+        "data-module": "toolbar-dropdown"
+      }
+    }),
     textarea: {
       id: "body",
       name: "document[attachment][body]",
@@ -60,3 +109,15 @@
   }) }}
 
 {% endcall -%}
+
+{{ govukCheckboxes({
+  idPrefix: "attachment-unnumbered-headings",
+  name: "document[attachment][unnumbered_headings]",
+  items: [
+    {
+      value: "yes",
+      text: "Unnumbered headings",
+      checked: true if attachment.unnumbered_headings == "yes"
+    }
+  ]
+}) }}

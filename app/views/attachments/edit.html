@@ -7,25 +7,10 @@
 
 {% block pageScripts %}
 {%- if attachment.type == 'html' %}
-<script src="/public/javascripts/components/markdown-editor.umd.js"></script>
-<script src="/public/javascripts/components/paste-html-to-markdown.js"></script>
-<script src="/public/javascripts/components/markdown-editor.js"></script>
-<script type="text/javascript">
-  var $element = $('#markdown-editor');
-  var markdownEditor = new GOVUK.Modules.MarkdownEditor();
-  markdownEditor.start($element);
-</script>
-
-<script src="/public/javascripts/components/contextual-guidance.js"></script>
-<script type="text/javascript">
-  var $element1 = $('#contextual-guidance-01');
-  var contextualGuidance = new GOVUK.Modules.ContextualGuidance();
-  contextualGuidance.start($element1);
-
-  var $element2 = $('#contextual-guidance-02');
-  var contextualGuidance = new GOVUK.Modules.ContextualGuidance();
-  contextualGuidance.start($element2);
-</script>
+  {% include "./partials/_scripts-markdown-editor.html" %}
+  {% include "./partials/_scripts-contextual-guidance.html" %}
+  {% include "./partials/_scripts-toolbar-dropdown.html" %}
+  {% include "./partials/_scripts-modal-dialogue.html" %}
 {% endif -%}
 {% endblock %}
 
@@ -87,5 +72,7 @@
 
     </div>
   </div>
+
+  {% include "./partials/_modal-attachments.html" %}
 
 {% endblock %}
