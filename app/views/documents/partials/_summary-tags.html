@@ -1,16 +1,24 @@
 {%- set organisationsHtml %}
 <ul class="govuk-list">
-{% for organisation in document.links.organisations %}
-  <li>{{ organisation.title }}</li>
-{% endfor %}
+  {%- if document.links.organisations | length %}
+    {% for organisation in document.links.organisations %}
+      <li>{{ organisation.title }}</li>
+    {% endfor %}
+  {% else %}
+    <li>{{ data.user.organisation | organisationName }}</li>
+  {% endif -%}
 </ul>
 {% endset -%}
 
 {%- set primaryOrganisationHtml %}
 <ul class="govuk-list">
-{% for organisation in document.links.primary_publishing_organisation %}
-  <li>{{ organisation.title }}</li>
-{% endfor %}
+  {%- if document.links.primary_publishing_organisation | length %}
+    {% for organisation in document.links.primary_publishing_organisation %}
+      <li>{{ organisation.title }}</li>
+    {% endfor %}
+  {% else %}
+    <li>{{ data.user.organisation | organisationName }}</li>
+  {% endif -%}
 </ul>
 {% endset -%}
 
