@@ -90,9 +90,11 @@ exports.attachment_create_post = function(req, res) {
 // Display attachment update form on GET.
 exports.attachment_update_get = function(req, res) {
 
+  const documentData = Documents.findById(req.params.document_id);
   const attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
 
   res.render('../views/attachments/edit', {
+    document: documentData,
     attachment: attachmentData,
     actions: {
       back: '/documents/' + req.params.document_id + '/attachments',
