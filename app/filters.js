@@ -8,6 +8,7 @@ const TurndownService = require('turndown');
 
 const mimetypes = require('./data/mimetypes.json');
 const languages = require('./data/languages.json');
+const organisations = require('./data/organisations.json');
 
 module.exports = function (env) {
   /**
@@ -65,12 +66,12 @@ module.exports = function (env) {
    return numeral(number).format(format);
   }
 
- /* ------------------------------------------------------------------
+  /* ------------------------------------------------------------------
   language filter for use in Nunjucks
   example: {{ "en" | language }}
   outputs: English
- ------------------------------------------------------------------ */
- filters.language = function(code, type = 'english_name') {
+  ------------------------------------------------------------------ */
+  filters.language = function(code, type = 'english_name') {
    if (!code)
      return null;
 
@@ -79,7 +80,23 @@ module.exports = function (env) {
    )[0];
 
    return language[type];
- }
+  }
+
+  /* ------------------------------------------------------------------
+  organisation filter for use in Nunjucks
+  example: {{ "af07d5a5-df63-4ddc-9383-6a666845ebe9" | organisation }}
+  outputs: Government Digital Service
+  ------------------------------------------------------------------ */
+  filters.organisationName = function(code) {
+   if (!code)
+     return null;
+
+   let organisation = organisations.filter( (obj) =>
+     obj.key == code
+   )[0];
+
+   return organisation['value'];
+  }
 
   /* ------------------------------------------------------------------
    document type filter for use in Nunjucks

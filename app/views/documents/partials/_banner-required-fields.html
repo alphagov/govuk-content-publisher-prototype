@@ -9,9 +9,9 @@
   {%- if not document.details.body | length %}
     <li><a class="govuk-link govuk-link--no-visited-state" href="/documents/{{ document.content_id }}/content">Enter a body</a></li>
   {% endif -%}
-  {%- if not document.topics | length %}
+  {#%- if not document.topics | length %}
     <li><a class="govuk-link govuk-link--no-visited-state" href="/documents/{{ document.content_id }}/topics">Add a topic</a></li>
-  {% endif -%}
+  {% endif -%#}
 </ul>
 {% endset -%}
 
@@ -22,4 +22,4 @@
   description: {
     html: descriptionHtml
   }
-}) }}
+}) if not (document.title | length and document.description | length and document.details.body | length) }}
