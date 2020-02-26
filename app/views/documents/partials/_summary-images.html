@@ -1,6 +1,6 @@
 {% call appSummaryList({
   heading: {
-    text: "Lead image"
+    text: "Lead image" if document.document_type in ["news_story","press_release"] else "Images"
   },
   actions: [
     {
@@ -54,7 +54,11 @@
 
   {% else %}
 
-    <p class="govuk-body">No image selected. The default image for your department will be used.</p>
+    {%- if document.document_type in ["news_story","press_release"] %}
+      <p class="govuk-body">No image selected. The default image for your department will be used.</p>
+    {% else %}
+      <p class="govuk-body">No images added to this document.</p>
+    {% endif -%}
 
   {% endif -%}
 

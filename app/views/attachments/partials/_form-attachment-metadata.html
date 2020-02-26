@@ -1,48 +1,4 @@
-<form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
-
-  {{ govukInput({
-    id: "attachment-isbn",
-    name: "document[attachment][isbn]",
-    label: {
-      text: "ISBN (optional)",
-      classes: "govuk-!-font-weight-bold"
-    },
-    hint: {
-      text: "Add the International Standard Book Number (ISBN) if there is one."
-    },
-    value: attachment.isbn if attachment.isbn,
-    classes: "govuk-!-width-one-half",
-    attributes: {
-      "autocomplete": "off",
-      "autocapitalize": "off"
-    }
-  }) }}
-
-  <!--
-    TODO: validate ISBN
-    https://en.wikipedia.org/wiki/International_Standard_Book_Number
-    https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s13.html
-
-    ^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$
-  -->
-
-  {{ govukInput({
-    id: "attachment-urn",
-    name: "document[attachment][urn]",
-    label: {
-      text: "Unique reference (optional)",
-      classes: "govuk-!-font-weight-bold"
-    },
-    hint: {
-      text: "Add your organisation’s own reference if it has one."
-    },
-    value: attachment.urn if attachment.urn,
-    classes: "govuk-!-width-one-half",
-    attributes: {
-      "autocomplete": "off",
-      "autocapitalize": "off"
-    }
-  }) }}
+<!-- <form action="{{ actions.save }}" accept-charset="UTF-8" method="post"> -->
 
   {%- set command_paper_html %}
 
@@ -54,7 +10,7 @@
         classes: "govuk-!-font-weight-bold"
       },
       hint: {
-        text: "Include its number or tick ‘unnumbered’ if this document is a command paper that was laid in Parliament."
+        html: 'Include the command paper number or tick ‘unnumbered’. This document will show in the <a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/official-documents" target="_blank">official document finder</a>.'
       },
       value: attachment.cpn if attachment.cpn,
       classes: "govuk-!-width-one-half",
@@ -63,6 +19,8 @@
         "autocapitalize": "off"
       }
     }) }}
+
+    <p class="govuk-body">Or</p>
 
     {{ govukCheckboxes({
       idPrefix: "attachment-unnumbered",
@@ -88,7 +46,7 @@
         classes: "govuk-!-font-weight-bold"
       },
       hint: {
-        text: "Include its number or tick ‘unnumbered act paper’ if this document is a House of Commons paper that was laid in Parliament."
+        html: 'Include the House of Commons number or tick ‘unnumbered act paper’. This document will show in the <a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/official-documents" target="_blank">official document finder</a>.'
       },
       value: attachment.hcpn if attachment.hcpn,
       classes: "govuk-!-width-one-half",
@@ -97,6 +55,8 @@
         "autocapitalize": "off"
       }
     }) }}
+
+    <p class="govuk-body">Or</p>
 
     {{ govukCheckboxes({
       idPrefix: "attachment-unnumbered-act",
@@ -243,7 +203,7 @@
       }
     },
     hint: {
-      html: 'Check if your document contains ‘presented to Parliament’ or ‘presented to the House of Commons’. Official documents appear in a <a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/official-documents" target="_blank">finder on GOV.UK</a>.'
+      html: '‘Official documents’ have been laid in Parliament. Check if your document contains ‘presented to Parliament’.'
     },
     items: [
       {
@@ -264,18 +224,62 @@
       },
       {
         value: "no",
-        text: "No, this is not an official document",
+        text: "No, this document has not been laid in Parliament",
         checked: true if attachment.official_document == "no"
       }
     ]
   }) }}
 
-  {{ govukButton({
-    text: "Save and finish"
+  {{ govukInput({
+    id: "attachment-isbn",
+    name: "document[attachment][isbn]",
+    label: {
+      text: "ISBN",
+      classes: "govuk-!-font-weight-bold"
+    },
+    hint: {
+      text: "Add the International Standard Book Number (ISBN) if there is one."
+    },
+    value: attachment.isbn if attachment.isbn,
+    classes: "govuk-!-width-one-half",
+    attributes: {
+      "autocomplete": "off",
+      "autocapitalize": "off"
+    }
   }) }}
 
-</form>
+  <!--
+    TODO: validate ISBN
+    https://en.wikipedia.org/wiki/International_Standard_Book_Number
+    https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s13.html
+
+    ^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$
+  -->
+
+  {{ govukInput({
+    id: "attachment-urn",
+    name: "document[attachment][urn]",
+    label: {
+      text: "Unique reference",
+      classes: "govuk-!-font-weight-bold"
+    },
+    hint: {
+      text: "Add your organisation’s own reference if it has one."
+    },
+    value: attachment.urn if attachment.urn,
+    classes: "govuk-!-width-one-half",
+    attributes: {
+      "autocomplete": "off",
+      "autocapitalize": "off"
+    }
+  }) }}
+
+  {#{ govukButton({
+    text: "Save and finish"
+  }) }#}
+
+<!-- </form>
 
 <p class="govuk-body">
   <a class="govuk-link" href="{{ actions.back }}">Cancel</a>
-</p>
+</p> -->

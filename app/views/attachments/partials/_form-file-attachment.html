@@ -5,7 +5,7 @@
   text: "Attachments must be in English."
 }) }}
 
-<form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
+<!-- <form action="{{ actions.save }}" accept-charset="UTF-8" method="post"> -->
   <!-- enctype="multipart/form-data" -->
   <input type="hidden" name="document[attachment][type]" value="file">
 
@@ -355,12 +355,12 @@
     ]
   }) }#}
 
-  {{ govukButton({
+  {#{ govukButton({
     text: "Save and continue"
-  }) }}
+  }) }#}
 
-</form>
+<!-- </form>
 
 <p class="govuk-body">
   <a class="govuk-link" href="{{ actions.back }}">Cancel</a>
-</p>
+</p> -->

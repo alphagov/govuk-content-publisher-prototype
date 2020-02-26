@@ -26,7 +26,7 @@
         <div class="govuk-grid-column-two-thirds">
 
           <h1 class="govuk-heading-l">
-            Delete {{ 'link to' if attachment.type == 'external' else ('file' if attachment.type == 'file' else 'attachment') }} ‘{{ attachment.title }}’
+            Delete {{ 'link to' if attachment.type == 'external' else 'attachment' }} ‘{{ attachment.title }}’
           </h1>
 
         </div>
@@ -37,7 +37,7 @@
 
           <p class="govuk-body">Are you sure you want to delete this attachment?</p>
 
-          <p class="govuk-body">This will delete the attachment and associated metadata, and cannot be undone.</p>
+          <p class="govuk-body">This will delete the attachment and its details. This cannot be undone.</p>
 
         </div>
       </div>
@@ -48,7 +48,7 @@
           <form action="{{ actions.delete }}" method="post">
 
             {{ govukButton({
-              text: "Yes, delete " + ('link' if attachment.type == 'external' else ('file' if attachment.type == 'file' else 'attachment')),
+              text: "Yes, delete " + ('link' if attachment.type == 'external' else 'attachment'),
               classes: "govuk-button--warning"
             }) }}
 

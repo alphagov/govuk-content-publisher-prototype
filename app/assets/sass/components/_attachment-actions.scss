@@ -20,22 +20,6 @@
   border-bottom: 0;
 }
 
-.app-c-attachment-meta {
-  // cursor: grab;
-}
-
-.app-c-attachment-meta--chosen {
-  background-color: govuk-colour("light-grey");
-  outline: 2px dotted $govuk-border-colour;
-  border-color: transparent;
-}
-
-.app-c-attachment-meta--drag {
-  background-color: govuk-colour("white");
-  border-color: transparent;
-  padding: govuk-spacing(2);
-}
-
 .app-c-attachment-meta__actions {
   margin: 0;
   padding: 0;

@@ -52,25 +52,38 @@
         </div>
       </div>
 
-      {%- if attachment.type == 'external' %}
-        <div class="govuk-grid-row">
-          <div class="govuk-grid-column-two-thirds">
-            {% include "./partials/_form-external-attachment.html" %}
-          </div>
-        </div>
-      {% endif -%}
+      <form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
+        <input type="hidden" name="document[attachment][type]" value="file">
 
-      {%- if attachment.type == 'file' %}
-        <div class="govuk-grid-row">
-          <div class="govuk-grid-column-two-thirds">
-            {% include "./partials/_form-file-attachment.html" %}
+        {%- if attachment.type == 'external' %}
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              {% include "./partials/_form-external-attachment.html" %}
+            </div>
           </div>
-        </div>
-      {% endif -%}
+        {% endif -%}
 
-      <!-- {#%- if attachment.type == 'html' %}
-        {% include "./partials/_form-html-attachment.html" %}
-      {% endif -%#} -->
+        {%- if attachment.type == 'file' %}
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              {% include "./partials/_form-file-attachment.html" %}
+            </div>
+          </div>
+        {% endif -%}
+
+        <!-- {#%- if attachment.type == 'html' %}
+          {% include "./partials/_form-html-attachment.html" %}
+        {% endif -%#} -->
+
+        {{ govukButton({
+          text: "Save"
+        }) }}
+
+      </form>
+
+      <p class="govuk-body">
+        <a class="govuk-link" href="{{ actions.back }}">Cancel</a>
+      </p>
 
     </div>
   </div>

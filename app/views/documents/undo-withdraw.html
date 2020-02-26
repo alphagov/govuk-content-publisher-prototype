@@ -31,13 +31,13 @@
         <div class="govuk-grid-column-two-thirds">
 
           <h1 class="govuk-heading-l">
-            Undo the withdrawal of ‘{{ data.document.title }}’
+            Undo the withdrawal of ‘{{ document.title }}’
           </h1>
 
         </div>
       </div>
 
-      {%- if data.document.document_status == 'published' and data.document.political == true and data.document.government.current == false %}
+      {%- if document.document_status == 'published' and document.political == true and document.government.current == false %}
 
         {%- if data.user.role in ['editor','manager'] %}
 

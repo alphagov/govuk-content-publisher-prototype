@@ -1,0 +1,41 @@
+/* ==========================================================================
+   #SUCCESS ALERT
+   Based on https://github.com/alphagov/govuk_publishing_components/blob/master/app/assets/stylesheets/govuk_publishing_components/components/_success-alert.scss
+   ========================================================================== */
+
+.app-c-success-alert {
+  color: $govuk-text-colour;
+  padding: govuk-spacing(3);
+  border: 4px solid govuk-colour("green");
+  @include govuk-responsive-margin(8, "bottom");
+
+  @include govuk-media-query($from: tablet) {
+    padding: govuk-spacing(4);
+    border-width: 5px;
+  }
+}
+
+.app-c-success-alert__message {
+  @include govuk-font(19, $weight: bold);
+  margin: 0;
+}
+
+.app-c-success-summary__title {
+  margin-top: 0;
+  margin-bottom: govuk-spacing(3);
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: govuk-spacing(4);
+  }
+
+  @include govuk-font(24, $weight: bold);
+}
+
+.app-c-success-summary__body {
+  @include govuk-font(19);
+  margin: 0;
+}
+
+.app-c-success-alert:focus {
+  outline: 3px solid $govuk-focus-colour;
+}

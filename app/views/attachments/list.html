@@ -6,39 +6,7 @@
 {% endblock %}
 
 {% block pageScripts %}
-<!-- <script src="/public/javascripts/components/button-menu.js"></script>
-<script type="text/javascript">
-  new GOVUKPublishingFrontend.ButtonMenu({
-    container: $('.button-menu-1'),
-    mq: '(min-width: 45em)',
-    buttonText: 'Actions'
-  });
-</script> -->
-<!-- {#%- if attachments | length > 1 %}
-<script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
-<script type="text/javascript">
 
-  Sortable.prototype.moveItem = function (index, toIndex) {
-    var itemEl = this.el.children[index]
-        toEl = this.el.children[toIndex]
-
-    this.el.insertBefore(itemEl, toEl && (+toIndex ? toEl.nextElementSibling : toEl))
-  }
-
-  var sortableAttachments = Sortable.create(attachmentsList, {
-    ghostClass: "app-c-attachment-meta--ghost",
-    chosenClass: "app-c-attachment-meta--chosen",
-    dragClass: "app-c-attachment-meta--drag"
-  })
-
-  attachments = attachmentsList.querySelectorAll('.app-c-attachment-meta')
-
-  attachments.forEach((item, i) => {
-    item.querySelector('.js-up').addEventListener("click", function () { sortableAttachments.moveItem(i, i-1) })
-    item.querySelector('.js-down').addEventListener("click", function () { sortableAttachments.moveItem(i, i+1) })
-  });
-</script>
-{% endif -%#} -->
 {% endblock %}
 
 {% block beforeContent %}
@@ -54,11 +22,24 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
+      {%- if message.success | length %}
+        {{ appSuccessAlert({
+          description: {
+            html: message.success
+          },
+          attributes: {
+            "data-module": "initial-focus",
+            "role": "alert",
+            "tabindex": "-1"
+          }
+        }) }}
+      {% endif -%}
+
       <div class="govuk-grid-row govuk-!-margin-bottom-8">
         <div class="govuk-grid-column-two-thirds">
 
           <h1 class="govuk-heading-l">
-            Attachments for ‘{{ data.document.title if data.document.title | length else "Untitled document"}}’
+            Attachments for ‘{{ document.title if document.title | length else "Untitled document"}}’
           </h1>
 
           <p class="govuk-body">Publications have a summary page that must link to a file attachment or a document hosted on an external website.</p>
@@ -102,20 +83,18 @@
               </p>
             {% endif -%}
 
-            <!-- {#%- if attachments | length > 1 %}<div id="attachmentsList">{% endif -%#} -->
-
             {%- for attachment in attachments %}
 
               {%- call appAttachmentActions({
                 items: [
                   {
-                    text: 'Edit' + (' link' if attachment.type == 'external' else (' file' if attachment.type == 'file' else ' attachment')),
+                    text: 'Edit ' + ('link' if attachment.type == 'external' else 'attachment'),
                     href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/update'
                   },
                   {
                     text: 'Edit details',
-                    href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/metadata'
-                  } if attachment.type != 'external',
+                    href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/update-details'
+                  },
                   {
                     text: 'Download',
                     href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/download',
@@ -124,11 +103,11 @@
                     }
                   } if attachment.type == 'file',
                   {
-                    text: 'Delete' + (' link' if attachment.type == 'external' else (' file' if attachment.type == 'file' else ' attachment')),
+                    text: 'Delete ' + ('link' if attachment.type == 'external' else 'attachment'),
                     href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/delete',
                     classes: 'app-link--destructive'
                   }
-                ] if data.actions != "hide"
+                ]
               }) %}
 
                 {%- if attachment.type == 'external' %}
@@ -172,18 +151,9 @@
                   }
                 }) if attachment.type == 'html' }}
 
-                <!-- {#%- if attachments | length > 1 %}
-                  <div class="app-o-order-controls js-order-controls">
-                    {%- if not loop.first %}<button class="govuk-button app-c-button--secondary-quiet js-up">Up</button>{% endif %}
-                    {% if not loop.last %}<button class="govuk-button app-c-button--secondary-quiet js-down">Down</button>{% endif -%}
-                  </div>
-                {% endif -%#} -->
-
               {% endcall -%}
 
             {% endfor -%}
-
-            <!-- {#%- if attachments | length > 1 %}</div>{% endif -%#} -->
 
           {% else %}
 

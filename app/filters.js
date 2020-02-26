@@ -8,6 +8,7 @@ const TurndownService = require('turndown');
 
 const mimetypes = require('./data/mimetypes.json');
 const languages = require('./data/languages.json');
+const organisations = require('./data/organisations.json');
 
 module.exports = function (env) {
   /**
@@ -65,12 +66,12 @@ module.exports = function (env) {
    return numeral(number).format(format);
   }
 
- /* ------------------------------------------------------------------
+  /* ------------------------------------------------------------------
   language filter for use in Nunjucks
   example: {{ "en" | language }}
   outputs: English
- ------------------------------------------------------------------ */
- filters.language = function(code, type = 'english_name') {
+  ------------------------------------------------------------------ */
+  filters.language = function(code, type = 'english_name') {
    if (!code)
      return null;
 
@@ -79,7 +80,23 @@ module.exports = function (env) {
    )[0];
 
    return language[type];
- }
+  }
+
+  /* ------------------------------------------------------------------
+  organisation filter for use in Nunjucks
+  example: {{ "af07d5a5-df63-4ddc-9383-6a666845ebe9" | organisation }}
+  outputs: Government Digital Service
+  ------------------------------------------------------------------ */
+  filters.organisationName = function(code) {
+   if (!code)
+     return null;
+
+   let organisation = organisations.filter( (obj) =>
+     obj.key == code
+   )[0];
+
+   return organisation['value'];
+  }
 
   /* ------------------------------------------------------------------
    document type filter for use in Nunjucks
@@ -87,6 +104,9 @@ module.exports = function (env) {
    outputs: "News story"
   ------------------------------------------------------------------ */
   filters.documentType = function(type) {
+
+    if (!type)
+      return type;
 
     switch (type) {
       case 'articles_correspondence': return 'Articles and correspondence';
@@ -120,6 +140,7 @@ module.exports = function (env) {
       case 'policy_consultation': return 'Policy or consultation';
       case 'policy_paper': return 'Policy paper';
       case 'press_release': return 'Press release';
+      case 'promotional_material': return 'Promotional material';
       case 'regulation': return 'Regulation';
       case 'research_analysis': return 'Research and analysis';
       case 'specialist_notice': return 'Specialist notice';
@@ -135,6 +156,24 @@ module.exports = function (env) {
       case 'written_statement': return 'Written statement to parliament';
       default: return type;
     }
+
+  }
+
+
+  filters.isPluralDocumentType = function(type) {
+
+    if (!type)
+      return false;
+
+    let plural = false;
+
+    const pluralDocumentTypes = ['national_statistics','official_statistics'];
+
+    if (pluralDocumentTypes.indexOf(type) !== -1) {
+      plural = true;
+    }
+
+    return plural;
 
   }
 
@@ -293,7 +332,7 @@ module.exports = function (env) {
   /* ------------------------------------------------------------------
     utility function to test validity of URL
     example: {{ "http://www.google.com" | isValidUrl }}
-    outputs: 
+    outputs:
   ------------------------------------------------------------------ */
   filters.isValidUrl = function(str) {
     var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
@@ -303,6 +342,23 @@ module.exports = function (env) {
       '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
       '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
     return !!pattern.test(str);
+  }
+
+  /* ------------------------------------------------------------------
+    utility function to return a list from array
+    example: {{ ["England","Scotland","Wales"] | arrayToList }}
+    outputs: England, Scotland and Wales
+  ------------------------------------------------------------------ */
+  filters.arrayToList = function(array, join = ', ', final = ' and ') {
+    var arr = array.slice(0);
+
+    var last = arr.pop();
+
+    if (array.length > 1) {
+      return arr.join(join) + final + last;
+    }
+
+    return last;
   }
 
 

@@ -1,5 +1,45 @@
 <h3 class="govuk-heading-m">Content settings</h3>
 
+{%- set nationsHtml %}
+{%- if not document.details.national_applicability | length or (document.details.national_applicability.england.applicable and
+  document.details.national_applicability.northern_ireland.applicable and
+  document.details.national_applicability.scotland.applicable and
+  document.details.national_applicability.wales.applicable) %}
+  <p class="govuk-body">All nations covered</p>
+{% else %}
+  <ul class="govuk-list">
+    {%- if document.details.national_applicability.england.applicable == false %}
+      <li>
+        <span class="govuk-!-font-weight-bold">England</span>
+        <p class="govuk-body-s">{{ document.details.national_applicability.england.alternative_url if document.details.national_applicability.england.alternative_url else "No alternative guidance" -}}</p>
+      </li>
+    {% endif -%}
+    {%- if document.details.national_applicability.northern_ireland.applicable == false %}
+      <li>
+        <span class="govuk-!-font-weight-bold">Northern Ireland</span>
+        <p class="govuk-body-s">{{ document.details.national_applicability.northern_ireland.alternative_url if document.details.national_applicability.northern_ireland.alternative_url else "No alternative guidance" -}}</p>
+      </li>
+    {% endif -%}
+    {%- if document.details.national_applicability.scotland.applicable == false %}
+      <li>
+        <span class="govuk-!-font-weight-bold">Scotland</span>
+        <p class="govuk-body-s">{{ document.details.national_applicability.scotland.alternative_url if document.details.national_applicability.scotland.alternative_url else "No alternative guidance" -}}</p>
+      </li>
+    {% endif -%}
+    {%- if document.details.national_applicability.wales.applicable == false %}
+      <li>
+        <span class="govuk-!-font-weight-bold">Wales</span>
+        <p class="govuk-body-s">{{ document.details.national_applicability.wales.alternative_url if document.details.national_applicability.wales.alternative_url else "No alternative guidance" -}}</p>
+      </li>
+    {% endif -%}
+  </ul>
+{% endif -%}
+<!--
+TODO: do we want to set a notice at the top of the page?
+Applies to: England, Scotland, and Wales (see guidance for Northern Ireland)
+ -->
+{% endset -%}
+
 {{ appSummaryList({
   classes: 'govuk-summary-list--no-border',
   rows: [
@@ -33,6 +73,23 @@
             href: actions.settings.back_date,
             text: "Change",
             visuallyHiddenText: "backdate"
+          }
+        ]
+      } if document.document_status != 'published'
+    },
+    {
+      key: {
+        text: "Nations not covered"
+      },
+      value: {
+        html: nationsHtml
+      },
+      actions: {
+        items: [
+          {
+            href: actions.settings.nations,
+            text: "Change",
+            visuallyHiddenText: "nations not covered"
           }
         ]
       } if document.document_status != 'published'

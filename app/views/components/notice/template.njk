@@ -1,5 +1,5 @@
-<section class="app-c-notice {{- ' ' + params.classes if params.classes }}"{% for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
-  {% if params.heading -%}
+<section class="app-c-notice {{- ' ' + params.classes if params.classes }}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+  {%- if params.heading | length %}
     <h{{ params.headingLevel | default(2) }} class="app-c-notice__title {{- ' ' + params.heading.classes if params.heading.classes }}">
       {{- params.heading.html | safe if params.heading.html else params.heading.text -}}
     </h{{ params.headingLevel | default(2) }}>
