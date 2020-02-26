@@ -83,8 +83,8 @@ module.exports = function (env) {
   }
 
   /* ------------------------------------------------------------------
-  organisation filter for use in Nunjucks
-  example: {{ "af07d5a5-df63-4ddc-9383-6a666845ebe9" | organisation }}
+  organisationName filter for use in Nunjucks
+  example: {{ "af07d5a5-df63-4ddc-9383-6a666845ebe9" | organisationName }}
   outputs: Government Digital Service
   ------------------------------------------------------------------ */
   filters.organisationName = function(code) {

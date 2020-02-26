@@ -5,54 +5,43 @@
   text: "You can add a link to a GOV.UK page to the list of attachments if it’s a part of this publication. If the GOV.UK content is not part of this publication but it’s relevant to users for background information, include a link in the body of the content instead of in the list of attachments. Go to the content editing page to do this."
 }) }}
 
-<!-- <form action="{{ actions.save }}" accept-charset="UTF-8" method="post"> -->
-  <input type="hidden" name="document[attachment][type]" value="external">
+<input type="hidden" name="document[attachment][type]" value="external">
 
-  {{ govukInput({
-    id: "attachment-title",
-    name: "document[attachment][title]",
-    label: {
-      text: "External link title",
-      classes: "govuk-!-font-weight-bold"
-    },
-    hint: {
-      text: "Use the full title of the document."
-    },
-    value: attachment.title if attachment.title,
-    attributes: {
-      "autocomplete": "off",
-      "autocapitalize": "off"
-    }
-  }) }}
+{{ govukInput({
+  id: "attachment-title",
+  name: "document[attachment][title]",
+  label: {
+    text: "External link title",
+    classes: "govuk-!-font-weight-bold"
+  },
+  hint: {
+    text: "Use the full title of the document."
+  },
+  value: attachment.title if attachment.title,
+  attributes: {
+    "autocomplete": "off",
+    "autocapitalize": "off"
+  }
+}) }}
 
-  {{ govukInput({
-    id: "attachment-url",
-    name: "document[attachment][url]",
-    label: {
-      text: "External page address",
-      classes: "govuk-!-font-weight-bold"
-    },
-    hint: {
-      text: "Include the whole URL (starting with http)."
-    },
-    value: attachment.url if attachment.url,
-    attributes: {
-      "autocomplete": "off",
-      "autocapitalize": "off"
-    }
-  }) }}
+{{ govukInput({
+  id: "attachment-url",
+  name: "document[attachment][url]",
+  label: {
+    text: "External page address",
+    classes: "govuk-!-font-weight-bold"
+  },
+  hint: {
+    text: "Include the whole URL (starting with http)."
+  },
+  value: attachment.url if attachment.url,
+  attributes: {
+    "autocomplete": "off",
+    "autocapitalize": "off"
+  }
+}) }}
 
-  <!--
-    TODO: Validate URL
-    (?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!:,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[A-Z0-9+&@#\/%=~_|$])
-  -->
-
-  {#{ govukButton({
-    text: "Save and continue"
-  }) }#}
-
-<!-- </form>
-
-<p class="govuk-body">
-  <a class="govuk-link" href="{{ actions.back }}">Cancel</a>
-</p> -->
+<!--
+  TODO: Validate URL
+  (?:(?:https?|ftp|file):\/\/|www\.|ftp\.)(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[-A-Z0-9+&@#\/%=~_|$?!:,.])*(?:\([-A-Z0-9+&@#\/%=~_|$?!:,.]*\)|[A-Z0-9+&@#\/%=~_|$])
+-->

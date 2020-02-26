@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block pageScripts %}
-<!-- {#%- if attachment.type == 'html' %}
+{%- if attachment.type == 'html' %}
 <script src="/public/javascripts/components/markdown-editor.umd.js"></script>
 <script src="/public/javascripts/components/paste-html-to-markdown.js"></script>
 <script src="/public/javascripts/components/markdown-editor.js"></script>
@@ -26,7 +26,7 @@
   var contextualGuidance = new GOVUK.Modules.ContextualGuidance();
   contextualGuidance.start($element2);
 </script>
-{% endif -%#} -->
+{% endif -%}
 {% endblock %}
 
 {% block beforeContent %}
@@ -71,9 +71,9 @@
           </div>
         {% endif -%}
 
-        <!-- {#%- if attachment.type == 'html' %}
+        {%- if attachment.type == 'html' %}
           {% include "./partials/_form-html-attachment.html" %}
-        {% endif -%#} -->
+        {% endif -%}
 
         {{ govukButton({
           text: "Save"

@@ -14,15 +14,10 @@ exports.attachment_list = function(req, res) {
 
   let flashMessage = req.flash();
 
-  if (req.path.indexOf('/modal/') !== -1) {
+  if (req.path.includes('/modal/')) {
     res.render('../views/attachments/modals/list', {
       document: documentData,
-      attachments: attachmentData,
-      message: flashMessage,
-      actions: {
-        add_file: '/documents/' + req.params.document_id + '/attachments/modal/create?type=file',
-        add_external: '/documents/' + req.params.document_id + '/attachments/modal/create?type=external'
-      }
+      attachments: attachmentData
     });
   } else {
     res.render('../views/attachments/list', {
@@ -33,6 +28,7 @@ exports.attachment_list = function(req, res) {
         back: '/documents/' + req.params.document_id,
         add_file: '/documents/' + req.params.document_id + '/attachments/create?type=file',
         add_external: '/documents/' + req.params.document_id + '/attachments/create?type=external',
+        add_html: '/documents/' + req.params.document_id + '/attachments/create?type=html',
         reorder: '/documents/' + req.params.document_id + '/attachments/reorder'
       }
     });
