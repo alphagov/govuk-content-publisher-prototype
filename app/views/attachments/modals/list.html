@@ -15,61 +15,65 @@
 
           {% if attachments | length %}
 
-            <p class="govuk-body govuk-!-margin-bottom-8">You can add a link to one of these attachments in the body of the document.</p>
+            <p class="govuk-body govuk-!-margin-bottom-8">You can add a link to one of these attachments in the body of the content.</p>
 
             {%- for attachment in attachments %}
 
-              {%- call appAttachmentActions({
-                items: [
-                  {
-                    text: 'Insert attachment as link',
-                    href: '#'
-                  }
-                ]
-              }) %}
+              {#% if attachment.content_id != attachment_id %#}
 
-                {%- if attachment.type == 'external' %}
-                  {%- call appAttachment({
+                {%- call appAttachmentActions({
+                  items: [
+                    {
+                      text: 'Insert attachment as link',
+                      href: '#'
+                    }
+                  ] if attachment.content_id != attachment_id
+                }) %}
+
+                  {%- if attachment.type == 'external' %}
+                    {%- call appAttachment({
+                      heading: {
+                        text: attachment.title if attachment.title | length else "Untitled attachment"
+                      },
+                      href: attachment.url,
+                      target: "_blank"
+                    }) %}
+
+                      <p class="govuk-body-s">{{ attachment.url }}</p>
+
+                    {% endcall -%}
+                  {% endif -%}
+
+                  {{ appAttachment({
                     heading: {
                       text: attachment.title if attachment.title | length else "Untitled attachment"
                     },
-                    href: attachment.url,
-                    target: "_blank"
-                  }) %}
+                    href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/modal/preview',
+                    target: "_blank",
+                    metadata: {
+                      filename: (attachment.title | slugify) + '.pdf',
+                      fileSize: 1234560,
+                      contentType: 'application/pdf',
+                      pageCount: 25,
+                      thumbnail: 'document'
+                    }
+                  }) if attachment.type == 'file' }}
 
-                    <p class="govuk-body-s">{{ attachment.url }}</p>
+                  {{ appAttachment({
+                    heading: {
+                      text: attachment.title if attachment.title | length else "Untitled attachment"
+                    },
+                    href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/modal/preview',
+                    target: "_blank",
+                    metadata: {
+                      contentType: 'text/html',
+                      thumbnail: 'document'
+                    }
+                  }) if attachment.type == 'html' }}
 
-                  {% endcall -%}
-                {% endif -%}
+                {% endcall -%}
 
-                {{ appAttachment({
-                  heading: {
-                    text: attachment.title if attachment.title | length else "Untitled attachment"
-                  },
-                  href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/modal/preview',
-                  target: "_blank",
-                  metadata: {
-                    filename: (attachment.title | slugify) + '.pdf',
-                    fileSize: 1234560,
-                    contentType: 'application/pdf',
-                    pageCount: 25,
-                    thumbnail: 'document'
-                  }
-                }) if attachment.type == 'file' }}
-
-                {{ appAttachment({
-                  heading: {
-                    text: attachment.title if attachment.title | length else "Untitled attachment"
-                  },
-                  href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/modal/preview',
-                  target: "_blank",
-                  metadata: {
-                    contentType: 'text/html',
-                    thumbnail: 'document'
-                  }
-                }) if attachment.type == 'html' }}
-
-              {% endcall -%}
+              {#% endif -%#}
 
             {% endfor -%}
 
