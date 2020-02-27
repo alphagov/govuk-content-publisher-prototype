@@ -25,6 +25,26 @@
         {{- params.heading.html | safe if params.heading.html else params.heading.text -}}
       {%- if params.href | length %}</a>{% endif -%}
     </h{{ params.headingLevel | default(2) }}>
+    {%- if params.references | length %}
+      <p class="app-c-attachment__metadata">
+        {% if params.references.isbn | length or params.references.urn | length or params.references.cpn | length or params.references.hcpn | length %}Ref:{% endif %}
+        {% if params.references.isbn | length %}
+          <span class="app-c-attachment__attribute"><abbr title="International Standard Book Number" class="app-c-attachment__abbr">ISBN</abbr> {{ params.references.isbn }}</span>
+        {%- endif -%}
+        {%- if params.references.urn | length %}
+          {%- if params.references.isbn | length %},{% endif %}
+          <span class="app-c-attachment__attribute">{{ params.references.urn }}</span>
+        {%- endif -%}
+        {%- if params.references.cpn | length %}
+          {%- if params.references.urn | length %},{% endif %}
+          <span class="app-c-attachment__attribute">CP {{ params.references.cpn }}</span>
+        {%- endif -%}
+        {%- if params.references.hcpn | length %}
+          {%- if params.references.cpn | length %},{% endif %}
+          <span class="app-c-attachment__attribute">HC {{ params.references.hcpn }} {{ params.references.parliamentary_session }}</span>
+        {% endif %}
+      </p>
+    {% endif -%}
     {%- if params.metadata %}
       <p class="app-c-attachment__metadata">
         {%- if params.metadata.contentType -%}
