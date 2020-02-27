@@ -2,12 +2,8 @@ const path = require('path');
 const fs = require('fs');
 const uuid = require('uuid/v1');
 
-// const organisations = require('../data/organisations.json');
-// const governments = require('../data/governments.json');
-// const users = require('../data/users.json');
-
 // helpers
-const Generic = require('../helpers/generic');
+const Helpers = require('../helpers/helpers');
 
 // models
 const Documents = require('../models/documents');
@@ -15,48 +11,9 @@ const Attachments = require('../models/attachments');
 const Governments = require('../models/governments');
 const Organisations = require('../models/organisations');
 
-// function paginate(array, page_size, page_number) {
-//   --page_number; // because pages logically start with 1, but technically with 0
-//   return array.slice(page_number * page_size, (page_number + 1) * page_size);
-// }
-
-// function isPolitical(org_id) {
-//   if (!org_id) return null
-//   let org = organisations.find( ({ key }) => key === org_id );
-//   return org.political;
-// }
-
-// function getGovernment(pub_date) {
-//   let gov = {};
-//   gov = governments.filter( government => dateBetween(government.start_date, government.end_date, pub_date) );
-//   return gov[0];
-// }
-
-// function getUser(user_id) {
-//   if (!user_id) return null
-//   let result = {};
-//   result = users.filter(user => user.id === user_id);
-//   return result;
-// }
-
-// function getUsersByOrganisation(org_id) {
-//   if (!org_id) return null
-//   let result = [];
-//   result = users.filter(user => user.organisation === org_id);
-//   return result;
-// }
-
-// function dateBetween(start_date, end_date, my_date) {
-//   if (!end_date.length)
-//     end_date = new Date();
-//
-//   return new Date(start_date) <= new Date(my_date) && new Date(end_date) >= new Date(my_date);
-// }
-
 // Display list of all documents.
 exports.document_list = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Document list');
-
+  // clear out the document types from the creation flow
   delete req.session.data.document_super_type;
   delete req.session.data.document_type;
   delete req.session.data.document_sub_type;
@@ -103,7 +60,7 @@ exports.document_list = function(req, res) {
   let prev_page = (page - 1) ? (page - 1) : 1;
   let next_page = ((page + 1) > page_count) ? page_count : (page + 1);
 
-  pageArray = Generic.paginate(docArray, limit, page);
+  pageArray = Helpers.paginate(docArray, limit, page);
 
   res.render('../views/documents/list', {
     documents: pageArray,
@@ -208,7 +165,7 @@ exports.document_history_get = function(req, res) {
   let prev_page = (page - 1) ? (page - 1) : 1;
   let next_page = ((page + 1) > page_count) ? page_count : (page + 1);
 
-  historyArray = Generic.paginate(historyData, limit, page);
+  historyArray = Helpers.paginate(historyData, limit, page);
 
   res.render('../views/documents/history', {
     document: documentData,

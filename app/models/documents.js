@@ -1,6 +1,8 @@
 const path = require('path');
 const fs = require('fs');
 
+const directoryPath = path.join(__dirname, '../data/documents');
+
 // https://www.callicoder.com/node-js-express-mongodb-restful-crud-api-tutorial/
 
 exports.save = function() {
@@ -12,9 +14,6 @@ exports.find = function() {
 };
 
 exports.findById = function(document_id) {
-
-  // documents directory path
-  const directoryPath = path.join(__dirname, '../data/documents/');
 
   const filePath = directoryPath + '/' + document_id + '.json';
 
