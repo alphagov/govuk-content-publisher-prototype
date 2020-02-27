@@ -116,11 +116,29 @@
   items: [
     {
       value: "yes",
-      text: "Use unnumbered headings",
+      text: "[REMOVE DEFAULT HEADING NUMBERS]",
       hint: {
         text: "[HINT TEXT]"
       },
       checked: true if attachment.unnumbered_headings == "yes"
     }
   ]
+}) }}
+
+{%- set headingGuidanceHtml %}
+<p class="govuk-body">Manually number your headings using your own numbering scheme.</p>
+<ul class="govuk-list">
+  <li>## 1. First heading</li>
+  <li>### 1.1 First sub-heading</li>
+  <li>### Unnumbered sub-heading</li>
+  <li>### 1.2 Second sub-heading</li>
+  <li>### Unnumbered sub-heading</li>
+  <li>### Unnumbered sub-heading</li>
+  <li>## 2. Second heading</li>
+</ul>
+{% endset -%}
+
+{{ govukDetails({
+  summaryText: "[HEADING NUMBERS GUIDANCE]",
+  html: headingGuidanceHtml
 }) }}
