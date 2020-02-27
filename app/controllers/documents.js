@@ -410,6 +410,9 @@ exports.document_new_post = function(req, res) {
   // write the JSON data
   fs.writeFileSync(documentFilePath, documentFileData);
 
+  // set flash message (success/failure)
+  req.flash('success', 'Document saved');
+
   res.redirect('/documents/' + documentData.content_id);
 
 };
@@ -486,6 +489,9 @@ exports.document_update_post = function(req, res) {
 
   // write the JSON data
   fs.writeFileSync(documentFilePath, documentFileData);
+
+  // set flash message (success/failure)
+  req.flash('success', 'Document saved');
 
   res.redirect('/documents/' + req.params.document_id);
 };
