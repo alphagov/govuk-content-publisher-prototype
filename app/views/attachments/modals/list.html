@@ -30,46 +30,30 @@
                   ] if attachment.content_id != attachment_id
                 }) %}
 
-                  {%- if attachment.type == 'external' %}
-                    {%- call appAttachment({
-                      heading: {
-                        text: attachment.title if attachment.title | length else "Untitled attachment"
-                      },
-                      href: attachment.url,
-                      target: "_blank"
-                    }) %}
+                  {% call appAttachment({
+                    heading: {
+                      text: attachment.title if attachment.title | length else "Untitled attachment"
+                    },
+                    href: attachment.url if attachment.type == 'external' else '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/preview',
+                    target: "_blank",
+                    references: {
+                      isbn: attachment.isbn,
+                      urn: attachment.urn,
+                      cpn: attachment.cpn,
+                      hcpn: attachment.hcpn,
+                      parliamentary_session: attachment.parliamentary_session
+                    },
+                    metadata: {
+                      contentType: 'text/html' if attachment.type == 'html' else ('application/pdf' if attachment.type == 'file'),
+                      thumbnail: 'document' if attachment.type in ['file','html']
+                    }
+                  }) %}
 
+                    {%- if attachment.type == 'external' %}
                       <p class="govuk-body-s">{{ attachment.url }}</p>
+                    {% endif -%}
 
-                    {% endcall -%}
-                  {% endif -%}
-
-                  {{ appAttachment({
-                    heading: {
-                      text: attachment.title if attachment.title | length else "Untitled attachment"
-                    },
-                    href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/modal/preview',
-                    target: "_blank",
-                    metadata: {
-                      filename: (attachment.title | slugify) + '.pdf',
-                      fileSize: 1234560,
-                      contentType: 'application/pdf',
-                      pageCount: 25,
-                      thumbnail: 'document'
-                    }
-                  }) if attachment.type == 'file' }}
-
-                  {{ appAttachment({
-                    heading: {
-                      text: attachment.title if attachment.title | length else "Untitled attachment"
-                    },
-                    href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/modal/preview',
-                    target: "_blank",
-                    metadata: {
-                      contentType: 'text/html',
-                      thumbnail: 'document'
-                    }
-                  }) if attachment.type == 'html' }}
+                  {% endcall %}
 
                 {% endcall -%}
 
