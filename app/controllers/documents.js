@@ -2,50 +2,56 @@ const path = require('path');
 const fs = require('fs');
 const uuid = require('uuid/v1');
 
-const organisations = require('../data/organisations.json');
-const governments = require('../data/governments.json');
-const users = require('../data/users.json');
+// const organisations = require('../data/organisations.json');
+// const governments = require('../data/governments.json');
+// const users = require('../data/users.json');
 
+// helpers
+const Generic = require('../helpers/generic');
+
+// models
 const Documents = require('../models/documents');
 const Attachments = require('../models/attachments');
+const Governments = require('../models/governments');
+const Organisations = require('../models/organisations');
 
-function paginate(array, page_size, page_number) {
-  --page_number; // because pages logically start with 1, but technically with 0
-  return array.slice(page_number * page_size, (page_number + 1) * page_size);
-}
+// function paginate(array, page_size, page_number) {
+//   --page_number; // because pages logically start with 1, but technically with 0
+//   return array.slice(page_number * page_size, (page_number + 1) * page_size);
+// }
 
-function isPolitical(org_id) {
-  if (!org_id) return null
-  let org = organisations.find( ({ key }) => key === org_id );
-  return org.political;
-}
+// function isPolitical(org_id) {
+//   if (!org_id) return null
+//   let org = organisations.find( ({ key }) => key === org_id );
+//   return org.political;
+// }
 
-function getGovernment(pub_date) {
-  let gov = {};
-  gov = governments.filter( government => dateBetween(government.start_date, government.end_date, pub_date) );
-  return gov[0];
-}
+// function getGovernment(pub_date) {
+//   let gov = {};
+//   gov = governments.filter( government => dateBetween(government.start_date, government.end_date, pub_date) );
+//   return gov[0];
+// }
 
-function getUser(user_id) {
-  if (!user_id) return null
-  let result = {};
-  result = users.filter(user => user.id === user_id);
-  return result;
-}
+// function getUser(user_id) {
+//   if (!user_id) return null
+//   let result = {};
+//   result = users.filter(user => user.id === user_id);
+//   return result;
+// }
 
-function getUsersByOrganisation(org_id) {
-  if (!org_id) return null
-  let result = [];
-  result = users.filter(user => user.organisation === org_id);
-  return result;
-}
+// function getUsersByOrganisation(org_id) {
+//   if (!org_id) return null
+//   let result = [];
+//   result = users.filter(user => user.organisation === org_id);
+//   return result;
+// }
 
-function dateBetween(start_date, end_date, my_date) {
-  if (!end_date.length)
-    end_date = new Date();
-
-  return new Date(start_date) <= new Date(my_date) && new Date(end_date) >= new Date(my_date);
-}
+// function dateBetween(start_date, end_date, my_date) {
+//   if (!end_date.length)
+//     end_date = new Date();
+//
+//   return new Date(start_date) <= new Date(my_date) && new Date(end_date) >= new Date(my_date);
+// }
 
 // Display list of all documents.
 exports.document_list = function(req, res) {
@@ -97,7 +103,7 @@ exports.document_list = function(req, res) {
   let prev_page = (page - 1) ? (page - 1) : 1;
   let next_page = ((page + 1) > page_count) ? page_count : (page + 1);
 
-  pageArray = paginate(docArray, limit, page);
+  pageArray = Generic.paginate(docArray, limit, page);
 
   res.render('../views/documents/list', {
     documents: pageArray,
@@ -202,7 +208,7 @@ exports.document_history_get = function(req, res) {
   let prev_page = (page - 1) ? (page - 1) : 1;
   let next_page = ((page + 1) > page_count) ? page_count : (page + 1);
 
-  historyArray = paginate(historyData, limit, page);
+  historyArray = Generic.paginate(historyData, limit, page);
 
   res.render('../views/documents/history', {
     document: documentData,
@@ -223,14 +229,14 @@ exports.document_history_get = function(req, res) {
 };
 
 // TODO: get rid of document_load
-exports.document_load = function(req, res) {
-  let rawdata = fs.readFileSync('./app/data/documents/' + req.params.document_id + '.json');
-  let docdata = JSON.parse(rawdata);
-
-  req.session.data.document = docdata;
-
-  res.redirect('/documents/' + req.params.document_id)
-}
+// exports.document_load = function(req, res) {
+//   let rawdata = fs.readFileSync('./app/data/documents/' + req.params.document_id + '.json');
+//   let docdata = JSON.parse(rawdata);
+//
+//   req.session.data.document = docdata;
+//
+//   res.redirect('/documents/' + req.params.document_id)
+// }
 
 // Display document create super type form on GET.
 exports.document_create_super_type_get = function(req, res) {
@@ -308,10 +314,10 @@ exports.document_create_get = function(req, res) {
   // documentData.updated_by = documentData.created_by;
 
   // get political status of document creator's organisation
-  documentData.political = isPolitical(req.session.data.user.organisation);
+  documentData.political = Organisations.isPolitical(req.session.data.user.organisation);
 
   // get current government
-  documentData.government = getGovernment(documentData.created_at);
+  documentData.government = Governments.findGovernmentByDate(documentData.created_at);
 
   // create a JSON sting for the submitted data
   const documentFileData = JSON.stringify(documentData);
