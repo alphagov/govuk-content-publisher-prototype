@@ -79,10 +79,6 @@
               <p class="govuk-body govuk-!-margin-bottom-8">
                 <a class="govuk-link govuk-link--no-visited-state" href="{{ actions.reorder }}">Reorder attachments</a>
               </p>
-              {#{ govukButton({
-                text: "Reorder attachments",
-                classes: "govuk-button--secondary"
-              }) }#}
             {% endif -%}
 
             {%- for attachment in attachments %}
