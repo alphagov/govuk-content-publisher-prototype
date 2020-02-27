@@ -115,9 +115,16 @@ exports.document_list = function(req, res) {
 
 // Display summary page for a specific document.
 exports.document_summary_get = function(req, res) {
+
+  const documentData = Documents.findById(req.params.document_id);
+  const attachmentData = Attachments.findByDocumentId(req.params.document_id);
+
+  let flashMessage = req.flash();
+
   res.render('../views/documents/summary', {
-    document: Documents.findById(req.params.document_id),
-    attachments: Attachments.findByDocumentId(req.params.document_id),
+    document: documentData,
+    attachments: attachmentData,
+    message: flashMessage,
     actions: {
       home: '/documents',
       summary: '/documents/' + req.params.document_id,
@@ -585,7 +592,16 @@ exports.document_new_edition_post = function(req, res) {
   // write the JSON data
   fs.writeFileSync(documentFilePath, documentFileData);
 
-  res.redirect('/documents/' + req.params.document_id + '/content');
+  const types = ['news_story','press_release'];
+
+  // set flash message (success/failure)
+  req.flash('success', 'New edition created');
+
+  if (types.indexOf(documentData.document_type) !== -1) {
+    res.redirect('/documents/' + req.params.document_id + '/content');
+  } else {
+    res.redirect('/documents/' + req.params.document_id);
+  }
 };
 
 exports.document_review_get = function(req, res) {
