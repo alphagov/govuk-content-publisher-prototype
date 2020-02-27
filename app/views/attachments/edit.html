@@ -31,7 +31,7 @@
         <div class="govuk-grid-column-two-thirds">
 
           <h1 class="govuk-heading-l">
-            Update {{ 'external link' if attachment.type == 'external' else 'attachment' }} ‘{{ attachment.title }}’
+            Update {{ 'external link' if attachment.type == 'external' else 'attachment' }} ‘{{ attachment.title if attachment.title | length else "Untitled attachment" }}’
           </h1>
 
         </div>

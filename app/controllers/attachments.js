@@ -15,7 +15,6 @@ exports.attachment_list = function(req, res) {
   let flashMessage = req.flash();
 
   if (req.path.includes('/modal/')) {
-    console.log(req.params);
     res.render('../views/attachments/modals/list', {
       document: documentData,
       attachments: attachmentData,

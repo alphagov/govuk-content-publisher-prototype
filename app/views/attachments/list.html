@@ -42,12 +42,12 @@
             Attachments for ‘{{ document.title if document.title | length else "Untitled document"}}’
           </h1>
 
-          <p class="govuk-body">Publications have a summary page that must link to a file attachment or a document hosted on an external website.</p>
+          <p class="govuk-body">Publications have a summary page that must link to an HTML attachment, a file attachment, or a document hosted on an external website.</p>
 
           {{ appButtonMenu({
             items: [
               {
-                text: 'Add HTML attachment',
+                text: 'Create HTML attachment',
                 classes: 'govuk-button',
                 href: actions.add_html
               },
@@ -77,8 +77,12 @@
 
             {%- if attachments | length > 1 %}
               <p class="govuk-body govuk-!-margin-bottom-8">
-                <a class="govuk-link" href="{{ actions.reorder }}">Reorder attachments</a>
+                <a class="govuk-link govuk-link--no-visited-state" href="{{ actions.reorder }}">Reorder attachments</a>
               </p>
+              {#{ govukButton({
+                text: "Reorder attachments",
+                classes: "govuk-button--secondary"
+              }) }#}
             {% endif -%}
 
             {%- for attachment in attachments %}
