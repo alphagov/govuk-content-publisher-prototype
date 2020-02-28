@@ -598,16 +598,16 @@ exports.document_new_edition_post = function(req, res) {
   // write the JSON data
   fs.writeFileSync(documentFilePath, documentFileData);
 
-  const types = ['news_story','press_release'];
+  // const types = ['news_story','press_release'];
 
   // set flash message (success/failure)
   req.flash('success', 'New edition created');
 
-  if (types.indexOf(documentData.document_type) !== -1) {
-    res.redirect('/documents/' + req.params.document_id + '/content');
-  } else {
+  // if (types.indexOf(documentData.document_type) !== -1) {
+  //   res.redirect('/documents/' + req.params.document_id + '/content');
+  // } else {
     res.redirect('/documents/' + req.params.document_id);
-  }
+  // }
 };
 
 exports.document_review_get = function(req, res) {
