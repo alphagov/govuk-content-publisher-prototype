@@ -17,31 +17,18 @@ exports.document_list = function(req, res) {
   delete req.session.data.document_type;
   delete req.session.data.document_sub_type;
 
-  const directoryPath = path.join(__dirname, '../data/documents');
-
-  let documents = fs.readdirSync(directoryPath,'utf8');
-
-  // Only get JSON documents
-  documents = documents.filter( doc => doc.match(/.*\.(json)/ig));
-
-  const docArray = [];
-
-  documents.forEach(function (filename) {
-    let rawdata = fs.readFileSync(directoryPath + '/' + filename);
-    let docdata = JSON.parse(rawdata);
-    docArray.push(docdata);
-  });
+  let documentsArray = Documents.find();
 
   let sort_order = (req.query.sort) ? (req.query.sort) : 'asc';
   if (sort_order == 'desc') {
-    docArray.sort((a,b) => new Date(a.updated_at) - new Date(b.updated_at));
+    documentsArray.sort((a,b) => new Date(a.updated_at) - new Date(b.updated_at));
   }
   else {
-    docArray.sort((a,b) => new Date(b.updated_at) - new Date(a.updated_at));
+    documentsArray.sort((a,b) => new Date(b.updated_at) - new Date(a.updated_at));
   }
 
   // Total number of documents
-  let count = docArray.length;
+  let count = documentsArray.length;
 
   // Prevent users putting in a limit not in the pre-defined set: 10, 25, 50, 100
   let limit = 50;
@@ -59,7 +46,7 @@ exports.document_list = function(req, res) {
   let prev_page = (page - 1) ? (page - 1) : 1;
   let next_page = ((page + 1) > page_count) ? page_count : (page + 1);
 
-  pageArray = Helpers.paginate(docArray, limit, page);
+  pageArray = Helpers.paginate(documentsArray, limit, page);
 
   res.render('../views/documents/list', {
     documents: pageArray,
@@ -305,6 +292,7 @@ exports.document_update_get = function(req, res) {
 
 // Handle document update on POST.
 exports.document_update_post = function(req, res) {
+  console.log('Controller: ',req.session.data.document_status);
   Documents.findByIdAndUpdate(req.params.document_id, req.session.data);
 
   res.redirect('/documents/' + req.params.document_id);
@@ -360,41 +348,33 @@ exports.document_tags_update_post = function(req, res) {
 };
 
 
-exports.document_new_edition_get = function(req, res) {
-  const documentData = Documents.findById(req.params.document_id);
-
-  res.render('../views/documents/new-edition', {
-    document: documentData,
-    actions: {
-      back: '/documents/' + req.params.document_id,
-      save: '/documents/' + req.params.document_id + '/new-edition'
-    }
-  });
-};
+// exports.document_new_edition_get = function(req, res) {
+//   const documentData = Documents.findById(req.params.document_id);
+//
+//   res.render('../views/documents/new-edition', {
+//     document: documentData,
+//     actions: {
+//       back: '/documents/' + req.params.document_id,
+//       save: '/documents/' + req.params.document_id + '/new-edition'
+//     }
+//   });
+// };
 
 exports.document_new_edition_post = function(req, res) {
-  let documentData = Documents.findById(req.params.document_id);
+  let data = {};
 
-  documentData.document_status = 'draft';
-  documentData.edition = {};
-  documentData.edition.change_note_option = '';
-  documentData.edition.change_note = '';
+  data.document = {};
+  data.document.document_status = 'draft';
+  data.document.edition = {};
+  data.document.edition.change_note_option = '';
+  data.document.edition.change_note = '';
 
-  documentData.updated_at = new Date();
-  documentData.updated_by = req.session.data.user.display_name;
+  data.user = {};
+  data.user.display_name = req.session.data.user.display_name;
 
-  // documents directory path
-  const documentDirectoryPath = path.join(__dirname, '../data/documents/');
+  Documents.findByIdAndUpdate(req.params.document_id, data);
 
-  const documentFilePath = documentDirectoryPath + '/' + documentData.content_id + '.json';
-
-  // create a JSON sting for the submitted data
-  const documentFileData = JSON.stringify(documentData);
-
-  // write the JSON data
-  fs.writeFileSync(documentFilePath, documentFileData);
-
-  res.redirect('/documents/' + req.params.document_id + '/content');
+  res.redirect('/documents/' + req.params.document_id);
 };
 
 exports.document_review_get = function(req, res) {
@@ -403,23 +383,15 @@ exports.document_review_get = function(req, res) {
 
 exports.document_review_post = function(req, res) {
 
-  let documentData = Documents.findById(req.params.document_id);
+  let data = {};
 
-  documentData.document_status = 'submitted_for_review';
+  data.document = {};
+  data.document.document_status = 'submitted_for_review';
 
-  documentData.updated_at = new Date();
-  documentData.updated_by = req.session.data.user.display_name;
+  data.user = {};
+  data.user.display_name = req.session.data.user.display_name;
 
-  // documents directory path
-  const documentDirectoryPath = path.join(__dirname, '../data/documents/');
-
-  const documentFilePath = documentDirectoryPath + '/' + documentData.content_id + '.json';
-
-  // create a JSON sting for the submitted data
-  const documentFileData = JSON.stringify(documentData);
-
-  // write the JSON data
-  fs.writeFileSync(documentFilePath, documentFileData);
+  Documents.findByIdAndUpdate(req.params.document_id, data);
 
   res.redirect('/documents/' + req.params.document_id);
 };
@@ -429,7 +401,15 @@ exports.document_approve_get = function(req, res) {
 };
 
 exports.document_approve_post = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Approve document POST');
+  let data = {};
+
+  data.document = {};
+  data.document.document_status = 'published';
+
+  data.user = {};
+  data.user.display_name = req.session.data.user.display_name;
+
+  Documents.findByIdAndUpdate(req.params.document_id, data);
 
   res.redirect('/documents/' + req.params.document_id);
 };
@@ -498,23 +478,11 @@ exports.document_publish_get = function(req, res) {
 };
 
 exports.document_publish_post = function(req, res) {
-  let documentData = Documents.findById(req.params.document_id);
 
-  documentData.document_status = req.session.data.document.document_status;
+  Documents.findByIdAndUpdate(req.params.document_id, req.session.data);
 
-  documentData.updated_at = new Date();
-  documentData.updated_by = req.session.data.user.display_name;
-
-  // documents directory path
-  const documentDirectoryPath = path.join(__dirname, '../data/documents/');
-
-  const documentFilePath = documentDirectoryPath + '/' + documentData.content_id + '.json';
-
-  // create a JSON sting for the submitted data
-  const documentFileData = JSON.stringify(documentData);
-
-  // write the JSON data
-  fs.writeFileSync(documentFilePath, documentFileData);
+  // clean out the data as we don't need it
+  delete req.session.data.document;
 
   res.redirect('/documents/' + req.params.document_id);
 };

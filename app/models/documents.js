@@ -56,47 +56,20 @@ exports.save = function(data) {
 
 exports.find = function() {
 
-  // let documents = fs.readdirSync(directoryPath,'utf8');
-  //
-  // // Only get JSON documents
-  // documents = documents.filter( doc => doc.match(/.*\.(json)/ig));
-  //
-  // const docArray = [];
-  //
-  // documents.forEach(function (filename) {
-  //   let rawdata = fs.readFileSync(directoryPath + '/' + filename);
-  //   let docdata = JSON.parse(rawdata);
-  //   docArray.push(docdata);
-  // });
-  //
-  // let sort_order = (req.query.sort) ? (req.query.sort) : 'asc';
-  // if (sort_order == 'desc') {
-  //   docArray.sort((a,b) => new Date(a.updated_at) - new Date(b.updated_at));
-  // }
-  // else {
-  //   docArray.sort((a,b) => new Date(b.updated_at) - new Date(a.updated_at));
-  // }
-  //
-  // // Total number of documents
-  // let count = docArray.length;
-  //
-  // // Prevent users putting in a limit not in the pre-defined set: 10, 25, 50, 100
-  // let limit = 50;
-  // if ([10,25,50,100].indexOf(parseInt(req.query.limit)) !== -1) {
-  //   limit = (req.query.limit) ? parseInt(req.query.limit) : 50;
-  // }
-  //
-  // // Current page
-  // let page = (req.query.page) ? parseInt(req.query.page) : 1;
-  //
-  // // Total number of pages
-  // let page_count = Math.ceil(count / limit);
-  //
-  // // Calculate the previous and next pages
-  // let prev_page = (page - 1) ? (page - 1) : 1;
-  // let next_page = ((page + 1) > page_count) ? page_count : (page + 1);
-  //
-  // return pageArray = Helpers.paginate(docArray, limit, page);
+  let documents = fs.readdirSync(directoryPath,'utf8');
+
+  // Only get JSON documents
+  documents = documents.filter( doc => doc.match(/.*\.(json)/ig));
+
+  const documentsArray = [];
+
+  documents.forEach(function (filename) {
+    let rawdata = fs.readFileSync(directoryPath + '/' + filename);
+    let docdata = JSON.parse(rawdata);
+    documentsArray.push(docdata);
+  });
+
+  return documentsArray;
 
 };
 
@@ -112,30 +85,10 @@ exports.findById = function(document_id) {
 };
 
 exports.findByIdAndUpdate = function(document_id, data) {
-
-  let documentData = this.findById(document_id);
-
-  documentData.title = data.document.title;
-  documentData.description = data.document.description;
-  documentData.details = {};
-  documentData.details.body = data.document.details.body;
-
-  documentData.updated_at = new Date();
-  documentData.updated_by = data.user.display_name;
-
-  const filePath = directoryPath + '/' + documentData.content_id + '.json';
-
-  // create a JSON sting for the submitted data
-  const fileData = JSON.stringify(documentData);
-
-  // write the JSON data
-  fs.writeFileSync(filePath, fileData);
-
-};
-
-exports.findByIdAndUpdate = function(document_id, data) {
   if (!document_id)
     return null;
+
+  console.log('Model: ',data.document.document_status);
 
   let documentData = this.findById(document_id);
 
@@ -152,6 +105,15 @@ exports.findByIdAndUpdate = function(document_id, data) {
 
   if (data.document.political !== undefined)
     documentData.political = data.document.political;
+
+  if (data.document.document_status !== undefined)
+    documentData.document_status = data.document.document_status;
+
+  if (data.document.edition !== undefined && data.document.edition.change_note !== undefined) {
+    documentData.edition = {};
+    documentData.edition.change_note_option = '';
+    documentData.edition.change_note = '';
+  }
 
   documentData.updated_at = new Date();
 
@@ -172,11 +134,6 @@ exports.findByIdAndUpdate = function(document_id, data) {
 };
 
 exports.findByIdAndDelete = function(document_id) {
-
-  // let documentData = this.findById(document_id);
-
   const fileName = document_id + '.json';
-
   fs.unlinkSync(directoryPath + '/' + fileName);
-
 };
