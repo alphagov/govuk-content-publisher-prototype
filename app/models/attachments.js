@@ -210,6 +210,11 @@ exports.findByIdAndDelete = function(document_id, attachment_id) {
 
 };
 
+exports.findByDocumentIdAndDelete = function(document_id) {
+  const directoryPath = path.join(__dirname, '../data/attachments/', document_id);
+  Helpers.deleteDirectoryRecursive(directoryPath);
+};
+
 // get array of all attachments for a document.
 exports.findByDocumentId = function(document_id) {
 
@@ -221,8 +226,8 @@ exports.findByDocumentId = function(document_id) {
     fs.mkdirSync(directoryPath);
   }
 
-  let attachments = []
-  let index
+  let attachments = [];
+  let index;
 
   try {
     index = fs.readFileSync(directoryPath + '/index.json');
@@ -231,7 +236,7 @@ exports.findByDocumentId = function(document_id) {
   }
 
   if (index) {
-    attachments = JSON.parse(index)
+    attachments = JSON.parse(index);
   } else {
     attachments = fs.readdirSync(directoryPath,'utf8');
     // Only get JSON documents

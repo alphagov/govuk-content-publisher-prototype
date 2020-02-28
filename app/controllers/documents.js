@@ -6,10 +6,9 @@ const uuid = require('uuid/v1');
 const Helpers = require('../helpers/helpers');
 
 // models
-const Documents = require('../models/documents');
 const Attachments = require('../models/attachments');
-const Governments = require('../models/governments');
-const Organisations = require('../models/organisations');
+const Documents = require('../models/documents');
+const History = require('../models/history');
 
 // Display list of all documents.
 exports.document_list = function(req, res) {
@@ -28,7 +27,7 @@ exports.document_list = function(req, res) {
   const docArray = [];
 
   documents.forEach(function (filename) {
-    let rawdata = fs.readFileSync('./app/data/documents/' + filename);
+    let rawdata = fs.readFileSync(directoryPath + '/' + filename);
     let docdata = JSON.parse(rawdata);
     docArray.push(docdata);
   });
@@ -78,9 +77,12 @@ exports.document_list = function(req, res) {
 
 // Display summary page for a specific document.
 exports.document_summary_get = function(req, res) {
+  const documentData = Documents.findById(req.params.document_id);
+  const attachmentData = Attachments.findByDocumentId(req.params.document_id);
+
   res.render('../views/documents/summary', {
-    document: Documents.findById(req.params.document_id),
-    attachments: Attachments.findByDocumentId(req.params.document_id),
+    document: documentData,
+    attachments: attachmentData,
     actions: {
       home: '/documents',
       summary: '/documents/' + req.params.document_id,
@@ -185,16 +187,6 @@ exports.document_history_get = function(req, res) {
 
 };
 
-// TODO: get rid of document_load
-// exports.document_load = function(req, res) {
-//   let rawdata = fs.readFileSync('./app/data/documents/' + req.params.document_id + '.json');
-//   let docdata = JSON.parse(rawdata);
-//
-//   req.session.data.document = docdata;
-//
-//   res.redirect('/documents/' + req.params.document_id)
-// }
-
 // Display document create super type form on GET.
 exports.document_create_super_type_get = function(req, res) {
   delete req.session.data.document_type;
@@ -236,90 +228,13 @@ exports.document_create_sub_type_get = function(req, res) {
 };
 
 exports.document_create_get = function(req, res) {
-
-  // documents directory path
-  const documentDirectoryPath = path.join(__dirname, '../data/documents/');
-
-  // check if document directory exists
-  if (!fs.existsSync(documentDirectoryPath)) {
-    fs.mkdirSync(documentDirectoryPath);
-  }
-
-  // create a unique file name
-  const content_id = uuid();
-  const fileName = content_id + '.json';
-
-  const documentFilePath = documentDirectoryPath + '/' + fileName;
-
-  // document data
-  // let documentData = req.session.data.document;
-  let documentData = {};
-  documentData.content_id = content_id;
-
-  if (req.session.data.document_sub_type !== undefined) {
-    documentData.document_type = req.session.data.document_sub_type;
-  } else {
-    documentData.document_type = req.session.data.document_type;
-  }
-
-  documentData.document_status = 'draft';
-
-  documentData.created_at = new Date();
-  documentData.created_by = req.session.data.user.display_name;
-
-  // documentData.updated_at = documentData.created_at;
-  // documentData.updated_by = documentData.created_by;
-
-  // get political status of document creator's organisation
-  documentData.political = Organisations.isPolitical(req.session.data.user.organisation);
-
-  // get current government
-  documentData.government = Governments.findGovernmentByDate(documentData.created_at);
-
-  // create a JSON sting for the submitted data
-  const documentFileData = JSON.stringify(documentData);
-
-  // write the JSON data
-  fs.writeFileSync(documentFilePath, documentFileData);
-
-  // ==========
-  // Document history
-  // ==========
-
-  // history directory path
-  const historyDirectoryPath = path.join(__dirname, '../data/history/');
-
-  // check if document history directory exists
-  if (!fs.existsSync(historyDirectoryPath)) {
-    fs.mkdirSync(historyDirectoryPath);
-  }
-
-  const historyFilePath = historyDirectoryPath + '/' + fileName;
-
-  // TODO: write history data
-  let historyArray = [];
-  let historyData = {};
-  historyData.id = documentData.content_id;
-  historyData.title = 'First created';
-  historyData.created_at = documentData.created_at;
-  historyData.created_by = documentData.created_by;
-
-  historyData.edition = {};
-  historyData.edition.title = '1st Edition';
-  historyData.edition.id = documentData.content_id;
-
-  historyArray.push(historyData);
-
-  // create a JSON sting for the submitted data
-  const historyFileData = JSON.stringify(historyArray);
-
-  // write the JSON data
-  fs.writeFileSync(historyFilePath, historyFileData);
+  const documentData = Documents.save(req.session.data);
+  const historyData = History.save(documentData);
 
   // redirect the user back to the attachments page
   // TODO: show flash message (success/failure)
   delete req.session.data.document;
-  res.redirect('/documents/' + content_id + '/new');
+  res.redirect('/documents/' + documentData.content_id + '/new');
 
 }
 
@@ -345,28 +260,9 @@ exports.document_new_get = function(req, res) {
 // Handle document create on POST.
 exports.document_new_post = function(req, res) {
 
-  const documentData = Documents.findById(req.params.document_id);
+  Documents.findByIdAndUpdate(req.params.document_id, req.session.data);
 
-  documentData.title = req.session.data.document.title;
-  documentData.description = req.session.data.document.description;
-  documentData.details = {};
-  documentData.details.body = req.session.data.document.details.body;
-
-  documentData.updated_at = new Date();
-  documentData.updated_by = req.session.data.user.display_name;
-
-  // documents directory path
-  const documentDirectoryPath = path.join(__dirname, '../data/documents/');
-
-  const documentFilePath = documentDirectoryPath + '/' + documentData.content_id + '.json';
-
-  // create a JSON sting for the submitted data
-  const documentFileData = JSON.stringify(documentData);
-
-  // write the JSON data
-  fs.writeFileSync(documentFilePath, documentFileData);
-
-  res.redirect('/documents/' + documentData.content_id);
+  res.redirect('/documents/' + req.params.document_id);
 
 };
 
@@ -385,20 +281,9 @@ exports.document_delete_get = function(req, res) {
 
 // Handle document delete on POST.
 exports.document_delete_post = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Document delete POST');
-
-  // documents directory path
-  const documentDirectoryPath = path.join(__dirname, '../data/documents/');
-  const historyDirectoryPath = path.join(__dirname, '../data/history/');
-
-  const fileName = req.params.document_id + '.json';
-
-  fs.unlinkSync(documentDirectoryPath + fileName);
-  fs.unlinkSync(historyDirectoryPath + fileName);
-
-  // TODO: delete attachments directory
-  // const attachmentDirectoryPath = path.join(__dirname, '../data/attachments/' + req.params.document_id);
-  // fs.rmdirSync(attachmentsDirectoryPath);
+  Documents.findByIdAndDelete(req.params.document_id);
+  History.findByDocumentIdAndDelete(req.params.document_id);
+  Attachments.findByDocumentIdAndDelete(req.params.document_id);
 
   // redirect the user back to the attachments page
   // TODO: show flash message (success/failure)
@@ -420,28 +305,7 @@ exports.document_update_get = function(req, res) {
 
 // Handle document update on POST.
 exports.document_update_post = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Document update POST');
-
-  let documentData = Documents.findById(req.params.document_id);
-
-  documentData.title = req.session.data.document.title;
-  documentData.description = req.session.data.document.description;
-  documentData.details = {};
-  documentData.details.body = req.session.data.document.details.body;
-
-  documentData.updated_at = new Date();
-  documentData.updated_by = req.session.data.user.display_name;
-
-  // documents directory path
-  const documentDirectoryPath = path.join(__dirname, '../data/documents/');
-
-  const documentFilePath = documentDirectoryPath + '/' + documentData.content_id + '.json';
-
-  // create a JSON sting for the submitted data
-  const documentFileData = JSON.stringify(documentData);
-
-  // write the JSON data
-  fs.writeFileSync(documentFilePath, documentFileData);
+  Documents.findByIdAndUpdate(req.params.document_id, req.session.data);
 
   res.redirect('/documents/' + req.params.document_id);
 };
@@ -460,25 +324,7 @@ exports.document_political_update_get = function(req, res) {
 };
 
 exports.document_political_update_post = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Document update GET');
-
-  let documentData = Documents.findById(req.params.document_id);
-
-  documentData.political = req.session.data.document.political;
-
-  documentData.updated_at = new Date();
-  documentData.updated_by = req.session.data.user.display_name;
-
-  // documents directory path
-  const documentDirectoryPath = path.join(__dirname, '../data/documents/');
-
-  const documentFilePath = documentDirectoryPath + '/' + documentData.content_id + '.json';
-
-  // create a JSON sting for the submitted data
-  const documentFileData = JSON.stringify(documentData);
-
-  // write the JSON data
-  fs.writeFileSync(documentFilePath, documentFileData);
+  Documents.findByIdAndUpdate(req.params.document_id, req.session.data);
 
   res.redirect('/documents/' + req.params.document_id);
 };
