@@ -249,6 +249,9 @@ exports.document_new_post = function(req, res) {
 
   Documents.findByIdAndUpdate(req.params.document_id, req.session.data);
 
+  // TODO: flash message
+  // req.flash('success', 'Document created');
+
   res.redirect('/documents/' + req.params.document_id);
 
 };
@@ -272,8 +275,9 @@ exports.document_delete_post = function(req, res) {
   History.findByDocumentIdAndDelete(req.params.document_id);
   Attachments.findByDocumentIdAndDelete(req.params.document_id);
 
-  // redirect the user back to the attachments page
-  // TODO: show flash message (success/failure)
+  // TODO: flash message
+  // req.flash('success', 'Document deleted');
+
   res.redirect('/documents');
 };
 
@@ -292,9 +296,9 @@ exports.document_update_get = function(req, res) {
 
 // Handle document update on POST.
 exports.document_update_post = function(req, res) {
-  console.log('Controller: ',req.session.data.document_status);
   Documents.findByIdAndUpdate(req.params.document_id, req.session.data);
-
+  // TODO: flash message
+  // req.flash('success', 'Document updated');
   res.redirect('/documents/' + req.params.document_id);
 };
 
@@ -313,7 +317,8 @@ exports.document_political_update_get = function(req, res) {
 
 exports.document_political_update_post = function(req, res) {
   Documents.findByIdAndUpdate(req.params.document_id, req.session.data);
-
+  // TODO: flash message
+  // req.flash('success', 'Gets history mode updated');
   res.redirect('/documents/' + req.params.document_id);
 };
 
@@ -374,6 +379,9 @@ exports.document_new_edition_post = function(req, res) {
 
   Documents.findByIdAndUpdate(req.params.document_id, data);
 
+  // TODO: flash message
+  // req.flash('success', 'New edition created');
+
   res.redirect('/documents/' + req.params.document_id);
 };
 
@@ -393,6 +401,9 @@ exports.document_review_post = function(req, res) {
 
   Documents.findByIdAndUpdate(req.params.document_id, data);
 
+  // TODO: flash message
+  // req.flash('success', 'Document reviewed');
+
   res.redirect('/documents/' + req.params.document_id);
 };
 
@@ -410,6 +421,9 @@ exports.document_approve_post = function(req, res) {
   data.user.display_name = req.session.data.user.display_name;
 
   Documents.findByIdAndUpdate(req.params.document_id, data);
+
+  // TODO: flash message
+  // req.flash('success', 'Document approved');
 
   res.redirect('/documents/' + req.params.document_id);
 };
@@ -484,6 +498,9 @@ exports.document_publish_post = function(req, res) {
   // clean out the data as we don't need it
   delete req.session.data.document;
 
+  // TODO: flash message
+  // req.flash('success', 'Document published');
+
   res.redirect('/documents/' + req.params.document_id);
 };
 
@@ -519,7 +536,8 @@ exports.document_withdraw_get = function(req, res) {
 
 exports.document_withdraw_post = function(req, res) {
   // res.send('NOT IMPLEMENTED: Withdraw document POST');
-
+  // TODO: flash message
+  // req.flash('success', 'Document withdrawn');
   res.redirect('/documents/' + req.params.document_id);
 };
 
@@ -572,30 +590,9 @@ exports.document_change_note_get = function(req, res) {
 };
 
 exports.document_change_note_post = function(req, res) {
-  let documentData = Documents.findById(req.params.document_id);
-
-  documentData.edition = {};
-  documentData.edition.change_note_option = req.session.data.document.edition.change_note_option;
-  if (req.session.data.document.edition.change_note_option === 'yes') {
-    documentData.edition.change_note = req.session.data.document.edition.change_note;
-  } else {
-    documentData.edition.change_note = '';
-  }
-
-  documentData.updated_at = new Date();
-  documentData.updated_by = req.session.data.user.display_name;
-
-  // documents directory path
-  const documentDirectoryPath = path.join(__dirname, '../data/documents/');
-
-  const documentFilePath = documentDirectoryPath + '/' + documentData.content_id + '.json';
-
-  // create a JSON sting for the submitted data
-  const documentFileData = JSON.stringify(documentData);
-
-  // write the JSON data
-  fs.writeFileSync(documentFilePath, documentFileData);
-
+  Documents.findByIdAndUpdate(req.params.document_id, req.session.data);
+  // TODO: flash message
+  // req.flash('success', 'Change note added');
   res.redirect('/documents/' + req.params.document_id);
 };
 
@@ -612,53 +609,8 @@ exports.document_nations_get = function(req, res) {
 };
 
 exports.document_nations_post = function(req, res) {
-  let documentData = Documents.findById(req.params.document_id);
-
-  documentData.details.national_applicability = {};
-
-  const nations = ["england","northern_ireland","scotland","wales"];
-
-  nations.forEach((nation) => {
-
-    documentData.details.national_applicability[nation] = {};
-
-    // TODO: title case and remove underscore
-    documentData.details.national_applicability[nation].label = nation.replace(/_+/g, " ");
-
-    // if the user hasn't checked the checkbox, the nation is applicable
-    if (req.session.data.document.details.national_applicability.nations === undefined || req.session.data.document.details.national_applicability.nations.indexOf(nation) === -1) {
-
-      documentData.details.national_applicability[nation].applicable = true;
-
-      documentData.details.national_applicability[nation].alternative_url = '';
-
-    } else {
-
-      documentData.details.national_applicability[nation].applicable = false;
-
-      if (req.session.data.document.details.national_applicability[nation].alternative_url.length) {
-        documentData.details.national_applicability[nation].alternative_url = req.session.data.document.details.national_applicability[nation].alternative_url;
-      } else {
-        documentData.details.national_applicability[nation].alternative_url = '';
-      }
-
-    }
-
-  });
-
-  documentData.updated_at = new Date();
-  documentData.updated_by = req.session.data.user.display_name;
-
-  // documents directory path
-  const documentDirectoryPath = path.join(__dirname, '../data/documents/');
-
-  const documentFilePath = documentDirectoryPath + '/' + documentData.content_id + '.json';
-
-  // create a JSON sting for the submitted data
-  const documentFileData = JSON.stringify(documentData);
-
-  // write the JSON data
-  fs.writeFileSync(documentFilePath, documentFileData);
-
+  Documents.findByIdAndUpdateNationalApplicability(req.params.document_id, req.session.data);
+  // TODO: flash message
+  // req.flash('success', 'Nations covered updated');
   res.redirect('/documents/' + req.params.document_id);
 };
