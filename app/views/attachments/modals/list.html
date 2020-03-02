@@ -18,7 +18,7 @@
             <p class="govuk-body govuk-!-margin-bottom-8">
               {% if attachments | length == 1 %}
                 <!-- One attachment -->
-                {% if attachment.content_id and attachment.content_id == attachments[1].content_id %}
+                {% if attachment.content_id and attachment.content_id == attachments[0].content_id %}
                   <!-- Current attachment -->
                   You’re editing ‘{{ attachment.title }}’. There are no other attachments added to this document. You can only insert an attachment that has already been added.
                 {% else %}
@@ -27,9 +27,9 @@
                 {% endif -%}
               {% else %}
                 <!-- Many attcachments -->
-                {% if attachment.content_id and attachment.content_id == attachments[1].content_id %}
+                {%- if attachment.content_id | length %}
                   <!-- Current attachment -->
-                  You’re editing ‘{{ attachment.title }}’. You can add a link to another attachment in the body of the content.
+                  You’re editing ‘{{ attachment.title }}’. You can add a link to the other {{ 'attachment' if attachments | length == 2 else 'attachments' }} in the body of the content.
                 {% else %}
                   <!-- Not current attachment -->
                   You can add a link to one of these attachments in the body of the content.
