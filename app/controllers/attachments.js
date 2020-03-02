@@ -10,20 +10,36 @@ const Attachments = require('../models/attachments');
 exports.attachment_list = function(req, res) {
 
   const documentData = Documents.findById(req.params.document_id);
-  const attachmentData = Attachments.findByDocumentId(req.params.document_id);
+  const attachmentListData = Attachments.findByDocumentId(req.params.document_id);
 
   let flashMessage = req.flash();
 
   if (req.path.includes('/modal/')) {
-    res.render('../views/attachments/modals/list', {
-      document: documentData,
-      attachments: attachmentData,
-      attachment_id: req.params.attachment_id
-    });
+
+    if (req.params.attachment_id !== undefined) {
+
+      const attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
+
+      res.render('../views/attachments/modals/list', {
+        document: documentData,
+        attachment: attachmentData,
+        attachments: attachmentListData
+      });
+
+    } else {
+
+      res.render('../views/attachments/modals/list', {
+        document: documentData,
+        attachments: attachmentListData
+      });
+
+    }
+
   } else {
+
     res.render('../views/attachments/list', {
       document: documentData,
-      attachments: attachmentData,
+      attachments: attachmentListData,
       message: flashMessage,
       actions: {
         back: '/documents/' + req.params.document_id,
@@ -33,6 +49,7 @@ exports.attachment_list = function(req, res) {
         reorder: '/documents/' + req.params.document_id + '/attachments/reorder'
       }
     });
+
   }
 
 };

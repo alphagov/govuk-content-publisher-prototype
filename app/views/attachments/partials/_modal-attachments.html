@@ -1,4 +1,12 @@
+{%- set modalHtml %}
+{%- if attachment.content_id %}
+<iframe src="/documents/{{document.content_id}}/attachments/{{attachment.content_id}}/modal/" class="app-iframe--reset"></iframe>
+{% else %}
+<iframe src="/documents/{{document.content_id}}/attachments/modal/" class="app-iframe--reset"></iframe>
+{% endif -%}
+{% endset -%}
+
 {{ appModalDialogue({
   id: 'modal-attachments',
-  html: '<iframe src="/documents/' + document.content_id + '/attachments/' + attachment.content_id + '/modal/" class="app-iframe--reset"></iframe>'
+  html: modalHtml
 }) }}

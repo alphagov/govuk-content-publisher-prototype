@@ -15,11 +15,31 @@
 
           {% if attachments | length %}
 
-            <p class="govuk-body govuk-!-margin-bottom-8">You can add a link to one of these attachments in the body of the content.</p>
+            <p class="govuk-body govuk-!-margin-bottom-8">
+              {% if attachments | length == 1 %}
+                <!-- One attachment -->
+                {% if attachment.content_id and attachment.content_id == attachments[1].content_id %}
+                  <!-- Current attachment -->
+                  You’re editing ‘{{ attachment.title }}’. There are no other attachments added to this document. You can only insert an attachment that has already been added.
+                {% else %}
+                  <!-- Not current attachment -->
+                  You can add a link to this attachment in the body of the content.
+                {% endif -%}
+              {% else %}
+                <!-- Many attcachments -->
+                {% if attachment.content_id and attachment.content_id == attachments[1].content_id %}
+                  <!-- Current attachment -->
+                  You’re editing ‘{{ attachment.title }}’. You can add a link to another attachment in the body of the content.
+                {% else %}
+                  <!-- Not current attachment -->
+                  You can add a link to one of these attachments in the body of the content.
+                {% endif -%}
+              {% endif -%}
+            </p>
 
-            {%- for attachment in attachments %}
+            {%- for item in attachments %}
 
-              {#% if attachment.content_id != attachment_id %#}
+              {#% if item.content_id != attachment.content_id %#}
 
                 {%- call appAttachmentActions({
                   items: [
@@ -27,30 +47,30 @@
                       text: 'Insert attachment as link',
                       href: '#'
                     }
-                  ] if attachment.content_id != attachment_id
+                  ] if item.content_id != attachment.content_id
                 }) %}
 
                   {% call appAttachment({
                     heading: {
-                      text: attachment.title if attachment.title | length else "Untitled attachment"
+                      text: item.title if item.title | length else "Untitled attachment"
                     },
-                    href: attachment.url if attachment.type == 'external' else '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/preview',
+                    href: item.url if item.type == 'external' else '/documents/' + item.document_id + '/attachments/' + item.content_id + '/preview',
                     target: "_blank",
                     references: {
-                      isbn: attachment.isbn,
-                      urn: attachment.urn,
-                      cpn: attachment.cpn,
-                      hcpn: attachment.hcpn,
-                      parliamentary_session: attachment.parliamentary_session
+                      isbn: item.isbn,
+                      urn: item.urn,
+                      cpn: item.cpn,
+                      hcpn: item.hcpn,
+                      parliamentary_session: item.parliamentary_session
                     },
                     metadata: {
-                      contentType: 'text/html' if attachment.type == 'html' else ('application/pdf' if attachment.type == 'file'),
-                      thumbnail: 'document' if attachment.type in ['file','html']
+                      contentType: 'text/html' if item.type == 'html' else ('application/pdf' if item.type == 'file'),
+                      thumbnail: 'document' if item.type in ['file','html']
                     }
                   }) %}
 
-                    {%- if attachment.type == 'external' %}
-                      <p class="govuk-body-s">{{ attachment.url }}</p>
+                    {%- if item.type == 'external' %}
+                      <p class="govuk-body-s">{{ item.url }}</p>
                     {% endif -%}
 
                   {% endcall %}
