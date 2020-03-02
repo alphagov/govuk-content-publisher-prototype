@@ -72,7 +72,7 @@ router.get('/documents/:document_id', checkIsAuthenticated, document_controller.
 router.get('/documents/:document_id/history', checkIsAuthenticated, document_controller.document_history_get);
 
 // HACK: to load document from session data
-router.get('/documents/:document_id/load', checkIsAuthenticated, document_controller.document_load);
+// router.get('/documents/:document_id/load', checkIsAuthenticated, document_controller.document_load);
 
 
 
@@ -88,7 +88,7 @@ router.get('/documents/:document_id/tags', checkIsAuthenticated, document_contro
 router.get('/documents/:document_id/political', checkIsAuthenticated, document_controller.document_political_update_get);
 router.post('/documents/:document_id/political', checkIsAuthenticated, document_controller.document_political_update_post);
 
-router.get('/documents/:document_id/new-edition', checkIsAuthenticated, document_controller.document_new_edition_get);
+// router.get('/documents/:document_id/new-edition', checkIsAuthenticated, document_controller.document_new_edition_get);
 router.post('/documents/:document_id/new-edition', checkIsAuthenticated, document_controller.document_new_edition_post);
 
 router.get('/documents/:document_id/review', checkIsAuthenticated, document_controller.document_review_get);
@@ -96,6 +96,7 @@ router.post('/documents/:document_id/review', checkIsAuthenticated, document_con
 
 
 router.get('/documents/:document_id/approve', checkIsAuthenticated, document_controller.document_approve_get);
+router.post('/documents/:document_id/approve', checkIsAuthenticated, document_controller.document_approve_post);
 
 router.get('/documents/:document_id/schedule', checkIsAuthenticated, document_controller.document_schedule_get);
 router.post('/documents/:document_id/schedule', checkIsAuthenticated, document_controller.document_schedule_post);
@@ -111,10 +112,13 @@ router.post('/documents/:document_id/publish', checkIsAuthenticated, document_co
 router.get('/documents/:document_id/delete', checkIsAuthenticated, document_controller.document_delete_draft_get);
 
 router.get('/documents/:document_id/withdraw', checkIsAuthenticated, document_controller.document_withdraw_get);
+router.post('/documents/:document_id/withdraw', checkIsAuthenticated, document_controller.document_withdraw_post);
 
 router.get('/documents/:document_id/undo-withdraw', checkIsAuthenticated, document_controller.document_undo_withdraw_get);
+router.post('/documents/:document_id/undo-withdraw', checkIsAuthenticated, document_controller.document_undo_withdraw_post);
 
 router.get('/documents/:document_id/remove', checkIsAuthenticated, document_controller.document_remove_get);
+router.post('/documents/:document_id/remove', checkIsAuthenticated, document_controller.document_remove_post);
 
 router.get('/documents/:document_id/change-note', checkIsAuthenticated, document_controller.document_change_note_get);
 router.post('/documents/:document_id/change-note', checkIsAuthenticated, document_controller.document_change_note_post);
