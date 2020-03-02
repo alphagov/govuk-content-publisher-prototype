@@ -167,54 +167,6 @@
 
           {% endcall -%}
 
-          <!-- {#%- call appContextualGuidance({
-            id: 'contextual-guidance-04',
-            for: 'revision-change-note',
-            heading: {
-              text: 'Writing change notes'
-            },
-            description: {
-              html: '<p class="govuk-body">Describe the change for users. Include or refer to any new or updated information. This change note will be published on the page and emailed to subscribers. The ‘last updated’ date will change.</p><p class="govuk-body"><a class="govuk-link" href="#">Full guidance on change notes</a></p>'
-            },
-            classes: 'govuk-!-margin-top-4'
-          }) %}
-
-
-            {{ govukRadios({
-              idPrefix: "revision-change-note-option",
-              name: "document[revision][change_note_option]",
-              fieldset: {
-                legend: {
-                  text: "Is the content change significant to users?",
-                  isPageHeading: true,
-                  classes: "govuk-fieldset__legend--s"
-                }
-              },
-              items: [
-                {
-                  value: "yes",
-                  text: "Yes – information has been added or updated",
-                  checked: true,
-                  conditional: {
-                    html: govukTextarea({
-                      id: "revision-change-note",
-                      name: "document[revision][change_note]",
-                      label: {
-                        text: "Public change note",
-                        classes: "govuk-!-font-weight-bold"
-                      }
-                    })
-                  }
-                },
-                {
-                  value: "no",
-                  text: "No – it's a minor style update"
-                }
-              ]
-            }) }}
-
-          {% endcall -%#} -->
-
           {{ govukButton({
             text: "Save"
           }) }}

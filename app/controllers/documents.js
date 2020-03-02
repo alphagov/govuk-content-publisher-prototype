@@ -48,8 +48,11 @@ exports.document_list = function(req, res) {
 
   pageArray = Helpers.paginate(documentsArray, limit, page);
 
+  let flashMessage = req.flash();
+
   res.render('../views/documents/list', {
     documents: pageArray,
+    message: flashMessage,
     total_count: count,
     page_count: page_count,
     page_number: page,
@@ -64,12 +67,16 @@ exports.document_list = function(req, res) {
 
 // Display summary page for a specific document.
 exports.document_summary_get = function(req, res) {
+
   const documentData = Documents.findById(req.params.document_id);
   const attachmentData = Attachments.findByDocumentId(req.params.document_id);
+
+  let flashMessage = req.flash();
 
   res.render('../views/documents/summary', {
     document: documentData,
     attachments: attachmentData,
+    message: flashMessage,
     actions: {
       home: '/documents',
       summary: '/documents/' + req.params.document_id,
@@ -249,8 +256,7 @@ exports.document_new_post = function(req, res) {
 
   Documents.findByIdAndUpdate(req.params.document_id, req.session.data);
 
-  // TODO: flash message
-  // req.flash('success', 'Document created');
+  req.flash('success', 'Document saved');
 
   res.redirect('/documents/' + req.params.document_id);
 
@@ -297,8 +303,7 @@ exports.document_update_get = function(req, res) {
 // Handle document update on POST.
 exports.document_update_post = function(req, res) {
   Documents.findByIdAndUpdate(req.params.document_id, req.session.data);
-  // TODO: flash message
-  // req.flash('success', 'Document updated');
+  req.flash('success', 'Document saved');
   res.redirect('/documents/' + req.params.document_id);
 };
 
@@ -379,8 +384,7 @@ exports.document_new_edition_post = function(req, res) {
 
   Documents.findByIdAndUpdate(req.params.document_id, data);
 
-  // TODO: flash message
-  // req.flash('success', 'New edition created');
+  req.flash('success', 'New edition created');
 
   res.redirect('/documents/' + req.params.document_id);
 };
@@ -498,8 +502,7 @@ exports.document_publish_post = function(req, res) {
   // clean out the data as we don't need it
   delete req.session.data.document;
 
-  // TODO: flash message
-  // req.flash('success', 'Document published');
+  req.flash('success', 'Document published');
 
   res.redirect('/documents/' + req.params.document_id);
 };
@@ -518,7 +521,7 @@ exports.document_delete_draft_get = function(req, res) {
 
 exports.document_delete_draft_post = function(req, res) {
   // res.send('NOT IMPLEMENTED: Delete draft document POST');
-
+  req.flash('success', 'Document draft deleted');
   res.redirect('/documents');
 };
 
@@ -535,9 +538,7 @@ exports.document_withdraw_get = function(req, res) {
 };
 
 exports.document_withdraw_post = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Withdraw document POST');
-  // TODO: flash message
-  // req.flash('success', 'Document withdrawn');
+  req.flash('success', 'Document withdrawn');
   res.redirect('/documents/' + req.params.document_id);
 };
 
@@ -591,8 +592,7 @@ exports.document_change_note_get = function(req, res) {
 
 exports.document_change_note_post = function(req, res) {
   Documents.findByIdAndUpdate(req.params.document_id, req.session.data);
-  // TODO: flash message
-  // req.flash('success', 'Change note added');
+  req.flash('success', 'Change note added');
   res.redirect('/documents/' + req.params.document_id);
 };
 
@@ -610,7 +610,6 @@ exports.document_nations_get = function(req, res) {
 
 exports.document_nations_post = function(req, res) {
   Documents.findByIdAndUpdateNationalApplicability(req.params.document_id, req.session.data);
-  // TODO: flash message
-  // req.flash('success', 'Nations covered updated');
+  req.flash('success', 'Nations covered updated');
   res.redirect('/documents/' + req.params.document_id);
 };
