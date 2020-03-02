@@ -8,7 +8,7 @@
     text: 'Writing a title'
   },
   description: {
-    text: 'The title must make clear what the content offers users. Use the words your users do to help them find this. Avoid wordplay or teases.'
+    text: 'The title must be unique and specific, and make clear what the content offers users in their words. It will appear on the publication page in the list of attachments.'
   }
 }) %}
 
@@ -110,22 +110,26 @@
 
 {% endcall -%}
 
-{{ govukCheckboxes({
-  idPrefix: "attachment-unnumbered-headings",
-  name: "document[attachment][unnumbered_headings]",
-  items: [
-    {
-      value: "yes",
-      text: "[REMOVE DEFAULT HEADING NUMBERS]",
-      hint: {
-        text: "[HINT TEXT]"
-      },
-      checked: true if attachment.unnumbered_headings == "yes"
-    }
-  ]
-}) }}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukCheckboxes({
+      idPrefix: "attachment-unnumbered-headings",
+      name: "document[attachment][unnumbered_headings]",
+      items: [
+        {
+          value: "yes",
+          text: "Remove numbers in headings",
+          hint: {
+            text: "Headings in HTML attachments are numbered by default. Tick the box to choose unnumbered headings or to include a different numbering system."
+          },
+          checked: true if attachment.unnumbered_headings == "yes"
+        }
+      ]
+    }) }}
+  </div>
+</div>
 
-{%- set headingGuidanceHtml %}
+{#%- set headingGuidanceHtml %}
 <p class="govuk-body">Manually number your headings using your own numbering scheme.</p>
 <ul class="govuk-list">
   <li>## 1. First heading</li>
@@ -136,9 +140,9 @@
   <li>### Unnumbered sub-heading</li>
   <li>## 2. Second heading</li>
 </ul>
-{% endset -%}
+{% endset -%#}
 
-{{ govukDetails({
+{#{ govukDetails({
   summaryText: "[HEADING NUMBERS GUIDANCE]",
   html: headingGuidanceHtml
-}) }}
+}) }#}
