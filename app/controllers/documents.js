@@ -229,7 +229,6 @@ exports.document_create_get = function(req, res) {
   // TODO: show flash message (success/failure)
   delete req.session.data.document;
   res.redirect('/documents/' + documentData.content_id + '/new');
-
 }
 
 // Display document create form on GET.
@@ -253,13 +252,9 @@ exports.document_new_get = function(req, res) {
 
 // Handle document create on POST.
 exports.document_new_post = function(req, res) {
-
   Documents.findByIdAndUpdate(req.params.document_id, req.session.data);
-
   req.flash('success', 'Document saved');
-
   res.redirect('/documents/' + req.params.document_id);
-
 };
 
 // Display document delete form on GET.
@@ -280,10 +275,7 @@ exports.document_delete_post = function(req, res) {
   Documents.findByIdAndDelete(req.params.document_id);
   History.findByDocumentIdAndDelete(req.params.document_id);
   Attachments.findByDocumentIdAndDelete(req.params.document_id);
-
-  // TODO: flash message
-  // req.flash('success', 'Document deleted');
-
+  req.flash('success', 'Document deleted');
   res.redirect('/documents');
 };
 
@@ -322,8 +314,7 @@ exports.document_political_update_get = function(req, res) {
 
 exports.document_political_update_post = function(req, res) {
   Documents.findByIdAndUpdate(req.params.document_id, req.session.data);
-  // TODO: flash message
-  // req.flash('success', 'Gets history mode updated');
+  req.flash('success', 'Gets history mode updated');
   res.redirect('/documents/' + req.params.document_id);
 };
 
@@ -356,7 +347,6 @@ exports.document_tags_update_get = function(req, res) {
 exports.document_tags_update_post = function(req, res) {
   res.send('NOT IMPLEMENTED: Document tags update POST');
 };
-
 
 // exports.document_new_edition_get = function(req, res) {
 //   const documentData = Documents.findById(req.params.document_id);
@@ -405,8 +395,7 @@ exports.document_review_post = function(req, res) {
 
   Documents.findByIdAndUpdate(req.params.document_id, data);
 
-  // TODO: flash message
-  // req.flash('success', 'Document reviewed');
+  req.flash('success', 'Document reviewed');
 
   res.redirect('/documents/' + req.params.document_id);
 };
@@ -426,8 +415,7 @@ exports.document_approve_post = function(req, res) {
 
   Documents.findByIdAndUpdate(req.params.document_id, data);
 
-  // TODO: flash message
-  // req.flash('success', 'Document approved');
+  req.flash('success', 'Document approved');
 
   res.redirect('/documents/' + req.params.document_id);
 };
@@ -520,7 +508,6 @@ exports.document_delete_draft_get = function(req, res) {
 };
 
 exports.document_delete_draft_post = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Delete draft document POST');
   req.flash('success', 'Document draft deleted');
   res.redirect('/documents');
 };
@@ -538,6 +525,7 @@ exports.document_withdraw_get = function(req, res) {
 };
 
 exports.document_withdraw_post = function(req, res) {
+  Documents.findByIdAndUpdate(req.params.document_id, req.session.data);
   req.flash('success', 'Document withdrawn');
   res.redirect('/documents/' + req.params.document_id);
 };
@@ -555,8 +543,8 @@ exports.document_undo_withdraw_get = function(req, res) {
 };
 
 exports.document_undo_withdraw_post = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Undo withdraw document POST');
-
+  Documents.findByIdAndUndoWithdrawal(req.params.document_id, req.session.data);
+  req.flash('success', 'Document unwithdrawn');
   res.redirect('/documents/' + req.params.document_id);
 };
 
@@ -573,9 +561,9 @@ exports.document_remove_get = function(req, res) {
 };
 
 exports.document_remove_post = function(req, res) {
-  // res.send('NOT IMPLEMENTED: Remove document POST');
+  res.send('NOT IMPLEMENTED: Remove document POST');
 
-  res.redirect('/documents');
+  // res.redirect('/documents');
 };
 
 exports.document_change_note_get = function(req, res) {

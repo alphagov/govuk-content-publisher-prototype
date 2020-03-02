@@ -122,6 +122,14 @@ exports.findByIdAndUpdate = function(document_id, data) {
     }
   }
 
+  if(data.document.withdrawn_notice !== undefined) {
+    documentData.withdrawn_notice = {};
+    if (data.document.withdrawn_notice.explanation !== undefined) {
+      documentData.withdrawn_notice.explanation = data.document.withdrawn_notice.explanation;
+      documentData.withdrawn_notice.withdrawn_at = new Date();
+    }
+  }
+
   documentData.updated_at = new Date();
 
   if (data.user.display_name !== undefined) {
@@ -138,6 +146,31 @@ exports.findByIdAndUpdate = function(document_id, data) {
   // write the JSON data
   fs.writeFileSync(filePath, fileData);
 
+};
+
+exports.findByIdAndUndoWithdrawal = function(document_id, data) {
+  if (!document_id)
+    return null;
+
+  let documentData = this.findById(document_id);
+
+  delete documentData.withdrawn_notice;
+
+  documentData.updated_at = new Date();
+
+  if (data.user.display_name !== undefined) {
+    documentData.updated_by = data.user.display_name;
+  } else {
+    documentData.updated_by = 'Unknown';
+  }
+
+  const filePath = directoryPath + '/' + documentData.content_id + '.json';
+
+  // create a JSON sting for the submitted data
+  const fileData = JSON.stringify(documentData);
+
+  // write the JSON data
+  fs.writeFileSync(filePath, fileData);
 };
 
 exports.findByIdAndUpdateNationalApplicability = function(document_id, data) {
