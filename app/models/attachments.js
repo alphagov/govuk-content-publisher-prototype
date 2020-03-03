@@ -205,14 +205,15 @@ exports.findByIdAndDelete = function(document_id, attachment_id) {
   fs.unlinkSync(filePath);
 
   // append the new file path to the index.js
-  let index
+  let index;
+
   try {
     index = fs.readFileSync(directoryPath + '/index.json');
   } catch (err) {
     // no index file
   }
   if (index) {
-    attachmentsOrder = JSON.parse(index)
+    attachmentsOrder = JSON.parse(index);
 
     const i = attachmentsOrder.indexOf(attachment_id + '.json');
     if (i > -1) {
