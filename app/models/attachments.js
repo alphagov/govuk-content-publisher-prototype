@@ -50,18 +50,28 @@ exports.save = function(document_id, data) {
   fs.writeFileSync(filePath, fileData);
 
   // append the new file path to the index.js
-  let index
+  let index;
+
+  // initalise an attachments order array
+  let attachmentsOrder = [];
+
   try {
     index = fs.readFileSync(directoryPath + '/index.json');
   } catch (err) {
     // no index file
   }
+
+  // parse the existing file order if exists
   if (index) {
-    attachmentsOrder = JSON.parse(index)
-    attachmentsOrder.push(fileName)
-    const indexFileData = JSON.stringify(attachmentsOrder);
-    fs.writeFileSync(directoryPath + '/index.json', indexFileData);
+    attachmentsOrder = JSON.parse(index);
   }
+
+  // push the new file to the end of the array
+  attachmentsOrder.push(fileName);
+
+  const indexFileData = JSON.stringify(attachmentsOrder);
+
+  fs.writeFileSync(directoryPath + '/index.json', indexFileData);
 
   return attachmentData;
 
@@ -236,8 +246,8 @@ exports.findByDocumentId = function(document_id) {
     fs.mkdirSync(directoryPath);
   }
 
-  let attachments = []
-  let index
+  let attachments = [];
+  let index;
 
   try {
     index = fs.readFileSync(directoryPath + '/index.json');
@@ -246,7 +256,7 @@ exports.findByDocumentId = function(document_id) {
   }
 
   if (index) {
-    attachments = JSON.parse(index)
+    attachments = JSON.parse(index);
   } else {
     attachments = fs.readdirSync(directoryPath,'utf8');
     // Only get JSON documents
