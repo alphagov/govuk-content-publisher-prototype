@@ -13,31 +13,62 @@
       chosenClass: "app-c-summary-list__row--chosen",
       dragClass: "app-c-summary-list__row--drag"
     })
+
+    moveDownButtons = attachmentsList.querySelectorAll('.js-down')
+    moveDownButtons.forEach((button, i) => {
+      button.addEventListener("click", function (e) {
+        e.preventDefault()
+        item = button.closest('.govuk-summary-list__row')
+        nextItem = item.closest('.govuk-summary-list__row').nextElementSibling
+        if (item && nextItem) {
+          item.parentNode.insertBefore(item, nextItem.nextElementSibling)
+        }
+      })
+    });
+
+    moveUpButtons = attachmentsList.querySelectorAll('.js-up')
+    moveUpButtons.forEach((button, i) => {
+      button.addEventListener("click", function (e) {
+        e.preventDefault()
+        item = button.closest('.govuk-summary-list__row')
+        previousItem = item.closest('.govuk-summary-list__row').previousElementSibling
+        if (item && previousItem) {
+          item.parentNode.insertBefore(item, previousItem)
+        }
+      })
+    });
   }
 
-  moveDownButtons = attachmentsList.querySelectorAll('.js-down')
-  moveDownButtons.forEach((button, i) => {
-    button.addEventListener("click", function (e) {
-      e.preventDefault()
-      item = button.closest('.govuk-summary-list__row')
-      nextItem = item.closest('.govuk-summary-list__row').nextElementSibling
-      if (item && nextItem) {
-        item.parentNode.insertBefore(item, nextItem.nextElementSibling)
-      }
-    })
-  });
+</script>
 
-  moveUpButtons = attachmentsList.querySelectorAll('.js-up')
-  moveUpButtons.forEach((button, i) => {
-    button.addEventListener("click", function (e) {
-      e.preventDefault()
-      item = button.closest('.govuk-summary-list__row')
-      previousItem = item.closest('.govuk-summary-list__row').previousElementSibling
-      if (item && previousItem) {
-        item.parentNode.insertBefore(item, previousItem)
+<script type="text/javascript">
+  var appliesToInset = document.querySelector('#applies-to-inset')
+  if (appliesToInset) {
+    var insetBody = appliesToInset.querySelector('.app-c-inset-prompt__body')
+    var allNations = document.querySelectorAll('input[type=checkbox]')
+    allNations.forEach((nation) => addEventListener('click', updateAppliesToInset))
+    updateAppliesToInset()
+  }
+
+  function updateAppliesToInset() {
+    var appliesToNations = []
+    var doesntApplyToNations = []
+    var checkedNations = document.querySelectorAll('input[type=checkbox]')
+
+    checkedNations.forEach((nation) => {
+      if (nation.checked) {
+        appliesToNations.push(nation.value)
+      } else {
+        doesntApplyToNations.push(nation.value)
       }
     })
-  });
+
+    var insetBodyText = "Applies to: " + appliesToNations.join(', ')
+    if (doesntApplyToNations.length) {
+      insetBodyText += " (see publication for " + doesntApplyToNations.join(', ') + ")"
+    }
+    insetBody.innerHTML = insetBodyText
+  }
 
 </script>
 

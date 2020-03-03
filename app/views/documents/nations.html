@@ -39,7 +39,7 @@
           },
           items: [
             {
-              value: "england",
+              value: "England",
               text: "England",
               conditional: {
                 html: govukInput({
@@ -62,7 +62,7 @@
               checked: true if document['details']['national_applicability']['england']['applicable'] == false
             },
             {
-              value: "northern_ireland",
+              value: "Northern Ireland",
               text: "Northern Ireland",
               conditional: {
                 html: govukInput({
@@ -85,7 +85,7 @@
               checked: true if document['details']['national_applicability']['northern_ireland']['applicable'] == false
             },
             {
-              value: "scotland",
+              value: "Scotland",
               text: "Scotland",
               conditional: {
                 html: govukInput({
@@ -108,7 +108,7 @@
               checked: true if document['details']['national_applicability']['scotland']['applicable'] == false
             },
             {
-              value: "wales",
+              value: "Wales",
               text: "Wales",
               conditional: {
                 html: govukInput({
@@ -134,6 +134,9 @@
         {{ appInsetPrompt({
           description: {
             text: "Applies to: England, Scotland and Wales (see publication for Northern Ireland)"
+          },
+          attributes: {
+            id: "applies-to-inset"
           }
         }) }}
 
