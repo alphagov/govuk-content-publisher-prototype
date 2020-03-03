@@ -37,7 +37,7 @@
         </div>
       </div>
 
-      <form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
+      <form action="{{ actions.save }}" accept-charset="UTF-8" method="post" novalidate>
 
         {%- set changeNote %}
           {% if document.document_type in ["corporate_report","decision","guidance","independent_report","international_treaty","national_statistics","notice","official_statistics","policy_paper","research_analysis","statutory_guidance","transparency_statistics"] %}

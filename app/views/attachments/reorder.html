@@ -38,7 +38,7 @@
           <div class="govuk-grid-column-full">
 
           {%- if attachments | length %}
-            <form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
+            <form action="{{ actions.save }}" accept-charset="UTF-8" method="post" novalidate>
               <dl {%- if attachments | length > 1 %} id="attachmentsList"{% endif -%} class="govuk-summary-list app-c-summary-list--sortable">
                 {%- for attachment in attachments %}
                   <div class="govuk-summary-list__row app-c-summary-list__row">
@@ -66,37 +66,6 @@
                   </div>
                 {% endfor -%}
               </dl>
-
-
-              <!-- {#%- for attachment in attachments %}
-
-                {%- call appAttachment({
-                  heading: {
-                    text: attachment.title if attachment.title | length else "Untitled attachment"
-                  },
-                  href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/preview',
-                  target: "_blank",
-                  metadata: {
-                    thumbnail: 'document'
-                  } if attachment.type == 'file'
-                }) %}
-
-                  {%- if attachments | length > 1 %}
-                    <div class="app-o-order-controls js-order-controls">
-                      {%- if not loop.first %}<button class="govuk-button app-c-button--secondary-quiet js-up">Up</button>{% endif %}
-                      {% if not loop.last %}<button class="govuk-button app-c-button--secondary-quiet js-down">Down</button>{% endif -%}
-                    </div>
-                  {% endif -%}
-
-                {% endcall -%}
-
-                {%- if loop.last %}
-                  <hr class="govuk-section-break govuk-section-break--l">
-                {% else %}
-                  <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
-                {% endif -%}
-
-              {% endfor -%#} -->
 
               {{ govukButton({
                 text: "Save attachment order"
