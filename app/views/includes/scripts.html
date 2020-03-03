@@ -46,7 +46,9 @@
   if (appliesToInset) {
     var insetBody = appliesToInset.querySelector('.app-c-inset-prompt__body')
     var allNations = document.querySelectorAll('input[type=checkbox]')
+    var allNationsUrl = document.querySelectorAll('input[type=text]')
     allNations.forEach((nation) => addEventListener('click', updateAppliesToInset))
+    allNationsUrl.forEach((nation) => addEventListener('change', updateAppliesToInset))
     updateAppliesToInset()
   }
 
@@ -62,14 +64,12 @@
     var appliesToNations = []
     var doesntApplyToNations = []
     var checkedNations = document.querySelectorAll('input[type=checkbox]')
-    // console.log(checkedNations);
     checkedNations.forEach((nation) => {
       if (nation.checked) {
-        // alternativeUrl = nation.closest('input[type=text]').value
-        // console.log(alternativeUrl);
-        // if (alternativeUrl) {
+        alternativeUrl = nation.parentNode.nextElementSibling.querySelector('input[type=text]').value
+        if (alternativeUrl) {
           doesntApplyToNations.push(nation.value.replace(/_/gi,' '))
-        // }
+        }
       } else {
         appliesToNations.push(nation.value.replace(/_/gi,' '))
       }
