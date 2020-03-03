@@ -50,22 +50,34 @@
     updateAppliesToInset()
   }
 
+  function titleCase(str) {
+    str = str.toLowerCase().split(' ');
+    for (var i = 0; i < str.length; i++) {
+      str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+    }
+    return str.join(' ');
+  }
+
   function updateAppliesToInset() {
     var appliesToNations = []
     var doesntApplyToNations = []
     var checkedNations = document.querySelectorAll('input[type=checkbox]')
-
+    // console.log(checkedNations);
     checkedNations.forEach((nation) => {
       if (nation.checked) {
-        appliesToNations.push(nation.value)
+        // alternativeUrl = nation.closest('input[type=text]').value
+        // console.log(alternativeUrl);
+        // if (alternativeUrl) {
+          doesntApplyToNations.push(nation.value.replace(/_/gi,' '))
+        // }
       } else {
-        doesntApplyToNations.push(nation.value)
+        appliesToNations.push(nation.value.replace(/_/gi,' '))
       }
     })
 
-    var insetBodyText = "Applies to: " + appliesToNations.join(', ')
+    var insetBodyText = "Applies to: " + titleCase(appliesToNations.join(', '))
     if (doesntApplyToNations.length) {
-      insetBodyText += " (see publication for " + doesntApplyToNations.join(', ') + ")"
+      insetBodyText += " (see publication for " + titleCase(doesntApplyToNations.join(', ')) + ")"
     }
     insetBody.innerHTML = insetBodyText
   }

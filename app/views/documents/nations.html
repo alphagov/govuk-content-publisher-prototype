@@ -39,11 +39,12 @@
           },
           items: [
             {
-              value: "England",
+              id: "national-applicability-england",
+              value: "england",
               text: "England",
               conditional: {
                 html: govukInput({
-                  id: "national-applicability-england",
+                  id: "national-applicability-england-url",
                   name: "document[details][national_applicability][england][alternative_url]",
                   label: {
                     text: "Alternative page address",
@@ -62,11 +63,12 @@
               checked: true if document['details']['national_applicability']['england']['applicable'] == false
             },
             {
-              value: "Northern Ireland",
+              id: "national-applicability-northern-ireland",
+              value: "northern_ireland",
               text: "Northern Ireland",
               conditional: {
                 html: govukInput({
-                  id: "national-applicability-northern-ireland",
+                  id: "national-applicability-northern-ireland-url",
                   name: "document[details][national_applicability][northern_ireland][alternative_url]",
                   label: {
                     text: "Alternative page address",
@@ -85,11 +87,12 @@
               checked: true if document['details']['national_applicability']['northern_ireland']['applicable'] == false
             },
             {
-              value: "Scotland",
+              id: "national-applicability-scotland",
+              value: "scotland",
               text: "Scotland",
               conditional: {
                 html: govukInput({
-                  id: "national-applicability-scotland",
+                  id: "national-applicability-scotland-url",
                   name: "document[details][national_applicability][scotland][alternative_url]",
                   label: {
                     text: "Alternative page address",
@@ -108,11 +111,12 @@
               checked: true if document['details']['national_applicability']['scotland']['applicable'] == false
             },
             {
-              value: "Wales",
+              id: "national-applicability-wales",
+              value: "wales",
               text: "Wales",
               conditional: {
                 html: govukInput({
-                  id: "national-applicability-wales",
+                  id: "national-applicability-wales-url",
                   name: "document[details][national_applicability][wales][alternative_url]",
                   label: {
                     text: "Alternative page address",
