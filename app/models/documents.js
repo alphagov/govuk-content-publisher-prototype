@@ -5,6 +5,7 @@ const uuid = require('uuid/v1');
 const Helpers = require('../helpers/helpers');
 const Governments = require('../models/governments');
 const Organisations = require('../models/organisations');
+const Schemas = require('../models/schemas');
 
 const directoryPath = path.join(__dirname, '../data/documents');
 
@@ -35,14 +36,17 @@ exports.save = function(data) {
 
   documentData.document_status = 'draft';
 
-  documentData.created_at = new Date();
-  documentData.created_by = data.user.display_name;
+  // get document schema eg. 'publication' for a given document type
+  documentData.document_schema = Schemas.findDocumentSchemaByType(documentData.document_type);
 
   // get political status of document creator's organisation
   documentData.political = Organisations.isPolitical(data.user.organisation);
 
   // get current government
   documentData.government = Governments.findGovernmentByDate(documentData.created_at);
+
+  documentData.created_at = new Date();
+  documentData.created_by = data.user.display_name;
 
   // create a JSON sting for the submitted data
   const fileData = JSON.stringify(documentData);
