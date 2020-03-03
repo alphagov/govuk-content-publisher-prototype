@@ -2,17 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const uuid = require('uuid/v1');
 
-function slugify(text) {
-
-  if (!text)
-    return null;
-
-  return text.toLowerCase()
-          .replace(/[^\w\s-]/g, '') // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
-          .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
-          .replace(/^-+|-+$/g, ''); // remove leading, trailing -
-
-}
+const Helpers = require('../helpers/helpers');
 
 // https://www.callicoder.com/node-js-express-mongodb-restful-crud-api-tutorial/
 
@@ -40,7 +30,7 @@ exports.save = function(document_id, data) {
   attachmentData.created_by = data.user.display_name;
 
   if (data.document.attachment.type === 'file') {
-    attachmentData.file = slugify(attachmentData.title);
+    attachmentData.file = Helpers.slugify(attachmentData.title);
   }
 
   // create a JSON sting for the submitted data
@@ -107,7 +97,7 @@ exports.findByIdAndUpdate = function(document_id, attachment_id, data) {
   }
 
   if (attachmentData.type === 'file') {
-    attachmentData.file = slugify(attachmentData.title);
+    attachmentData.file = Helpers.slugify(attachmentData.title);
   }
 
   if (attachmentData.type === 'html') {
@@ -233,6 +223,11 @@ exports.findByIdAndDelete = function(document_id, attachment_id) {
     fs.writeFileSync(directoryPath + '/index.json', indexFileData);
   }
 
+};
+
+exports.findByDocumentIdAndDelete = function(document_id) {
+  const directoryPath = path.join(__dirname, '../data/attachments/', document_id);
+  Helpers.deleteDirectoryRecursive(directoryPath);
 };
 
 // get array of all attachments for a document.
