@@ -52,7 +52,7 @@
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-full">
 
-            <form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
+            <form action="{{ actions.save }}" accept-charset="UTF-8" method="post" novalidate="novalidate">
 
               {%- call appContextualGuidance({
                 id: 'contextual-guidance-01',

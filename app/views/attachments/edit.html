@@ -52,7 +52,7 @@
         </div>
       </div>
 
-      <form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
+      <form action="{{ actions.save }}" accept-charset="UTF-8" method="post" novalidate="novalidate">
         <input type="hidden" name="document[attachment][type]" value="file">
 
         {%- if attachment.type == 'external' %}
