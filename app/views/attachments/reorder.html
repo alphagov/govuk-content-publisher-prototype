@@ -38,7 +38,7 @@
           <div class="govuk-grid-column-full">
 
           {%- if attachments | length %}
-            <form action="{{ actions.save }}" accept-charset="UTF-8" method="post" novalidate="novalidate">
+            <form action="{{ actions.save }}" accept-charset="UTF-8" method="post" novalidate>
               <dl {%- if attachments | length > 1 %} id="attachmentsList"{% endif -%} class="govuk-summary-list app-c-summary-list--sortable">
                 {%- for attachment in attachments %}
                   <div class="govuk-summary-list__row app-c-summary-list__row">

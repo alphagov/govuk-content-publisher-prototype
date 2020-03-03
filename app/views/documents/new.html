@@ -69,7 +69,7 @@
           New {{ (data.document_sub_type | documentType | lower) if data.document_sub_type else (data.document_type | documentType | lower | replace("foi","FOI")) }}
         </h1>
 
-        <form action="{{ actions.save }}" accept-charset="UTF-8" method="post" novalidate="novalidate">
+        <form action="{{ actions.save }}" accept-charset="UTF-8" method="post" novalidate>
 
           {%- call appContextualGuidance({
             id: 'contextual-guidance-title',
