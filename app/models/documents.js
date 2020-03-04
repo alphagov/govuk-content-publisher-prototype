@@ -5,7 +5,6 @@ const uuid = require('uuid/v1');
 const Helpers = require('../helpers/helpers');
 const Governments = require('../models/governments');
 const Organisations = require('../models/organisations');
-// const Schemas = require('../models/schemas');
 
 const directoryPath = path.join(__dirname, '../data/documents');
 
