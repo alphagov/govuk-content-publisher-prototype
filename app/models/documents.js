@@ -68,9 +68,9 @@ exports.find = function() {
   const documentsArray = [];
 
   documents.forEach(function (filename) {
-    let rawdata = fs.readFileSync(directoryPath + '/' + filename);
-    let docdata = JSON.parse(rawdata);
-    documentsArray.push(docdata);
+    let rawData = fs.readFileSync(directoryPath + '/' + filename);
+    let documentData = JSON.parse(rawData);
+    documentsArray.push(documentData);
   });
 
   return documentsArray;
