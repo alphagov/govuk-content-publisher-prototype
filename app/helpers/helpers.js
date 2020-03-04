@@ -2,11 +2,11 @@ const path = require('path');
 const fs = require('fs');
 
 const pathPrefixes = require('../data/document_type_path_prefixes.json');
-const schemas = require('../data/document_type_schemas.json');
+const documentSchemas = require('../data/document_type_schemas.json');
 
 exports.findDocumentSchemaByType = function(type) {
   if (!type) return null
-  let item = schemas.find( ({ document_type }) => document_type === type );
+  let item = documentSchemas.find( ({ document_type }) => document_type === type );
   return item.document_schema;
 }
 
