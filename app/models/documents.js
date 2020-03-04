@@ -35,14 +35,17 @@ exports.save = function(data) {
 
   documentData.document_status = 'draft';
 
-  documentData.created_at = new Date();
-  documentData.created_by = data.user.display_name;
+  // get document schema eg. 'publication' for a given document type
+  documentData.document_schema = Helpers.findDocumentSchemaByType(documentData.document_type);
 
   // get political status of document creator's organisation
   documentData.political = Organisations.isPolitical(data.user.organisation);
 
   // get current government
   documentData.government = Governments.findGovernmentByDate(documentData.created_at);
+
+  documentData.created_at = new Date();
+  documentData.created_by = data.user.display_name;
 
   // create a JSON sting for the submitted data
   const fileData = JSON.stringify(documentData);
@@ -64,9 +67,9 @@ exports.find = function() {
   const documentsArray = [];
 
   documents.forEach(function (filename) {
-    let rawdata = fs.readFileSync(directoryPath + '/' + filename);
-    let docdata = JSON.parse(rawdata);
-    documentsArray.push(docdata);
+    let rawData = fs.readFileSync(directoryPath + '/' + filename);
+    let documentData = JSON.parse(rawData);
+    documentsArray.push(documentData);
   });
 
   return documentsArray;
@@ -90,8 +93,10 @@ exports.findByIdAndUpdate = function(document_id, data) {
 
   let documentData = this.findById(document_id);
 
-  if (data.document.title !== undefined)
+  if (data.document.title !== undefined) {
     documentData.title = data.document.title;
+    documentData.base_path = Helpers.findPathPrefixByType(documentData.document_type) + '/' + Helpers.slugify(data.document.title);
+  }
 
   if (data.document.description !== undefined)
     documentData.description = data.document.description;
