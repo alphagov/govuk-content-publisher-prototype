@@ -224,9 +224,6 @@ exports.document_create_sub_type_get = function(req, res) {
 exports.document_create_get = function(req, res) {
   const documentData = Documents.save(req.session.data);
   const historyData = History.save(documentData);
-
-  // redirect the user back to the attachments page
-  // TODO: show flash message (success/failure)
   delete req.session.data.document;
   res.redirect('/documents/' + documentData.content_id + '/new');
 }
@@ -253,6 +250,7 @@ exports.document_new_get = function(req, res) {
 // Handle document create on POST.
 exports.document_new_post = function(req, res) {
   Documents.findByIdAndUpdate(req.params.document_id, req.session.data);
+  delete req.session.data.document;
   req.flash('success', 'Document saved');
   res.redirect('/documents/' + req.params.document_id);
 };
@@ -402,7 +400,7 @@ exports.document_review_post = function(req, res) {
 
   delete req.session.data.document;
 
-  req.flash('success', 'Document reviewed');
+  req.flash('success', 'Document submitted for review');
 
   res.redirect('/documents/' + req.params.document_id);
 };
