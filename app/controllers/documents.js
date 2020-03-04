@@ -275,6 +275,7 @@ exports.document_delete_post = function(req, res) {
   Documents.findByIdAndDelete(req.params.document_id);
   History.findByDocumentIdAndDelete(req.params.document_id);
   Attachments.findByDocumentIdAndDelete(req.params.document_id);
+  delete req.session.data.document;
   req.flash('success', 'Document deleted');
   res.redirect('/documents');
 };
@@ -295,6 +296,7 @@ exports.document_update_get = function(req, res) {
 // Handle document update on POST.
 exports.document_update_post = function(req, res) {
   Documents.findByIdAndUpdate(req.params.document_id, req.session.data);
+  delete req.session.data.document;
   req.flash('success', 'Document saved');
   res.redirect('/documents/' + req.params.document_id);
 };
@@ -314,6 +316,7 @@ exports.document_political_update_get = function(req, res) {
 
 exports.document_political_update_post = function(req, res) {
   Documents.findByIdAndUpdate(req.params.document_id, req.session.data);
+  delete req.session.data.document;
   req.flash('success', 'Gets history mode updated');
   res.redirect('/documents/' + req.params.document_id);
 };
@@ -374,6 +377,8 @@ exports.document_new_edition_post = function(req, res) {
 
   Documents.findByIdAndUpdate(req.params.document_id, data);
 
+  delete req.session.data.document;
+
   req.flash('success', 'New edition created');
 
   res.redirect('/documents/' + req.params.document_id);
@@ -395,6 +400,8 @@ exports.document_review_post = function(req, res) {
 
   Documents.findByIdAndUpdate(req.params.document_id, data);
 
+  delete req.session.data.document;
+
   req.flash('success', 'Document reviewed');
 
   res.redirect('/documents/' + req.params.document_id);
@@ -415,6 +422,8 @@ exports.document_approve_post = function(req, res) {
 
   Documents.findByIdAndUpdate(req.params.document_id, data);
 
+  delete req.session.data.document;
+
   req.flash('success', 'Document approved');
 
   res.redirect('/documents/' + req.params.document_id);
@@ -434,7 +443,9 @@ exports.document_schedule_get = function(req, res) {
 
 exports.document_schedule_post = function(req, res) {
   // res.send('NOT IMPLEMENTED: Schedule document POST');
-
+  // Documents.findByIdAndUpdate();
+  // delete req.session.data.document;
+  // req.flash('success', 'Document scheduled for publishing');
   res.redirect('/documents/' + req.params.document_id);
 };
 
@@ -450,7 +461,9 @@ exports.document_stop_schedule_get = function(req, res) {
 
 exports.document_stop_schedule_post = function(req, res) {
   res.send('NOT IMPLEMENTED: Stop schedule document POST');
-
+  // Documents.findByIdAndUpdate();
+  // delete req.session.data.document;
+  // req.flash('success', 'Document scheduled publishing stopped');
   // res.redirect('/documents/' + req.params.document_id);
 };
 
@@ -508,6 +521,7 @@ exports.document_delete_draft_get = function(req, res) {
 };
 
 exports.document_delete_draft_post = function(req, res) {
+  delete req.session.data.document;
   req.flash('success', 'Document draft deleted');
   res.redirect('/documents');
 };
@@ -526,6 +540,7 @@ exports.document_withdraw_get = function(req, res) {
 
 exports.document_withdraw_post = function(req, res) {
   Documents.findByIdAndUpdate(req.params.document_id, req.session.data);
+  delete req.session.data.document;
   req.flash('success', 'Document withdrawn');
   res.redirect('/documents/' + req.params.document_id);
 };
@@ -544,6 +559,7 @@ exports.document_undo_withdraw_get = function(req, res) {
 
 exports.document_undo_withdraw_post = function(req, res) {
   Documents.findByIdAndUndoWithdrawal(req.params.document_id, req.session.data);
+  delete req.session.data.document;
   req.flash('success', 'Document unwithdrawn');
   res.redirect('/documents/' + req.params.document_id);
 };
@@ -598,6 +614,7 @@ exports.document_nations_get = function(req, res) {
 
 exports.document_nations_post = function(req, res) {
   Documents.findByIdAndUpdateNationalApplicability(req.params.document_id, req.session.data);
+  delete req.session.data.document;
   req.flash('success', 'Nations covered updated');
   res.redirect('/documents/' + req.params.document_id);
 };
