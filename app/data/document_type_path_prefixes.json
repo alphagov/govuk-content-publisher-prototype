@@ -1,0 +1,138 @@
+[
+  {
+    "document_type": "authored_article",
+    "path_prefix": "/government/speeches"
+  },
+  {
+    "document_type": "case_study",
+    "path_prefix": "/government/case-studies"
+  },
+  {
+    "document_type": "consultation",
+    "path_prefix": "/government/consultations"
+  },
+  {
+    "document_type": "corporate_report",
+    "path_prefix": "/government/publication"
+  },
+  {
+    "document_type": "correspondence",
+    "path_prefix": "/government/publication"
+  },
+  {
+    "document_type": "decision",
+    "path_prefix": "/government/publication"
+  },
+  {
+    "document_type": "detailed_guide",
+    "path_prefix": "/guidance"
+  },
+  {
+    "document_type": "fatality_notice",
+    "path_prefix": "/government/fatalities"
+  },
+  {
+    "document_type": "foi_release",
+    "path_prefix": "/government/publication"
+  },
+  {
+    "document_type": "form",
+    "path_prefix": "/government/publication"
+  },
+  {
+    "document_type": "impact_assessment",
+    "path_prefix": "/government/publication"
+  },
+  {
+    "document_type": "independent_report",
+    "path_prefix": "/government/publication"
+  },
+  {
+    "document_type": "international_treaty",
+    "path_prefix": "/government/publication"
+  },
+  {
+    "document_type": "mainstream_guide",
+    "path_prefix": "/government/publication"
+  },
+  {
+    "document_type": "manual",
+    "path_prefix": "/government/publication"
+  },
+  {
+    "document_type": "map",
+    "path_prefix": "/government/publication"
+  },
+  {
+    "document_type": "national_statistics",
+    "path_prefix": "/government/publication"
+  },
+  {
+    "document_type": "news_story",
+    "path_prefix": "/government/news"
+  },
+  {
+    "document_type": "non_statutory_guidance",
+    "path_prefix": "/government/publication"
+  },
+  {
+    "document_type": "notice",
+    "path_prefix": "/government/publication"
+  },
+  {
+    "document_type": "official_statistics",
+    "path_prefix": "/government/publication"
+  },
+  {
+    "document_type": "oral_statement",
+    "path_prefix": "/government/speeches"
+  },
+  {
+    "document_type": "policy_paper",
+    "path_prefix": "/government/publication"
+  },
+  {
+    "document_type": "press_release",
+    "path_prefix": "/government/news"
+  },
+  {
+    "document_type": "promotional_material",
+    "path_prefix": "/government/publication"
+  },
+  {
+    "document_type": "regulation",
+    "path_prefix": "/government/publication"
+  },
+  {
+    "document_type": "research_analysis",
+    "path_prefix": "/government/publication"
+  },
+  {
+    "document_type": "specialist_notice",
+    "path_prefix": "/government/publication"
+  },
+  {
+    "document_type": "speech",
+    "path_prefix": "/government/speeches"
+  },
+  {
+    "document_type": "statistical_dataset",
+    "path_prefix": "/government/statistical-data-sets"
+  },
+  {
+    "document_type": "statistics_announcement",
+    "path_prefix": "/government/statistics"
+  },
+  {
+    "document_type": "statutory_guidance",
+    "path_prefix": "/government/publication"
+  },
+  {
+    "document_type": "transparency",
+    "path_prefix": "/government/publication"
+  },
+  {
+    "document_type": "written_statement",
+    "path_prefix": "/government/speeches"
+  }
+]

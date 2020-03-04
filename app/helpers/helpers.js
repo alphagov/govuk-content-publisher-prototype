@@ -1,6 +1,21 @@
 const path = require('path');
 const fs = require('fs');
 
+const pathPrefixes = require('../data/document_type_path_prefixes.json');
+const schemas = require('../data/document_type_schemas.json');
+
+exports.findDocumentSchemaByType = function(type) {
+  if (!type) return null
+  let item = schemas.find( ({ document_type }) => document_type === type );
+  return item.document_schema;
+}
+
+exports.findPathPrefixByType = function(type) {
+  if (!type) return null
+  let item = pathPrefixes.find( ({ document_type }) => document_type === type );
+  return item.path_prefix;
+}
+
 exports.paginate = function(array, page_size, page_number) {
   --page_number; // because pages logically start with 1, but technically with 0
   return array.slice(page_number * page_size, (page_number + 1) * page_size);
