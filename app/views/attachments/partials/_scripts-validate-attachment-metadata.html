@@ -1,0 +1,47 @@
+<script type="text/javascript">
+  var validator = new GOVUKPublishingFrontend.FormValidator(document.forms[0]);
+  validator.addValidator('official-document', [{
+    method: function(field) {
+      return field.value.trim().length > 0;
+    },
+    message: 'Choose the type of official document'
+  }]);
+  validator.addValidator('attachment-isbn', [{
+    method: function(field) {
+      var valid = true;
+      var regex = /^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$/;
+      if (field.value.trim().length) {
+        valid = regex.test(field.value);
+      }
+      return valid;
+    },
+    message: 'Enter a valid ISBN'
+  }]);
+</script>
+
+
+<!-- validator.addValidator('official-document', [{
+  method: function(field, params) {
+    var valid = true;
+    if (params.radioButton1.checked) {
+      console.log('command paper hello');
+    }
+    return valid;
+  },
+  params: {
+    radioButton1 = document.getElementById('official-document-command-paper')
+  },
+  message: 'Select type of official document'
+},{
+  method: function(field, params) {
+    var valid = true;
+    if (params.radioButton2.checked) {
+      console.log('command paper hello');
+    }
+    return valid;
+  },
+  params: {
+    radioButton2 = document.getElementById('official-document-house-of-commons-paper')
+  },
+  message: 'Select type of official document'
+}]); -->

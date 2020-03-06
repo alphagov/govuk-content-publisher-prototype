@@ -25,6 +25,14 @@
 
 {% endcall -%}
 
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+  {{ appUrlPreview({
+    path: document.base_path + "/" + (attachment.base_path if attachment.base_path)
+  }) }}
+  </div>
+</div>
+
 {% set bodyGuidanceHtml %}
   {% include "./_guidance-body-text.html" %}
 {% endset %}
@@ -52,7 +60,7 @@
       items: [
         {
           element: "button",
-          text: "Attachment",
+          text: "Attachment links" if document.document_schema == 'publication' else "Attachments",
           type: "button",
           name: "attachment",
           attributes: {
@@ -114,35 +122,17 @@
   <div class="govuk-grid-column-two-thirds">
     {{ govukCheckboxes({
       idPrefix: "attachment-unnumbered-headings",
-      name: "document[attachment][unnumbered_headings]",
+      name: "document[attachment][numbered_headings]",
       items: [
         {
           value: "yes",
-          text: "Remove numbers in headings",
+          text: "Add numbers to headings",
           hint: {
-            text: "Headings in HTML attachments are numbered by default. Tick the box to choose unnumbered headings or to include a different numbering system."
+            text: "Headings in HTML attachments are not numbered by default. Tick the box to choose numbered headings."
           },
-          checked: true if attachment.unnumbered_headings == "yes"
+          checked: true if attachment.numbered_headings == "yes"
         }
       ]
     }) }}
   </div>
 </div>
-
-{#%- set headingGuidanceHtml %}
-<p class="govuk-body">Manually number your headings using your own numbering scheme.</p>
-<ul class="govuk-list">
-  <li>## 1. First heading</li>
-  <li>### 1.1 First sub-heading</li>
-  <li>### Unnumbered sub-heading</li>
-  <li>### 1.2 Second sub-heading</li>
-  <li>### Unnumbered sub-heading</li>
-  <li>### Unnumbered sub-heading</li>
-  <li>## 2. Second heading</li>
-</ul>
-{% endset -%#}
-
-{#{ govukDetails({
-  summaryText: "[HEADING NUMBERS GUIDANCE]",
-  html: headingGuidanceHtml
-}) }#}

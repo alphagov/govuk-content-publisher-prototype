@@ -11,6 +11,7 @@
   {% include "./partials/_scripts-contextual-guidance.html" %}
   {% include "./partials/_scripts-toolbar-dropdown.html" %}
   {% include "./partials/_scripts-modal-dialogue.html" %}
+  {% include "./partials/_scripts-validate-html-attachment.html" %}
 {% endif -%}
 {% endblock %}
 
@@ -26,6 +27,8 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
+
+      {% include "./partials/_error-summary-block.html" %}
 
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">

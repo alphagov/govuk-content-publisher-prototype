@@ -54,9 +54,9 @@
     }
   }) }}
 
-  <p class="govuk-body">Or</p>
+  <!-- <p class="govuk-body">Or</p> -->
 
-  {{ govukCheckboxes({
+  {#{ govukCheckboxes({
     idPrefix: "attachment-unnumbered-act",
     name: "document[attachment][unnumbered_act]",
     items: [
@@ -66,7 +66,7 @@
         checked: true if attachment.unnumbered_act == "yes"
       }
     ]
-  }) }}
+  }) }#}
 
   {{ govukSelect({
     id: "attachment-parliamentary-session",
@@ -219,6 +219,11 @@
         html: house_of_commons_paper_html
       },
       checked: true if attachment.official_document == "yes_house_of_commons_paper"
+    },
+    {
+      value: "yes_unnumbered_act_paper",
+      text: "Yes, this is an unnumbered act paper",
+      checked: true if attachment.official_document == "yes_unnumbered_act_paper"
     },
     {
       value: "no",

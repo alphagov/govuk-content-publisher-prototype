@@ -1,6 +1,10 @@
 <!-- Javascript -->
 <script src="/public/javascripts/jquery-1.11.3.js"></script>
 
+<script src="/public/javascripts/namespace.js"></script>
+<script src="/public/javascripts/helpers.js"></script>
+<script src="/public/javascripts/components/form-validator.js"></script>
+
 {% for scriptUrl in extensionConfig.scripts %}
   <script src="{{scriptUrl}}"></script>
 {% endfor %}
