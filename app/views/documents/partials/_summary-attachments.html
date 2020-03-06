@@ -27,7 +27,7 @@
           {{ loop.index }}
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ attachment.title }}
+          {{ attachment.title if attachment.title | length else "Untitled attachment" }}
           {% if attachment.type == 'external' %}<p class="govuk-body-s">{{ attachment.url }}</p>{% endif -%}
           {% if attachment.type == 'file' %}
             <p class="govuk-body-s">
