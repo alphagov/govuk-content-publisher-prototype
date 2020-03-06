@@ -139,16 +139,21 @@ exports.findByIdAndUpdateDetails = function(document_id, attachment_id, data) {
   if (attachmentData.official_document === 'yes_command_paper') {
 
     attachmentData.cpn = data.document.attachment.cpn;
-    attachmentData.unnumbered = data.document.attachment.unnumbered;
-
-    if (attachmentData.cpn.length || attachmentData.unnumbered === undefined) {
-      attachmentData.unnumbered = '';
-    }
 
     // clear the house of commons paper fields
     attachmentData.hcpn = '';
     attachmentData.parliamentary_session = '';
-    attachmentData.unnumbered_act = '';
+
+  }
+
+  if (attachmentData.official_document === 'yes_unnumbered_command_paper' || attachmentData.official_document === 'yes_unnumbered_act_paper') {
+
+    // clear the command paper number
+    attachmentData.cpn = '';
+
+    // clear the house of commons paper fields
+    attachmentData.hcpn = '';
+    attachmentData.parliamentary_session = '';
 
   }
 
@@ -156,28 +161,22 @@ exports.findByIdAndUpdateDetails = function(document_id, attachment_id, data) {
 
     attachmentData.hcpn = data.document.attachment.hcpn;
     attachmentData.parliamentary_session = data.document.attachment.parliamentary_session;
-    attachmentData.unnumbered_act = data.document.attachment.unnumbered_act;
 
-    if (attachmentData.hcpn.length || attachmentData.unnumbered_act === undefined) {
-      attachmentData.unnumbered_act = '';
-    }
-
-    // clear the command paper fields
+    // clear the command paper field
     attachmentData.cpn = '';
-    attachmentData.unnumbered = '';
 
   }
 
-  if (attachmentData.official_document === 'yes_command_paper' || attachmentData.official_document === 'yes_house_of_commons_paper') {
+  const officialTypes = ['yes_command_paper','yes_unnumbered_command_paper','yes_house_of_commons_paper','yes_unnumbered_act_paper'];
+
+  if (officialTypes.indexOf(attachmentData.official_document) !== -1) {
     attachmentData.order_url = "https://www.gov.uk/guidance/how-to-buy-printed-copies-of-official-documents";
   }
 
   if (attachmentData.official_document === 'no') {
     attachmentData.cpn = '';
-    attachmentData.unnumbered = '';
     attachmentData.hcpn = '';
     attachmentData.parliamentary_session = '';
-    attachmentData.unnumbered_act = '';
     attachmentData.order_url = '';
   }
 
