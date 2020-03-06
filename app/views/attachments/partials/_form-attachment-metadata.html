@@ -18,9 +18,9 @@
     }
   }) }}
 
-  <p class="govuk-body">Or</p>
+  <!-- <p class="govuk-body">Or</p> -->
 
-  {{ govukCheckboxes({
+  {#{ govukCheckboxes({
     idPrefix: "attachment-unnumbered",
     name: "document[attachment][unnumbered]",
     items: [
@@ -30,7 +30,7 @@
         checked: true if attachment.unnumbered == "yes"
       }
     ]
-  }) }}
+  }) }#}
 
 {% endset -%}
 
@@ -190,6 +190,8 @@
 
 {% endset -%}
 
+<!-- id: "official-document", -->
+
 {{ govukRadios({
   idPrefix: "official-document",
   name: "document[attachment][official_document]",
@@ -205,12 +207,18 @@
   },
   items: [
     {
+      id: "official-document",
       value: "yes_command_paper",
       text: "Yes, this is a command paper",
       conditional: {
         html: command_paper_html
       },
       checked: true if attachment.official_document == "yes_command_paper"
+    },
+    {
+      value: "yes_unnumbered_command_paper",
+      text: "Yes, this is an unnumbered command paper",
+      checked: true if attachment.official_document == "yes_unnumbered_command_paper"
     },
     {
       value: "yes_house_of_commons_paper",
