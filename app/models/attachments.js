@@ -33,6 +33,10 @@ exports.save = function(document_id, data) {
     attachmentData.file = Helpers.slugify(attachmentData.title);
   }
 
+  if (data.document.attachment.type === 'html') {
+    attachmentData.base_path = Helpers.slugify(attachmentData.title);
+  }
+
   // create a JSON sting for the submitted data
   const fileData = JSON.stringify(attachmentData);
 
@@ -101,8 +105,9 @@ exports.findByIdAndUpdate = function(document_id, attachment_id, data) {
   }
 
   if (attachmentData.type === 'html') {
-    attachmentData.unnumbered_headings = data.document.attachment.unnumbered_headings;
+    attachmentData.numbered_headings = data.document.attachment.numbered_headings;
     attachmentData.body = data.document.attachment.body;
+    attachmentData.base_path = Helpers.slugify(attachmentData.title);
   }
 
   attachmentData.updated_at = new Date();
