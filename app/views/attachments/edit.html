@@ -6,7 +6,11 @@
 {% endblock %}
 
 {% block pageScripts %}
-{%- if attachment.type == 'html' %}
+{%- if attachment.type == 'external' %}
+  {% include "./partials/_scripts-validate-external-link.html" %}
+{%- elif attachment.type == 'file' %}
+  {% include "./partials/_scripts-validate-file-attachment.html" %}
+{%- elif attachment.type == 'html' %}
   {% include "./partials/_scripts-markdown-editor.html" %}
   {% include "./partials/_scripts-contextual-guidance.html" %}
   {% include "./partials/_scripts-toolbar-dropdown.html" %}
@@ -46,7 +50,7 @@
         {%- if attachment.type == 'external' %}
           <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-              {% include "./partials/_form-external-attachment.html" %}
+              {% include "./partials/_form-external-link.html" %}
             </div>
           </div>
         {% endif -%}

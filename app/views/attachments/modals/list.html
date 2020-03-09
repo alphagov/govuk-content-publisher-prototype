@@ -43,11 +43,12 @@
               {% if item.content_id != attachment.content_id %}
 
               <div class="govuk-summary-list__row app-c-summary-list__row">
-                <!-- <dt class="govuk-summary-list__key">
-                  {{ item.title if item.title | length else "Untitled attachment" }}
-                </dt> -->
                 <dd class="govuk-summary-list__value">
-                  <p class="govuk-body govuk-!-font-weight-bold">{{ item.title if item.title | length else "Untitled attachment" }}</p>
+                  <h2 class="govuk-heading-s">
+                    <a class="govuk-link govuk-link--no-visited-state" href="/documents/{{ document.content_id}}/attachments/{{ item.content_id }}/preview">
+                    {{ item.title if item.title | length else "Untitled attachment" }}
+                    </a>
+                  </h2>
                   <p class="govuk-body-s">
                     {% if item.isbn | length or item.urn | length or item.cpn | length or item.hcpn | length %}Ref:{% endif %}
                     {% if item.isbn | length %}
@@ -74,11 +75,11 @@
                 <dd class="govuk-summary-list__actions">
                   <a class="app-c-button govuk-button" role="button" href="#">Insert as link</a>
                 </dd>
-                {#%- if document.document_schema == 'news' %#}
+                {%- if document.document_schema == 'news' %}
                 <dd class="govuk-summary-list__actions">
                   <a class="app-c-button govuk-button govuk-button--secondary" role="button" href="#">Insert as attachment</a>
                 </dd>
-                {#% endif -%#}
+                {% endif -%}
               </div>
               {% endif -%}
 

@@ -1,0 +1,95 @@
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="official-document-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+      Is this an official document?
+    </legend>
+    <span id="official-document-hint" class="govuk-hint">
+      ‘Official documents’ have been laid in Parliament. Check if your document contains ‘presented to Parliament’.
+    </span>
+    <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="document[attachment][official_document]" name="document[attachment][official_document]" type="radio" value="yes_command_paper" data-aria-controls="conditional-document-attachment-official-document">
+        <label class="govuk-label govuk-radios__label" for="document[attachment][official_document]">
+          Yes, this is a command paper
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-document-attachment-official-document">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-!-font-weight-bold" for="attachment-cpn">
+            Command paper number
+          </label>
+          <span id="attachment-cpn-hint" class="govuk-hint">
+            Include the command paper number or tick ‘unnumbered’. This document will show in the <a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/official-documents" target="_blank">official document finder</a>.
+          </span>
+          <input class="govuk-input govuk-!-width-one-half" id="attachment-cpn" name="document[attachment][cpn]" type="text" aria-describedby="attachment-cpn-hint" autocomplete="off" autocapitalize="off">
+        </div>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="official-document-2" name="document[attachment][official_document]" type="radio" value="yes_unnumbered_command_paper">
+        <label class="govuk-label govuk-radios__label" for="official-document-2">
+          Yes, this is an unnumbered command paper
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="official-document-3" name="document[attachment][official_document]" type="radio" value="yes_house_of_commons_paper" aria-controls="conditional-official-document-3" aria-expanded="false">
+        <label class="govuk-label govuk-radios__label" for="official-document-3">
+          Yes, this is a House of Commons paper
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-official-document-3">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-!-font-weight-bold" for="attachment-hcpn">
+            House of Commons paper number
+          </label>
+          <span id="attachment-hcpn-hint" class="govuk-hint">
+            Include the House of Commons number or tick ‘unnumbered act paper’. This document will show in the <a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/official-documents" target="_blank">official document finder</a>.
+          </span>
+          <input class="govuk-input govuk-!-width-one-half" id="attachment-hcpn" name="document[attachment][hcpn]" type="text" aria-describedby="attachment-hcpn-hint" autocomplete="off" autocapitalize="off">
+        </div>
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-!-font-weight-bold" for="attachment-parliamentary-session">
+            Parliamentary session
+          </label>
+          <span id="attachment-parliamentary-session-hint" class="govuk-hint">
+            For official publications, select the parliamentary session when the publication was laid in Parliament.
+          </span>
+          <select class="govuk-select govuk-!-width-one-half" id="attachment-parliamentary-session" name="document[attachment][parliamentary_session]" aria-describedby="attachment-parliamentary-session-hint">
+            <option value=""></option>
+            <option value="2020-21">2020-21</option>
+            <option value="2019-20">2019-20</option>
+            <option value="2017-19">2017-19</option>
+            <option value="2016-17">2016-17</option>
+            <option value="2015-16">2015-16</option>
+            <option value="2014-15">2014-15</option>
+            <option value="2013-17">2013-17</option>
+            <option value="2012-13">2012-13</option>
+            <option value="2010-12">2010-12</option>
+            <option value="2009-10">2009-10</option>
+            <option value="2008-09">2008-09</option>
+            <option value="2007-08">2007-08</option>
+            <option value="2006-07">2006-07</option>
+            <option value="2005-06">2005-06</option>
+            <option value="2004-05">2004-05</option>
+            <option value="2003-04">2003-04</option>
+            <option value="2002-03">2002-03</option>
+            <option value="2001-02">2001-02</option>
+            <option value="2000-01">2000-01</option>
+            <option value="1999-2000">1999-2000</option>
+          </select>
+        </div>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="official-document-4" name="document[attachment][official_document]" type="radio" value="yes_unnumbered_act_paper">
+        <label class="govuk-label govuk-radios__label" for="official-document-4">
+          Yes, this is an unnumbered act paper
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="official-document-5" name="document[attachment][official_document]" type="radio" value="no">
+        <label class="govuk-label govuk-radios__label" for="official-document-5">
+          No, this document has not been laid in Parliament
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
