@@ -29,7 +29,8 @@ GOVUKPublishingFrontend.FormValidator.prototype.resetTitle = function() {
 };
 
 GOVUKPublishingFrontend.FormValidator.prototype.updateTitle = function() {
-  document.title = "" + this.errors.length + " errors - " + document.title;
+  var text = this.errors.length > 1 ? ' errors - ' : ' error - ';
+  document.title = this.errors.length + text + document.title;
 };
 
 GOVUKPublishingFrontend.FormValidator.prototype.showSummary = function () {
@@ -83,10 +84,10 @@ GOVUKPublishingFrontend.FormValidator.prototype.showInlineError = function (erro
   var errorSpanId = error.fieldName + '-error';
   var errorSpan = '<span class="govuk-error-message" id="'+ errorSpanId +'">'+this.escapeHtml(error.message)+'</span>';
   var control = $("#" + error.fieldName);
-  var fieldContainer = control.parents(".govuk-form-group");
+  var fieldContainer = control.parents('.govuk-form-group');
   var label = fieldContainer.find('label');
-  var legend = fieldContainer.find("legend");
-  var fieldset = fieldContainer.find("fieldset");
+  var legend = fieldContainer.find('legend');
+  var fieldset = fieldContainer.find('fieldset');
   fieldContainer.addClass('govuk-form-group--error');
   if(legend.length) {
     legend.after(errorSpan);
@@ -109,7 +110,7 @@ GOVUKPublishingFrontend.FormValidator.prototype.removeInlineErrors = function() 
 
 GOVUKPublishingFrontend.FormValidator.prototype.removeInlineError = function(error) {
   var control = $("#" + error.fieldName);
-  var fieldContainer = control.parents(".govuk-form-group");
+  var fieldContainer = control.parents('.govuk-form-group');
   fieldContainer.find('.govuk-error-message').remove();
   fieldContainer.removeClass('govuk-form-group--error');
   fieldContainer.find("[aria-invalid]").attr('aria-invalid', 'false');
