@@ -86,7 +86,7 @@
               {%- call appAttachmentActions({
                 items: [
                   {
-                    text: 'Edit ' + ('link' if attachment.type == 'external' else 'attachment'),
+                    text: ('Change link' if attachment.type == 'external' else ('Change file' if attachment.type == 'file' else 'Edit attachment')),
                     href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/update'
                   },
                   {
