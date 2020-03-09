@@ -6,6 +6,7 @@
     },
     message: 'Choose the type of official document'
   }]);
+
   validator.addValidator('attachment-isbn', [{
     method: function(field) {
       var valid = true;
@@ -18,30 +19,3 @@
     message: 'Enter a valid ISBN'
   }]);
 </script>
-
-
-<!-- validator.addValidator('official-document', [{
-  method: function(field, params) {
-    var valid = true;
-    if (params.radioButton1.checked) {
-      console.log('command paper hello');
-    }
-    return valid;
-  },
-  params: {
-    radioButton1 = document.getElementById('official-document-command-paper')
-  },
-  message: 'Select type of official document'
-},{
-  method: function(field, params) {
-    var valid = true;
-    if (params.radioButton2.checked) {
-      console.log('command paper hello');
-    }
-    return valid;
-  },
-  params: {
-    radioButton2 = document.getElementById('official-document-house-of-commons-paper')
-  },
-  message: 'Select type of official document'
-}]); -->

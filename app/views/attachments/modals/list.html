@@ -7,7 +7,7 @@
     <div class="govuk-grid-column-full">
 
       <div class="govuk-grid-row govuk-!-margin-bottom-8">
-        <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-grid-column-full">
 
           <h1 class="govuk-heading-l">
             Attachments {{ 'for ‘' + document.title + '’' if document.title | length }}
@@ -37,49 +37,53 @@
               {% endif -%}
             </p>
 
+            <dl class="govuk-summary-list">
             {%- for item in attachments %}
 
               {% if item.content_id != attachment.content_id %}
 
-                {%- call appAttachmentActions({
-                  items: [
-                    {
-                      text: 'Insert attachment as link',
-                      href: '#'
-                    }
-                  ] if item.content_id != attachment.content_id
-                }) %}
+              <div class="govuk-summary-list__row app-c-summary-list__row">
+                <!-- <dt class="govuk-summary-list__key">
+                  {{ item.title if item.title | length else "Untitled attachment" }}
+                </dt> -->
+                <dd class="govuk-summary-list__value">
+                  <p class="govuk-body govuk-!-font-weight-bold">{{ item.title if item.title | length else "Untitled attachment" }}</p>
+                  <p class="govuk-body-s">
+                    {% if item.isbn | length or item.urn | length or item.cpn | length or item.hcpn | length %}Ref:{% endif %}
+                    {% if item.isbn | length %}
+                      ISBN {{ item.isbn }}
+                    {%- endif -%}
+                    {%- if item.urn | length %}
+                      {%- if item.isbn | length %},{% endif %}
+                      {{ item.urn }}
+                    {%- endif -%}
+                    {%- if item.cpn | length %}
+                      {%- if item.urn | length %},{% endif %}
+                      CP {{ item.cpn }}
+                    {%- endif -%}
+                    {%- if item.hcpn | length %}
+                      {%- if item.cpn | length %},{% endif %}
+                      HC {{ item.hcpn }} {{ item.parliamentary_session }}
+                    {% endif %}
+                  </p>
+                  {%- if item.type == 'external' %}
+                    <p class="govuk-body-s">{{ item.url }}</p>
+                  {% endif -%}
 
-                  {% call appAttachment({
-                    heading: {
-                      text: item.title if item.title | length else "Untitled attachment"
-                    },
-                    href: item.url if item.type == 'external' else '/documents/' + item.document_id + '/attachments/' + item.content_id + '/preview',
-                    target: "_blank",
-                    references: {
-                      isbn: item.isbn,
-                      urn: item.urn,
-                      cpn: item.cpn,
-                      hcpn: item.hcpn,
-                      parliamentary_session: item.parliamentary_session
-                    },
-                    metadata: {
-                      contentType: 'text/html' if item.type == 'html' else ('application/pdf' if item.type == 'file'),
-                      thumbnail: 'document' if item.type in ['file','html']
-                    }
-                  }) %}
-
-                    {%- if item.type == 'external' %}
-                      <p class="govuk-body-s">{{ item.url }}</p>
-                    {% endif -%}
-
-                  {% endcall %}
-
-                {% endcall -%}
-
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="app-c-button govuk-button" role="button" href="#">Insert as link</a>
+                </dd>
+                {#%- if document.document_schema == 'news' %#}
+                <dd class="govuk-summary-list__actions">
+                  <a class="app-c-button govuk-button govuk-button--secondary" role="button" href="#">Insert as attachment</a>
+                </dd>
+                {#% endif -%#}
+              </div>
               {% endif -%}
 
             {% endfor -%}
+            </dl>
 
           {% else %}
 
