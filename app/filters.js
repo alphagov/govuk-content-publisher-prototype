@@ -345,6 +345,16 @@ module.exports = function (env) {
   }
 
   /* ------------------------------------------------------------------
+    utility function to test validity of URL
+    example: {{ "http://www.google.com" | isValidUrl }}
+    outputs:
+  ------------------------------------------------------------------ */
+  filters.isValidISBN = function(str) {
+    var pattern = new RegExp('/^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$/','i'); // fragment locator
+    return !!pattern.test(str);
+  }
+
+  /* ------------------------------------------------------------------
     utility function to return a list from array
     example: {{ ["England","Scotland","Wales"] | arrayToList }}
     outputs: England, Scotland and Wales

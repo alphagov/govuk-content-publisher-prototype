@@ -13,12 +13,15 @@
 }) %}
 
   {{ govukTextarea({
-    id: "title",
+    id: "attachment-title",
     name: "document[attachment][title]",
     label: {
       text: "Title",
       classes: "govuk-!-font-weight-bold"
     },
+    errorMessage: {
+      text: "Enter a title"
+    } if errors and "title" in errors,
     rows: 2,
     value: attachment.title if attachment.title
   }) }}
@@ -56,6 +59,9 @@
       text: "Body",
       classes: "govuk-!-font-weight-bold"
     },
+    errorMessage: {
+      text: "Enter body text"
+    } if errors and "body" in errors,
     insertMenu: appToolbarDropdown({
       items: [
         {

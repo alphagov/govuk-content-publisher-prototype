@@ -31,6 +31,8 @@ exports.save = function(document_id, data) {
 
   if (data.document.attachment.type === 'file') {
     attachmentData.file = Helpers.slugify(attachmentData.title);
+  } else {
+    attachmentData.file = '';
   }
 
   if (data.document.attachment.type === 'html') {
@@ -102,6 +104,8 @@ exports.findByIdAndUpdate = function(document_id, attachment_id, data) {
 
   if (attachmentData.type === 'file') {
     attachmentData.file = Helpers.slugify(attachmentData.title);
+  } else {
+    attachmentData.file = '';
   }
 
   if (attachmentData.type === 'html') {

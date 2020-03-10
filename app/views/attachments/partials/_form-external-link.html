@@ -17,6 +17,9 @@
   hint: {
     text: "Use the full title of the document."
   },
+  errorMessage: {
+    text: "Enter a title"
+  } if errors and "title" in errors,
   value: attachment.title if attachment.title,
   attributes: {
     "autocomplete": "off",
@@ -34,6 +37,9 @@
   hint: {
     text: "Include the whole URL (starting with http)."
   },
+  errorMessage: {
+    text: "Enter a valid URL"
+  } if errors and "url" in errors,
   value: attachment.url if attachment.url,
   attributes: {
     "autocomplete": "off",

@@ -23,7 +23,10 @@
   },
   hint: {
     text: "Upload a file to replace the current attachment."
-  } if attachment.file | length
+  } if attachment.file | length,
+  errorMessage: {
+    text: "Upload a file"
+  } if errors and "file" in errors
 }) }}
 
 {{ govukInput({
@@ -36,6 +39,9 @@
   hint: {
     text: "Use the full title of the document."
   },
+  errorMessage: {
+    text: "Enter a title"
+  } if errors and "title" in errors,
   value: attachment.title if attachment.title,
   attributes: {
     "autocomplete": "off",

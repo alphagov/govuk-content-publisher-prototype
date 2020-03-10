@@ -1,0 +1,41 @@
+<!-- <div tabindex="-1" role="group" id="errorSummary" class="govuk-error-summary app-hidden" aria-labelledby="error-summary-title" data-module="error-summary">
+
+</div> -->
+{{attachment|dump|safe}}
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: "Enter a title",
+      href: "#attachment-title"
+    } if "title" in errors,
+    {
+      text: "Enter some body content",
+      href: "#body"
+    } if "body" in errors,
+    {
+      text: "Upload a file",
+      href: "#attachment-file"
+    } if "file" in errors,
+    {
+      text: "Choose if this is an official document",
+      href: "#official-document"
+    } if "official_document" in errors,
+    {
+      text: "Enter the command paper number",
+      href: "#attachment-cpn"
+    } if "cpn" in errors,
+    {
+      text: "Enter the House of Commons paper number",
+      href: "#attachment-hcpn"
+    } if "hcpn" in errors,
+    {
+      text: "Select the parliamentary session",
+      href: "#attachment-parliamentary-session"
+    } if "parliamentary_session" in errors,
+    {
+      text: "Enter a valid ISBN",
+      href: "#attachment-isbn"
+    } if "isbn" in errors
+  ]
+}) if errors }}
