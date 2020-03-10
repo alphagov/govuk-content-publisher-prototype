@@ -1,0 +1,29 @@
+{%- set descriptionHtml %}
+<!-- <ul class="govuk-list app-c-inset-prompt__list">
+  {%- if not document.title | length %}
+    <li><a class="govuk-link govuk-link--no-visited-state" href="/documents/{{ document.content_id }}/content">Enter a title</a></li>
+  {% endif -%}
+  {%- if not document.description | length %}
+    <li><a class="govuk-link govuk-link--no-visited-state" href="/documents/{{ document.content_id }}/content">Enter a summary</a></li>
+  {% endif -%}
+  {%- if not document.details.body | length %}
+    <li><a class="govuk-link govuk-link--no-visited-state" href="/documents/{{ document.content_id }}/content">Enter a body</a></li>
+  {% endif -%}
+  {#%- if not document.topics | length %}
+    <li><a class="govuk-link govuk-link--no-visited-state" href="/documents/{{ document.content_id }}/topics">Add a topic</a></li>
+  {% endif -%#}
+</ul> -->
+Attachment ‘Simon’ is missing <a href="#">details</a><br>
+Attachment ‘Simon’ is missing <a href="#">something</a> and <a href="#">details</a><br>
+<a href="#">Attachment ‘Simon’ is missing page 1 stuff</a><br>
+<a href="#">Attachment ‘Simon’ is missing page 2 stuff</a>
+{% endset -%}
+
+{{ appInsetPrompt({
+  title: {
+    text: '[MISSING INFORMATION]'
+  },
+  description: {
+    html: descriptionHtml
+  }
+}) }}

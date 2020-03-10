@@ -42,10 +42,10 @@
 
               {% if item.content_id != attachment.content_id %}
 
-              <div class="govuk-summary-list__row app-c-summary-list__row">
+              <div class="govuk-summary-list__row">
                 <dd class="govuk-summary-list__value">
                   <h2 class="govuk-heading-s">
-                    <a class="govuk-link govuk-link--no-visited-state" href="/documents/{{ document.content_id}}/attachments/{{ item.content_id }}/preview">
+                    <a class="govuk-link govuk-link--no-visited-state" href="/documents/{{ document.content_id}}/attachments/{{ item.content_id }}/preview" title="Preview attachment" target="_blank">
                     {{ item.title if item.title | length else "Untitled attachment" }}
                     </a>
                   </h2>
@@ -60,7 +60,7 @@
                     {%- endif -%}
                     {%- if item.cpn | length %}
                       {%- if item.urn | length %},{% endif %}
-                      CP {{ item.cpn }}
+                      {{ item.cpn }}
                     {%- endif -%}
                     {%- if item.hcpn | length %}
                       {%- if item.cpn | length %},{% endif %}
@@ -70,7 +70,6 @@
                   {%- if item.type == 'external' %}
                     <p class="govuk-body-s">{{ item.url }}</p>
                   {% endif -%}
-
                 </dd>
                 <dd class="govuk-summary-list__actions">
                   <a class="app-c-button govuk-button" role="button" href="#">Insert as link</a>

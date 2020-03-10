@@ -42,6 +42,8 @@
             Attachments for ‘{{ document.title if document.title | length else "Untitled document"}}’
           </h1>
 
+          {% include "./partials/_banner-missing-information.html" %}
+
           <p class="govuk-body">Publications have a summary page that must link to an HTML attachment, a file attachment, or a document hosted on an external website.</p>
 
           {{ appButtonMenu({
