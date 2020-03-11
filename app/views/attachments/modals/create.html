@@ -1,0 +1,51 @@
+
+{% extends "layout-modal.html" %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: actions.back
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      {% include "../partials/_error-summary-message.html" %}
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">
+            {{ 'Add external link to' if data.type == 'external' else ('Upload file attachment to' if data.type == 'file' else 'Create HTML attachment for') }} ‘{{ document.title }}’
+          </h1>
+
+        </div>
+      </div>
+
+      <form action="{{ actions.save }}" accept-charset="UTF-8" method="post" novalidate>
+
+        {%- if data.type == 'file' %}
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              {% include "../partials/_form-file-attachment.html" %}
+            </div>
+          </div>
+        {% endif -%}
+
+        {{ govukButton({
+          text: "Save"
+        }) }}
+
+      </form>
+
+      <p class="govuk-body">
+        <a class="govuk-link" href="{{ actions.back }}">Cancel</a>
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}

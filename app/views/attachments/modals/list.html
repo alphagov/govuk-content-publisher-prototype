@@ -13,7 +13,26 @@
             Attachments {{ 'for ‘' + document.title + '’' if document.title | length }}
           </h1>
 
-          {% if attachments | length %}
+          {%- if document.document_schema == 'news' %}
+
+            {%- if not attachments | length %}
+              <p class="govuk-body">No attachments have been added to this document.</p>
+            {% endif -%}
+
+            {{ appButtonMenu({
+              items: [
+                {
+                  text: 'Upload file attachment',
+                  classes: 'govuk-button',
+                  href: actions.add_file
+                }
+              ],
+              classes: "govuk-!-margin-bottom-8"
+            }) }}
+
+          {% endif -%}
+
+          {%- if attachments | length %}
 
             <p class="govuk-body govuk-!-margin-bottom-8">
               {% if attachments | length == 1 %}
@@ -87,8 +106,12 @@
 
           {% else %}
 
-            <p class="govuk-body">No attachments have been added to this document. You can only insert an attachment that has already been added.</p>
-            <p class="govuk-body">To add an attachment, save your changes and go to the attachments section.</p>
+            {%- if document.document_schema == 'publication' %}
+
+              <p class="govuk-body">No attachments have been added to this document. You can only insert an attachment that has already been added.</p>
+              <p class="govuk-body">To add an attachment, save your changes and go to the attachments section.</p>
+
+            {% endif -%}
 
           {% endif -%}
 

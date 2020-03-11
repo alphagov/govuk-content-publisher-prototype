@@ -42,7 +42,9 @@
             Attachments for ‘{{ document.title if document.title | length else "Untitled document"}}’
           </h1>
 
-          {% include "./partials/_banner-missing-information.html" %}
+          {%- if document.document_schema == 'publication' %}
+            {% include "./partials/_banner-missing-information.html" %}
+          {% endif -%}
 
           <p class="govuk-body">Publications have a summary page that must link to an HTML attachment, a file attachment, or a document hosted on an external website.</p>
 
@@ -52,7 +54,7 @@
                 text: 'Create HTML attachment',
                 classes: 'govuk-button',
                 href: actions.add_html
-              },
+              } if document.document_schema == 'publication',
               {
                 text: 'Upload file attachment',
                 classes: 'govuk-button',
@@ -62,7 +64,7 @@
                 text: 'Add external link',
                 classes: 'govuk-button',
                 href: actions.add_external
-              }
+              } if document.document_schema == 'publication'
             ]
           }) }}
 

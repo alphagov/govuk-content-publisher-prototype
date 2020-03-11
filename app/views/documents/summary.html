@@ -103,7 +103,9 @@
 
           {% include "./partials/_banner-required-fields.html" %}
 
-          {% include "./partials/_banner-missing-attachment-information.html" %}
+          {%- if document.document_schema == 'publication' %}
+            {% include "./partials/_banner-missing-attachment-information.html" %}
+          {% endif -%}
 
           {% include "./partials/_summary-content.html" %}
 

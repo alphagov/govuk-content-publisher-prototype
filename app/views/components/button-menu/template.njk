@@ -1,5 +1,5 @@
 {%- from "govuk/components/button/macro.njk" import govukButton %}
-
+{%- if params.items | length %}
 <div class="app-c-button-menu {{- ' ' + params.classes if params.classes }}" {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
   <div class="app-c-button-menu__wrapper">
     {%- for item in params.items %}
@@ -15,7 +15,8 @@
           disabled: item.disabled,
           attributes: item.attributes,
           preventDoubleClick: items.preventDoubleClick
-        }) }}
+        }) if item | length }}
     {% endfor -%}
   </div>
 </div>
+{% endif -%}
