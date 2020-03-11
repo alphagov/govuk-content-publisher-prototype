@@ -11,9 +11,7 @@
       html: 'Include the command paper number. This document will show in the <a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/official-documents" target="_blank">official document finder</a>.'
     },
     value: attachment.cpn if attachment.cpn,
-    errorMessage: {
-      text: "Enter the command paper number"
-    } if errors and "cpn" in errors,
+    errorMessage: errors | getErrorMessage('cpn'),
     classes: "govuk-!-width-one-half",
     attributes: {
       "autocomplete": "off",
@@ -36,9 +34,7 @@
       html: 'Include the House of Commons number. This document will show in the <a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/official-documents" target="_blank">official document finder</a>.'
     },
     value: attachment.hcpn if attachment.hcpn,
-    errorMessage: {
-      text: "Enter the House of Commons paper number"
-    } if errors and "hcpn" in errors,
+    errorMessage: errors | getErrorMessage('hcpn'),
     classes: "govuk-!-width-one-half",
     attributes: {
       "autocomplete": "off",
@@ -70,9 +66,7 @@
     hint: {
       text: "For official publications, select the parliamentary session when the publication was laid in Parliament."
     },
-    errorMessage: {
-      text: "Select the parliamentary session"
-    } if errors and "parliamentary_session" in errors,
+    errorMessage: errors | getErrorMessage('parliamentary_session'),
     classes: "govuk-!-width-one-half",
     items: [
       {
@@ -200,9 +194,7 @@
   hint: {
     html: '‘Official documents’ have been laid in Parliament. Check if your document contains ‘presented to Parliament’.'
   },
-  errorMessage: {
-    text: "Choose if this is an official document"
-  } if errors and "official_document" in errors,
+  errorMessage: errors | getErrorMessage('official_document'),
   items: [
     {
       value: "yes_command_paper",
@@ -248,9 +240,7 @@
   hint: {
     text: "Add the International Standard Book Number (ISBN) if there is one."
   },
-  errorMessage: {
-    text: "Enter a valid ISBN"
-  } if errors and "isbn" in errors,
+  errorMessage: errors | getErrorMessage('isbn'),
   value: attachment.isbn if attachment.isbn,
   classes: "govuk-!-width-one-half",
   attributes: {
@@ -277,6 +267,7 @@
   hint: {
     text: "Add your organisation’s own reference if it has one."
   },
+  errorMessage: errors | getErrorMessage('urn'),
   value: attachment.urn if attachment.urn,
   classes: "govuk-!-width-one-half",
   attributes: {

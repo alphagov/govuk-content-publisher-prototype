@@ -124,8 +124,6 @@ exports.attachment_create_post = function(req, res) {
 
   }
 
-
-
 };
 
 // Display attachment update form on GET.

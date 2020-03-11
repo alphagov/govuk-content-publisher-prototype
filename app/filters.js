@@ -345,8 +345,8 @@ module.exports = function (env) {
   }
 
   /* ------------------------------------------------------------------
-    utility function to test validity of URL
-    example: {{ "http://www.google.com" | isValidUrl }}
+    utility function to test validity of ISBN
+    example: {{ 978-123456789 | isValidISBN }}
     outputs:
   ------------------------------------------------------------------ */
   filters.isValidISBN = function(str) {
@@ -369,6 +369,22 @@ module.exports = function (env) {
     }
 
     return last;
+  }
+
+  /* ------------------------------------------------------------------
+    utility function to
+    example: {{ errors | arrayToList }}
+    outputs: England, Scotland and Wales
+  ------------------------------------------------------------------ */
+  filters.getErrorMessage = function(array, fieldName) {
+    if (!array || !fieldName)
+      return null;
+
+    let error = array.filter( (obj) =>
+      obj.fieldName == fieldName
+    )[0];
+
+    return error;
   }
 
 
