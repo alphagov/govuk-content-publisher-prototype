@@ -332,7 +332,7 @@ module.exports = function (env) {
   /* ------------------------------------------------------------------
     utility function to test validity of URL
     example: {{ "http://www.google.com" | isValidUrl }}
-    outputs:
+    outputs: true
   ------------------------------------------------------------------ */
   filters.isValidUrl = function(str) {
     var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
@@ -346,8 +346,16 @@ module.exports = function (env) {
 
   /* ------------------------------------------------------------------
     utility function to test validity of ISBN
-    example: {{ 978-123456789 | isValidISBN }}
-    outputs:
+    example: {{ 978-0-596-52068-7 | isValidISBN }}
+    outputs: true
+
+    Valid inputs:
+      ISBN 978-0-596-52068-7
+      ISBN-13: 978-0-596-52068-7
+      978 0 596 52068 7
+      9780596520687
+      ISBN-10 0-596-52068-9
+      0-596-52068-9
   ------------------------------------------------------------------ */
   filters.isValidISBN = function(str) {
     var pattern = new RegExp('/^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$/','i'); // fragment locator
@@ -372,9 +380,9 @@ module.exports = function (env) {
   }
 
   /* ------------------------------------------------------------------
-    utility function to
-    example: {{ errors | arrayToList }}
-    outputs: England, Scotland and Wales
+    utility function to get an error for a component
+    example: {{ errors | getErrorMessage('title') }}
+    outputs: "Enter a title"
   ------------------------------------------------------------------ */
   filters.getErrorMessage = function(array, fieldName) {
     if (!array || !fieldName)
@@ -386,7 +394,6 @@ module.exports = function (env) {
 
     return error;
   }
-
 
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
