@@ -6,7 +6,12 @@
 {% endblock %}
 
 {% block pageScripts %}
-
+<script src="/public/javascripts/components/initial-focus.js"></script>
+<script type="text/javascript">
+  var $element = $('#success-message');
+  var initialFocus = new GOVUK.Modules.InitialFocus();
+  initialFocus.start($element);
+</script>
 {% endblock %}
 
 {% block beforeContent %}
@@ -28,6 +33,7 @@
             html: message.success
           },
           attributes: {
+            "id": "success-message",
             "data-module": "initial-focus",
             "role": "alert",
             "tabindex": "-1"
