@@ -1,9 +1,11 @@
 {%- set descriptionHtml %}
 {% set showPrompt = false %}
+{% set count = 0 %}
 <ul class="govuk-list app-c-inset-prompt__list">
   {%- for attachment in attachments %}
     {%- if not attachment.official_document %}
       {% set showPrompt = true %}
+      {% set count = count + 1 %}
       <li><a class="govuk-link govuk-link--no-visited-state" href="/documents/{{ document.content_id }}/attachments/{{ attachment.content_id }}/update-details">{{ attachment.title }} is missing details</a></li>
     {% endif -%}
   {% endfor -%}
@@ -12,7 +14,7 @@
 
 {{ appInsetPrompt({
   title: {
-    text: 'There is a problem with your attachments'
+    text: "There is a problem with one of your attachments" if (count == 1) else "There is a problem with your attachments"
   },
   description: {
     html: descriptionHtml
