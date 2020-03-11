@@ -71,10 +71,6 @@ router.get('/documents/:document_id', checkIsAuthenticated, document_controller.
 // GET request for one Document.
 router.get('/documents/:document_id/history', checkIsAuthenticated, document_controller.document_history_get);
 
-// HACK: to load document from session data
-// router.get('/documents/:document_id/load', checkIsAuthenticated, document_controller.document_load);
-
-
 
 router.get('/documents/:document_id/content', checkIsAuthenticated, document_controller.document_update_get);
 router.post('/documents/:document_id/content', checkIsAuthenticated, document_controller.document_update_post);
