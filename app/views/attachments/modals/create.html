@@ -19,7 +19,8 @@
         <div class="govuk-grid-column-two-thirds">
 
           <h1 class="govuk-heading-l">
-            {{ 'Add external link to' if data.type == 'external' else ('Upload file attachment to' if data.type == 'file' else 'Create HTML attachment for') }} ‘{{ document.title }}’
+            Upload file attachment
+            <!-- {#{ 'Add external link to' if data.type == 'external' else ('Upload file attachment to' if data.type == 'file' else 'Create HTML attachment for') }#} ‘{{ document.title }}’ -->
           </h1>
 
         </div>
@@ -27,23 +28,25 @@
 
       <form action="{{ actions.save }}" accept-charset="UTF-8" method="post" novalidate>
 
-        {%- if data.type == 'file' %}
-          <div class="govuk-grid-row">
-            <div class="govuk-grid-column-two-thirds">
+        {#%- if data.type == 'file' %#}
+          <!-- <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds"> -->
               {% include "../partials/_form-file-attachment.html" %}
-            </div>
-          </div>
-        {% endif -%}
+            <!-- </div>
+          </div> -->
+        {#% endif -%#}
 
         {{ govukButton({
-          text: "Save"
+          text: "Upload"
         }) }}
 
       </form>
 
-      <p class="govuk-body">
-        <a class="govuk-link" href="{{ actions.back }}">Cancel</a>
-      </p>
+      {%- if actions.back | length %}
+        <p class="govuk-body">
+          <a class="govuk-link" href="{{ actions.back }}">Cancel</a>
+        </p>
+      {% endif -%}
 
     </div>
   </div>

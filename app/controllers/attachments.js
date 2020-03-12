@@ -33,14 +33,29 @@ exports.attachment_list = function(req, res) {
 
     } else {
 
-      res.render('../views/attachments/modals/list', {
-        document: documentData,
-        attachments: attachmentListData,
-        message: flashMessage,
-        actions: {
-          add_file: '/documents/' + req.params.document_id + '/attachments/modal/create?type=file'
-        }
-      });
+      if (attachmentListData.length) {
+
+        res.render('../views/attachments/modals/list', {
+          document: documentData,
+          attachments: attachmentListData,
+          message: flashMessage,
+          actions: {
+            add_file: '/documents/' + req.params.document_id + '/attachments/modal/create?type=file'
+          }
+        });
+
+      } else {
+
+        res.render('../views/attachments/modals/create', {
+          document: documentData,
+          actions: {
+            save: '/documents/' + req.params.document_id + '/attachments/modal/create'
+          }
+        });
+
+      }
+
+
 
     }
 
