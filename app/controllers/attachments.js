@@ -79,14 +79,6 @@ exports.attachment_list = function(req, res) {
 // Display detail page for a specific book.
 exports.attachment_detail = function(req, res) {
   res.send('NOT IMPLEMENTED: Attachment detail');
-  // res.render('../views/attachments/show', {
-  //   attachment: Attachments.findById(req.params.document_id, req.params.attachment_id),
-  //   actions: {
-  //     back: '/documents/' + req.params.document_id + '/attachments',
-  //     edit: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id,
-  //     delete: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/delete'
-  //   }
-  // });
 };
 
 // Display attachment create form on GET.
@@ -457,7 +449,6 @@ exports.attachment_preview = function(req, res) {
 
 // Download attachment on GET.
 exports.attachment_download = function(req, res) {
-  // res.send('NOT IMPLEMENTED: attachment download');
   res.download(path.join(__dirname, '../data/attachments/attachment.pdf'));
 };
 
