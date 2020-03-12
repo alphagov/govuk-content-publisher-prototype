@@ -120,15 +120,17 @@
                     {{ appAttachmentActions({
                       items: [
                         {
-                          text: "Edit file",
-                          href: "/documents/" + document.content_id + "/attachments/" + item.content_id + "/modal/update"
+                          text: "Change file",
+                          href: "/documents/" + document.content_id + "/attachments/" + item.content_id + "/modal/update",
+                          classes: 'govuk-link--no-visited-state'
                         },
                         {
-                          text: "Download file",
-                          href: "/documents/" + document.content_id + "/attachments/" + item.content_id + "/download"
+                          text: "Download",
+                          href: "/documents/" + document.content_id + "/attachments/" + item.content_id + "/download",
+                          classes: 'govuk-link--no-visited-state'
                         },
                         {
-                          text: "Delete file",
+                          text: "Delete attachment",
                           href: "/documents/" + document.content_id + "/attachments/" + item.content_id + "/modal/delete",
                           classes: 'app-link--destructive'
                         }

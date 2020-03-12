@@ -97,15 +97,18 @@
                 items: [
                   {
                     text: ('Change link' if attachment.type == 'external' else ('Change file' if attachment.type == 'file' else 'Edit attachment')),
-                    href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/update'
+                    href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/update',
+                    classes: 'govuk-link--no-visited-state'
                   },
                   {
                     text: 'Edit details',
-                    href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/update-details'
+                    href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/update-details',
+                    classes: 'govuk-link--no-visited-state'
                   },
                   {
                     text: 'Download',
                     href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/download',
+                    classes: 'govuk-link--no-visited-state',
                     attributes: {
                       "download": "attachment.pdf"
                     }
