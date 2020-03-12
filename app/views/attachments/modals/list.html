@@ -50,7 +50,7 @@
                   href: actions.add_file
                 }
               ],
-              classes: "govuk-!-margin-bottom-8"
+              classes: "govuk-!-margin-bottom-4"
             }) }}
 
           {% endif -%}
@@ -112,15 +112,38 @@
                   {%- if item.type == 'external' %}
                     <p class="govuk-body-s">{{ item.url }}</p>
                   {% endif -%}
+                  {%- if item.type == 'file' %}
+                    <p class="govuk-body-s">PDF, 1.25MB, 25 pages</p>
+                  {% endif -%}
+
+                  {%- if document.document_schema == 'news' %}
+                    {{ appAttachmentActions({
+                      items: [
+                        {
+                          text: "Edit file",
+                          href: "/documents/" + document.content_id + "/attachments/" + item.content_id + "/modal/update"
+                        },
+                        {
+                          text: "Download file",
+                          href: "/documents/" + document.content_id + "/attachments/" + item.content_id + "/download"
+                        },
+                        {
+                          text: "Delete file",
+                          href: "/documents/" + document.content_id + "/attachments/" + item.content_id + "/modal/delete",
+                          classes: 'app-link--destructive'
+                        }
+                      ],
+                      classes: "govuk-!-margin-top-4 govuk-!-padding-bottom-0"
+                    }) }}
+                  {% endif -%}
+
                 </dd>
-                <dd class="govuk-summary-list__actions">
-                  <a class="app-c-button govuk-button" role="button" href="#">Insert as link</a>
+                <dd class="govuk-summary-list__actions app-c-summary-list__actions--modal">
+                  <a class="govuk-button app-c-button app-c-button--summary-action" role="button" href="#">Insert as link</a>
+                  {%- if document.document_schema == 'news' %}
+                    <a class="govuk-button govuk-button--secondary app-c-button app-c-button--summary-action" role="button" href="#">Insert as attachment</a>
+                  {% endif -%}
                 </dd>
-                {%- if document.document_schema == 'news' %}
-                <dd class="govuk-summary-list__actions">
-                  <a class="app-c-button govuk-button govuk-button--secondary" role="button" href="#">Insert as attachment</a>
-                </dd>
-                {% endif -%}
               </div>
               {% endif -%}
 

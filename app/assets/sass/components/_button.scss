@@ -110,3 +110,14 @@ $app-quiet-button-hover-colour: darken($app-quiet-button-colour, 5%);
     content: none;
   }
 }
+
+.app-c-button--summary-action {
+  display: inline-block;
+  white-space: nowrap;
+  margin-right: govuk-spacing(2);
+  margin-bottom: govuk-spacing(2);
+  width: auto; // Override GDS’s 100% width
+  &:last-child {
+    margin-right: 0;
+  }
+}

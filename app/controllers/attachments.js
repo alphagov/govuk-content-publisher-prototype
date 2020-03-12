@@ -387,13 +387,27 @@ exports.attachment_delete_get = function(req, res) {
 
   const attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
 
-  res.render('../views/attachments/delete', {
-    attachment: attachmentData,
-    actions: {
-      back: '/documents/' + req.params.document_id + '/attachments',
-      delete: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/delete'
-    }
-  });
+  if (req.path.includes('/modal/')) {
+
+    res.render('../views/attachments/modals/delete', {
+      attachment: attachmentData,
+      actions: {
+        back: '/documents/' + req.params.document_id + '/attachments/modal/',
+        delete: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/modal/delete'
+      }
+    });
+
+  } else {
+
+    res.render('../views/attachments/delete', {
+      attachment: attachmentData,
+      actions: {
+        back: '/documents/' + req.params.document_id + '/attachments',
+        delete: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/delete'
+      }
+    });
+
+  }
 
 };
 
@@ -405,8 +419,13 @@ exports.attachment_delete_post = function(req, res) {
   // set flash message (success/failure)
   req.flash('success', 'Attachment deleted');
 
-  // redirect the user back to the attachments page
-  res.redirect('/documents/' + req.params.document_id + '/attachments');
+  if (req.path.includes('/modal/')) {
+    // redirect the user back to the attachments page
+    res.redirect('/documents/' + req.params.document_id + '/attachments/modal/');
+  } else {
+    // redirect the user back to the attachments page
+    res.redirect('/documents/' + req.params.document_id + '/attachments');
+  }
 
 };
 

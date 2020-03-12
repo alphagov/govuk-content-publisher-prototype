@@ -5,7 +5,7 @@
 {{ govukBackLink({
   text: "Back",
   href: actions.back
-}) }}
+}) if actions.back | length }}
 {% endblock %}
 
 {% block content %}
