@@ -33,7 +33,7 @@ exports.attachment_list = function(req, res) {
 
     } else {
 
-      if (attachmentListData.length) {
+      if (documentData.document_schema == 'publication' || attachmentListData.length) {
 
         res.render('../views/attachments/modals/list', {
           document: documentData,
@@ -54,8 +54,6 @@ exports.attachment_list = function(req, res) {
         });
 
       }
-
-
 
     }
 
