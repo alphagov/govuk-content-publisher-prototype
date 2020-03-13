@@ -45,7 +45,7 @@
     text: 'Writing content'
   },
   description: {
-    html: bodyGuidanceHtml
+    text: "Use short words, short sentences and short paragraphs. Use subheadings."
   }
 }) %}
 
@@ -131,7 +131,7 @@
           value: "yes",
           text: "Add numbers to headings",
           hint: {
-            text: "Headings in HTML attachments are not numbered by default. Tick the box to choose numbered headings."
+            text: "Headings in HTML attachments are unnumbered by default."
           },
           checked: true if attachment.numbered_headings == "yes"
         }
