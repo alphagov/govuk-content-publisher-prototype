@@ -57,7 +57,7 @@
 
           {%- if attachments | length %}
 
-            <p class="govuk-body govuk-!-margin-bottom-8">
+            <p class="govuk-body govuk-!-margin-bottom-4">
               {% if attachments | length == 1 %}
                 <!-- One attachment -->
                 {% if attachment.content_id and attachment.content_id == attachments[0].content_id %}
@@ -68,7 +68,7 @@
                   {%- if document.document_schema == 'publication' %}
                     You can add a link to this attachment in the body of the content.
                   {% else %}
-                    You can add a link to or insert this attachment in the body of the content.
+                    You can add a link to this attachment in the body of the content or insert the attachment.
                   {% endif -%}
                 {% endif -%}
               {% else %}
@@ -81,11 +81,48 @@
                   {%- if document.document_schema == 'publication' %}
                     You can add a link to one of these attachments in the body of the content.
                   {% else %}
-                    You can add a link to or insert one of these attachments in the body of the content.
+                    You can add a link to one of these attachments in the body of the content or insert one of the attachments.
                   {% endif -%}
                 {% endif -%}
               {% endif -%}
             </p>
+
+            {%- if document.document_schema == 'news' %}
+
+              {%- set previewHtml %}
+
+                {{ appAttachment({
+                  heading: {
+                    text: "Preview of insert as attachment"
+                  },
+                  metadata: {
+                    contentType: 'application/pdf',
+                    pageCount: 25,
+                    fileSize: 1234567,
+                    thumbnail: 'document'
+                  }
+                }) }}
+
+                <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+                <p class="govuk-body">
+                  <a class="govuk-link" href="#">Preview of insert as link</a> (PDF, 1.2 MB, 25 pages)
+                </p>
+
+              {% endset -%}
+
+              <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                  {{ govukDetails({
+                    summaryText: "Compare the options for displaying attachments",
+                    html: previewHtml
+                  }) }}
+                </div>
+              </div>
+
+            {% endif -%}
+
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
 
             <dl class="govuk-summary-list">
             {%- for item in attachments %}
