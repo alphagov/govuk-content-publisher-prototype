@@ -62,7 +62,7 @@
                 <!-- One attachment -->
                 {% if attachment.content_id and attachment.content_id == attachments[0].content_id %}
                   <!-- Current attachment -->
-                  You’re editing ‘{{ attachment.title }}’. There are no other attachments added to this document. You can only insert an attachment that has already been added.
+                  You’re editing ‘{{ attachment.title }}’.<br><br>There are no other attachments added to this document. You can only insert an attachment that has already been added.
                 {% else %}
                   <!-- Not current attachment -->
                   {%- if document.document_schema == 'publication' %}
@@ -75,7 +75,7 @@
                 <!-- Many attcachments -->
                 {%- if attachment.content_id | length %}
                   <!-- Current attachment -->
-                  You’re editing ‘{{ attachment.title }}’. You can add a link to the other {{ 'attachment' if attachments | length == 2 else 'attachments' }} in the body of the content.
+                  You’re editing ‘{{ attachment.title }}’.<br><br>You can add a link to the other {{ 'attachment' if attachments | length == 2 else 'attachments' }} in the body of the content.
                 {% else %}
                   <!-- Not current attachment -->
                   {%- if document.document_schema == 'publication' %}
