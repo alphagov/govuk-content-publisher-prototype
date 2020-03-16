@@ -27,13 +27,7 @@
 
       <form action="{{ actions.save }}" accept-charset="UTF-8" method="post" novalidate>
 
-        {#%- if data.type == 'file' %#}
-          <!-- <div class="govuk-grid-row">
-            <div class="govuk-grid-column-two-thirds"> -->
-              {% include "../partials/_form-file-attachment.html" %}
-            <!-- </div>
-          </div> -->
-        {#% endif -%#}
+        {% include "../partials/_form-file-attachment.html" %}
 
         {{ govukButton({
           text: "Upload"
