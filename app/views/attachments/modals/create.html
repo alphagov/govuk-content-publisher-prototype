@@ -19,8 +19,7 @@
         <div class="govuk-grid-column-two-thirds">
 
           <h1 class="govuk-heading-l">
-            Upload file attachment
-            <!-- {#{ 'Add external link to' if data.type == 'external' else ('Upload file attachment to' if data.type == 'file' else 'Create HTML attachment for') }#} ‘{{ document.title }}’ -->
+            Upload file attachment {{ ' to ‘' + document.title + '’' if document.title | length }}
           </h1>
 
         </div>
