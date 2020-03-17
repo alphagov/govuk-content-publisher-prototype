@@ -21,7 +21,7 @@
         <div class="govuk-grid-column-two-thirds">
 
           <h1 class="govuk-heading-l">
-            Official question
+            Alternatives for the ‘Is this an official document?’ question
           </h1>
 
           <p class="govuk-body">When uploading an attachment we need to know whether the document is ‘official’.</p>
@@ -30,17 +30,25 @@
             Example 1
           </h1>
 
+          <p class="govuk-body">Parliamentary session is represented as a dropdown.</p>
+
           {% include "./example-1.html" %}
 
           <h1 class="govuk-heading-m">
             Example 2
           </h1>
 
+          <p class="govuk-body">Parliamentary session is represented as a text input. This relies on users understanding the format of a session nummber (YYYY-YY), they input the correct information and that it is validated server-side. We cannot guarantee accuracy of the data, only the syntax.</p>
+
+          <p class="govuk-body"></p>
+
           {% include "./example-2.html" %}
 
           <h1 class="govuk-heading-m">
             Example 3
           </h1>
+
+          <p class="govuk-body">House of Commons paper number is prefixed with ‘HC’. Parliamentary session is represented as two text inputs separated by the hyphen.</p>
 
           {% include "./example-3.html" %}
 

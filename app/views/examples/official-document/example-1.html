@@ -167,7 +167,7 @@
 
 {{ govukRadios({
   idPrefix: "example-1-official-document",
-  name: "document[attachment][official_document]",
+  name: "example-1-official-document",
   fieldset: {
     legend: {
       text: "Is this an official document?",
@@ -185,13 +185,11 @@
       text: "Yes, this is a command paper",
       conditional: {
         html: command_paper_html
-      },
-      checked: true if attachment.official_document == "yes_command_paper"
+      }
     },
     {
       value: "yes_unnumbered_command_paper",
-      text: "Yes, this is an unnumbered command paper",
-      checked: true if attachment.official_document == "yes_unnumbered_command_paper"
+      text: "Yes, this is an unnumbered command paper"
     },
     {
       value: "yes_house_of_commons_paper",
@@ -199,17 +197,15 @@
       conditional: {
         html: house_of_commons_paper_html
       },
-      checked: true if attachment.official_document == "yes_house_of_commons_paper"
+      checked: true
     },
     {
       value: "yes_unnumbered_act_paper",
-      text: "Yes, this is an unnumbered act paper",
-      checked: true if attachment.official_document == "yes_unnumbered_act_paper"
+      text: "Yes, this is an unnumbered act paper"
     },
     {
       value: "no",
-      text: "No, this document has not been laid in Parliament",
-      checked: true if attachment.official_document == "no"
+      text: "No, this document has not been laid in Parliament"
     }
   ]
 }) }}
