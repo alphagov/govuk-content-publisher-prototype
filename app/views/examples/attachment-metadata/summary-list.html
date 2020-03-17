@@ -1,0 +1,19 @@
+
+
+<dl class="govuk-summary-list govuk-summary-list--no-border app-c-summary-list--number">
+  {%- for format in formats %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      {{ loop.index }}
+    </dt>
+    <dd class="govuk-summary-list__value">
+      Attachment {{ loop.index }}: {{ format.name }}
+        <p class="govuk-body-s">
+          {%- if format.name | length %}
+            {{ format.name }}
+          {% endif -%}
+        </p>
+    </dd>
+  </div>
+  {% endfor -%}
+</dl>

@@ -1,0 +1,32 @@
+
+{%- for format in formats %}
+
+{% call appAttachment({
+  heading: {
+    text: "Attachment " + loop.index + ": " + format.name
+  },
+  href: "#",
+  target: "_blank",
+
+  metadata: {
+    thumbnail: format.type
+  }
+}) %}
+
+<!--
+references: {
+  isbn: attachment.isbn,
+  urn: attachment.urn,
+  cpn: attachment.cpn,
+  hcpn: attachment.hcpn,
+  parliamentary_session: attachment.parliamentary_session
+},
+ -->
+
+  {%- if attachment.type == 'external' %}
+    <p class="govuk-body-s">{{ attachment.url }}</p>
+  {% endif -%}
+
+{% endcall %}
+
+{% endfor -%}

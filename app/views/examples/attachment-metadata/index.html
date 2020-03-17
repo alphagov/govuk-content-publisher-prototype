@@ -1,0 +1,192 @@
+{% set formats = [
+  {
+    "content_type": "application/msword",
+    "name": "MS Word Document",
+    "type": "document"
+  },
+  {
+    "content_type": "application/pdf",
+    "name": "Portable Document Format",
+    "abbreviation": "PDF",
+    "type": "document"
+  },
+  {
+    "content_type": "application/postscript",
+    "name": "PostScript",
+    "abbreviation": "PS",
+    "extension": ".ps"
+  },
+  {
+    "content_type": "application/postscript",
+    "name": "Encapsulated PostScript",
+    "abbreviation": "EPS",
+    "extension": ".eps"
+  },
+  {
+    "content_type": "application/rtf",
+    "name": "Rich Text Format",
+    "abbreviation": "RTF"
+  },
+  {
+    "content_type": "application/vnd.ms-excel",
+    "name": "MS Excel Spreadsheet",
+    "type": "spreadsheet"
+  },
+  {
+    "content_type": "application/vnd.ms-excel.sheet.macroenabled.12",
+    "name": "MS Excel Macro-Enabled Workbook",
+    "abbreviation": "XLSM"
+  },
+  {
+    "content_type": "application/vnd.ms-powerpoint",
+    "name": "MS Powerpoint Presentation"
+  },
+  {
+    "content_type": "application/vnd.oasis.opendocument.presentation",
+    "name": "OpenDocument Presentation",
+    "abbreviation": "ODP",
+    "opendocument": true
+  },
+  {
+    "content_type": "application/vnd.oasis.opendocument.spreadsheet",
+    "name": "OpenDocument Spreadsheet",
+    "abbreviation": "ODS",
+    "type": "spreadsheet",
+    "opendocument": true
+  },
+  {
+    "content_type": "application/vnd.oasis.opendocument.text",
+    "name": "OpenDocument Text document",
+    "abbreviation": "ODT",
+    "type": "document",
+    "opendocument": true
+  },
+  {
+    "content_type": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    "name": "MS Powerpoint Presentation"
+  },
+  {
+    "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "name": "MS Excel Spreadsheet",
+    "type": "spreadsheet"
+  },
+  {
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "name": "MS Word Document",
+    "type": "document"
+  },
+  {
+    "content_type": "application/xml",
+    "name": "XML Document",
+    "abbreviation": "XML"
+  },
+  {
+    "content_type": "image/gif",
+    "name": "Graphics Interchange Format",
+    "abbreviation": "GIF"
+  },
+  {
+    "content_type": "image/jpeg",
+    "name": "JPEG"
+  },
+  {
+    "content_type": "image/png",
+    "name": "Portable Network Graphic",
+    "abbreviation": "PNG"
+  },
+  {
+    "content_type": "image/vnd.dxf",
+    "name": "AutoCAD Drawing Exchange Format",
+    "abbreviation": "DXF"
+  },
+  {
+    "content_type": "text/csv",
+    "name": "Comma-separated Values",
+    "abbreviation": "CSV",
+    "type": "spreadsheet"
+  },
+  {
+    "content_type": "text/plain",
+    "name": "Plain Text"
+  },
+  {
+    "content_type": "text/xml",
+    "name": "XML Document",
+    "abbreviation": "XSD",
+    "extension": ".xml"
+  },
+  {
+    "content_type": "text/xml",
+    "name": "XML Schema",
+    "abbreviation": "XSD",
+    "extension": ".xsd"
+  }
+] %}
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "../"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">
+          Attachment metadata
+        </h1>
+
+        <p class="govuk-body">Lorem ipsum</p>
+
+        <h1 class="govuk-heading-m">
+          Summary list
+        </h1>
+
+        <p class="govuk-body">Lorem ipsum</p>
+
+        {% include "./summary-list.html" %}
+
+        <h1 class="govuk-heading-m">
+          Attachment list
+        </h1>
+
+        <p class="govuk-body">Lorem ipsum</p>
+
+        {% include "./attachment-list.html" %}
+
+        <h1 class="govuk-heading-m">
+          Summary list with actions
+        </h1>
+
+        <p class="govuk-body">Lorem ipsum</p>
+
+        {% include "./summary-list-with-actions.html" %}
+
+        <h1 class="govuk-heading-m">
+          Example 4
+        </h1>
+
+        <p class="govuk-body">Lorem ipsum</p>
+
+        {#% include "./example-4.html" %#}
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}
