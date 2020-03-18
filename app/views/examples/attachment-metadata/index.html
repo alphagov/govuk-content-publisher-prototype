@@ -288,6 +288,43 @@
   GOV.UK Content Publisher prototype
 {% endblock %}
 
+{% block pageScripts %}
+<script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
+<script type="text/javascript">
+  if (attachmentsList) {
+    Sortable.create(attachmentsList, {
+      ghostClass: "app-c-summary-list__row--ghost",
+      chosenClass: "app-c-summary-list__row--chosen",
+      dragClass: "app-c-summary-list__row--drag"
+    })
+
+    moveDownButtons = attachmentsList.querySelectorAll('.js-down')
+    moveDownButtons.forEach((button, i) => {
+      button.addEventListener("click", function (e) {
+        e.preventDefault()
+        item = button.closest('.govuk-summary-list__row')
+        nextItem = item.closest('.govuk-summary-list__row').nextElementSibling
+        if (item && nextItem) {
+          item.parentNode.insertBefore(item, nextItem.nextElementSibling)
+        }
+      })
+    });
+
+    moveUpButtons = attachmentsList.querySelectorAll('.js-up')
+    moveUpButtons.forEach((button, i) => {
+      button.addEventListener("click", function (e) {
+        e.preventDefault()
+        item = button.closest('.govuk-summary-list__row')
+        previousItem = item.closest('.govuk-summary-list__row').previousElementSibling
+        if (item && previousItem) {
+          item.parentNode.insertBefore(item, previousItem)
+        }
+      })
+    });
+  }
+</script>
+{% endblock %}
+
 {% block beforeContent %}
 {% include "includes/phase-banner.html" %}
 {{ govukBackLink({
@@ -307,11 +344,18 @@
 
     <p class="govuk-body">Lorem ipsum</p>
 
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a class="govuk-link" href="#summary-list">Summary list</a></li>
+      <li><a class="govuk-link" href="#attachment-list">Attachment list</a></li>
+      <li><a class="govuk-link" href="#summary-list-with-actions">Summary list with actions</a></li>
+      <li><a class="govuk-link" href="#summary-list-with-reorder-actions">Summary list with reorder actions</a></li>
+    </ul>
+
     <h1 id="summary-list" class="govuk-heading-m">
       Summary list
     </h1>
 
-    <p class="govuk-body">The <a href="/components/summary-list/">summary list component</a> is used on the document summary screen.</p>
+    <p class="govuk-body">The <a class="govuk-link" href="/components/summary-list/">summary list component</a> is used on the document summary screen.</p>
 
     <hr class="govuk-section-break govuk-section-break--l">
 
@@ -323,7 +367,7 @@
       Attachment list
     </h1>
 
-    <p class="govuk-body">The <a href="/components/attachment/">attachment component</a> is used on the attachment summary screen for displaying each attachments.</p>
+    <p class="govuk-body">The <a class="govuk-link" href="/components/attachment/">attachment component</a> is used on the attachment summary screen for displaying each attachments.</p>
 
     <hr class="govuk-section-break govuk-section-break--l">
 
@@ -335,7 +379,7 @@
       Summary list with actions
     </h1>
 
-    <p class="govuk-body">Lorem ipsum</p>
+    <p class="govuk-body">A summary list with actions is provided in the attachment modal window for insert buttons.</p>
 
     <hr class="govuk-section-break govuk-section-break--l">
 
@@ -347,7 +391,7 @@
       Summary list with reorder actions
     </h1>
 
-    <p class="govuk-body">Lorem ipsum</p>
+    <p class="govuk-body">A summary list with reorder actions is provided on the reorder attachments screen.</p>
 
     <hr class="govuk-section-break govuk-section-break--l">
 

@@ -12,7 +12,7 @@
 
           {%- if attachment.references | length %}
             <p class="govuk-body-s govuk-!-margin-top-1">
-              {% if attachment.references.isbn | length or attachment.references.urn | length or attachment.references.cpn | length or attachment.references.hcpn | length %}Ref:{% endif %}
+              {% if attachment.references.isbn | length or attachment.references.urn | length or attachment.references.cpn | length or attachment.references.hcpn | length %}<abbr title="References" class="app-c-attachment__abbr">Ref:</abbr>{% endif %}
               {% if attachment.references.isbn | length %}
                 <abbr title="International Standard Book Number" class="app-c-attachment__abbr">ISBN</abbr> {{ attachment.references.isbn }}
               {%- endif -%}
@@ -35,7 +35,12 @@
             <p class="govuk-body-s">{{ attachment.url }}</p>
           {% else %}
             <p class="govuk-body-s">
-              {{- attachment.metadata.abbreviation if attachment.metadata.abbreviation else attachment.metadata.name }} {{- ', 256KB' if not attachment.url | length }} {{- ', 25 pages' if attachment.metadata.type == "document" -}}
+              {%- if attachment.metadata.abbreviation -%}
+                <abbr title="{{ attachment.metadata.name }}" class="app-c-attachment__abbr">{{ attachment.metadata.abbreviation }}</abbr>
+              {%- else -%}
+                {{ attachment.metadata.name }}
+              {%- endif -%}
+              {{- (', ' + attachment.metadata.filesize | fileSizeFormat) if not attachment.url | length }} {{- ', 25 pages' if attachment.metadata.type == "document" -}}
             </p>
           {% endif -%}
         </dd>

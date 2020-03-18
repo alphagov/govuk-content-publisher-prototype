@@ -50,7 +50,12 @@
             <p class="govuk-body-s {{- ' govuk-!-margin-top-2' if attachment.references | length }}">{{ attachment.url }}</p>
           {% else %}
             <p class="govuk-body-s">
-              {{- attachment.metadata.abbreviation if attachment.metadata.abbreviation else attachment.metadata.name }} {{- ', 256KB' if not attachment.url | length }} {{- ', 25 pages' if attachment.metadata.type == "document" -}}
+              {%- if attachment.metadata.abbreviation -%}
+                <abbr title="{{ attachment.metadata.name }}" class="app-c-attachment__abbr">{{ attachment.metadata.abbreviation }}</abbr>
+              {%- else -%}
+                {{ attachment.metadata.name }}
+              {%- endif -%}
+              {{- (', ' + attachment.metadata.filesize | fileSizeFormat) if not attachment.url | length }} {{- ', 25 pages' if attachment.metadata.type == "document" -}}
             </p>
           {% endif -%}
 
