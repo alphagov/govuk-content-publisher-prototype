@@ -1,5 +1,53 @@
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
+
+    <dl class="govuk-summary-list govuk-summary-list--no-border app-c-summary-list--number">
+      {%- for attachment in attachments %}
+      <div class="govuk-summary-list__row">
+        <dd class="govuk-summary-list__value">
+          {{ attachment.title }}
+
+          {%- if attachment.references | length %}
+            <p class="govuk-body-s govuk-!-margin-top-1">
+              {% if attachment.references.isbn | length or attachment.references.urn | length or attachment.references.cpn | length or attachment.references.hcpn | length %}<abbr title="References" class="app-c-attachment__abbr">Ref:</abbr>{% endif %}
+              {% if attachment.references.isbn | length %}
+                <abbr title="International Standard Book Number" class="app-c-attachment__abbr">ISBN</abbr> {{ attachment.references.isbn }}
+              {%- endif -%}
+              {%- if attachment.references.urn | length %}
+                {%- if attachment.references.isbn | length %},{% endif %}
+                {{ attachment.references.urn }}
+              {%- endif -%}
+              {%- if attachment.references.cpn | length %}
+                {%- if attachment.references.isbn | length or attachment.references.urn | length %},{% endif %}
+                {{ attachment.references.cpn }}
+              {%- endif -%}
+              {%- if attachment.references.hcpn | length %}
+                {%- if attachment.references.isbn | length or attachment.references.urn | length or attachment.references.cpn | length %},{% endif %}
+                {{ attachment.references.hcpn }} {{ attachment.references.parliamentary_session }}
+              {% endif %}
+            </p>
+          {% endif -%}
+
+          {%- if attachment.url | length %}
+            <p class="govuk-body-s">{{ attachment.url }}</p>
+          {% else %}
+            <p class="govuk-body-s">
+              {%- if attachment.metadata.abbreviation -%}
+                <abbr title="{{ attachment.metadata.name }}" class="app-c-attachment__abbr">{{ attachment.metadata.abbreviation }}</abbr>
+              {%- else -%}
+                {{ attachment.metadata.name }}
+              {%- endif -%}
+              {{- (', ' + attachment.metadata.filesize | fileSizeFormat) if not attachment.url | length }} {{- ', 25 pages' if attachment.metadata.type == "document" -}}
+            </p>
+          {% endif -%}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="app-c-button govuk-button" role="button" href="#">Insert as link</a>
+          <a class="app-c-button govuk-button govuk-button--secondary" role="button" href="#">Insert as attachment</a>
+        </dd>
+      </div>
+      {% endfor -%}
+    </dl>
 
   </div>
 </div>
