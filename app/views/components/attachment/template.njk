@@ -36,12 +36,12 @@
           <span class="app-c-attachment__attribute">{{ params.references.urn }}</span>
         {%- endif -%}
         {%- if params.references.cpn | length %}
-          {%- if params.references.urn | length %},{% endif %}
-          <span class="app-c-attachment__attribute">CP {{ params.references.cpn }}</span>
+          {%- if params.references.isbn | length or params.references.urn | length %},{% endif %}
+          <span class="app-c-attachment__attribute">{{ params.references.cpn }}</span>
         {%- endif -%}
         {%- if params.references.hcpn | length %}
-          {%- if params.references.cpn | length %},{% endif %}
-          <span class="app-c-attachment__attribute">HC {{ params.references.hcpn }} {{ params.references.parliamentary_session }}</span>
+          {%- if params.references.isbn | length or params.references.urn | length or params.references.cpn | length %},{% endif %}
+          <span class="app-c-attachment__attribute">{{ params.references.hcpn }} {{ params.references.parliamentary_session }}</span>
         {% endif %}
       </p>
     {% endif -%}

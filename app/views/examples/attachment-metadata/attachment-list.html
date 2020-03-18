@@ -1,32 +1,64 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-{%- for format in formats %}
+    {%- for attachment in attachments %}
 
-{% call appAttachment({
-  heading: {
-    text: "Attachment " + loop.index + ": " + format.name
-  },
-  href: "#",
-  target: "_blank",
+      {%- call appAttachmentActions({
+        items: [
+          {
+            text: ('Change link' if attachment.url | length else ('Change file' if attachment.metadata.type in ['document','spreadsheet'] else 'Edit attachment')),
+            href: "#"
+          },
+          {
+            text: 'Edit details',
+            href: "#"
+          },
+          {
+            text: 'Download',
+            href: "#",
+            attributes: {
+              "download": "attachment.pdf"
+            }
+          } if attachment.metadata.type in ['document','spreadsheet'],
+          {
+            text: 'Delete ' + ('link' if attachment.url | length else 'attachment'),
+            href: "#",
+            classes: 'app-link--destructive'
+          }
+        ]
+      }) %}
 
-  metadata: {
-    thumbnail: format.type
-  }
-}) %}
+        {% call appAttachment({
+          heading: {
+            text: attachment.title
+          },
+          href: "#",
+          target: "_blank",
+          references: {
+            isbn: attachment.references.isbn,
+            urn: attachment.references.urn,
+            cpn: attachment.references.cpn,
+            hcpn: attachment.references.hcpn,
+            parliamentary_session: attachment.references.parliamentary_session
+          } if attachment.references | length,
+          metadata: {
+            thumbnail: attachment.metadata.type
+          } if attachment.metadata | length
+        }) %}
 
-<!--
-references: {
-  isbn: attachment.isbn,
-  urn: attachment.urn,
-  cpn: attachment.cpn,
-  hcpn: attachment.hcpn,
-  parliamentary_session: attachment.parliamentary_session
-},
- -->
+          {%- if attachment.url | length %}
+            <p class="govuk-body-s {{- ' govuk-!-margin-top-2' if attachment.references | length }}">{{ attachment.url }}</p>
+          {% else %}
+            <p class="govuk-body-s">
+              {{- attachment.metadata.abbreviation if attachment.metadata.abbreviation else attachment.metadata.name }} {{- ', 256KB' if not attachment.url | length }} {{- ', 25 pages' if attachment.metadata.type == "document" -}}
+            </p>
+          {% endif -%}
 
-  {%- if attachment.type == 'external' %}
-    <p class="govuk-body-s">{{ attachment.url }}</p>
-  {% endif -%}
+        {% endcall %}
 
-{% endcall %}
+      {% endcall %}
 
-{% endfor -%}
+    {% endfor -%}
+
+  </div>
+</div>

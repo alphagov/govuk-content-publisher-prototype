@@ -1,127 +1,286 @@
-{% set formats = [
-  {
-    "content_type": "application/msword",
-    "name": "MS Word Document",
-    "type": "document"
-  },
-  {
-    "content_type": "application/pdf",
-    "name": "Portable Document Format",
-    "abbreviation": "PDF",
-    "type": "document"
-  },
-  {
-    "content_type": "application/postscript",
-    "name": "PostScript",
-    "abbreviation": "PS",
-    "extension": ".ps"
-  },
-  {
-    "content_type": "application/postscript",
-    "name": "Encapsulated PostScript",
-    "abbreviation": "EPS",
-    "extension": ".eps"
-  },
-  {
-    "content_type": "application/rtf",
-    "name": "Rich Text Format",
-    "abbreviation": "RTF"
-  },
-  {
-    "content_type": "application/vnd.ms-excel",
-    "name": "MS Excel Spreadsheet",
-    "type": "spreadsheet"
-  },
-  {
-    "content_type": "application/vnd.ms-excel.sheet.macroenabled.12",
-    "name": "MS Excel Macro-Enabled Workbook",
-    "abbreviation": "XLSM"
-  },
-  {
-    "content_type": "application/vnd.ms-powerpoint",
-    "name": "MS Powerpoint Presentation"
-  },
-  {
-    "content_type": "application/vnd.oasis.opendocument.presentation",
-    "name": "OpenDocument Presentation",
-    "abbreviation": "ODP",
-    "opendocument": true
-  },
-  {
-    "content_type": "application/vnd.oasis.opendocument.spreadsheet",
-    "name": "OpenDocument Spreadsheet",
-    "abbreviation": "ODS",
-    "type": "spreadsheet",
-    "opendocument": true
-  },
-  {
-    "content_type": "application/vnd.oasis.opendocument.text",
-    "name": "OpenDocument Text document",
-    "abbreviation": "ODT",
-    "type": "document",
-    "opendocument": true
-  },
-  {
-    "content_type": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-    "name": "MS Powerpoint Presentation"
-  },
-  {
-    "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    "name": "MS Excel Spreadsheet",
-    "type": "spreadsheet"
-  },
-  {
-    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-    "name": "MS Word Document",
-    "type": "document"
-  },
-  {
-    "content_type": "application/xml",
-    "name": "XML Document",
-    "abbreviation": "XML"
-  },
-  {
-    "content_type": "image/gif",
-    "name": "Graphics Interchange Format",
-    "abbreviation": "GIF"
-  },
-  {
-    "content_type": "image/jpeg",
-    "name": "JPEG"
-  },
-  {
-    "content_type": "image/png",
-    "name": "Portable Network Graphic",
-    "abbreviation": "PNG"
-  },
-  {
-    "content_type": "image/vnd.dxf",
-    "name": "AutoCAD Drawing Exchange Format",
-    "abbreviation": "DXF"
-  },
-  {
-    "content_type": "text/csv",
-    "name": "Comma-separated Values",
-    "abbreviation": "CSV",
-    "type": "spreadsheet"
-  },
-  {
-    "content_type": "text/plain",
-    "name": "Plain Text"
-  },
-  {
-    "content_type": "text/xml",
-    "name": "XML Document",
-    "abbreviation": "XSD",
-    "extension": ".xml"
-  },
-  {
-    "content_type": "text/xml",
-    "name": "XML Schema",
-    "abbreviation": "XSD",
-    "extension": ".xsd"
-  }
-] %}
+{% set attachments = [
+    {
+      "content_id": "ed258c1b-70de-4de9-a6be-e5ae36b32c95",
+      "title": "Attachment 1",
+      "metadata": {
+        "content_type": "application/msword",
+        "name": "MS Word Document",
+        "type": "document",
+        "filesize": 1234567
+      },
+      "references": {
+        "cpn": "CP 1234"
+      }
+    },
+    {
+      "content_id": "e6815b39-0886-4d2a-b375-8827174c1461",
+      "title": "Attachment 2",
+      "metadata": {
+        "content_type": "application/pdf",
+        "name": "Portable Document Format",
+        "abbreviation": "PDF",
+        "type": "document",
+        "filesize": 1234567
+      },
+      "references": {
+        "hcpn": "HC 1234",
+        "parliamentary_session": "2020-21",
+        "isbn": "978-3-16-148410-0"
+      }
+    },
+    {
+      "content_id": "d824816e-b2ef-4a50-b134-972451ff48e9",
+      "title": "Attachment 3",
+      "metadata": {
+        "content_type": "application/postscript",
+        "name": "PostScript",
+        "abbreviation": "PS",
+        "extension": ".ps",
+        "filesize": 1234567
+      },
+      "references": {
+        "urn": "U1234"
+      }
+    },
+    {
+      "content_id": "e0a16110-c29b-430f-96e9-bf2e2f6bc9b0",
+      "title": "Attachment 4",
+      "metadata": {
+        "content_type": "application/postscript",
+        "name": "Encapsulated PostScript",
+        "abbreviation": "EPS",
+        "extension": ".eps",
+        "filesize": 1234567
+      }
+    },
+    {
+      "content_id": "febf8e93-2d16-4a2b-9401-2a1d53db9c04",
+      "title": "Attachment 5",
+      "metadata": {
+        "content_type": "application/rtf",
+        "name": "Rich Text Format",
+        "abbreviation": "RTF",
+        "filesize": 1234567
+      },
+      "references": {
+        "cpn": "CP 5678",
+        "urn": "U5678"
+      }
+    },
+    {
+      "content_id": "e76d3c6a-5feb-4203-890c-a9cf186a35de",
+      "title": "Attachment 6",
+      "metadata": {
+        "content_type": "application/vnd.ms-excel",
+        "name": "MS Excel Spreadsheet",
+        "type": "spreadsheet",
+        "filesize": 1234567
+      }
+    },
+    {
+      "content_id": "89e80286-6bdb-4f03-a8d0-794c3f2d6698",
+      "title": "Attachment 7",
+      "metadata": {
+        "content_type": "application/vnd.ms-excel.sheet.macroenabled.12",
+        "name": "MS Excel Macro-Enabled Workbook",
+        "abbreviation": "XLSM",
+        "filesize": 1234567
+      }
+    },
+    {
+      "content_id": "0abee7ce-a53e-497d-916b-4bab18a62d0e",
+      "title": "Attachment 8",
+      "metadata": {
+        "content_type": "application/vnd.ms-powerpoint",
+        "name": "MS Powerpoint Presentation",
+        "filesize": 1234567
+      }
+    },
+    {
+      "content_id": "054fc7fc-4035-4ce5-908f-88793c5b8a5a",
+      "title": "Attachment 9",
+      "metadata": {
+        "content_type": "application/vnd.oasis.opendocument.presentation",
+        "name": "OpenDocument Presentation",
+        "abbreviation": "ODP",
+        "filesize": 1234567,
+        "opendocument": true
+      }
+    },
+    {
+      "content_id": "d12794e1-984f-435d-8885-a2682c2163cc",
+      "title": "Attachment 10",
+      "metadata": {
+        "content_type": "application/vnd.oasis.opendocument.spreadsheet",
+        "name": "OpenDocument Spreadsheet",
+        "abbreviation": "ODS",
+        "type": "spreadsheet",
+        "filesize": 1234567,
+        "opendocument": true
+      }
+    },
+    {
+      "content_id": "a6740bbc-36bc-4a09-904e-487a19e2b6be",
+      "title": "Attachment 11",
+      "metadata": {
+        "content_type": "application/vnd.oasis.opendocument.text",
+        "name": "OpenDocument Text document",
+        "abbreviation": "ODT",
+        "type": "document",
+        "filesize": 1234567,
+        "opendocument": true
+      }
+    },
+    {
+      "content_id": "d7901de7-2f09-4d51-8cf1-ab875117a5cb",
+      "title": "Attachment 12",
+      "metadata": {
+        "content_type": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+        "name": "MS Powerpoint Presentation",
+        "filesize": 1234567
+      }
+    },
+    {
+      "content_id": "7f719889-e2ff-46d3-9af8-f9c5e2c6be97",
+      "title": "Attachment 13",
+      "metadata": {
+        "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "name": "MS Excel Spreadsheet",
+        "type": "spreadsheet",
+        "filesize": 1234567
+      }
+    },
+    {
+      "content_id": "fe824f03-189e-4f3b-b068-b4d7433b7cd7",
+      "title": "Attachment 14",
+      "metadata": {
+        "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "name": "MS Word Document",
+        "type": "document",
+        "filesize": 1234567
+      }
+    },
+    {
+      "content_id": "f6084940-323d-4a70-ba80-be2270436ccb",
+      "title": "Attachment 15",
+      "metadata": {
+        "content_type": "application/xml",
+        "name": "XML Document",
+        "abbreviation": "XML",
+        "filesize": 1234567
+      }
+    },
+    {
+      "content_id": "9dec29ca-b91e-4e60-ba87-58b208e9417d",
+      "title": "Attachment 16",
+      "metadata": {
+        "content_type": "image/gif",
+        "name": "Graphics Interchange Format",
+        "abbreviation": "GIF",
+        "filesize": 1234567
+      }
+    },
+    {
+      "content_id": "839783c7-75a1-40b2-901a-022ee291d3db",
+      "title": "Attachment 17",
+      "metadata": {
+        "content_type": "image/jpeg",
+        "name": "JPEG",
+        "filesize": 1234567
+      }
+    },
+    {
+      "content_id": "2665a194-3eb8-4b9e-a99f-de8a3d8c61c0",
+      "title": "Attachment 18",
+      "metadata": {
+        "content_type": "image/png",
+        "name": "Portable Network Graphic",
+        "abbreviation": "PNG",
+        "filesize": 1234567
+      }
+    },
+    {
+      "content_id": "98c18466-fd70-407d-8d4b-254f6b54d12b",
+      "title": "Attachment 19",
+      "metadata": {
+        "content_type": "image/vnd.dxf",
+        "name": "AutoCAD Drawing Exchange Format",
+        "abbreviation": "DXF",
+        "filesize": 1234567
+      }
+    },
+    {
+      "content_id": "fb910ac0-4c22-4a33-943b-7828f4595a02",
+      "title": "Attachment 20",
+      "metadata": {
+        "content_type": "text/csv",
+        "name": "Comma-separated Values",
+        "abbreviation": "CSV",
+        "type": "spreadsheet",
+        "filesize": 1234567
+      }
+    },
+    {
+      "content_id": "89d4c088-e6b5-4672-8ea0-956b3a0176bb",
+      "title": "Attachment 21",
+      "metadata": {
+        "content_type": "text/plain",
+        "name": "Plain Text",
+        "filesize": 1234567
+      }
+    },
+    {
+      "content_id": "e15ae161-c392-4a90-afad-b0ab55060544",
+      "title": "Attachment 22",
+      "metadata": {
+        "content_type": "text/xml",
+        "name": "XML Document",
+        "abbreviation": "XML",
+        "extension": ".xml",
+        "filesize": 1234567
+      }
+    },
+    {
+      "content_id": "acf795fe-b373-4c76-997e-8328815748da",
+      "title": "Attachment 23",
+      "metadata": {
+        "content_type": "text/xml",
+        "name": "XML Schema",
+        "abbreviation": "XSD",
+        "extension": ".xsd",
+        "filesize": 1234567
+      }
+    },
+    {
+      "content_id": "6a836b04-e713-4011-8200-a6e3281f9f47",
+      "title": "Attachment 24",
+      "references": {
+        "isbn": "978-3-16-148410-0"
+      },
+      "url": "https://www.example.com/attachment-1.pdf"
+    },
+    {
+      "content_id": "5f09ffcd-b3a2-4088-bf7b-7d6ede72f28f",
+      "title": "Attachment 25",
+      "url": "https://www.example.com/attachment-2.pdf"
+    },
+    {
+      "content_id": "d097ad39-6bf9-4a88-8fa2-4825239887a8",
+      "title": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",
+      "metadata": {
+        "content_type": "application/pdf",
+        "name": "Portable Document Format",
+        "abbreviation": "PDF",
+        "type": "document",
+        "filesize": 1234567
+      },
+      "references": {
+        "hcpn": "HC 1234",
+        "parliamentary_session": "2020-21",
+        "isbn": "978-3-16-148410-0"
+      }
+    }
+  ] %}
 
 {% extends "layout.html" %}
 
@@ -142,49 +301,57 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">
+      Attachment metadata
+    </h1>
 
-        <h1 class="govuk-heading-l">
-          Attachment metadata
-        </h1>
+    <p class="govuk-body">Lorem ipsum</p>
 
-        <p class="govuk-body">Lorem ipsum</p>
+    <h1 id="summary-list" class="govuk-heading-m">
+      Summary list
+    </h1>
 
-        <h1 class="govuk-heading-m">
-          Summary list
-        </h1>
+    <p class="govuk-body">The <a href="/components/summary-list/">summary list component</a> is used on the document summary screen.</p>
 
-        <p class="govuk-body">Lorem ipsum</p>
+    <hr class="govuk-section-break govuk-section-break--l">
 
-        {% include "./summary-list.html" %}
+    {% include "./summary-list.html" %}
 
-        <h1 class="govuk-heading-m">
-          Attachment list
-        </h1>
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
-        <p class="govuk-body">Lorem ipsum</p>
+    <h1 id="attachment-list" class="govuk-heading-m">
+      Attachment list
+    </h1>
 
-        {% include "./attachment-list.html" %}
+    <p class="govuk-body">The <a href="/components/attachment/">attachment component</a> is used on the attachment summary screen for displaying each attachments.</p>
 
-        <h1 class="govuk-heading-m">
-          Summary list with actions
-        </h1>
+    <hr class="govuk-section-break govuk-section-break--l">
 
-        <p class="govuk-body">Lorem ipsum</p>
+    {% include "./attachment-list.html" %}
 
-        {% include "./summary-list-with-actions.html" %}
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
-        <h1 class="govuk-heading-m">
-          Example 4
-        </h1>
+    <h1 id="summary-list-with-actions" class="govuk-heading-m">
+      Summary list with actions
+    </h1>
 
-        <p class="govuk-body">Lorem ipsum</p>
+    <p class="govuk-body">Lorem ipsum</p>
 
-        {#% include "./example-4.html" %#}
+    <hr class="govuk-section-break govuk-section-break--l">
 
-      </div>
-    </div>
+    {% include "./summary-list-with-actions.html" %}
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+    <h1 id="summary-list-with-reorder-actions" class="govuk-heading-m">
+      Summary list with reorder actions
+    </h1>
+
+    <p class="govuk-body">Lorem ipsum</p>
+
+    <hr class="govuk-section-break govuk-section-break--l">
+
+    {% include "./summary-list-with-reorder-actions.html" %}
 
   </div>
 </div>
