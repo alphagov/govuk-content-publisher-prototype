@@ -11,8 +11,10 @@
           {{ attachment.title }}
 
           {%- if attachment.references | length %}
-            <p class="govuk-body-s govuk-!-margin-top-1">
-              {% if attachment.references.isbn | length or attachment.references.urn | length or attachment.references.cpn | length or attachment.references.hcpn | length %}<abbr title="References" class="app-c-attachment__abbr">Ref:</abbr>{% endif %}
+            <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-1">
+              {% if attachment.references.isbn | length or attachment.references.urn | length or (attachment.references.cpn | length and attachment.references.cpn != "unnumbered") or (attachment.references.hcpn and attachment.references.hcpn != "unnumbered") %}
+                <abbr title="References" class="app-c-attachment__abbr">Ref:</abbr>
+              {% endif %}
               {% if attachment.references.isbn | length %}
                 <abbr title="International Standard Book Number" class="app-c-attachment__abbr">ISBN</abbr> {{ attachment.references.isbn }}
               {%- endif -%}
@@ -20,21 +22,26 @@
                 {%- if attachment.references.isbn | length %},{% endif %}
                 {{ attachment.references.urn }}
               {%- endif -%}
-              {%- if attachment.references.cpn | length %}
+              {%- if attachment.references.cpn | length and attachment.references.cpn != "unnumbered" %}
                 {%- if attachment.references.isbn | length or attachment.references.urn | length %},{% endif %}
                 {{ attachment.references.cpn }}
               {%- endif -%}
-              {%- if attachment.references.hcpn | length %}
+              {%- if attachment.references.hcpn | length and attachment.references.hcpn != "unnumbered" %}
                 {%- if attachment.references.isbn | length or attachment.references.urn | length or attachment.references.cpn | length %},{% endif %}
                 {{ attachment.references.hcpn }} {{ attachment.references.parliamentary_session }}
               {% endif %}
             </p>
+            {%- if attachment.references.cpn == "unnumbered" or attachment.references.hcpn == "unnumbered" %}
+            <p class="govuk-body-s govuk-!-margin-bottom-1">
+              {{- 'Unnumbered command paper' if attachment.references.cpn == "unnumbered" else ('Unnumbered act paper' if attachment.references.hcpn == "unnumbered") -}}
+            </p>
+            {% endif -%}
           {% endif -%}
 
           {%- if attachment.url | length %}
-            <p class="govuk-body-s">{{ attachment.url }}</p>
+            <p class="govuk-body-s {{- ' govuk-!-margin-top-1' if not (attachment.references.isbn | length or attachment.references.urn | length or attachment.references.cpn | length or attachment.references.hcpn) }}">{{ attachment.url }}</p>
           {% else %}
-            <p class="govuk-body-s">
+            <p class="govuk-body-s {{- ' govuk-!-margin-top-1' if not (attachment.references.isbn | length or attachment.references.urn | length or attachment.references.cpn | length or attachment.references.hcpn) }}">
               {%- if attachment.metadata.abbreviation -%}
                 <abbr title="{{ attachment.metadata.name }}" class="app-c-attachment__abbr">{{ attachment.metadata.abbreviation }}</abbr>
               {%- else -%}
