@@ -31,6 +31,12 @@ exports.save = function(document_id, data) {
 
   if (data.document.attachment.type === 'file') {
     attachmentData.file = Helpers.slugify(attachmentData.title);
+  } else {
+    attachmentData.file = '';
+  }
+
+  if (data.document.attachment.type === 'html') {
+    attachmentData.base_path = Helpers.slugify(attachmentData.title);
   }
 
   // create a JSON sting for the submitted data
@@ -40,18 +46,28 @@ exports.save = function(document_id, data) {
   fs.writeFileSync(filePath, fileData);
 
   // append the new file path to the index.js
-  let index
+  let index;
+
+  // initalise an attachments order array
+  let attachmentsOrder = [];
+
   try {
     index = fs.readFileSync(directoryPath + '/index.json');
   } catch (err) {
     // no index file
   }
+
+  // parse the existing file order if exists
   if (index) {
-    attachmentsOrder = JSON.parse(index)
-    attachmentsOrder.push(fileName)
-    const indexFileData = JSON.stringify(attachmentsOrder);
-    fs.writeFileSync(directoryPath + '/index.json', indexFileData);
+    attachmentsOrder = JSON.parse(index);
   }
+
+  // push the new file to the end of the array
+  attachmentsOrder.push(fileName);
+
+  const indexFileData = JSON.stringify(attachmentsOrder);
+
+  fs.writeFileSync(directoryPath + '/index.json', indexFileData);
 
   return attachmentData;
 
@@ -88,6 +104,14 @@ exports.findByIdAndUpdate = function(document_id, attachment_id, data) {
 
   if (attachmentData.type === 'file') {
     attachmentData.file = Helpers.slugify(attachmentData.title);
+  } else {
+    attachmentData.file = '';
+  }
+
+  if (attachmentData.type === 'html') {
+    attachmentData.numbered_headings = data.document.attachment.numbered_headings;
+    attachmentData.body = data.document.attachment.body;
+    attachmentData.base_path = Helpers.slugify(attachmentData.title);
   }
 
   attachmentData.updated_at = new Date();
@@ -119,16 +143,21 @@ exports.findByIdAndUpdateDetails = function(document_id, attachment_id, data) {
   if (attachmentData.official_document === 'yes_command_paper') {
 
     attachmentData.cpn = data.document.attachment.cpn;
-    attachmentData.unnumbered = data.document.attachment.unnumbered;
-
-    if (attachmentData.cpn.length || attachmentData.unnumbered === undefined) {
-      attachmentData.unnumbered = '';
-    }
 
     // clear the house of commons paper fields
     attachmentData.hcpn = '';
     attachmentData.parliamentary_session = '';
-    attachmentData.unnumbered_act = '';
+
+  }
+
+  if (attachmentData.official_document === 'yes_unnumbered_command_paper' || attachmentData.official_document === 'yes_unnumbered_act_paper') {
+
+    // clear the command paper number
+    attachmentData.cpn = '';
+
+    // clear the house of commons paper fields
+    attachmentData.hcpn = '';
+    attachmentData.parliamentary_session = '';
 
   }
 
@@ -136,28 +165,22 @@ exports.findByIdAndUpdateDetails = function(document_id, attachment_id, data) {
 
     attachmentData.hcpn = data.document.attachment.hcpn;
     attachmentData.parliamentary_session = data.document.attachment.parliamentary_session;
-    attachmentData.unnumbered_act = data.document.attachment.unnumbered_act;
 
-    if (attachmentData.hcpn.length || attachmentData.unnumbered_act === undefined) {
-      attachmentData.unnumbered_act = '';
-    }
-
-    // clear the command paper fields
+    // clear the command paper field
     attachmentData.cpn = '';
-    attachmentData.unnumbered = '';
 
   }
 
-  if (attachmentData.official_document === 'yes_command_paper' || attachmentData.official_document === 'yes_house_of_commons_paper') {
+  const officialTypes = ['yes_command_paper','yes_unnumbered_command_paper','yes_house_of_commons_paper','yes_unnumbered_act_paper'];
+
+  if (officialTypes.indexOf(attachmentData.official_document) !== -1) {
     attachmentData.order_url = "https://www.gov.uk/guidance/how-to-buy-printed-copies-of-official-documents";
   }
 
   if (attachmentData.official_document === 'no') {
     attachmentData.cpn = '';
-    attachmentData.unnumbered = '';
     attachmentData.hcpn = '';
     attachmentData.parliamentary_session = '';
-    attachmentData.unnumbered_act = '';
     attachmentData.order_url = '';
   }
 
@@ -190,14 +213,15 @@ exports.findByIdAndDelete = function(document_id, attachment_id) {
   fs.unlinkSync(filePath);
 
   // append the new file path to the index.js
-  let index
+  let index;
+
   try {
     index = fs.readFileSync(directoryPath + '/index.json');
   } catch (err) {
     // no index file
   }
   if (index) {
-    attachmentsOrder = JSON.parse(index)
+    attachmentsOrder = JSON.parse(index);
 
     const i = attachmentsOrder.indexOf(attachment_id + '.json');
     if (i > -1) {

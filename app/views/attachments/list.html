@@ -42,10 +42,17 @@
             Attachments for ‘{{ document.title if document.title | length else "Untitled document"}}’
           </h1>
 
-          <p class="govuk-body">Publications have a summary page that must link to a file attachment or a document hosted on an external website.</p>
+          {% include "./partials/_banner-missing-information.html" %}
+
+          <p class="govuk-body">Publications have a summary page that must link to an HTML attachment, a file attachment, or a document hosted on an external website.</p>
 
           {{ appButtonMenu({
             items: [
+              {
+                text: 'Create HTML attachment',
+                classes: 'govuk-button',
+                href: actions.add_html
+              },
               {
                 text: 'Upload file attachment',
                 classes: 'govuk-button',
@@ -58,12 +65,6 @@
               }
             ]
           }) }}
-
-          <!-- {
-            text: 'Add HTML attachment',
-            classes: 'govuk-button',
-            href: '/documents/' + data.document.content_id + '/attachments/create?type=html'
-          }, -->
 
         </div>
       </div>
@@ -78,7 +79,7 @@
 
             {%- if attachments | length > 1 %}
               <p class="govuk-body govuk-!-margin-bottom-8">
-                <a class="govuk-link" href="{{ actions.reorder }}">Reorder attachments</a>
+                <a class="govuk-link govuk-link--no-visited-state" href="{{ actions.reorder }}">Reorder attachments</a>
               </p>
             {% endif -%}
 
@@ -87,7 +88,7 @@
               {%- call appAttachmentActions({
                 items: [
                   {
-                    text: 'Edit ' + ('link' if attachment.type == 'external' else 'attachment'),
+                    text: ('Change link' if attachment.type == 'external' else ('Change file' if attachment.type == 'file' else 'Edit attachment')),
                     href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/update'
                   },
                   {
@@ -109,46 +110,30 @@
                 ]
               }) %}
 
-                {%- if attachment.type == 'external' %}
-                  {%- call appAttachment({
-                    heading: {
-                      text: attachment.title if attachment.title | length else "Untitled attachment"
-                    },
-                    href: attachment.url,
-                    target: "_blank"
-                  }) %}
+                {% call appAttachment({
+                  heading: {
+                    text: attachment.title if attachment.title | length else "Untitled attachment"
+                  },
+                  href: attachment.url if attachment.type == 'external' else '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/preview',
+                  target: "_blank",
+                  references: {
+                    isbn: attachment.isbn,
+                    urn: attachment.urn,
+                    cpn: attachment.cpn,
+                    hcpn: attachment.hcpn,
+                    parliamentary_session: attachment.parliamentary_session
+                  },
+                  metadata: {
+                    contentType: 'text/html' if attachment.type == 'html' else ('application/pdf' if attachment.type == 'file'),
+                    thumbnail: 'document' if attachment.type in ['file','html']
+                  }
+                }) %}
 
+                  {%- if attachment.type == 'external' %}
                     <p class="govuk-body-s">{{ attachment.url }}</p>
+                  {% endif -%}
 
-                  {% endcall -%}
-                {% endif -%}
-
-                {{ appAttachment({
-                  heading: {
-                    text: attachment.title if attachment.title | length else "Untitled attachment"
-                  },
-                  href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/preview',
-                  target: "_blank",
-                  metadata: {
-                    filename: (attachment.title | slugify) + '.pdf',
-                    fileSize: 1234560,
-                    contentType: 'application/pdf',
-                    pageCount: 25,
-                    thumbnail: 'document'
-                  }
-                }) if attachment.type == 'file' }}
-
-                {{ appAttachment({
-                  heading: {
-                    text: attachment.title if attachment.title | length else "Untitled attachment"
-                  },
-                  href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/preview',
-                  target: "_blank",
-                  metadata: {
-                    contentType: 'text/html',
-                    thumbnail: 'document'
-                  }
-                }) if attachment.type == 'html' }}
+                {% endcall %}
 
               {% endcall -%}
 
@@ -164,6 +149,6 @@
       </div>
 
     </div>
-</div>
+  </div>
 
 {% endblock %}

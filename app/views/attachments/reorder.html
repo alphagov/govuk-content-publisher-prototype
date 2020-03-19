@@ -6,7 +6,40 @@
 {% endblock %}
 
 {% block pageScripts %}
+<script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
+<script type="text/javascript">
+  if (attachmentsList) {
+    Sortable.create(attachmentsList, {
+      ghostClass: "app-c-summary-list__row--ghost",
+      chosenClass: "app-c-summary-list__row--chosen",
+      dragClass: "app-c-summary-list__row--drag"
+    })
 
+    moveDownButtons = attachmentsList.querySelectorAll('.js-down')
+    moveDownButtons.forEach((button, i) => {
+      button.addEventListener("click", function (e) {
+        e.preventDefault()
+        item = button.closest('.govuk-summary-list__row')
+        nextItem = item.closest('.govuk-summary-list__row').nextElementSibling
+        if (item && nextItem) {
+          item.parentNode.insertBefore(item, nextItem.nextElementSibling)
+        }
+      })
+    });
+
+    moveUpButtons = attachmentsList.querySelectorAll('.js-up')
+    moveUpButtons.forEach((button, i) => {
+      button.addEventListener("click", function (e) {
+        e.preventDefault()
+        item = button.closest('.govuk-summary-list__row')
+        previousItem = item.closest('.govuk-summary-list__row').previousElementSibling
+        if (item && previousItem) {
+          item.parentNode.insertBefore(item, previousItem)
+        }
+      })
+    });
+  }
+</script>
 {% endblock %}
 
 {% block beforeContent %}

@@ -7,7 +7,7 @@
     <div class="govuk-grid-column-full">
 
       <div class="govuk-grid-row govuk-!-margin-bottom-8">
-        <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-grid-column-full">
 
           <h1 class="govuk-heading-l">
             Attachments {{ 'for ‘' + document.title + '’' if document.title | length }}
@@ -15,63 +15,75 @@
 
           {% if attachments | length %}
 
-            <p class="govuk-body govuk-!-margin-bottom-8">You can add a link to one of these attachments in the body of the document.</p>
-
-            {%- for attachment in attachments %}
-
-              {%- call appAttachmentActions({
-                items: [
-                  {
-                    text: 'Insert attachment as link',
-                    href: '#'
-                  }
-                ]
-              }) %}
-
-                {%- if attachment.type == 'external' %}
-                  {%- call appAttachment({
-                    heading: {
-                      text: attachment.title if attachment.title | length else "Untitled attachment"
-                    },
-                    href: attachment.url,
-                    target: "_blank"
-                  }) %}
-
-                    <p class="govuk-body-s">{{ attachment.url }}</p>
-
-                  {% endcall -%}
+            <p class="govuk-body govuk-!-margin-bottom-8">
+              {% if attachments | length == 1 %}
+                <!-- One attachment -->
+                {% if attachment.content_id and attachment.content_id == attachments[0].content_id %}
+                  <!-- Current attachment -->
+                  You’re editing ‘{{ attachment.title }}’. There are no other attachments added to this document. You can only insert an attachment that has already been added.
+                {% else %}
+                  <!-- Not current attachment -->
+                  You can add a link to this attachment in the body of the content.
                 {% endif -%}
+              {% else %}
+                <!-- Many attcachments -->
+                {%- if attachment.content_id | length %}
+                  <!-- Current attachment -->
+                  You’re editing ‘{{ attachment.title }}’. You can add a link to the other {{ 'attachment' if attachments | length == 2 else 'attachments' }} in the body of the content.
+                {% else %}
+                  <!-- Not current attachment -->
+                  You can add a link to one of these attachments in the body of the content.
+                {% endif -%}
+              {% endif -%}
+            </p>
 
-                {{ appAttachment({
-                  heading: {
-                    text: attachment.title if attachment.title | length else "Untitled attachment"
-                  },
-                  href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/modal/preview',
-                  target: "_blank",
-                  metadata: {
-                    filename: (attachment.title | slugify) + '.pdf',
-                    fileSize: 1234560,
-                    contentType: 'application/pdf',
-                    pageCount: 25,
-                    thumbnail: 'document'
-                  }
-                }) if attachment.type == 'file' }}
+            <dl class="govuk-summary-list">
+            {%- for item in attachments %}
 
-                {{ appAttachment({
-                  heading: {
-                    text: attachment.title if attachment.title | length else "Untitled attachment"
-                  },
-                  href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/modal/preview',
-                  target: "_blank",
-                  metadata: {
-                    contentType: 'text/html',
-                    thumbnail: 'document'
-                  }
-                }) if attachment.type == 'html' }}
+              {% if item.content_id != attachment.content_id %}
 
-              {% endcall -%}
+              <div class="govuk-summary-list__row">
+                <dd class="govuk-summary-list__value">
+                  <h2 class="govuk-heading-s">
+                    <a class="govuk-link govuk-link--no-visited-state" href="/documents/{{ document.content_id}}/attachments/{{ item.content_id }}/preview" title="Preview attachment" target="_blank">
+                    {{ item.title if item.title | length else "Untitled attachment" }}
+                    </a>
+                  </h2>
+                  <p class="govuk-body-s">
+                    {% if item.isbn | length or item.urn | length or item.cpn | length or item.hcpn | length %}Ref:{% endif %}
+                    {% if item.isbn | length %}
+                      ISBN {{ item.isbn }}
+                    {%- endif -%}
+                    {%- if item.urn | length %}
+                      {%- if item.isbn | length %},{% endif %}
+                      {{ item.urn }}
+                    {%- endif -%}
+                    {%- if item.cpn | length %}
+                      {%- if item.urn | length %},{% endif %}
+                      {{ item.cpn }}
+                    {%- endif -%}
+                    {%- if item.hcpn | length %}
+                      {%- if item.cpn | length %},{% endif %}
+                      HC {{ item.hcpn }} {{ item.parliamentary_session }}
+                    {% endif %}
+                  </p>
+                  {%- if item.type == 'external' %}
+                    <p class="govuk-body-s">{{ item.url }}</p>
+                  {% endif -%}
+                </dd>
+                <dd class="govuk-summary-list__actions">
+                  <a class="app-c-button govuk-button" role="button" href="#">Insert as link</a>
+                </dd>
+                {%- if document.document_schema == 'news' %}
+                <dd class="govuk-summary-list__actions">
+                  <a class="app-c-button govuk-button govuk-button--secondary" role="button" href="#">Insert as attachment</a>
+                </dd>
+                {% endif -%}
+              </div>
+              {% endif -%}
 
             {% endfor -%}
+            </dl>
 
           {% else %}
 
@@ -84,6 +96,6 @@
       </div>
 
     </div>
-</div>
+  </div>
 
 {% endblock %}

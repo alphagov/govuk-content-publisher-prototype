@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block pageScripts %}
-
+{% include "./partials/_scripts-validate-attachment-metadata.html" %}
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,6 +21,8 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
+
+      {% include "./partials/_error-summary-message.html" %}
 
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">

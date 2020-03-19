@@ -6,27 +6,17 @@
 {% endblock %}
 
 {% block pageScripts %}
-<!-- {#%- if attachment.type == 'html' %}
-<script src="/public/javascripts/components/markdown-editor.umd.js"></script>
-<script src="/public/javascripts/components/paste-html-to-markdown.js"></script>
-<script src="/public/javascripts/components/markdown-editor.js"></script>
-<script type="text/javascript">
-  var $element = $('#markdown-editor');
-  var markdownEditor = new GOVUK.Modules.MarkdownEditor();
-  markdownEditor.start($element);
-</script>
-
-<script src="/public/javascripts/components/contextual-guidance.js"></script>
-<script type="text/javascript">
-  var $element1 = $('#contextual-guidance-01');
-  var contextualGuidance = new GOVUK.Modules.ContextualGuidance();
-  contextualGuidance.start($element1);
-
-  var $element2 = $('#contextual-guidance-02');
-  var contextualGuidance = new GOVUK.Modules.ContextualGuidance();
-  contextualGuidance.start($element2);
-</script>
-{% endif -%#} -->
+{%- if attachment.type == 'external' %}
+  {% include "./partials/_scripts-validate-external-link.html" %}
+{%- elif attachment.type == 'file' %}
+  {% include "./partials/_scripts-validate-file-attachment.html" %}
+{%- elif attachment.type == 'html' %}
+  {% include "./partials/_scripts-markdown-editor.html" %}
+  {% include "./partials/_scripts-contextual-guidance.html" %}
+  {% include "./partials/_scripts-toolbar-dropdown.html" %}
+  {% include "./partials/_scripts-modal-dialogue.html" %}
+  {% include "./partials/_scripts-validate-html-attachment.html" %}
+{% endif -%}
 {% endblock %}
 
 {% block beforeContent %}
@@ -42,11 +32,13 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
+      {% include "./partials/_error-summary-message.html" %}
+
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
           <h1 class="govuk-heading-l">
-            Update {{ 'external link' if attachment.type == 'external' else 'attachment' }} ‘{{ attachment.title }}’
+            {{ 'Change link' if attachment.type == 'external' else ('Change file' if attachment.type == 'file' else 'Edit attachment') }} ‘{{ attachment.title if attachment.title | length else "Untitled attachment" }}’
           </h1>
 
         </div>
@@ -58,7 +50,7 @@
         {%- if attachment.type == 'external' %}
           <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-              {% include "./partials/_form-external-attachment.html" %}
+              {% include "./partials/_form-external-link.html" %}
             </div>
           </div>
         {% endif -%}
@@ -71,9 +63,9 @@
           </div>
         {% endif -%}
 
-        <!-- {#%- if attachment.type == 'html' %}
+        {%- if attachment.type == 'html' %}
           {% include "./partials/_form-html-attachment.html" %}
-        {% endif -%#} -->
+        {% endif -%}
 
         {{ govukButton({
           text: "Save"
@@ -87,5 +79,7 @@
 
     </div>
   </div>
+
+  {% include "./partials/_modal-attachments.html" %}
 
 {% endblock %}

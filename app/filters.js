@@ -83,8 +83,8 @@ module.exports = function (env) {
   }
 
   /* ------------------------------------------------------------------
-  organisation filter for use in Nunjucks
-  example: {{ "af07d5a5-df63-4ddc-9383-6a666845ebe9" | organisation }}
+  organisationName filter for use in Nunjucks
+  example: {{ "af07d5a5-df63-4ddc-9383-6a666845ebe9" | organisationName }}
   outputs: Government Digital Service
   ------------------------------------------------------------------ */
   filters.organisationName = function(code) {
@@ -332,7 +332,7 @@ module.exports = function (env) {
   /* ------------------------------------------------------------------
     utility function to test validity of URL
     example: {{ "http://www.google.com" | isValidUrl }}
-    outputs:
+    outputs: true
   ------------------------------------------------------------------ */
   filters.isValidUrl = function(str) {
     var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
@@ -341,6 +341,26 @@ module.exports = function (env) {
       '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
       '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
       '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+    return !!pattern.test(str);
+  }
+
+  /* ------------------------------------------------------------------
+    utility function to test validity of ISBN
+    example: {{ 978-0-596-52068-7 | isValidISBN }}
+    outputs: true
+
+    Valid inputs:
+      ISBN 978-0-596-52068-7
+      ISBN-13: 978-0-596-52068-7
+      978 0 596 52068 7
+      9780596520687
+      ISBN-10 0-596-52068-9
+      0-596-52068-9
+
+    From: https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s13.html
+  ------------------------------------------------------------------ */
+  filters.isValidISBN = function(str) {
+    var pattern = new RegExp('/^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$/','i'); // fragment locator
     return !!pattern.test(str);
   }
 
@@ -361,6 +381,21 @@ module.exports = function (env) {
     return last;
   }
 
+  /* ------------------------------------------------------------------
+    utility function to get an error for a component
+    example: {{ errors | getErrorMessage('title') }}
+    outputs: "Enter a title"
+  ------------------------------------------------------------------ */
+  filters.getErrorMessage = function(array, fieldName) {
+    if (!array || !fieldName)
+      return null;
+
+    let error = array.filter( (obj) =>
+      obj.fieldName == fieldName
+    )[0];
+
+    return error;
+  }
 
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app

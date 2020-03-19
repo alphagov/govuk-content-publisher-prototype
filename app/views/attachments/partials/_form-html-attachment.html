@@ -1,72 +1,141 @@
-<form action="{{ actions.save }}" accept-charset="UTF-8" method="post">
-  <input type="hidden" name="document[attachment][type]" value="html">
 
-  {%- call appContextualGuidance({
-    id: 'contextual-guidance-01',
-    for: 'title',
-    heading: {
-      text: 'Writing a title'
+<input type="hidden" name="document[attachment][type]" value="html">
+
+{%- call appContextualGuidance({
+  id: 'contextual-guidance-01',
+  for: 'attachment-title',
+  heading: {
+    text: 'Writing a title'
+  },
+  description: {
+    text: 'The title must be unique and specific, and make clear what the content offers users in their words. It will appear on the publication page in the list of attachments.'
+  }
+}) %}
+
+  {{ govukTextarea({
+    id: "attachment-title",
+    name: "document[attachment][title]",
+    label: {
+      text: "Title",
+      classes: "govuk-!-font-weight-bold"
     },
-    description: {
-      text: 'The title must make clear what the content offers users. Use the words your users do to help them find this. Avoid wordplay or teases.'
-    }
-  }) %}
-
-    {{ govukTextarea({
-      id: "title",
-      name: "document[attachment][title]",
-      label: {
-        text: "Title",
-        classes: "govuk-!-font-weight-bold"
-      },
-      rows: 2,
-      value: attachment.title if attachment.title
-    }) }}
-
-  {% endcall -%}
-
-  {% set bodyGuidanceHtml %}
-    {% include "./_guidance-body-text.html" %}
-  {% endset %}
-
-  {%- call appContextualGuidance({
-    id: 'contextual-guidance-02',
-    for: 'body',
-    heading: {
-      text: 'Writing content'
-    },
-    description: {
-      html: bodyGuidanceHtml
-    }
-  }) %}
-
-    {{ appMarkdownEditor({
-      attributes: {
-        id: "markdown-editor"
-      },
-      label: {
-        text: "Body",
-        classes: "govuk-!-font-weight-bold"
-      },
-      textarea: {
-        id: "body",
-        name: "document[attachment][body]",
-        rows: 20,
-        attributes: {
-          spellcheck: false
-        }
-      },
-      value: attachment.body if attachment.body
-    }) }}
-
-  {% endcall -%}
-
-  {{ govukButton({
-    text: "Save and continue"
+    errorMessage: errors | getErrorMessage('title'),
+    rows: 2,
+    value: attachment.title if attachment.title
   }) }}
 
-</form>
+{% endcall -%}
 
-<p class="govuk-body">
-  <a class="govuk-link" href="{{ actions.back }}">Cancel</a>
-</p>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+  {{ appUrlPreview({
+    path: document.base_path + "/" + (attachment.base_path if attachment.base_path)
+  }) }}
+  </div>
+</div>
+
+{% set bodyGuidanceHtml %}
+  {% include "./_guidance-body-text.html" %}
+{% endset %}
+
+{%- call appContextualGuidance({
+  id: 'contextual-guidance-02',
+  for: 'attachment-body',
+  heading: {
+    text: 'Writing content'
+  },
+  description: {
+    text: "Use short words, short sentences and short paragraphs. Use subheadings."
+  }
+}) %}
+
+  {{ appMarkdownEditor({
+    attributes: {
+      id: "markdown-editor"
+    },
+    label: {
+      text: "Body",
+      for: "attachment-body",
+      classes: "govuk-!-font-weight-bold"
+    },
+    errorMessage: errors | getErrorMessage('body'),
+    insertMenu: appToolbarDropdown({
+      items: [
+        {
+          element: "button",
+          text: "Attachment",
+          type: "button",
+          name: "attachment",
+          attributes: {
+            "data-toggle": "modal",
+            "data-target": "modal-attachments"
+          }
+        },
+        {
+          element: "button",
+          text: "Contact",
+          type: "button",
+          name: "contact",
+          attributes: {
+            "data-toggle": "modal",
+            "data-target": "modal-contact"
+          }
+        },
+        {
+          element: "button",
+          text: "Image",
+          type: "button",
+          name: "image",
+          attributes: {
+            "data-toggle": "modal",
+            "data-target": "modal-image"
+          }
+        },
+        {
+          element: "button",
+          text: "Video",
+          type: "button",
+          name: "video",
+          attributes: {
+            "data-toggle": "modal",
+            "data-target": "modal-video"
+          }
+        }
+      ],
+      classes: "app-c-toolbar-dropdown--end",
+      attributes: {
+        "id": "toolbar-dropdown",
+        "data-module": "toolbar-dropdown"
+      }
+    }),
+    textarea: {
+      id: "attachment-body",
+      name: "document[attachment][body]",
+      rows: 20,
+      attributes: {
+        spellcheck: false
+      }
+    },
+    value: attachment.body if attachment.body
+  }) }}
+
+{% endcall -%}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukCheckboxes({
+      idPrefix: "attachment-unnumbered-headings",
+      name: "document[attachment][numbered_headings]",
+      items: [
+        {
+          value: "yes",
+          text: "Add automatic numbers to headings",
+          hint: {
+            text: "Headings in HTML attachments are unnumbered by default."
+          },
+          checked: true if attachment.numbered_headings == "yes"
+        }
+      ]
+    }) }}
+  </div>
+</div>

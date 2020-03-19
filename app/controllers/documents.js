@@ -558,7 +558,7 @@ exports.document_undo_withdraw_get = function(req, res) {
 exports.document_undo_withdraw_post = function(req, res) {
   Documents.findByIdAndUndoWithdrawal(req.params.document_id, req.session.data);
   delete req.session.data.document;
-  req.flash('success', 'Document unwithdrawn');
+  req.flash('success', 'Document withdrawal undone');
   res.redirect('/documents/' + req.params.document_id);
 };
 

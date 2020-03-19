@@ -137,6 +137,9 @@ router.get('/documents', checkIsAuthenticated, document_controller.document_list
 router.get('/documents/:document_id/attachments/:attachment_id/modal/preview', checkIsAuthenticated, attachment_controller.attachment_preview);
 
 // GET request for list of all attachment items.
+router.get('/documents/:document_id/attachments/:attachment_id/modal/', checkIsAuthenticated, attachment_controller.attachment_list);
+
+// GET request for list of all attachment items.
 router.get('/documents/:document_id/attachments/modal/', checkIsAuthenticated, attachment_controller.attachment_list);
 
 

@@ -6,7 +6,56 @@
 {% endblock %}
 
 {% block pageScripts %}
+<script type="text/javascript">
+  var appliesToInset = document.querySelector('#applies-to-inset')
+  if (appliesToInset) {
+    var insetBody = appliesToInset.querySelector('.app-c-inset-prompt__body')
+    var allNations = document.querySelectorAll('input[type=checkbox]')
+    var allNationsUrl = document.querySelectorAll('input[type=text]')
+    allNations.forEach((nation) => addEventListener('click', updateAppliesToInset))
+    allNationsUrl.forEach((nation) => addEventListener('change', updateAppliesToInset))
+    updateAppliesToInset()
+  }
 
+  function titleCase(str) {
+    str = str.toLowerCase().split(' ');
+    for (var i = 0; i < str.length; i++) {
+      str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+    }
+    return str.join(' ');
+  }
+
+  function arrayToList(array, join = ', ', final = ' and ') {
+    var arr = array.slice(0);
+    var last = arr.pop();
+    if (array.length > 1) {
+      return arr.join(join) + final + last;
+    }
+    return last;
+  }
+
+  function updateAppliesToInset() {
+    var appliesToNations = []
+    var doesntApplyToNations = []
+    var checkedNations = document.querySelectorAll('input[type=checkbox]')
+    checkedNations.forEach((nation) => {
+      if (nation.checked) {
+        alternativeUrl = nation.parentNode.nextElementSibling.querySelector('input[type=text]').value
+        if (alternativeUrl) {
+          doesntApplyToNations.push(titleCase(nation.value.replace(/_/gi,' ')))
+        }
+      } else {
+        appliesToNations.push(titleCase(nation.value.replace(/_/gi,' ')))
+      }
+    })
+
+    var insetBodyText = "Applies to: " + arrayToList(appliesToNations)
+    if (doesntApplyToNations.length) {
+      insetBodyText += " (see publication for " + arrayToList(doesntApplyToNations) + ")"
+    }
+    insetBody.innerHTML = insetBodyText
+  }
+</script>
 {% endblock %}
 
 {% block beforeContent %}
@@ -133,7 +182,7 @@
           ]
         }) }}
 
-        <p class="govuk-body">The following notice will be displayed to the public.</p>
+        <p class="govuk-body">This notice will show on GOV.UK.</p>
 
         {{ appInsetPrompt({
           description: {

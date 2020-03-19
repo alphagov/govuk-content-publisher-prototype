@@ -1,14 +1,14 @@
 {%- set command_paper_html %}
 
   {{ govukInput({
-    id: "attachment-cpn",
+    id: "example-1-attachment-cpn",
     name: "document[attachment][cpn]",
     label: {
       text: "Command paper number",
       classes: "govuk-!-font-weight-bold"
     },
     hint: {
-      html: 'Include the command paper number.'
+      html: 'Include the command paper number. This document will show in the <a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/official-documents" target="_blank">official document finder</a>.'
     },
     value: attachment.cpn if attachment.cpn,
     errorMessage: errors | getErrorMessage('cpn'),
@@ -24,14 +24,14 @@
 {%- set house_of_commons_paper_html %}
 
   {{ govukInput({
-    id: "attachment-hcpn",
+    id: "example-1-attachment-hcpn",
     name: "document[attachment][hcpn]",
     label: {
       text: "House of Commons paper number",
       classes: "govuk-!-font-weight-bold"
     },
     hint: {
-      html: 'Include the House of Commons number.'
+      html: 'Include the House of Commons number. This document will show in the <a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/official-documents" target="_blank">official document finder</a>.'
     },
     value: attachment.hcpn if attachment.hcpn,
     errorMessage: errors | getErrorMessage('hcpn'),
@@ -42,29 +42,15 @@
     }
   }) }}
 
-  <!-- <p class="govuk-body">Or</p> -->
-
-  {#{ govukCheckboxes({
-    idPrefix: "attachment-unnumbered-act",
-    name: "document[attachment][unnumbered_act]",
-    items: [
-      {
-        value: "yes",
-        text: "Unnumbered act paper",
-        checked: true if attachment.unnumbered_act == "yes"
-      }
-    ]
-  }) }#}
-
   {{ govukSelect({
-    id: "attachment-parliamentary-session",
+    id: "example-1-attachment-parliamentary-session",
     name: "document[attachment][parliamentary_session]",
     label: {
       text: "Parliamentary session",
       classes: "govuk-!-font-weight-bold"
     },
     hint: {
-      text: "Select the parliamentary session when the publication was laid in Parliament."
+      text: "Choose the parliamentary session when the publication was laid in Parliament."
     },
     errorMessage: errors | getErrorMessage('parliamentary_session'),
     classes: "govuk-!-width-one-half",
@@ -105,8 +91,8 @@
         selected: true if attachment.parliamentary_session == "2014-15"
       },
       {
-        value: "2013-17",
-        text: "2013-17",
+        value: "2013-14",
+        text: "2013-14",
         selected: true if attachment.parliamentary_session == "2013-14"
       },
       {
@@ -179,11 +165,9 @@
 
 {% endset -%}
 
-<!-- id: "official-document", -->
-
 {{ govukRadios({
-  idPrefix: "official-document",
-  name: "document[attachment][official_document]",
+  idPrefix: "example-1-official-document",
+  name: "example-1-official-document",
   fieldset: {
     legend: {
       text: "Is this an official document?",
@@ -192,7 +176,7 @@
     }
   },
   hint: {
-    html: '‘Official documents’ have been laid in Parliament. Check if your document contains ‘presented to Parliament’. If you choose yes, this document will show in the <a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/official-documents" target="_blank">official document finder</a>'
+    html: '‘Official documents’ have been laid in Parliament. Check if your document contains ‘presented to Parliament’.'
   },
   errorMessage: errors | getErrorMessage('official_document'),
   items: [
@@ -201,13 +185,11 @@
       text: "Yes, this is a command paper",
       conditional: {
         html: command_paper_html
-      },
-      checked: true if attachment.official_document == "yes_command_paper"
+      }
     },
     {
       value: "yes_unnumbered_command_paper",
-      text: "Yes, this is an unnumbered command paper",
-      checked: true if attachment.official_document == "yes_unnumbered_command_paper"
+      text: "Yes, this is an unnumbered command paper"
     },
     {
       value: "yes_house_of_commons_paper",
@@ -215,63 +197,15 @@
       conditional: {
         html: house_of_commons_paper_html
       },
-      checked: true if attachment.official_document == "yes_house_of_commons_paper"
+      checked: true
     },
     {
       value: "yes_unnumbered_act_paper",
-      text: "Yes, this is an unnumbered act paper",
-      checked: true if attachment.official_document == "yes_unnumbered_act_paper"
+      text: "Yes, this is an unnumbered act paper"
     },
     {
       value: "no",
-      text: "No, this document has not been laid in Parliament",
-      checked: true if attachment.official_document == "no"
+      text: "No, this document has not been laid in Parliament"
     }
   ]
-}) }}
-
-{{ govukInput({
-  id: "attachment-isbn",
-  name: "document[attachment][isbn]",
-  label: {
-    text: "ISBN",
-    classes: "govuk-!-font-weight-bold"
-  },
-  hint: {
-    text: "Add the International Standard Book Number (ISBN) if there is one."
-  },
-  errorMessage: errors | getErrorMessage('isbn'),
-  value: attachment.isbn if attachment.isbn,
-  classes: "govuk-!-width-one-half",
-  attributes: {
-    "autocomplete": "off",
-    "autocapitalize": "off"
-  }
-}) }}
-
-<!--
-  TODO: validate ISBN
-  https://en.wikipedia.org/wiki/International_Standard_Book_Number
-  https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s13.html
-
-  ^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$
--->
-
-{{ govukInput({
-  id: "attachment-urn",
-  name: "document[attachment][urn]",
-  label: {
-    text: "Unique reference",
-    classes: "govuk-!-font-weight-bold"
-  },
-  hint: {
-    text: "Add your organisation’s own reference if it has one."
-  },
-  errorMessage: errors | getErrorMessage('urn'),
-  value: attachment.urn if attachment.urn,
-  classes: "govuk-!-width-one-half",
-  attributes: {
-    "autocomplete": "off",
-    "autocapitalize": "off"
-  }
 }) }}

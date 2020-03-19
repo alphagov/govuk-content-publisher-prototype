@@ -5,37 +5,52 @@ const flash = require('connect-flash');
 
 const Documents = require('../models/documents');
 const Attachments = require('../models/attachments');
+const Validators = require('../validators/attachments');
 
 // Display list of all attachments.
 exports.attachment_list = function(req, res) {
 
   const documentData = Documents.findById(req.params.document_id);
-  const attachmentData = Attachments.findByDocumentId(req.params.document_id);
+  const attachmentListData = Attachments.findByDocumentId(req.params.document_id);
 
   let flashMessage = req.flash();
 
-  if (req.path.indexOf('/modal/') !== -1) {
-    res.render('../views/attachments/modals/list', {
-      document: documentData,
-      attachments: attachmentData,
-      message: flashMessage,
-      actions: {
-        add_file: '/documents/' + req.params.document_id + '/attachments/modal/create?type=file',
-        add_external: '/documents/' + req.params.document_id + '/attachments/modal/create?type=external'
-      }
-    });
+  if (req.path.includes('/modal/')) {
+
+    if (req.params.attachment_id !== undefined) {
+
+      const attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
+
+      res.render('../views/attachments/modals/list', {
+        document: documentData,
+        attachment: attachmentData,
+        attachments: attachmentListData
+      });
+
+    } else {
+
+      res.render('../views/attachments/modals/list', {
+        document: documentData,
+        attachments: attachmentListData
+      });
+
+    }
+
   } else {
+
     res.render('../views/attachments/list', {
       document: documentData,
-      attachments: attachmentData,
+      attachments: attachmentListData,
       message: flashMessage,
       actions: {
         back: '/documents/' + req.params.document_id,
         add_file: '/documents/' + req.params.document_id + '/attachments/create?type=file',
         add_external: '/documents/' + req.params.document_id + '/attachments/create?type=external',
+        add_html: '/documents/' + req.params.document_id + '/attachments/create?type=html',
         reorder: '/documents/' + req.params.document_id + '/attachments/reorder'
       }
     });
+
   }
 
 };
@@ -81,22 +96,44 @@ exports.attachment_create_get = function(req, res) {
 // Handle attachment create on POST.
 exports.attachment_create_post = function(req, res) {
 
-  const attachmentData = Attachments.save(req.params.document_id, req.session.data);
+  const errors = Validators.checkAttachment(req.session.data.document.attachment);
 
-  // set flash message (success/failure)
-  // req.flash('success', 'Attachment created');
+  if (errors.length) {
 
-  // redirect the user back to the attachments page
-  res.redirect('/documents/' + req.params.document_id + '/attachments/' + attachmentData.content_id + '/add-details');
+    const documentData = Documents.findById(req.params.document_id);
+
+    res.render('../views/attachments/create', {
+      document: documentData,
+      attachment: req.session.data.document.attachment,
+      errors: errors,
+      actions: {
+        back: '/documents/' + req.params.document_id + '/attachments',
+        save: '/documents/' + req.params.document_id + '/attachments/create'
+      }
+    });
+
+  } else {
+
+    const attachmentData = Attachments.save(req.params.document_id, req.session.data);
+
+    // set flash message (success/failure)
+    // req.flash('success', 'Attachment created');
+
+    // redirect the user back to the attachments page
+    res.redirect('/documents/' + req.params.document_id + '/attachments/' + attachmentData.content_id + '/add-details');
+
+  }
 
 };
 
 // Display attachment update form on GET.
 exports.attachment_update_get = function(req, res) {
 
+  const documentData = Documents.findById(req.params.document_id);
   const attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
 
   res.render('../views/attachments/edit', {
+    document: documentData,
     attachment: attachmentData,
     actions: {
       back: '/documents/' + req.params.document_id + '/attachments',
@@ -109,13 +146,32 @@ exports.attachment_update_get = function(req, res) {
 // Handle attachment update on POST.
 exports.attachment_update_post = function(req, res) {
 
-  Attachments.findByIdAndUpdate(req.params.document_id, req.params.attachment_id, req.session.data);
+  const errors = Validators.checkAttachment(req.session.data.document.attachment);
 
-  // set flash message (success/failure)
-  req.flash('success', 'Attachment updated');
+  if (errors.length) {
 
-  // redirect the user back to the attachments page
-  res.redirect('/documents/' + req.params.document_id + '/attachments');
+    const documentData = Documents.findById(req.params.document_id);
+
+    res.render('../views/attachments/edit', {
+      document: documentData,
+      attachment: req.session.data.document.attachment,
+      actions: {
+        back: '/documents/' + req.params.document_id + '/attachments',
+        save: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/update'
+      }
+    });
+
+  } else {
+
+    Attachments.findByIdAndUpdate(req.params.document_id, req.params.attachment_id, req.session.data);
+
+    // set flash message (success/failure)
+    req.flash('success', 'Attachment updated');
+
+    // redirect the user back to the attachments page
+    res.redirect('/documents/' + req.params.document_id + '/attachments');
+
+  }
 
 };
 
@@ -138,16 +194,45 @@ exports.attachment_create_metadata_get = function(req, res) {
 // Display attachment metadata form on GET.
 exports.attachment_create_metadata_post = function(req, res) {
 
-  Attachments.findByIdAndUpdateDetails(req.params.document_id, req.params.attachment_id, req.session.data);
+  const errors = Validators.checkAttachmentMetadata(req.session.data.document.attachment);
 
-  // delete the attachment data we no longer need
-  delete req.session.data.document.attachment;
+  if (errors.length) {
 
-  // set flash message (success/failure)
-  req.flash('success', 'Attachment added');
+    // Get attachment data
+    const attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
 
-  // redirect the user back to the attachments page
-  res.redirect('/documents/' + req.params.document_id + '/attachments');
+    // overwrite the original data with the submitted form data
+    for (let [key, value] of Object.entries(req.session.data.document.attachment)) {
+      attachmentData[key] = value;
+      // console.log(`${key}: ${value}`);
+    }
+
+    // delete the attachment data we no longer need
+    delete req.session.data.document.attachment;
+
+    res.render('../views/attachments/create-details', {
+      attachment: attachmentData,
+      errors: errors,
+      actions: {
+        back: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/update',
+        save: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/add-details'
+      }
+    });
+
+  } else {
+
+    Attachments.findByIdAndUpdateDetails(req.params.document_id, req.params.attachment_id, req.session.data);
+
+    // delete the attachment data we no longer need
+    delete req.session.data.document.attachment;
+
+    // set flash message (success/failure)
+    req.flash('success', 'Attachment added');
+
+    // redirect the user back to the attachments page
+    res.redirect('/documents/' + req.params.document_id + '/attachments');
+
+  }
 
 };
 
@@ -157,8 +242,11 @@ exports.attachment_update_metadata_get = function(req, res) {
   // Get attachment data
   const attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
 
+  const errors = Validators.checkAttachmentMetadata(attachmentData);
+
   res.render('../views/attachments/update-details', {
     attachment: attachmentData,
+    errors: errors,
     actions: {
       back: '/documents/' + req.params.document_id + '/attachments',
       save: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/update-details'
@@ -170,16 +258,45 @@ exports.attachment_update_metadata_get = function(req, res) {
 // Handle attachment metadata update on POST.
 exports.attachment_update_metadata_post = function(req, res) {
 
-  Attachments.findByIdAndUpdateDetails(req.params.document_id, req.params.attachment_id, req.session.data);
+  const errors = Validators.checkAttachmentMetadata(req.session.data.document.attachment);
 
-  // delete the attachment data we no longer need
-  delete req.session.data.document.attachment;
+  if (errors.length) {
 
-  // set flash message (success/failure)
-  req.flash('success', 'Attachment details updated');
+    // Get attachment data
+    let attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
 
-  // redirect the user back to the attachments page
-  res.redirect('/documents/' + req.params.document_id + '/attachments');
+    // overwrite the original data with the submitted form data
+    for (let [key, value] of Object.entries(req.session.data.document.attachment)) {
+      attachmentData[key] = value;
+      // console.log(`${key}: ${value}`);
+    }
+
+    // delete the attachment data we no longer need
+    delete req.session.data.document.attachment;
+
+    res.render('../views/attachments/update-details', {
+      attachment: attachmentData,
+      errors: errors,
+      actions: {
+        back: '/documents/' + req.params.document_id + '/attachments',
+        save: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/update-details'
+      }
+    });
+
+  } else {
+
+    Attachments.findByIdAndUpdateDetails(req.params.document_id, req.params.attachment_id, req.session.data);
+
+    // delete the attachment data we no longer need
+    delete req.session.data.document.attachment;
+
+    // set flash message (success/failure)
+    req.flash('success', 'Attachment details updated');
+
+    // redirect the user back to the attachments page
+    res.redirect('/documents/' + req.params.document_id + '/attachments');
+
+  }
 
 };
 

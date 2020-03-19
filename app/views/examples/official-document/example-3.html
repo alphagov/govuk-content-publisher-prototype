@@ -1,0 +1,92 @@
+{%- set command_paper_html %}
+
+  {{ govukInput({
+    id: "example-3-attachment-cpn",
+    name: "document[attachment][cpn]",
+    label: {
+      text: "Command paper number",
+      classes: "govuk-!-font-weight-bold"
+    },
+    hint: {
+      html: 'Include the command paper number. This document will show in the <a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/official-documents" target="_blank">official document finder</a>.'
+    },
+    value: attachment.cpn if attachment.cpn,
+    errorMessage: errors | getErrorMessage('cpn'),
+    classes: "govuk-!-width-one-half",
+    attributes: {
+      "autocomplete": "off",
+      "autocapitalize": "off"
+    }
+  }) }}
+
+{% endset -%}
+
+{%- set house_of_commons_paper_html %}
+
+  <div class="govuk-form-group">
+    <label class="govuk-label govuk-!-font-weight-bold" for="example-3-attachment-hcpn">
+      House of Commons paper number
+    </label>
+    <span id="example-3-attachment-hcpn-hint" class="govuk-hint">
+      Include the House of Commons number. This document will show in the <a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/official-documents" target="_blank">official document finder</a>.
+    </span>
+    <span class="govuk-body">HC</span> <input class="govuk-input govuk-input--width-4" id="example-3-attachment-hcpn" name="document[attachment][hcpn]" type="text" aria-describedby="example-3-attachment-hcpn-hint" autocomplete="off" autocapitalize="off">
+  </div>
+
+  <div class="govuk-form-group">
+    <label class="govuk-label govuk-!-font-weight-bold" for="example-3-attachment-parliamentary-session">
+      Parliamentary session
+    </label>
+    <span id="example-3-attachment-parliamentary-session-hint" class="govuk-hint">
+      Enter the parliamentary session when the publication was laid in Parliament. For example 2020 - 21.
+    </span>
+    <input class="govuk-input govuk-input--width-4" id="example-3-attachment-parliamentary-session" name="document[attachment][parliamentary_session][part_1]" type="text" aria-describedby="example-2-attachment-parliamentary-session-hint" autocomplete="off" autocapitalize="off">
+    <span class="govuk-body">-</span> <input class="govuk-input govuk-input--width-2" id="example-3-attachment-parliamentary-session-part-2" name="document[attachment][parliamentary_session][part_2]" type="text" aria-describedby="example-2-attachment-parliamentary-session-hint" autocomplete="off" autocapitalize="off">
+  </div>
+
+{% endset -%}
+
+{{ govukRadios({
+  idPrefix: "example-3-official-document",
+  name: "example-3-official-document",
+  fieldset: {
+    legend: {
+      text: "Is this an official document?",
+      isPageHeading: false,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
+  hint: {
+    html: '‘Official documents’ have been laid in Parliament. Check if your document contains ‘presented to Parliament’.'
+  },
+  errorMessage: errors | getErrorMessage('official_document'),
+  items: [
+    {
+      value: "yes_command_paper",
+      text: "Yes, this is a command paper",
+      conditional: {
+        html: command_paper_html
+      }
+    },
+    {
+      value: "yes_unnumbered_command_paper",
+      text: "Yes, this is an unnumbered command paper"
+    },
+    {
+      value: "yes_house_of_commons_paper",
+      text: "Yes, this is a House of Commons paper",
+      conditional: {
+        html: house_of_commons_paper_html
+      },
+      checked: true
+    },
+    {
+      value: "yes_unnumbered_act_paper",
+      text: "Yes, this is an unnumbered act paper"
+    },
+    {
+      value: "no",
+      text: "No, this document has not been laid in Parliament"
+    }
+  ]
+}) }}
