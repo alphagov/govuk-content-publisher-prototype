@@ -10,7 +10,7 @@
 {%- if attachment.file | length %}
   <p class="govuk-body">
     <span class="govuk-!-font-weight-bold">Current attachment</span><br>
-    <a class="govuk-link" href="#">{{ attachment.file }}</a>
+    <a class="govuk-link" href="/documents/{{ document.content_id}}/attachments/{{ attachment.content_id }}/preview" target="_blank">{{ attachment.file }}</a>
   </p>
 {% endif -%}
 
