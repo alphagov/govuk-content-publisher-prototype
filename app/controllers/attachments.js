@@ -48,6 +48,7 @@ exports.attachment_list = function(req, res) {
 
         res.render('../views/attachments/modals/create', {
           document: documentData,
+          message: flashMessage,
           actions: {
             save: '/documents/' + req.params.document_id + '/attachments/modal/create'
           }

@@ -1,0 +1,13 @@
+{%- if message.success | length %}
+  {{ appSuccessAlert({
+    description: {
+      html: message.success
+    },
+    attributes: {
+      "id": "success-message",
+      "data-module": "initial-focus",
+      "role": "alert",
+      "tabindex": "-1"
+    }
+  }) }}
+{% endif -%}
