@@ -40,6 +40,17 @@
           },
           "items": [
             {
+              "value": "written_statement",
+              "text": "Written statement to Parliament",
+              "label": {
+                "classes": "govuk-label--s"
+              },
+              "hint": {
+                "text": "Written statements given to Parliament by a minister, where there is significant public interest in the entire statement."
+              },
+              "checked": checked('document_sub_type', 'written_statement')
+            } if data.document_type == "statement_to_parliament",
+            {
               "value": "oral_statement",
               "text": "Oral statement to Parliament",
               "label": {
@@ -51,16 +62,16 @@
               "checked": checked('document_sub_type', 'oral_statement')
             } if data.document_type == "statement_to_parliament",
             {
-              "value": "written_statement",
-              "text": "Written statement to Parliament",
+              "value": "correspondence",
+              "text": "Correspondence publication",
               "label": {
                 "classes": "govuk-label--s"
               },
               "hint": {
-                "text": "Written statements given to Parliament by a minister, where there is significant public interest in the entire statement."
+                "text": "Minister or organisation responses (for example to campaign letters), correspondence to individuals, organisations and professionals, circulars, bulletins and newsletters."
               },
-              "checked": checked('document_sub_type', 'written_statement')
-            } if data.document_type == "statement_to_parliament",
+              "checked": checked('document_sub_type', 'correspondence')
+            } if data.document_type == "articles_correspondence",
             {
               "value": "authored_article",
               "text": "Authored article",
@@ -73,19 +84,19 @@
               "checked": checked('document_sub_type', 'authored_article')
             } if data.document_type == "articles_correspondence",
             {
-              "value": "correspondence",
-              "text": "Correspondence",
+              "value": "detailed_guide",
+              "text": "Detailed guide",
               "label": {
                 "classes": "govuk-label--s"
               },
               "hint": {
-                "text": "Minister or organisation responses (for example to campaign letters), correspondence to individuals, organisations and professionals, circulars, bulletins and newsletters."
+                "text": "Guidance for specialist or professional users detailing the steps they need to take to complete a clearly defined task."
               },
-              "checked": checked('document_sub_type', 'correspondence')
-            } if data.document_type == "articles_correspondence",
+              "checked": checked('document_sub_type', 'detailed_guide')
+            } if data.document_type == "guidance",
             {
               "value": "non_statutory_guidance",
-              "text": "Non-statutory guidance",
+              "text": "Non-statutory guidance publication",
               "label": {
                 "classes": "govuk-label--s"
               },
@@ -96,7 +107,7 @@
             } if data.document_type == "guidance",
             {
               "value": "statutory_guidance",
-              "text": "Statutory guidance",
+              "text": "Statutory guidance publication",
               "label": {
                 "classes": "govuk-label--s"
               },
@@ -104,28 +115,6 @@
                 "text": "Guidance which relevant users are legally obliged to follow."
               },
               "checked": checked('document_sub_type', 'statutory_guidance')
-            } if data.document_type == "guidance",
-            {
-              "value": "manual",
-              "text": "Manual",
-              "label": {
-                "classes": "govuk-label--s"
-              },
-              "hint": {
-                "text": "Long, complex guidance or legal documents for specialist users who are familiar with a topic, usually with named or numbered chapters or clauses."
-              },
-              "checked": checked('document_sub_type', 'manual')
-            } if data.document_type == "guidance",
-            {
-              "value": "detailed_guide",
-              "text": "Detailed guide",
-              "label": {
-                "classes": "govuk-label--s"
-              },
-              "hint": {
-                "text": "Guidance for specialist or professional users detailing the steps they need to take to complete a clearly defined task."
-              },
-              "checked": checked('document_sub_type', 'detailed_guide')
             } if data.document_type == "guidance",
             {
               "value": "mainstream_guide",
@@ -139,27 +128,16 @@
               "checked": checked('document_sub_type', 'mainstream_guide')
             } if data.document_type == "guidance",
             {
-              "value": "official_statistics",
-              "text": "Official statistics",
+              "value": "manual",
+              "text": "Manual",
               "label": {
                 "classes": "govuk-label--s"
               },
               "hint": {
-                "text": "Statistics governed by the UK Statistics Authority and produced by members of the Government Statistical Service."
+                "text": "Long, complex guidance or legal documents for specialist users who are familiar with a topic, usually with named or numbered chapters or clauses."
               },
-              "checked": checked('document_sub_type', 'official_statistics')
-            } if data.document_type == "statistics",
-            {
-              "value": "national_statistics",
-              "text": "National statistics",
-              "label": {
-                "classes": "govuk-label--s"
-              },
-              "hint": {
-                "text": "Official Statistics that have been produced in accordance with the Code of Practice for Official Statistics, which is indicated using the National Statistics quality mark."
-              },
-              "checked": checked('document_sub_type', 'national_statistics')
-            } if data.document_type == "statistics",
+              "checked": checked('document_sub_type', 'manual')
+            } if data.document_type == "guidance",
             {
               "value": "statistics_announcement",
               "text": "Statistics announcement",
@@ -170,6 +148,28 @@
                 "text": "An announcement of national and official statistics releases to comply with the Code of Practice for Official Statistics."
               },
               "checked": checked('document_sub_type', 'statistics_announcement')
+            } if data.document_type == "statistics",
+            {
+              "value": "official_statistics",
+              "text": "Official statistics publication",
+              "label": {
+                "classes": "govuk-label--s"
+              },
+              "hint": {
+                "text": "Statistics governed by the UK Statistics Authority and produced by members of the Government Statistical Service."
+              },
+              "checked": checked('document_sub_type', 'official_statistics')
+            } if data.document_type == "statistics",
+            {
+              "value": "national_statistics",
+              "text": "National statistics publication",
+              "label": {
+                "classes": "govuk-label--s"
+              },
+              "hint": {
+                "text": "Official Statistics that have been produced in accordance with the Code of Practice for Official Statistics, which is indicated using the National Statistics quality mark."
+              },
+              "checked": checked('document_sub_type', 'national_statistics')
             } if data.document_type == "statistics",
             {
               "value": "statistical_dataset",
