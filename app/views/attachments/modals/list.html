@@ -54,7 +54,7 @@
                 {% else %}
                   <!-- Not current attachment -->
                   {%- if document.document_schema == 'publication' %}
-                    You can add a link to this attachment in the body of the content.
+                    You can add a link to this attachment in the body of the content.<br><br>To change your attachment, save your changes and go to the attachments section.
                   {% else %}
                     You can add a link to this attachment in the body of the content or insert the attachment.
                   {% endif -%}
@@ -67,7 +67,7 @@
                 {% else %}
                   <!-- Not current attachment -->
                   {%- if document.document_schema == 'publication' %}
-                    You can add a link to one of these attachments in the body of the content.
+                    You can add a link to one of these attachments in the body of the content.<br><br>To change your attachments, save your changes and go to the attachments section.
                   {% else %}
                     You can add a link to one of these attachments in the body of the content or insert one of the attachments.
                   {% endif -%}
@@ -163,7 +163,7 @@
                           classes: 'govuk-link--no-visited-state'
                         },
                         {
-                          text: "Delete attachment",
+                          text: "Delete file",
                           href: "/documents/" + document.content_id + "/attachments/" + item.content_id + "/modal/delete",
                           classes: 'app-link--destructive'
                         }
