@@ -62,6 +62,17 @@
               "checked": checked('document_type', 'press_release')
             } if data.document_super_type == "news_communications",
             {
+              "value": "articles_correspondence",
+              "text": "Articles and correspondence",
+              "label": {
+                "classes": "govuk-label--s"
+              },
+              "hint": {
+                "text": "Articles written by a minister or official, responses from the organisation or a minister, and circulars or newsletters."
+              },
+              "checked": checked('document_type', 'articles_correspondence')
+            } if data.document_super_type == "news_communications",
+            {
               "value": "speech",
               "text": "Speech",
               "label": {
@@ -84,17 +95,6 @@
               "checked": checked('document_type', 'statement_to_parliament')
             } if data.document_super_type == "news_communications",
             {
-              "value": "articles_correspondence",
-              "text": "Articles and correspondence",
-              "label": {
-                "classes": "govuk-label--s"
-              },
-              "hint": {
-                "text": "Articles written by a minister or official, responses from the organisation or a minister, and circulars or newsletters."
-              },
-              "checked": checked('document_type', 'articles_correspondence')
-            } if data.document_super_type == "news_communications",
-            {
               "value": "case_study",
               "text": "Case study",
               "label": {
@@ -106,30 +106,8 @@
               "checked": checked('document_type', 'case_study')
             } if data.document_super_type == "news_communications",
             {
-              "value": "decision",
-              "text": "Decision",
-              "label": {
-                "classes": "govuk-label--s"
-              },
-              "hint": {
-                "text": "Formal decisions by tribunals, regulators or adjudicators (including courts and Secretaries of State)."
-              },
-              "checked": checked('document_type', 'decision')
-            } if data.document_super_type == "specialist_notices",
-            {
-              "value": "fatality_notice",
-              "text": "Fatality notice",
-              "label": {
-                "classes": "govuk-label--s"
-              },
-              "hint": {
-                "text": "Initial fatality notices and subsequent obituaries of forces and Ministry of Defence personnel."
-              },
-              "checked": checked('document_type', 'fatality_notice')
-            } if data.document_super_type == "specialist_notices",
-            {
               "value": "notice",
-              "text": "Notice",
+              "text": "Notice publication",
               "label": {
                 "classes": "govuk-label--s"
               },
@@ -137,6 +115,17 @@
                 "text": "Permit and licence applications published temporarily for public awareness."
               },
               "checked": checked('document_type', 'notice')
+            } if data.document_super_type == "specialist_notices",
+            {
+              "value": "decision",
+              "text": "Decision publication",
+              "label": {
+                "classes": "govuk-label--s"
+              },
+              "hint": {
+                "text": "Formal decisions by tribunals, regulators or adjudicators (including courts and Secretaries of State)."
+              },
+              "checked": checked('document_type', 'decision')
             } if data.document_super_type == "specialist_notices",
             {
               "value": "specialist_notice",
@@ -150,6 +139,17 @@
               "checked": checked('document_type', 'specialist_notice')
             } if data.document_super_type == "specialist_notices",
             {
+              "value": "fatality_notice",
+              "text": "Fatality notice",
+              "label": {
+                "classes": "govuk-label--s"
+              },
+              "hint": {
+                "text": "Initial fatality notices and subsequent obituaries of forces and Ministry of Defence personnel."
+              },
+              "checked": checked('document_type', 'fatality_notice')
+            } if data.document_super_type == "specialist_notices",
+            {
               "value": "guidance",
               "text": "Guidance",
               "label": {
@@ -161,19 +161,8 @@
               "checked": checked('document_type', 'guidance')
             } if data.document_super_type == "guidance_regulation",
             {
-              "value": "regulation",
-              "text": "Regulation",
-              "label": {
-                "classes": "govuk-label--s"
-              },
-              "hint": {
-                "text": "Regulations imposed by an independent regulatory authority."
-              },
-              "checked": checked('document_type', 'regulation')
-            } if data.document_super_type == "guidance_regulation",
-            {
               "value": "form",
-              "text": "Form",
+              "text": "Form publication",
               "label": {
                 "classes": "govuk-label--s"
               },
@@ -183,8 +172,19 @@
               "checked": checked('document_type', 'form')
             } if data.document_super_type == "guidance_regulation",
             {
+              "value": "regulation",
+              "text": "Regulation publication",
+              "label": {
+                "classes": "govuk-label--s"
+              },
+              "hint": {
+                "text": "Regulations imposed by an independent regulatory authority."
+              },
+              "checked": checked('document_type', 'regulation')
+            } if data.document_super_type == "guidance_regulation",
+            {
               "value": "map",
-              "text": "Map",
+              "text": "Map publication",
               "label": {
                 "classes": "govuk-label--s"
               },
@@ -205,41 +205,8 @@
               "checked": checked('document_type', 'statistics')
             } if data.document_super_type == "transparency_statistics",
             {
-              "value": "independent_report",
-              "text": "Independent report",
-              "label": {
-                "classes": "govuk-label--s"
-              },
-              "hint": {
-                "text": "Reports commissioned by government but written by non-government organisations, including independent enquiries, investigations and reviews."
-              },
-              "checked": checked('document_type', 'independent_report')
-            } if data.document_super_type == "transparency_statistics",
-            {
-              "value": "foi_release",
-              "text": "FOI release",
-              "label": {
-                "classes": "govuk-label--s"
-              },
-              "hint": {
-                "text": "Responses to Freedom of Information (FOI) requests."
-              },
-              "checked": checked('document_type', 'foi_release')
-            } if data.document_super_type == "transparency_statistics",
-            {
-              "value": "corporate_report",
-              "text": "Corporate report",
-              "label": {
-                "classes": "govuk-label--s"
-              },
-              "hint": {
-                "text": "Publications about the organisation as a public entity, for example, annual reports, business plans and accounts."
-              },
-              "checked": checked('document_type', 'corporate_report')
-            } if data.document_super_type == "transparency_statistics",
-            {
               "value": "transparency",
-              "text": "Transparency",
+              "text": "Transparency data publication",
               "label": {
                 "classes": "govuk-label--s"
               },
@@ -249,8 +216,19 @@
               "checked": checked('document_type', 'transparency')
             } if data.document_super_type == "transparency_statistics",
             {
+              "value": "corporate_report",
+              "text": "Corporate report publication",
+              "label": {
+                "classes": "govuk-label--s"
+              },
+              "hint": {
+                "text": "Publications about the organisation as a public entity, for example, annual reports, business plans and accounts."
+              },
+              "checked": checked('document_type', 'corporate_report')
+            } if data.document_super_type == "transparency_statistics",
+            {
               "value": "research_analysis",
-              "text": "Research and analysis",
+              "text": "Research and analysis publication",
               "label": {
                 "classes": "govuk-label--s"
               },
@@ -260,8 +238,30 @@
               "checked": checked('document_type', 'research_analysis')
             } if data.document_super_type == "transparency_statistics",
             {
+              "value": "foi_release",
+              "text": "FOI release publication",
+              "label": {
+                "classes": "govuk-label--s"
+              },
+              "hint": {
+                "text": "Responses to Freedom of Information (FOI) requests."
+              },
+              "checked": checked('document_type', 'foi_release')
+            } if data.document_super_type == "transparency_statistics",
+            {
+              "value": "independent_report",
+              "text": "Independent report publication",
+              "label": {
+                "classes": "govuk-label--s"
+              },
+              "hint": {
+                "text": "Reports commissioned by government but written by non-government organisations, including independent enquiries, investigations and reviews."
+              },
+              "checked": checked('document_type', 'independent_report')
+            } if data.document_super_type == "transparency_statistics",
+            {
               "value": "international_treaty",
-              "text": "International treaty",
+              "text": "International treaty publication",
               "label": {
                 "classes": "govuk-label--s"
               },
@@ -272,7 +272,7 @@
             } if data.document_super_type == "transparency_statistics",
             {
               "value": "promotional_material",
-              "text": "Promotional material",
+              "text": "Promotional material publication",
               "label": {
                 "classes": "govuk-label--s"
               },
@@ -283,7 +283,7 @@
             } if data.document_super_type == "transparency_statistics",
             {
               "value": "policy_paper",
-              "text": "Policy paper",
+              "text": "Policy paper publication",
               "label": {
                 "classes": "govuk-label--s"
               },
@@ -291,17 +291,6 @@
                 "text": "An explanation of the government's position on something. It doesn’t include instructions on how to carry out a task, only the policy itself and how it’ll be implemented."
               },
               "checked": checked('document_type', 'policy_paper')
-            } if data.document_super_type == "policy_consultation",
-            {
-              "value": "impact_assessment",
-              "text": "Impact assessment",
-              "label": {
-                "classes": "govuk-label--s"
-              },
-              "hint": {
-                "text": "Cost-benefit analyses and other assessments of the impact of proposed initiatives, or changes to regulations or legislation."
-              },
-              "checked": checked('document_type', 'impact_assessment')
             } if data.document_super_type == "policy_consultation",
             {
               "value": "consultation",
@@ -313,6 +302,17 @@
                 "text": "Consultations (officially ‘documents requiring collective agreement across government’), calls for evidence and requests for people's views on a question."
               },
               "checked": checked('document_type', 'consultation')
+            } if data.document_super_type == "policy_consultation",
+            {
+              "value": "impact_assessment",
+              "text": "Impact assessment publication",
+              "label": {
+                "classes": "govuk-label--s"
+              },
+              "hint": {
+                "text": "Cost-benefit analyses and other assessments of the impact of proposed initiatives, or changes to regulations or legislation."
+              },
+              "checked": checked('document_type', 'impact_assessment')
             } if data.document_super_type == "policy_consultation"
           ]
         }) }}
