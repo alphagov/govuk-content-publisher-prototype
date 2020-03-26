@@ -24,15 +24,39 @@ exports.attachment_list = function(req, res) {
       res.render('../views/attachments/modals/list', {
         document: documentData,
         attachment: attachmentData,
-        attachments: attachmentListData
+
+        attachments: attachmentListData,
+        message: flashMessage,
+        actions: {
+          add_file: '/documents/' + req.params.document_id + '/attachments/modal/create?type=file'
+        }
+
       });
 
     } else {
 
-      res.render('../views/attachments/modals/list', {
-        document: documentData,
-        attachments: attachmentListData
-      });
+      if (documentData.document_schema == 'publication' || attachmentListData.length) {
+
+        res.render('../views/attachments/modals/list', {
+          document: documentData,
+          attachments: attachmentListData,
+          message: flashMessage,
+          actions: {
+            add_file: '/documents/' + req.params.document_id + '/attachments/modal/create?type=file'
+          }
+        });
+
+      } else {
+
+        res.render('../views/attachments/modals/create', {
+          document: documentData,
+          message: flashMessage,
+          actions: {
+            save: '/documents/' + req.params.document_id + '/attachments/modal/create'
+          }
+        });
+
+      }
 
     }
 
@@ -58,14 +82,6 @@ exports.attachment_list = function(req, res) {
 // Display detail page for a specific book.
 exports.attachment_detail = function(req, res) {
   res.send('NOT IMPLEMENTED: Attachment detail');
-  // res.render('../views/attachments/show', {
-  //   attachment: Attachments.findById(req.params.document_id, req.params.attachment_id),
-  //   actions: {
-  //     back: '/documents/' + req.params.document_id + '/attachments',
-  //     edit: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id,
-  //     delete: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/delete'
-  //   }
-  // });
 };
 
 // Display attachment create form on GET.
@@ -75,19 +91,37 @@ exports.attachment_create_get = function(req, res) {
 
   if (types.indexOf(req.query.type) === -1) {
 
-    res.redirect('/documents/' + req.params.document_id + '/attachments');
+    if (req.path.includes('/modal/')) {
+      res.redirect('/documents/' + req.params.document_id + '/attachments/modal/');
+    } else {
+      res.redirect('/documents/' + req.params.document_id + '/attachments');
+    }
 
   } else {
 
     const documentData = Documents.findById(req.params.document_id);
 
-    res.render('../views/attachments/create', {
-      document: documentData,
-      actions: {
-        back: '/documents/' + req.params.document_id + '/attachments',
-        save: '/documents/' + req.params.document_id + '/attachments/create'
-      }
-    });
+    if (req.path.includes('/modal/')) {
+
+      res.render('../views/attachments/modals/create', {
+        document: documentData,
+        actions: {
+          back: '/documents/' + req.params.document_id + '/attachments/modal/',
+          save: '/documents/' + req.params.document_id + '/attachments/modal/create'
+        }
+      });
+
+    } else {
+
+      res.render('../views/attachments/create', {
+        document: documentData,
+        actions: {
+          back: '/documents/' + req.params.document_id + '/attachments',
+          save: '/documents/' + req.params.document_id + '/attachments/create'
+        }
+      });
+
+    }
 
   }
 
@@ -102,25 +136,45 @@ exports.attachment_create_post = function(req, res) {
 
     const documentData = Documents.findById(req.params.document_id);
 
-    res.render('../views/attachments/create', {
-      document: documentData,
-      attachment: req.session.data.document.attachment,
-      errors: errors,
-      actions: {
-        back: '/documents/' + req.params.document_id + '/attachments',
-        save: '/documents/' + req.params.document_id + '/attachments/create'
-      }
-    });
+    if (req.path.includes('/modal/')) {
+
+      res.render('../views/attachments/modals/create', {
+        document: documentData,
+        attachment: req.session.data.document.attachment,
+        errors: errors,
+        actions: {
+          back: '/documents/' + req.params.document_id + '/attachments/modal/',
+          save: '/documents/' + req.params.document_id + '/attachments/modal/create'
+        }
+      });
+
+    } else {
+
+      res.render('../views/attachments/create', {
+        document: documentData,
+        attachment: req.session.data.document.attachment,
+        errors: errors,
+        actions: {
+          back: '/documents/' + req.params.document_id + '/attachments',
+          save: '/documents/' + req.params.document_id + '/attachments/create'
+        }
+      });
+
+    }
 
   } else {
 
     const attachmentData = Attachments.save(req.params.document_id, req.session.data);
 
-    // set flash message (success/failure)
-    // req.flash('success', 'Attachment created');
-
-    // redirect the user back to the attachments page
-    res.redirect('/documents/' + req.params.document_id + '/attachments/' + attachmentData.content_id + '/add-details');
+    if (req.path.includes('/modal/')) {
+      // set flash message (success/failure)
+      req.flash('success', 'Attachment created');
+      // redirect the user back to the attachments page
+      res.redirect('/documents/' + req.params.document_id + '/attachments/modal/');
+    } else {
+      // redirect the user back to the attachments page
+      res.redirect('/documents/' + req.params.document_id + '/attachments/' + attachmentData.content_id + '/add-details');
+    }
 
   }
 
@@ -132,14 +186,29 @@ exports.attachment_update_get = function(req, res) {
   const documentData = Documents.findById(req.params.document_id);
   const attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
 
-  res.render('../views/attachments/edit', {
-    document: documentData,
-    attachment: attachmentData,
-    actions: {
-      back: '/documents/' + req.params.document_id + '/attachments',
-      save: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/update'
-    }
-  });
+  if (req.path.includes('/modal/')) {
+
+    res.render('../views/attachments/modals/edit', {
+      document: documentData,
+      attachment: attachmentData,
+      actions: {
+        back: '/documents/' + req.params.document_id + '/attachments/modal/',
+        save: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/modal/update'
+      }
+    });
+
+  } else {
+
+    res.render('../views/attachments/edit', {
+      document: documentData,
+      attachment: attachmentData,
+      actions: {
+        back: '/documents/' + req.params.document_id + '/attachments',
+        save: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/update'
+      }
+    });
+
+  }
 
 };
 
@@ -152,14 +221,29 @@ exports.attachment_update_post = function(req, res) {
 
     const documentData = Documents.findById(req.params.document_id);
 
-    res.render('../views/attachments/edit', {
-      document: documentData,
-      attachment: req.session.data.document.attachment,
-      actions: {
-        back: '/documents/' + req.params.document_id + '/attachments',
-        save: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/update'
-      }
-    });
+    if (req.path.includes('/modal/')) {
+
+      res.render('../views/attachments/modals/edit', {
+        document: documentData,
+        attachment: req.session.data.document.attachment,
+        actions: {
+          back: '/documents/' + req.params.document_id + '/attachments/modal/',
+          save: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/modal/update'
+        }
+      });
+
+    } else {
+
+      res.render('../views/attachments/edit', {
+        document: documentData,
+        attachment: req.session.data.document.attachment,
+        actions: {
+          back: '/documents/' + req.params.document_id + '/attachments',
+          save: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/update'
+        }
+      });
+
+    }
 
   } else {
 
@@ -168,8 +252,13 @@ exports.attachment_update_post = function(req, res) {
     // set flash message (success/failure)
     req.flash('success', 'Attachment updated');
 
-    // redirect the user back to the attachments page
-    res.redirect('/documents/' + req.params.document_id + '/attachments');
+    if (req.path.includes('/modal/')) {
+      // redirect the user back to the attachments page
+      res.redirect('/documents/' + req.params.document_id + '/attachments/modal/');
+    } else {
+      // redirect the user back to the attachments page
+      res.redirect('/documents/' + req.params.document_id + '/attachments');
+    }
 
   }
 
@@ -305,13 +394,27 @@ exports.attachment_delete_get = function(req, res) {
 
   const attachmentData = Attachments.findById(req.params.document_id, req.params.attachment_id);
 
-  res.render('../views/attachments/delete', {
-    attachment: attachmentData,
-    actions: {
-      back: '/documents/' + req.params.document_id + '/attachments',
-      delete: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/delete'
-    }
-  });
+  if (req.path.includes('/modal/')) {
+
+    res.render('../views/attachments/modals/delete', {
+      attachment: attachmentData,
+      actions: {
+        back: '/documents/' + req.params.document_id + '/attachments/modal/',
+        delete: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/modal/delete'
+      }
+    });
+
+  } else {
+
+    res.render('../views/attachments/delete', {
+      attachment: attachmentData,
+      actions: {
+        back: '/documents/' + req.params.document_id + '/attachments',
+        delete: '/documents/' + req.params.document_id + '/attachments/' + req.params.attachment_id + '/delete'
+      }
+    });
+
+  }
 
 };
 
@@ -323,8 +426,13 @@ exports.attachment_delete_post = function(req, res) {
   // set flash message (success/failure)
   req.flash('success', 'Attachment deleted');
 
-  // redirect the user back to the attachments page
-  res.redirect('/documents/' + req.params.document_id + '/attachments');
+  if (req.path.includes('/modal/')) {
+    // redirect the user back to the attachments page
+    res.redirect('/documents/' + req.params.document_id + '/attachments/modal/');
+  } else {
+    // redirect the user back to the attachments page
+    res.redirect('/documents/' + req.params.document_id + '/attachments');
+  }
 
 };
 
@@ -343,7 +451,6 @@ exports.attachment_preview = function(req, res) {
 
 // Download attachment on GET.
 exports.attachment_download = function(req, res) {
-  // res.send('NOT IMPLEMENTED: attachment download');
   res.download(path.join(__dirname, '../data/attachments/attachment.pdf'));
 };
 

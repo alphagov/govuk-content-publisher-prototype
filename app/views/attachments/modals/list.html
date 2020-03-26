@@ -1,10 +1,21 @@
 
 {% extends "layout-modal.html" %}
 
+{% block pageScripts %}
+<script src="/public/javascripts/components/initial-focus.js"></script>
+<script type="text/javascript">
+  var $element = $('#success-message');
+  var initialFocus = new GOVUK.Modules.InitialFocus();
+  initialFocus.start($element);
+</script>
+{% endblock %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
+
+      {% include "../partials/_banner-success-message.html" %}
 
       <div class="govuk-grid-row govuk-!-margin-bottom-8">
         <div class="govuk-grid-column-full">
@@ -13,30 +24,95 @@
             Attachments {{ 'for ‘' + document.title + '’' if document.title | length }}
           </h1>
 
-          {% if attachments | length %}
+          {%- if document.document_schema == 'news' %}
 
-            <p class="govuk-body govuk-!-margin-bottom-8">
+            {%- if not attachments | length %}
+              <p class="govuk-body">No attachments have been added to this document.</p>
+            {% endif -%}
+
+            {{ appButtonMenu({
+              items: [
+                {
+                  text: 'Upload file attachment',
+                  classes: 'govuk-button',
+                  href: actions.add_file
+                }
+              ],
+              classes: "govuk-!-margin-bottom-4"
+            }) }}
+
+          {% endif -%}
+
+          {%- if attachments | length %}
+
+            <p class="govuk-body govuk-!-margin-bottom-4">
+
               {% if attachments | length == 1 %}
                 <!-- One attachment -->
                 {% if attachment.content_id and attachment.content_id == attachments[0].content_id %}
                   <!-- Current attachment -->
-                  You’re editing ‘{{ attachment.title }}’. There are no other attachments added to this document. You can only insert an attachment that has already been added.
+                  You’re editing ‘{{ attachment.title }}’.<br><br>There are no other attachments added to this document. You can only insert an attachment that has already been added.
                 {% else %}
                   <!-- Not current attachment -->
-                  You can add a link to this attachment in the body of the content.
+                  {%- if document.document_schema == 'publication' %}
+                    You can add a link to this attachment in the body of the content.<br><br>To change your attachment, save your changes and go to the attachments section.
+                  {% else %}
+                    You can add a link to this attachment in the body of the content or insert the attachment.
+                  {% endif -%}
                 {% endif -%}
               {% else %}
                 <!-- Many attcachments -->
                 {%- if attachment.content_id | length %}
                   <!-- Current attachment -->
-                  You’re editing ‘{{ attachment.title }}’. You can add a link to the other {{ 'attachment' if attachments | length == 2 else 'attachments' }} in the body of the content.
+                  You’re editing ‘{{ attachment.title }}’.<br><br>You can add a link to the other {{ 'attachment' if attachments | length == 2 else 'attachments' }} in the body of the content.
                 {% else %}
                   <!-- Not current attachment -->
-                  You can add a link to one of these attachments in the body of the content.
+                  {%- if document.document_schema == 'publication' %}
+                    You can add a link to one of these attachments in the body of the content.<br><br>To change your attachments, save your changes and go to the attachments section.
+                  {% else %}
+                    You can add a link to one of these attachments in the body of the content or insert one of the attachments.
+                  {% endif -%}
                 {% endif -%}
               {% endif -%}
             </p>
 
+            {%- if document.document_schema == 'news' %}
+
+              {%- set previewHtml %}
+
+                {{ appAttachment({
+                  heading: {
+                    text: "Preview of insert as attachment"
+                  },
+                  metadata: {
+                    contentType: 'application/pdf',
+                    pageCount: 25,
+                    fileSize: 1234567,
+                    thumbnail: 'document'
+                  }
+                }) }}
+
+                <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+                <p class="govuk-body">
+                  <a class="govuk-link" href="#">Preview of insert as link</a> (PDF, 1.2 MB, 25 pages)
+                </p>
+
+              {% endset -%}
+
+              <div class="govuk-grid-row">
+                <div class="govuk-grid-column-two-thirds">
+                  {{ govukDetails({
+                    summaryText: "Compare the options for displaying attachments",
+                    html: previewHtml
+                  }) }}
+                </div>
+              </div>
+
+            {% endif -%}
+
+            <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+          
             <dl class="govuk-summary-list">
             {%- for item in attachments %}
 
@@ -44,7 +120,7 @@
 
               <div class="govuk-summary-list__row">
                 <dd class="govuk-summary-list__value">
-                  <h2 class="govuk-heading-s">
+                  <h2 class="govuk-heading-s govuk-!-margin-bottom-1">
                     <a class="govuk-link govuk-link--no-visited-state" href="/documents/{{ document.content_id}}/attachments/{{ item.content_id }}/preview" title="Preview attachment" target="_blank">
                     {{ item.title if item.title | length else "Untitled attachment" }}
                     </a>
@@ -70,15 +146,40 @@
                   {%- if item.type == 'external' %}
                     <p class="govuk-body-s">{{ item.url }}</p>
                   {% endif -%}
+                  {%- if item.type == 'file' %}
+                    <p class="govuk-body-s">PDF, 1.25MB, 25 pages</p>
+                  {% endif -%}
+
+                  {%- if document.document_schema == 'news' %}
+                    {{ appAttachmentActions({
+                      items: [
+                        {
+                          text: "Change file",
+                          href: "/documents/" + document.content_id + "/attachments/" + item.content_id + "/modal/update",
+                          classes: 'govuk-link--no-visited-state'
+                        },
+                        {
+                          text: "Download",
+                          href: "/documents/" + document.content_id + "/attachments/" + item.content_id + "/download",
+                          classes: 'govuk-link--no-visited-state'
+                        },
+                        {
+                          text: "Delete file",
+                          href: "/documents/" + document.content_id + "/attachments/" + item.content_id + "/modal/delete",
+                          classes: 'app-link--destructive'
+                        }
+                      ],
+                      classes: "govuk-!-margin-top-4 govuk-!-padding-bottom-0"
+                    }) }}
+                  {% endif -%}
+
                 </dd>
-                <dd class="govuk-summary-list__actions">
-                  <a class="app-c-button govuk-button" role="button" href="#">Insert as link</a>
+                <dd class="govuk-summary-list__actions app-c-summary-list__actions--modal">
+                  <a class="govuk-button app-c-button app-c-button--summary-action" role="button" href="#">Insert as link</a>
+                  {%- if document.document_schema == 'news' %}
+                    <a class="govuk-button govuk-button--secondary app-c-button app-c-button--summary-action" role="button" href="#">Insert as attachment</a>
+                  {% endif -%}
                 </dd>
-                {%- if document.document_schema == 'news' %}
-                <dd class="govuk-summary-list__actions">
-                  <a class="app-c-button govuk-button govuk-button--secondary" role="button" href="#">Insert as attachment</a>
-                </dd>
-                {% endif -%}
               </div>
               {% endif -%}
 
@@ -87,8 +188,12 @@
 
           {% else %}
 
-            <p class="govuk-body">No attachments have been added to this document. You can only insert an attachment that has already been added.</p>
-            <p class="govuk-body">To add an attachment, save your changes and go to the attachments section.</p>
+            {%- if document.document_schema == 'publication' %}
+
+              <p class="govuk-body">No attachments have been added to this document. You can only insert an attachment that has already been added.</p>
+              <p class="govuk-body">To add an attachment, save your changes and go to the attachments section.</p>
+
+            {% endif -%}
 
           {% endif -%}
 
