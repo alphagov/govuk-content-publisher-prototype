@@ -20,7 +20,7 @@
     "browser-sync": "^2.26.7",
     "client-sessions": "^0.8.0",
     "connect-flash": "^0.1.1",
-    "cookie-parser": "^1.4.4",
+    "cookie-parser": "^1.4.5",
     "cross-spawn": "^7.0.1",
     "del": "^5.1.0",
     "dotenv": "^8.2.0",
@@ -37,12 +37,12 @@
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
     "keypather": "^3.1.0",
-    "marked": "^0.8.0",
+    "marked": "^0.8.2",
     "moment": "^2.24.0",
     "multer": "^1.4.2",
-    "notifications-node-client": "^4.1.0",
+    "notifications-node-client": "^4.7.2",
     "numeral": "^2.0.6",
-    "nunjucks": "^3.2.0",
+    "nunjucks": "^3.2.1",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "portscanner": "^2.2.0",
@@ -52,7 +52,7 @@
     "sync-request": "^6.1.0",
     "turndown": "^5.0.3",
     "universal-analytics": "^0.4.16",
-    "uuid": "^3.2.1"
+    "uuid": "^3.4.0"
   },
   "greenkeeper": {
     "ignore": [
