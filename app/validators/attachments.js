@@ -32,15 +32,15 @@ exports.checkAttachment = function(data) {
   //   }
   // }
 
-  if (data.type == 'html') {
-    if (!data.body.length) {
-      let error = {};
-      error.fieldName = 'body';
-      error.href = '#attachment-body';
-      error.text = 'Enter a body';
-      errors.push(error);
-    }
-  }
+  // if (data.type == 'html') {
+  //   if (!data.body.length) {
+  //     let error = {};
+  //     error.fieldName = 'body';
+  //     error.href = '#attachment-body';
+  //     error.text = 'Enter a body';
+  //     errors.push(error);
+  //   }
+  // }
 
   return errors;
 
