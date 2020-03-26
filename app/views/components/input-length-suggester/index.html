@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Input length suggester component – GOV.UK Content Publisher prototype
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/components/input-length-suggester.js"></script>
+<script type="text/javascript">
+  var $element = $('#example-1-input-length-suggester');
+  var inputLengthSuggester = new GOVUK.Modules.InputLengthSuggester();
+  inputLengthSuggester.start($element);
+</script>
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "../"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">Components</span>
+        Input length suggester
+      </h1>
+
+      <p class="govuk-body-l">To suggest an input has a certain amount of characters.</p>
+
+      <p class="govuk-body"><a class="govuk-link" href="https://content-publisher.integration.publishing.service.gov.uk/component-guide/input_length_suggester">GOV.UK component guide</a></p>
+
+      <h2 class="govuk-heading-l">Examples</h2>
+
+      <h3 class="govuk-heading-m">Example 1</h3>
+
+      {{ govukInput({
+        id: "example-1",
+        name: "example-1",
+        label: {
+          text: "Label text",
+          classes: "govuk-!-font-weight-bold"
+        },
+        hint: {
+          text: "Hint text"
+        },
+        formGroup: {
+          classes: "govuk-!-margin-bottom-0"
+        }
+      }) }}
+
+      {{ appInputLengthSuggester({
+        id: "example-1-input-length-suggester",
+        data: {
+          for: "example-1",
+          showFrom: 20,
+          message: "This field should be less than 15 characters. Current characters: {count}"
+        },
+        aria: {
+          live: "polite"
+        }
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}

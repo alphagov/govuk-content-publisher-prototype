@@ -82,8 +82,7 @@ exports.checkAttachmentMetadata = function(data) {
         let error = {};
         error.fieldName = 'parliamentary_session';
         error.href = '#attachment-parliamentary-session';
-        error.text = 'Enter a command paper number';
-
+        error.text = 'Enter a parliamentary session';
         errors.push(error);
       }
 

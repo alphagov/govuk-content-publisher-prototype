@@ -24,11 +24,13 @@ exports.attachment_list = function(req, res) {
       res.render('../views/attachments/modals/list', {
         document: documentData,
         attachment: attachmentData,
+
         attachments: attachmentListData,
         message: flashMessage,
         actions: {
           add_file: '/documents/' + req.params.document_id + '/attachments/modal/create?type=file'
         }
+
       });
 
     } else {
@@ -242,7 +244,6 @@ exports.attachment_update_post = function(req, res) {
       });
 
     }
-
 
   } else {
 

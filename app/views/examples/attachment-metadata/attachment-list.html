@@ -1,0 +1,69 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {%- for attachment in attachments %}
+
+      {%- call appAttachmentActions({
+        items: [
+          {
+            text: ('Change link' if attachment.url | length else ('Change file' if attachment.metadata.type in ['document','spreadsheet'] else 'Edit attachment')),
+            href: "#"
+          },
+          {
+            text: 'Edit details',
+            href: "#"
+          },
+          {
+            text: 'Download',
+            href: "#",
+            attributes: {
+              "download": "attachment.pdf"
+            }
+          } if attachment.metadata.type in ['document','spreadsheet'],
+          {
+            text: 'Delete ' + ('link' if attachment.url | length else 'attachment'),
+            href: "#",
+            classes: 'app-link--destructive'
+          }
+        ]
+      }) %}
+
+        {% call appAttachment({
+          heading: {
+            text: attachment.title
+          },
+          href: "#",
+          target: "_blank",
+          references: {
+            isbn: attachment.references.isbn,
+            urn: attachment.references.urn,
+            cpn: attachment.references.cpn,
+            hcpn: attachment.references.hcpn,
+            parliamentary_session: attachment.references.parliamentary_session
+          } if attachment.references | length,
+          metadata: {
+            thumbnail: attachment.metadata.type
+          } if attachment.metadata | length
+        }) %}
+
+          {%- if attachment.url | length %}
+            <p class="govuk-body-s {{- ' govuk-!-margin-top-2' if attachment.references | length }}">{{ attachment.url }}</p>
+          {% else %}
+            <p class="govuk-body-s">
+              {%- if attachment.metadata.abbreviation -%}
+                <abbr title="{{ attachment.metadata.name }}" class="app-c-attachment__abbr">{{ attachment.metadata.abbreviation }}</abbr>
+              {%- else -%}
+                {{ attachment.metadata.name }}
+              {%- endif -%}
+              {{- (', ' + attachment.metadata.filesize | fileSizeFormat) if not attachment.url | length }} {{- ', 25 pages' if attachment.metadata.type == "document" -}}
+            </p>
+          {% endif -%}
+
+        {% endcall %}
+
+      {% endcall %}
+
+    {% endfor -%}
+
+  </div>
+</div>

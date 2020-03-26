@@ -87,6 +87,7 @@
                     text: ('Change link' if attachment.type == 'external' else ('Change file' if attachment.type == 'file' else 'Edit attachment')),
                     href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/update',
                     classes: 'govuk-link--no-visited-state'
+                    href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/update'
                   },
                   {
                     text: 'Edit details',

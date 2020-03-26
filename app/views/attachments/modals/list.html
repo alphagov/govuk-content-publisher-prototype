@@ -46,6 +46,7 @@
           {%- if attachments | length %}
 
             <p class="govuk-body govuk-!-margin-bottom-4">
+
               {% if attachments | length == 1 %}
                 <!-- One attachment -->
                 {% if attachment.content_id and attachment.content_id == attachments[0].content_id %}
@@ -111,7 +112,7 @@
             {% endif -%}
 
             <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
-
+          
             <dl class="govuk-summary-list">
             {%- for item in attachments %}
 

@@ -58,7 +58,7 @@ $thumbnail-icon-border-colour: govuk-colour("mid-grey", $legacy: "grey-3");
 }
 
 .app-c-attachment__metadata {
-  @include govuk-font($size: 14);
+  @include govuk-font($size: 16);
   margin: 0 0 govuk-spacing(3);
 
   &:last-of-type {

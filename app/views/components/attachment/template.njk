@@ -26,8 +26,10 @@
       {%- if params.href | length %}</a>{% endif -%}
     </h{{ params.headingLevel | default(2) }}>
     {%- if params.references | length %}
-      <p class="app-c-attachment__metadata govuk-!-margin-bottom-0">
-        {% if params.references.isbn | length or params.references.urn | length or params.references.cpn | length or params.references.hcpn | length %}Ref:{% endif %}
+      <p class="app-c-attachment__metadata govuk-!-margin-bottom-1">
+        {% if params.references.isbn | length or params.references.urn | length or (params.references.cpn | length and params.references.cpn != "unnumbered") or (params.references.hcpn and params.references.hcpn != "unnumbered") %}
+          <abbr title="References" class="app-c-attachment__abbr">Ref:</abbr>
+        {% endif %}
         {% if params.references.isbn | length %}
           <span class="app-c-attachment__attribute"><abbr title="International Standard Book Number" class="app-c-attachment__abbr">ISBN</abbr> {{ params.references.isbn }}</span>
         {%- endif -%}
@@ -35,15 +37,20 @@
           {%- if params.references.isbn | length %},{% endif %}
           <span class="app-c-attachment__attribute">{{ params.references.urn }}</span>
         {%- endif -%}
-        {%- if params.references.cpn | length %}
-          {%- if params.references.urn | length %},{% endif %}
-          <span class="app-c-attachment__attribute">CP {{ params.references.cpn }}</span>
+        {%- if params.references.cpn | length and params.references.cpn != "unnumbered" %}
+          {%- if params.references.isbn | length or params.references.urn | length %},{% endif %}
+          <span class="app-c-attachment__attribute">{{ params.references.cpn }}</span>
         {%- endif -%}
-        {%- if params.references.hcpn | length %}
-          {%- if params.references.cpn | length %},{% endif %}
-          <span class="app-c-attachment__attribute">HC {{ params.references.hcpn }} {{ params.references.parliamentary_session }}</span>
+        {%- if params.references.hcpn | length and params.references.hcpn != "unnumbered" %}
+          {%- if params.references.isbn | length or params.references.urn | length or params.references.cpn | length %},{% endif %}
+          <span class="app-c-attachment__attribute">{{ params.references.hcpn }} {{ params.references.parliamentary_session }}</span>
         {% endif %}
       </p>
+      {%- if params.references.cpn == "unnumbered" or params.references.hcpn == "unnumbered" %}
+      <p class="app-c-attachment__metadata govuk-!-margin-bottom-1">
+        {{- 'Unnumbered command paper' if params.references.cpn == "unnumbered" else ('Unnumbered act paper' if params.references.hcpn == "unnumbered") -}}
+      </p>
+      {% endif -%}
     {% endif -%}
     {%- if params.metadata %}
       <p class="app-c-attachment__metadata">

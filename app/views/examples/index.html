@@ -1,0 +1,32 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Examples – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{% include "includes/phase-banner.html" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "../"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        <span class="govuk-caption-xl">GOV.UK Prototype</span>
+        Example layouts, pages and questions
+      </h1>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li><a href="/examples/official-document/">Official document parliamentary session question</a></li>
+        <li><a href="/examples/attachment-metadata/">Attachment metadata</a></li>
+      </ul>
+    </div>
+</div>
+
+{% endblock %}

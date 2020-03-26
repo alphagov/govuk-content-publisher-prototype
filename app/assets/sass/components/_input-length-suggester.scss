@@ -1,0 +1,12 @@
+/* ==========================================================================
+   #INPUT LENGTH SUGGESTER
+   Based on https://github.com/alphagov/content-publisher/blob/master/app/assets/stylesheets/components/_input-length-suggester.scss
+   ========================================================================== */
+
+.app-c-input-length-suggester {
+  margin-top: govuk-spacing(1);
+}
+
+.app-c-input-length-suggester__hidden {
+  display: none;
+}
