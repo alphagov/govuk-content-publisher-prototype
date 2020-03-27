@@ -8,7 +8,7 @@
       classes: "govuk-!-font-weight-bold"
     },
     hint: {
-      html: 'Include the command paper number.'
+      text: 'For example, CP 521 or CP 521-IV.'
     },
     value: attachment.cpn if attachment.cpn,
     errorMessage: errors | getErrorMessage('cpn'),
@@ -31,7 +31,7 @@
       classes: "govuk-!-font-weight-bold"
     },
     hint: {
-      html: 'Include the House of Commons number.'
+      text: 'For example, 121 or 121-IV.'
     },
     value: attachment.hcpn if attachment.hcpn,
     errorMessage: errors | getErrorMessage('hcpn'),
