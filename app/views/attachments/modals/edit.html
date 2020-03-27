@@ -25,6 +25,10 @@
         </div>
       </div>
 
+      {%- if attachment.type == 'file' %}
+        <p class="govuk-body">If your new file has a different file name or file type from the original you’ll need to update the attachment markdown in your content.</p>
+      {% endif -%}
+
       <form action="{{ actions.save }}" accept-charset="UTF-8" method="post" novalidate>
 
         {% include "../partials/_form-file-attachment.html" %}
