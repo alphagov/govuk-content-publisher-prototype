@@ -28,7 +28,7 @@
         <div class="govuk-grid-column-two-thirds">
 
           <h1 class="govuk-heading-l">
-            Update {{ 'external link' if attachment.type == 'external' else 'attachment' }} details for ‘{{ attachment.title if attachment.title | length else (document.attachment.title if document.attachment.title | length else "Untitled attachment") }}’
+            Change {#{ 'external link' if attachment.type == 'external' else 'attachment' }#} details for ‘{{ attachment.title if attachment.title | length else (document.attachment.title if document.attachment.title | length else "Untitled attachment") }}’
           </h1>
 
           <p class="govuk-body">Include these details if the document contains them to help users find and identify the publication.</p>

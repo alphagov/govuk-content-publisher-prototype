@@ -84,13 +84,13 @@
               {%- call appAttachmentActions({
                 items: [
                   {
-                    text: ('Change link' if attachment.type == 'external' else ('Change file' if attachment.type == 'file' else 'Edit attachment')),
+                    text: 'Change' + (' link' if attachment.type == 'external' else (' file' if attachment.type == 'file' else ' attachment')),
                     href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/update',
                     classes: 'govuk-link--no-visited-state',
                     href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/update'
                   },
                   {
-                    text: 'Edit details',
+                    text: 'Change details',
                     href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/update-details',
                     classes: 'govuk-link--no-visited-state'
                   },
