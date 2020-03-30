@@ -84,13 +84,13 @@
               {%- call appAttachmentActions({
                 items: [
                   {
-                    text: ('Change link' if attachment.type == 'external' else ('Change file' if attachment.type == 'file' else 'Edit attachment')),
+                    text: 'Change' + (' link' if attachment.type == 'external' else (' file' if attachment.type == 'file' else ' attachment')),
                     href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/update',
                     classes: 'govuk-link--no-visited-state',
                     href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/update'
                   },
                   {
-                    text: 'Edit details',
+                    text: 'Change details',
                     href: '/documents/' + attachment.document_id + '/attachments/' + attachment.content_id + '/update-details',
                     classes: 'govuk-link--no-visited-state'
                   },
@@ -119,13 +119,15 @@
                   references: {
                     isbn: attachment.isbn,
                     urn: attachment.urn,
-                    cpn: attachment.cpn,
-                    hcpn: attachment.hcpn,
+                    cpn: "unnumbered" if attachment.official_document == 'yes_unnumbered_command_paper' else attachment.cpn,
+                    hcpn: "unnumbered" if attachment.official_document == 'yes_unnumbered_act_paper' else attachment.hcpn,
                     parliamentary_session: attachment.parliamentary_session
                   },
                   metadata: {
                     contentType: 'text/html' if attachment.type == 'html' else ('application/pdf' if attachment.type == 'file'),
-                    thumbnail: 'document' if attachment.type in ['file','html']
+                    thumbnail: 'document' if attachment.type in ['file','html'],
+                    fileSize: 123456 if attachment.type == 'file',
+                    pageCount: 25 if attachment.type == 'file'
                   }
                 }) %}
 

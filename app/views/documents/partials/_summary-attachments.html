@@ -20,7 +20,7 @@
 
   {%- if attachments | length %}
 
-    <dl class="govuk-summary-list govuk-summary-list--no-border app-c-summary-list--number">
+    <!-- <dl class="govuk-summary-list govuk-summary-list--no-border app-c-summary-list--number">
       {%- for attachment in attachments %}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
@@ -40,6 +40,59 @@
           {% if attachment.type == 'html' %}<p class="govuk-body-s">{{ attachment.type | attachmentType }}</p>{% endif -%}
         </dd>
       </div>
+      {% endfor -%}
+    </dl> -->
+
+    <dl class="govuk-summary-list govuk-summary-list--no-border app-c-summary-list--number">
+      {%- for attachment in attachments %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            {{ loop.index }}
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ attachment.title if attachment.title | length else "Untitled attachment" }}
+
+            <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-1">
+              {% if attachment.isbn | length or attachment.urn | length or (attachment.cpn | length and attachment.cpn != "unnumbered") or (attachment.hcpn and attachment.hcpn != "unnumbered") %}
+                <abbr title="References" class="app-c-attachment__abbr">Ref:</abbr>
+              {% endif %}
+              {% if attachment.isbn | length %}
+                <abbr title="International Standard Book Number" class="app-c-attachment__abbr">ISBN</abbr> {{ attachment.isbn }}
+              {%- endif -%}
+              {%- if attachment.urn | length %}
+                {%- if attachment.isbn | length %},{% endif %}
+                {{ attachment.urn }}
+              {%- endif -%}
+              {%- if attachment.cpn | length or attachment.official_document == 'yes_unnumbered_command_paper' %}
+                {%- if attachment.isbn | length or attachment.urn | length %},{% endif %}
+                {{ "Unnumbered command paper" if attachment.official_document == 'yes_unnumbered_command_paper' else attachment.cpn }}
+              {%- endif -%}
+              {%- if attachment.hcpn | length or attachment.official_document == 'yes_unnumbered_act_paper' %}
+                {%- if attachment.isbn | length or attachment.urn | length or attachment.cpn | length %},{% endif %}
+                HC {{ "Unnumbered act paper" if attachment.official_document == 'yes_unnumbered_act_paper' else attachment.hcpn }} {{ attachment.parliamentary_session }}
+              {% endif %}
+            </p>
+
+            {%- if attachment.cpn == "unnumbered" or attachment.hcpn == "unnumbered" %}
+              <p class="govuk-body-s govuk-!-margin-bottom-1">
+                {{- 'Unnumbered command paper' if attachment.cpn == "unnumbered" else ('Unnumbered act paper' if attachment.hcpn == "unnumbered") -}}
+              </p>
+            {% endif -%}
+
+            {%- if attachment.url | length %}
+              <p class="govuk-body-s {{- ' govuk-!-margin-top-1' if not (attachment.isbn | length or attachment.urn | length or attachment.cpn | length or attachment.hcpn) }}">{{ attachment.url }}</p>
+            {% elif attachment.type in ['html','file'] %}
+              <p class="govuk-body-s {{- ' govuk-!-margin-top-1' if not (attachment.isbn | length or attachment.urn | length or attachment.cpn | length or attachment.hcpn) }}">
+                {% if attachment.type == 'html' %}
+                  <abbr title="HyperText Markup Language" class="app-c-attachment__abbr">HTML</abbr>
+                {% elif attachment.type == 'file' %}
+                  <abbr title="Portable Document Format" class="app-c-attachment__abbr">PDF</abbr>
+                  {{- (', ' + 123456 | fileSizeFormat) if not attachment.url | length }}, 25 pages
+                {% endif %}
+              </p>
+            {% endif -%}
+          </dd>
+        </div>
       {% endfor -%}
     </dl>
 

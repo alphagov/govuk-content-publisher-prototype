@@ -72,6 +72,7 @@
 
           {%- if attachments | length %}
             <form action="{{ actions.save }}" accept-charset="UTF-8" method="post" novalidate>
+
               <dl {%- if attachments | length > 1 %} id="attachmentsList"{% endif -%} class="govuk-summary-list app-c-summary-list--sortable">
                 {%- for attachment in attachments %}
                   <div class="govuk-summary-list__row app-c-summary-list__row">
@@ -80,16 +81,46 @@
                     </dt>
                     <dd class="govuk-summary-list__value">
                       {{ attachment.title if attachment.title | length else "Untitled attachment" }}
-                      {% if attachment.type == 'external' %}<p class="govuk-body-s">{{ attachment.url }}</p>{% endif -%}
-                      {% if attachment.type == 'file' %}
-                        <p class="govuk-body-s">
-                          {%- if attachment.mimetype %}
-                            {{ attachment.mimetype | parseContentType if attachment.mimetype == 'application/pdf' else attachment.mimetype | parseContentType('title') }}
-                            {% if attachment.mimetype == 'application/pdf' %}, 2.56MB, 48 pages{% endif -%}
-                          {% endif -%}
+
+                      <p class="govuk-body-s govuk-!-margin-top-1 govuk-!-margin-bottom-1">
+                        {% if attachment.isbn | length or attachment.urn | length or (attachment.cpn | length and attachment.cpn != "unnumbered") or (attachment.hcpn and attachment.hcpn != "unnumbered") %}
+                          <abbr title="References" class="app-c-attachment__abbr">Ref:</abbr>
+                        {% endif %}
+                        {% if attachment.isbn | length %}
+                          <abbr title="International Standard Book Number" class="app-c-attachment__abbr">ISBN</abbr> {{ attachment.isbn }}
+                        {%- endif -%}
+                        {%- if attachment.urn | length %}
+                          {%- if attachment.isbn | length %},{% endif %}
+                          {{ attachment.urn }}
+                        {%- endif -%}
+                        {%- if attachment.cpn | length and attachment.cpn != "unnumbered" %}
+                          {%- if attachment.isbn | length or attachment.urn | length %},{% endif %}
+                          {{ attachment.cpn }}
+                        {%- endif -%}
+                        {%- if attachment.hcpn | length and attachment.hcpn != "unnumbered" %}
+                          {%- if attachment.isbn | length or attachment.urn | length or attachment.cpn | length %},{% endif %}
+                          HC {{ attachment.hcpn }} {{ attachment.parliamentary_session }}
+                        {% endif %}
+                      </p>
+
+                      {%- if attachment.cpn == "unnumbered" or attachment.hcpn == "unnumbered" %}
+                        <p class="govuk-body-s govuk-!-margin-bottom-1">
+                          {{- 'Unnumbered command paper' if attachment.cpn == "unnumbered" else ('Unnumbered act paper' if attachment.hcpn == "unnumbered") -}}
                         </p>
                       {% endif -%}
-                      {% if attachment.type == 'html' %}<p class="govuk-body-s">{{ attachment.type | attachmentType }}</p>{% endif -%}
+
+                      {%- if attachment.url | length %}
+                        <p class="govuk-body-s {{- ' govuk-!-margin-top-1' if not (attachment.isbn | length or attachment.urn | length or attachment.cpn | length or attachment.hcpn) }}">{{ attachment.url }}</p>
+                      {% elif attachment.type in ['html','file'] %}
+                        <p class="govuk-body-s {{- ' govuk-!-margin-top-1' if not (attachment.isbn | length or attachment.urn | length or attachment.cpn | length or attachment.hcpn) }}">
+                          {% if attachment.type == 'html' %}
+                            <abbr title="HyperText Markup Language" class="app-c-attachment__abbr">HTML</abbr>
+                          {% elif attachment.type == 'file' %}
+                            <abbr title="Portable Document Format" class="app-c-attachment__abbr">PDF</abbr>
+                            {{- (', ' + 123456 | fileSizeFormat) if not attachment.url | length }}, 25 pages
+                          {% endif %}
+                        </p>
+                      {% endif -%}
                     </dd>
                     <div class="govuk-summary-list__actions app-o-order-controls js-order-controls">
                       <input name="attachments_order[]" type="hidden" value="{{ attachment.content_id }}.json">
