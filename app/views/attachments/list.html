@@ -119,13 +119,15 @@
                   references: {
                     isbn: attachment.isbn,
                     urn: attachment.urn,
-                    cpn: attachment.cpn,
-                    hcpn: attachment.hcpn,
+                    cpn: "unnumbered" if attachment.official_document == 'yes_unnumbered_command_paper' else attachment.cpn,
+                    hcpn: "unnumbered" if attachment.official_document == 'yes_unnumbered_act_paper' else attachment.hcpn,
                     parliamentary_session: attachment.parliamentary_session
                   },
                   metadata: {
                     contentType: 'text/html' if attachment.type == 'html' else ('application/pdf' if attachment.type == 'file'),
-                    thumbnail: 'document' if attachment.type in ['file','html']
+                    thumbnail: 'document' if attachment.type in ['file','html'],
+                    fileSize: 123456 if attachment.type == 'file',
+                    pageCount: 25 if attachment.type == 'file'
                   }
                 }) %}
 

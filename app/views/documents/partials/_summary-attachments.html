@@ -63,13 +63,13 @@
                 {%- if attachment.isbn | length %},{% endif %}
                 {{ attachment.urn }}
               {%- endif -%}
-              {%- if attachment.cpn | length and attachment.cpn != "unnumbered" %}
+              {%- if attachment.cpn | length or attachment.official_document == 'yes_unnumbered_command_paper' %}
                 {%- if attachment.isbn | length or attachment.urn | length %},{% endif %}
-                {{ attachment.cpn }}
+                {{ "Unnumbered command paper" if attachment.official_document == 'yes_unnumbered_command_paper' else attachment.cpn }}
               {%- endif -%}
-              {%- if attachment.hcpn | length and attachment.hcpn != "unnumbered" %}
+              {%- if attachment.hcpn | length or attachment.official_document == 'yes_unnumbered_act_paper' %}
                 {%- if attachment.isbn | length or attachment.urn | length or attachment.cpn | length %},{% endif %}
-                HC {{ attachment.hcpn }} {{ attachment.parliamentary_session }}
+                HC {{ "Unnumbered act paper" if attachment.official_document == 'yes_unnumbered_act_paper' else attachment.hcpn }} {{ attachment.parliamentary_session }}
               {% endif %}
             </p>
 

@@ -43,7 +43,7 @@
         {%- endif -%}
         {%- if params.references.hcpn | length and params.references.hcpn != "unnumbered" %}
           {%- if params.references.isbn | length or params.references.urn | length or params.references.cpn | length %},{% endif %}
-          <span class="app-c-attachment__attribute">{{ params.references.hcpn }} {{ params.references.parliamentary_session }}</span>
+          <span class="app-c-attachment__attribute">HC {{ params.references.hcpn }} {{ params.references.parliamentary_session }}</span>
         {% endif %}
       </p>
       {%- if params.references.cpn == "unnumbered" or params.references.hcpn == "unnumbered" %}
