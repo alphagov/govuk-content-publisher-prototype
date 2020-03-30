@@ -29,7 +29,7 @@
               {%- endif -%}
               {%- if attachment.references.hcpn | length and attachment.references.hcpn != "unnumbered" %}
                 {%- if attachment.references.isbn | length or attachment.references.urn | length or attachment.references.cpn | length %},{% endif %}
-                {{ attachment.references.hcpn }} {{ attachment.references.parliamentary_session }}
+                HC {{ attachment.references.hcpn }} {{ attachment.references.parliamentary_session }}
               {% endif %}
             </p>
             {%- if attachment.references.cpn == "unnumbered" or attachment.references.hcpn == "unnumbered" %}
