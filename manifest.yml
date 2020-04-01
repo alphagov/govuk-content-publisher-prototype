@@ -1,0 +1,6 @@
+---
+applications:
+- name: govuk-content-publisher-prototype
+  memory: 128M
+  buildpacks:
+  - nodejs_buildpack
