@@ -16,11 +16,15 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$preview = this.$module.querySelector('.js-markdown-preview-body .govuk-textarea')
     this.$previewButton = this.$module.querySelector('.js-markdown-preview-button')
     this.$editButton = this.$module.querySelector('.js-markdown-edit-button')
+    this.$modeButton = this.$module.querySelector('.js-markdown-mode-button')
     this.$editorInput = this.$module.querySelector('.js-markdown-editor-input')
     this.$previewBody = this.$module.querySelector('.js-markdown-preview-body')
     this.$toolbar = document.querySelector('.app-c-markdown-guidance')
     this.$editorToolbar = document.querySelector('.app-c-markdown-editor__toolbar')
     this.$module.selectionReplace = this.handleSelectionReplace.bind(this)
+
+    this.$html = document.querySelector('html')
+    this.$body = document.querySelector('body')
 
     // Enable toggle bar
     this.$head.style.display = 'block'
@@ -28,6 +32,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     // Handle button events
     this.$previewButton.addEventListener('click', this.handlePreviewButton.bind(this))
     this.$editButton.addEventListener('click', this.handleEditButton.bind(this))
+    this.$modeButton.addEventListener('click', this.handleModeButton.bind(this))
 
     // Reflect focus events
     this.reflectFocusStateToContainer(this.$input, this.$container)
@@ -127,6 +132,23 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
 
     this.toggleElements()
+  }
+
+  MarkdownEditor.prototype.handleModeButton = function (event) {
+    event.preventDefault()
+    this.toggleMode()
+  }
+
+  MarkdownEditor.prototype.toggleMode = function () {
+    this.$container.classList.toggle('app-c-markdown-editor__container--full-screen')
+    this.$html.classList.toggle('app-o-template--full-screen')
+    this.$body.classList.toggle('app-o-template__body--full-screen')
+
+    if (this.$editorInput.style.height) {
+      this.$editorInput.style.height = null
+    } else {
+      this.$editorInput.style.height = (this.$container.clientHeight - 96) + 'px'
+    }
   }
 
   MarkdownEditor.prototype.toggleElements = function () {

@@ -23,6 +23,19 @@
    box-shadow: $govuk-input-border-colour 0 0 0 $govuk-border-width-form-element;
  }
 
+.app-c-markdown-editor__container--full-screen {
+  z-index: 10;
+  position: fixed;
+  left: govuk-spacing(3);
+  right: govuk-spacing(3);
+  top: govuk-spacing(3);
+  bottom: govuk-spacing(3);
+
+  .gem-c-textarea, textarea {
+    height: 100%;
+  }
+}
+
  .app-c-markdown-editor__head {
    @include govuk-font(19);
    display: block;
@@ -74,6 +87,16 @@
 
    &:first-child {
      border-left-color: transparent;
+   }
+ }
+
+ .app-c-markdown-editor__button--mode {
+   float: right;
+   height: 38px;
+   color: govuk-colour('black');
+
+   @include govuk-media-query($from: tablet) {
+     height: 43px;
    }
  }
 
@@ -132,6 +155,24 @@
    background: inherit;
    fill: currentColor;
    pointer-events: none;
+ }
+
+ .app-c-markdown-editor__toolbar-icon--zoom-out {
+   display: block;
+ }
+
+ .app-c-markdown-editor__toolbar-icon--zoom-in {
+   display: none;
+ }
+
+ .app-c-markdown-editor__container--full-screen {
+   .app-c-markdown-editor__toolbar-icon--zoom-out {
+     display: none;
+   }
+
+   .app-c-markdown-editor__toolbar-icon--zoom-in {
+     display: block;
+   }
  }
 
  .app-c-markdown-editor__toolbar-button--text {
