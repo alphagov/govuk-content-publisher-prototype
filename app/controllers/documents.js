@@ -10,6 +10,9 @@ const Attachments = require('../models/attachments');
 const Documents = require('../models/documents');
 const History = require('../models/history');
 
+// validators
+const ChangeNoteValidators = require('../validators/change-notes');
+
 // Display list of all documents.
 exports.document_list = function(req, res) {
   // clear out the document types from the creation flow
@@ -593,9 +596,33 @@ exports.document_change_note_get = function(req, res) {
 };
 
 exports.document_change_note_post = function(req, res) {
-  Documents.findByIdAndUpdate(req.params.document_id, req.session.data);
-  req.flash('success', 'Change note added');
-  res.redirect('/documents/' + req.params.document_id);
+
+  const errors = ChangeNoteValidators.checkChangeNote(req.session.data.document.edition);
+
+  if (errors.length) {
+
+    let documentData = Documents.findById(req.params.document_id);
+
+    // overwrite the saved data with the submitted data
+    documentData.edition = req.session.data.document.edition;
+
+    res.render('../views/documents/change-note', {
+      document: documentData,
+      errors: errors,
+      actions: {
+        back: '/documents/' + req.params.document_id,
+        save: '/documents/' + req.params.document_id + '/change-note'
+      }
+    });
+
+  } else {
+
+    Documents.findByIdAndUpdate(req.params.document_id, req.session.data);
+    req.flash('success', 'Change note added');
+    res.redirect('/documents/' + req.params.document_id);
+
+  }
+
 };
 
 exports.document_nations_get = function(req, res) {

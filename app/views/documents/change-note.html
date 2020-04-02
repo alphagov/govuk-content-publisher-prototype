@@ -27,6 +27,8 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
+      {% include "./partials/_error-summary-message.html" %}
+
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
@@ -74,6 +76,7 @@
                 text: "An update will be published on the page and emailed to subscribers. The ‘last updated’ date will change."
               },
               value: document.edition.change_note,
+              errorMessage: errors | getErrorMessage('change_note'),
               rows: 10
             }) }}
 
@@ -94,6 +97,7 @@
           hint: {
             html: "Choose yes to notify users of the change. Telling users when published information<br>changes is important for transparency."
           },
+          errorMessage: errors | getErrorMessage('change_note_option'),
           items: [
             {
               value: "yes",
