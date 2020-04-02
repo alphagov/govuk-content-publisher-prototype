@@ -1,7 +1,7 @@
 {% call appSummaryList({
   classes: 'govuk-summary-list--no-border',
   heading: {
-    text: "Change note"
+    text: "Public change notification"
   },
   actions: [
     {
@@ -14,12 +14,12 @@
 }) %}
 
   {%- if not document.edition.change_note_option | length %}
-    <p class="govuk-body">No change note for this edition.</p>
+    <p class="govuk-body">No choice made on updating users.</p>
   {% else %}
     {%- if document.edition.change_note_option == 'yes' %}
       <p class="govuk-body">{{ document.edition.change_note }}</p>
     {% else %}
-      <p class="govuk-body">No public change note – minor style update.</p>
+      <p class="govuk-body">Users will not be updated – minor edit.</p>
     {% endif -%}
   {% endif -%}
 

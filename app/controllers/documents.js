@@ -618,7 +618,7 @@ exports.document_change_note_post = function(req, res) {
   } else {
 
     Documents.findByIdAndUpdate(req.params.document_id, req.session.data);
-    req.flash('success', 'Change note added');
+    req.flash('success', 'Public change notification added');
     res.redirect('/documents/' + req.params.document_id);
 
   }
