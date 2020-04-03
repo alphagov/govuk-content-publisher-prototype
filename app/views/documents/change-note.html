@@ -27,11 +27,13 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
+      {% include "./partials/_error-summary-message.html" %}
+
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
           <h1 class="govuk-heading-l">
-            Add a change note for ‘{{ document.title }}’
+            Tell users what’s changed in ‘{{ document.title }}’
           </h1>
 
         </div>
@@ -40,63 +42,78 @@
       <form action="{{ actions.save }}" accept-charset="UTF-8" method="post" novalidate>
 
         {%- set changeNote %}
-          {% if document.document_type in ["corporate_report","decision","guidance","independent_report","international_treaty","national_statistics","notice","official_statistics","policy_paper","research_analysis","statutory_guidance","transparency_statistics"] %}
+          {#% if document.document_type in ["corporate_report","decision","guidance","independent_report","international_treaty","national_statistics","notice","official_statistics","policy_paper","research_analysis","statutory_guidance","transparency_statistics"] %}
             <p class="govuk-body">Describe the change for users. You must let users know if you’ve changed a document that was laid in Parliament. Include or refer to any new or updated information. This change note will be published on the page and emailed to subscribers. The ‘last updated’ date will change.</p>
           {% else %}
             <p class="govuk-body">Describe the change for users. Include or refer to any new or updated information. This change note will be published on the page and emailed to subscribers. The ‘last updated’ date will change.</p>
-          {% endif -%}
+          {% endif -%#}
+          <p class="govuk-body">Tell users what has changed, where and why. Write in full sentences, leading with the most important words. For example, ‘College A has been removed from the registered sponsors list because its licence has been suspended.’</p>
           <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="https://www.gov.uk/guidance/content-design/writing-for-gov-uk#change-notes" target="_blank">Full guidance on change notes</a></p>
         {% endset -%}
 
-        {%- call appContextualGuidance({
-          id: 'contextual-guidance-change-note',
-          for: 'edition-change-note',
-          heading: {
-            text: 'Writing change notes'
-          },
-          description: {
-            html: changeNote
-          },
-          classes: 'govuk-!-margin-top-4'
-        }) %}
+        {%- set conditionalHtml %}
 
+          {%- call appContextualGuidance({
+            id: 'contextual-guidance-change-note',
+            for: 'edition-change-note',
+            heading: {
+              text: 'What to include'
+            },
+            description: {
+              html: changeNote
+            },
+            classes: 'govuk-!-margin-top-4'
+          }) %}
 
-          {{ govukRadios({
-            idPrefix: "edition-change-note-option",
-            name: "document[edition][change_note_option]",
-            fieldset: {
-              legend: {
-                text: "Is the content change significant to users?",
-                isPageHeading: true,
-                classes: "govuk-fieldset__legend--s"
+            {{ govukTextarea({
+              id: "edition-change-note",
+              name: "document[edition][change_note]",
+              label: {
+                text: "Describe the change for users",
+                classes: "govuk-!-font-weight-bold"
+              },
+              hint: {
+                text: "An update will be published on the page and emailed to subscribers. The ‘last updated’ date will change."
+              },
+              value: document.edition.change_note,
+              errorMessage: errors | getErrorMessage('change_note'),
+              rows: 10
+            }) }}
+
+          {% endcall -%}
+
+        {% endset -%}
+
+        {{ govukRadios({
+          idPrefix: "edition-change-note-option",
+          name: "document[edition][change_note_option]",
+          fieldset: {
+            legend: {
+              text: "Do users need to know the content has changed?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            html: "Choose yes to notify users of the change. Telling users when published information<br>changes is important for transparency."
+          },
+          errorMessage: errors | getErrorMessage('change_note_option'),
+          items: [
+            {
+              value: "yes",
+              text: "Yes – information has been added, updated or removed",
+              checked: true if document.edition.change_note_option == 'yes' or not document.edition.change_note_option | length,
+              conditional: {
+                html: conditionalHtml
               }
             },
-            items: [
-              {
-                value: "yes",
-                text: "Yes – information has been added or updated",
-                checked: true if document.edition.change_note_option == 'yes' or not document.edition.change_note_option | length,
-                conditional: {
-                  html: govukTextarea({
-                    id: "edition-change-note",
-                    name: "document[edition][change_note]",
-                    label: {
-                      text: "Public change note",
-                      classes: "govuk-!-font-weight-bold"
-                    },
-                    value: document.edition.change_note
-                  })
-                }
-              },
-              {
-                value: "no",
-                text: "No – it's a minor style update",
-                checked: true if document.edition.change_note_option == 'no'
-              }
-            ]
-          }) }}
-
-        {% endcall -%}
+            {
+              value: "no",
+              text: "No – it’s a minor edit that does not change the meaning, for example a style update",
+              checked: true if document.edition.change_note_option == 'no'
+            }
+          ]
+        }) }}
 
         {{ govukButton({
           text: "Save"
