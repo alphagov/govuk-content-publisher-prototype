@@ -7,6 +7,7 @@ var authentication_controller = require('./controllers/authentication');
 var document_controller = require('./controllers/documents');
 var edition_controller = require('./controllers/editions');
 var attachment_controller = require('./controllers/attachments');
+var link_controller = require('./controllers/links');
 
 function checkIsAuthenticated(req, res, next) {
   if (req.session.passport || req.session.data.user) {
@@ -209,6 +210,12 @@ router.get('/documents/:document_id/attachments/:attachment_id/', checkIsAuthent
 // GET request for list of all attachment items.
 router.get('/documents/:document_id/attachments', checkIsAuthenticated, attachment_controller.attachment_list);
 
+/// --------------------------------------------------///
+// DOCUMENT LINKS MODAL ROUTES //
+/// --------------------------------------------------///
+
+// GET request for creating a link. NOTE This must come before routes that display links (uses id).
+router.get('/documents/:document_id/links/modal/create', checkIsAuthenticated, link_controller.link_create_get);
 
 /// --------------------------------------------------///
 // DOCUMENT EDITION ROUTES //
