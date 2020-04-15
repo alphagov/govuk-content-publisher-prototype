@@ -62,17 +62,6 @@
               "checked": checked('document_type', 'press_release')
             } if data.document_super_type == "news_communications",
             {
-              "value": "articles_correspondence",
-              "text": "Articles and correspondence",
-              "label": {
-                "classes": "govuk-label--s"
-              },
-              "hint": {
-                "text": "Articles written by a minister or official, responses from the organisation or a minister, and circulars or newsletters."
-              },
-              "checked": checked('document_type', 'articles_correspondence')
-            } if data.document_super_type == "news_communications",
-            {
               "value": "speech",
               "text": "Speech",
               "label": {
@@ -104,6 +93,17 @@
                 "text": "Real examples that help users understand a process or an important aspect of government policy."
               },
               "checked": checked('document_type', 'case_study')
+            } if data.document_super_type == "news_communications",
+            {
+              "value": "authored_article",
+              "text": "Authored article",
+              "label": {
+                "classes": "govuk-label--s"
+              },
+              "hint": {
+                "text": "Bylined articles written in the name of a minister or official, usually republished from elsewhere."
+              },
+              "checked": checked('document_type', 'authored_article')
             } if data.document_super_type == "news_communications",
             {
               "value": "notice",
@@ -236,6 +236,17 @@
                 "text": "Research reports, surveys, analyses and evaluations."
               },
               "checked": checked('document_type', 'research_analysis')
+            } if data.document_super_type == "transparency_statistics",
+            {
+              "value": "correspondence",
+              "text": "Correspondence publication",
+              "label": {
+                "classes": "govuk-label--s"
+              },
+              "hint": {
+                "text": "Minister or organisation responses (for example to campaign letters), correspondence to individuals, organisations and professionals, circulars, bulletins and newsletters."
+              },
+              "checked": checked('document_type', 'correspondence')
             } if data.document_super_type == "transparency_statistics",
             {
               "value": "foi_release",
