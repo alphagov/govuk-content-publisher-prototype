@@ -62,28 +62,6 @@
               "checked": checked('document_sub_type', 'oral_statement')
             } if data.document_type == "statement_to_parliament",
             {
-              "value": "correspondence",
-              "text": "Correspondence publication",
-              "label": {
-                "classes": "govuk-label--s"
-              },
-              "hint": {
-                "text": "Minister or organisation responses (for example to campaign letters), correspondence to individuals, organisations and professionals, circulars, bulletins and newsletters."
-              },
-              "checked": checked('document_sub_type', 'correspondence')
-            } if data.document_type == "articles_correspondence",
-            {
-              "value": "authored_article",
-              "text": "Authored article",
-              "label": {
-                "classes": "govuk-label--s"
-              },
-              "hint": {
-                "text": "Bylined articles written in the name of a minister or official, usually republished from elsewhere."
-              },
-              "checked": checked('document_sub_type', 'authored_article')
-            } if data.document_type == "articles_correspondence",
-            {
               "value": "detailed_guide",
               "text": "Detailed guide",
               "label": {
@@ -112,7 +90,7 @@
                 "classes": "govuk-label--s"
               },
               "hint": {
-                "text": "Guidance which relevant users are legally obliged to follow."
+                "text": "Guidance that sets out what users must do to comply with the law."
               },
               "checked": checked('document_sub_type', 'statutory_guidance')
             } if data.document_type == "guidance",
